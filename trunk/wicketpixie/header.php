@@ -24,7 +24,9 @@
 	<?php include (TEMPLATEPATH . '/plugins/related-posts.php'); ?>
 	<?php include (TEMPLATEPATH . '/plugins/search-excerpt.php'); ?>
 	<?php include (TEMPLATEPATH . '/plugins/search-highlight.php'); ?>
-	<script src="http://myintarweb.uservoice.com/pages/general/widgets/tab.js?alignment=right&amp;color=00BCBA" type="text/javascript"></script>
+	<?php if (is_user_logged_in()) { ?>
+	<script src="http://myintarweb.uservoice.com/pages/general/widgets/tab.js?alignment=left&amp;color=00BCBA" type="text/javascript"></script>
+	<?php } ?>
 		
 <?php wp_head(); ?>	
 	
