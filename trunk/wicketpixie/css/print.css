@@ -1,0 +1,20 @@
+
+#topbar, #subscribe, #share, #logo, #status, #leaderboard, #post-ad, #nav, #sidebar, #comment-form, #footer, .post-author .avatar, .post-comments, .post-meta, #comments .avatar {
+	display: none;
+}
+
+#content img {
+	display: block;
+	border: 5px solid #ddd;
+	max-width: 490px;
+}
+
+#content img[align $='left'], #content .alignleft {
+	float: left;
+	margin: 0 14px 10px 0;
+}
+
+#content img[align $='right'], #content .alignright {
+	float: right;
+	margin: 0 0 10px 14px;
+}
