@@ -261,7 +261,6 @@ class SourceAdmin {
 		. $stream . ", "
 		. $update . ")";
 		$query= $wpdb->query( $i );
-		$this->favicache( $args['profile'], $args['title'] );
 		$this->create_widget();
 		$message= 'Source Saved';
 		} else {
@@ -308,7 +307,6 @@ class SourceAdmin {
 						", updates = " . $update .
 						" WHERE id = " . $args['id'];
 			$query= $wpdb->query( $u );
-			$this->favicache( $args['profile'], $args['title'] );
 			$this->create_widget();
 	}
 	
@@ -410,12 +408,13 @@ class SourceAdmin {
 		$cleaned= strtolower( $widget->title );
 		$cleaned= preg_replace( '/\W/', ' ', $cleaned );
 		$cleaned= str_replace( " ", "", $cleaned );
+		$favicon_url= explode('/', $widget->profile_url);
 		
 		$data= '';
 		$data .= '<?php' . "\n";
 		$data .= '$total= 5;' . "\n";
 		$data .= 'echo \'<div class="widget">\';' . "\n";
-		$data .= "echo '<h3><img src=\"$widget->favicon\" alt=\"$widget->title\" />$widget->title</h3>';" . "\n";
+		$data .= "echo '<h3><img src=\"http://www.google.com/s2/favicons?domain=$favicon_url[2]\" alt=\"$widget->title\" />$widget->title</h3>';" . "\n";
 		$data .= "echo '<ul>';" . "\n";
 		$data .= '$items= SourceAdmin::get_feed( "'. $widget->feed_url . '" );
 		foreach( $items as $item ) {
