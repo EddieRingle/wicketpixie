@@ -253,13 +253,15 @@ class SourceAdmin {
 		$table= $wpdb->prefix . 'wik_sources';
 		if( $args['title'] != 'Source Title' ) {
 		if( !$wpdb->get_var( "SELECT id FROM $table WHERE feed_url = '" . $args['url'] . "'" ) ) {
-		$i= "INSERT INTO " . $table . " (id,title,profile_url,feed_url,type,lifestream,updates) VALUES('', '" 
+		$favicon_url= explode('/', $args['profile']);
+		$i= "INSERT INTO " . $table . " (id,title,profile_url,feed_url,type,lifestream,updates,favicon) VALUES('', '" 
 		. $args['title'] . "','" 
 		. $args['profile'] . "', '" 
 		. $args['url'] . "', " 
 		. $args['type'] . ", " 
 		. $stream . ", "
-		. $update . ")";
+		. $update . ", "
+		. "'http://www.google.com/s2/favicons?domain=$favicon_url[2]')";
 		$query= $wpdb->query( $i );
 		$this->create_widget();
 		$message= 'Source Saved';
@@ -381,12 +383,10 @@ class SourceAdmin {
 	}
 
 	 function get_feed( $url ) {
-		require_once (ABSPATH . '/wp-content/plugins/simplepie.php');
+		require_once ( 'simplepie.php' );
 			$feed_path= $url;
 			$feed= new SimplePie( (string) $feed_path, ABSPATH . '/' . (string) '/wp-content/uploads/activity/' );
-
-			$this->clean_dir();
-
+			SourceAdmin::clean_dir();
 			$feed->handle_content_type();
 				if( $feed->data ) {
 					foreach( $feed->get_items() as $entry ) {
