@@ -1,5 +1,5 @@
-/* 
-Theme Name: WicketPixie Social Media Theme
+ /* 
+Theme Name: WicketPixie
 Theme URI: http://chris.pirillo.com/wicketpixie-social-media-theme/
 Description: Funded by <a href="http://chris.pirillo.com/">Chris Pirillo</a> and <a href="http://www.lockergnome.com/">Lockergnome</a>. Design, markup/CSS and theme development by <a href="http://mattbrett.com">Matt Brett</a>. App developed by <a href="http://chrisjdavis.org">Chris J. Davis</a>. Solid Wood backgrounds by <a href="http://www.bartelme.at/">Bartelme Design</a>. More social media discussions at <a href="http://gnomedex.com/">Gnomedex</a>.
 Version: 1.0
@@ -28,12 +28,16 @@ body {
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
 #topbar {
+     top: 0;
+     left: 0;
 	position: fixed;
 	float: left;
 	width: 100%;
 	padding: 5px 0 19px;
 	background: url("../images/topbar-bg.png") repeat-x 50% 100%;
 	z-index: 999;
+
+
 }
 
 #topbar-inner {
@@ -72,7 +76,7 @@ body {
 }
 
 #topbar-share {
-	display: none;
+	display: inline;
 }
 
 #subscribe, #share {
@@ -90,10 +94,13 @@ body {
 #subscribe {
 	position: fixed;
 	margin: -1px 0 0 -469px;
-}
+     z-index: 999;
+ }
 
 #share {
-	margin: -1px 0 0 -363px;
+	position: fixed;
+	margin: -1px 0 0 -383px;
+     z-index: 999;
 }
 
 #subscribe ul {
@@ -136,10 +143,11 @@ body {
 
 #subscribe input {
 	margin-bottom: 5px;
+	font-size: 8pt;
 }
 
 #topbar-share {
-	background: url("../images/topbar-share.gif") no-repeat 0 50%;
+	background: url("../images/topbar-wp.gif") no-repeat 0 50%;
 }
 
 #topbar-admin {
@@ -188,8 +196,11 @@ body {
 #logo {
 	float: left;
 	width: 400px;
-	margin-bottom: 15px;
-	font-size: 4.6em;
+
+	padding-top: 10px;
+	font-size: 4.0em;
+	vertical-align: baseline;
+	text-align: left;
 	text-shadow: #000 2px 1px 5px;
 }
 
@@ -198,7 +209,7 @@ body {
 }
 
 #logo a:hover {
-	text-decoration: none;
+	text-decoration: underline;
 }
 
 #description {
@@ -213,11 +224,12 @@ body {
 
 #leaderboard {
 	clear: both;
-	width: 728px;
-	height: 90px;
+	/* width: 728px;
+	height: 90px; */
 	padding: 3px;
 	margin-bottom: 10px;
-	background: url("../images/trans.png") repeat 0 0;
+	text-align: center;
+	/* background: url("../images/trans.png") repeat 0 0; */
 }
 
 #leaderboard img {
@@ -231,12 +243,33 @@ body {
 /* NAV
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
+
+
+
+
+
+
+
+
+
 #nav {
+     clear: both;
 	float: left;
 	width: 100%;
 	text-align: center;
 	padding-top: 9px;
 	background: url("../images/nav-bg.png") no-repeat 50% 0;
+
+
+
+
+
+
+
+
+
+
+
 }
 
 #nav ul {
@@ -328,6 +361,7 @@ body {
 	text-shadow: #000 1px 1px 3px;
 	background: url("../images/status-top.png") no-repeat 0 0;
 	overflow: hidden;
+	font-weight: bold;
 }
 
 #status-bottom {
@@ -386,6 +420,10 @@ body {
 	margin: 0 0 1.4em 0;
 }
 
+#recent-posts .widget h3 {
+	margin: 1.4em 0 0 0;
+}
+
 #sidebar #recent-posts p {
 	font-size: 1em;
 	line-height: 1.4em;
@@ -394,7 +432,7 @@ body {
 #home-categories, #home-photos, #home-tags, #home-youtube-full {
 	margin: 0 20px 1.4em;
 	padding-top: 1.4em;
-	border-top: 1px solid #eee;
+	/* border-top: 1px solid #eee; */
 }
 
 #home-categories h2, #home-photos h2, #home-tags h2, #home-youtube-full h2 {
@@ -466,6 +504,10 @@ body {
 	padding-bottom: 5px;
 }
 
+#home-youtube-full h4 {
+	margin: 0 0 15px 15px;
+}
+
 /* @end */
 
 /* @group content */
@@ -477,6 +519,7 @@ body {
 	float: left;
 	width: 540px;
 	padding-top: 20px;
+	background-color: #fff;
 }
 
 .content a:link, .content a:visited, .content a:active {
@@ -496,7 +539,7 @@ body {
 
 .content h2 {
 	margin-bottom: 1em;
-	font-size: 2em;
+	font-size: 1.5em;
 	line-height: 1.2em;
 }
 
@@ -529,6 +572,12 @@ body {
 	line-height: 1em;
 }
 
+.recent h4 {
+	margin: 0 0 0 20px;
+	padding-bottom: 5px;
+	font-size: 1.2em;
+}
+
 .content h1 a:link, .content h1 a:visited, .content h1 a:active, .content h2 a:link, .content h2 a:visited, .content h2 a:active, .content h3 a:link, .content h3 a:visited, .content h3 a:active, .content h4 a:link, .content h4 a:visited, .content h4 a:active, .content h6 a:link, .content h6 a:visited, .content h6 a:active {
 	text-decoration: underline;
 	border-bottom: 0;
@@ -541,7 +590,7 @@ body {
 .content p {
 	margin-bottom: 1.4em;
 	font-size: 1.2em;
-	line-height: 1.5em;
+	line-height: 1.7em;
 	color: #000;
 }
 
@@ -554,6 +603,7 @@ body {
 	padding-left: 16px;
 	list-style-type: none;
 	background: url("../images/bullet.gif") no-repeat 0 7px;
+	margin-bottom: 15px;
 }
 
 .content ol {
@@ -563,20 +613,21 @@ body {
 
 .content ol li {
 	list-style-type: decimal;
+	margin-bottom: 15px;
 }
 
 .content li {
 	margin-bottom: .5em;
 	font-size: 1.2em;
-	line-height: 1.4em;
+	line-height: 1.7em;
 }
 
-.content blockquote p {
+.content blockquote {
 	margin: 0 0 1.4em 10px;
 	padding: 0 15px;
-	font-size: 1.2em;
+
 	font-style: italic;
-	line-height: 1.5em;
+
 	color: #000;
 	border-left: 5px solid #eee;
 }
@@ -591,7 +642,8 @@ body {
 
 .post {
 	margin: 0 20px 1.4em;
-	border-bottom: 1px solid #eee;
+	padding-bottom: 15px;
+	/* border-bottom: 1px solid #eee; */
 }
 
 .page {
@@ -605,20 +657,34 @@ body {
 }
 
 #content .avatar {
-	float: left;
+	float: right;
 	display: block;
-	width: 36px;
-	height: 36px;
-	margin-right: 10px;
+	width: 48px;
+	height: 48px;
+	margin-left: 10px;
 	padding: 3px;
 	background: url("../images/post-avatar-bg.gif") no-repeat 0 0;
 	overflow: hidden;
 	border: 0;
 }
 
+#content .friend-comment p {
+	margin-bottom: 1.4em;
+	margin-left: 1.4em;
+	padding-left: 1.4em;
+	background: url("../images/bullet.gif") no-repeat 0 7px;
+	font-size: 1.2em;
+	line-height: 1.7em;
+	color: black;
+}
+
+#content .friend-comment a {
+     color: purple;    
+}
+
 #content .post-author p {
 	margin: 0;
-	padding-top: 5px;
+	padding-top: 1px;
 	color: #999;
 	line-height: 1.3em;
 }
@@ -655,8 +721,9 @@ body {
 }
 
 #content .post-comments {
-	float: right;
+	float: left;
 	background: url("../images/post-comments-left.gif") no-repeat 0 0;
+	padding-right: 20px;
 }
 
 #content .post-comments ul {
@@ -683,6 +750,9 @@ body {
 	font-weight: bold;
 	border-bottom: 0;
 	padding-right: 22px;
+	padding-bottom: 10px;
+	margin-top: 1px;
+	z-index: 10;
 	background: url("../images/post-comments-bubble.gif") no-repeat 100% 0;
 }
 
@@ -713,8 +783,9 @@ body {
 
 #content img {
 	display: block;
-	border: 5px solid #ddd;
-	max-width: 490px;
+	/* border: 5px solid #ddd; */
+	max-width: 340px;
+     height: auto;
 }
 
 #content img[align $='left'], #content .alignleft {
@@ -814,7 +885,7 @@ body {
 #content .hilite {
 	color: #000;
 	font-weight: bold;
-	background-color: #eee;
+	background-color: yellow;
 }
 
 #content .navigation {
@@ -860,10 +931,19 @@ body {
 	float: right;
 	width: 120px;
 	margin: 0 0 15px 15px;
-	border: 5px solid #ddd;
+	/* border: 5px solid #ddd; */
 }
 
 #post-ad img {
+	border: 0;
+}
+
+#post-ad ul, #post-ad ul li, #post-ad li {
+	list-style-type: none;
+	background: none;
+	font-weight: bold;
+	margin: 0;
+	padding: 0 0 10px 0;
 	border: 0;
 }
 
@@ -895,12 +975,15 @@ body {
 #content #comments h2, #content #comment-form h2 {
 	margin-top: 1.4em;
 	color: #333;
+	font-size: 2.0em;
 }
 
 #comments .comment .meta {
 	float: left;
 	width: 120px;
 	text-align: right;
+	overflow: hidden;
+	padding-top: 1px;;
 }
 
 #comments .comment .content {
@@ -911,11 +994,12 @@ body {
 #content .comment img.avatar {
 	float: right;
 	display: block;
-	width: 36px;
-	height: 36px;
-	margin: 3px 0 10px 10px;
+	width: 48px;
+	height: 48px;
+	margin: 0 0 10px 10px;
 	padding: 3px;
-	background: url("../images/post-avatar-bg.gif") no-repeat 0 0;
+
+	background: #ccc;
 	overflow: hidden;
 	border: 0;
 }
@@ -959,6 +1043,7 @@ body {
 #content .comment h5 a:hover {
 	color: #333;
 	text-decoration: underline;
+     border-bottom: 0;
 }
 
 #comment-form {
@@ -1141,6 +1226,7 @@ body {
 	margin-bottom: 10px;
 	padding: 0;
 	background: none;
+	overflow: hidden;
 }
 
 #content .faves-feed form {
@@ -1194,10 +1280,10 @@ body {
 
 #sidebar1 {
 	width: 100%;
-}
 
-#sidebar1 {
-	margin-bottom: 28px;
+
+
+     margin-bottom: 28px;
 	background: url("../images/sidebar-box-bottom.gif") no-repeat 0 100%;
 }
 
@@ -1220,6 +1306,10 @@ body {
 	width: 160px;
 }
 
+#sidebar4, #sidebar5, #sidebar6 {
+     padding-top: 5px;
+}
+
 #sidebar4 {
 	clear: both;
 }
@@ -1229,6 +1319,10 @@ body {
 	text-decoration: none;
 }
 
+#sidebar5, #sidebar6 {
+	padding-top: 5px;
+}
+
 #sidebar a:hover {
 }
 
@@ -1236,6 +1330,35 @@ body {
 	margin-top: 0;
 	font-size: 1.3em;
 	text-transform: uppercase;
+}
+
+div.adspot_head {
+     color: #990000; 
+     font-family: Georgia, Times New Roman, Times, serif; 
+     font-weight: bold;
+	padding-bottom: 5px;
+	margin-top: 0;
+	margin-bottom: 10px;
+	font-size: 1.3em;
+	text-transform: uppercase;
+	line-height: 1em;
+	border-bottom: 1px solid #ddd;
+}
+
+span.adspot_head {
+     padding-top: 5px;    
+}
+
+span.adspot_adhead {
+     font-weight: bold;
+     color: #000;
+}
+.adspot_link {
+     text-align: center;
+}
+
+a.adspot_adurl {
+     color: #000;
 }
 
 #sidebar .widget h3 img {
@@ -1445,6 +1568,8 @@ body {
 
 /* @end */
 
+
+
 /* @group miscellaneous */
 
 /* MISCELLANEOUS
@@ -1473,6 +1598,98 @@ body {
 .valid {
 	padding: 1px 0 1px 15px;
 	background: url("../images/icon-tick.png") no-repeat 0 50%;
+}
+
+
+
+
+
+
+table, td, tr, th {
+	font-size: 8pt;
+	line-height: 1.4em;
+	vertical-align: text-top;
+}
+
+
+
+.column_left_b {
+	width: 225px;
+	float: left;
+	padding: 20px;
+	border-right: 1px solid #cccccc;
+}
+
+.column_center_b {
+	padding: 20px;
+	width: 225px;
+	float: left;
+
+}
+
+.column_left_b img, .column_center_b img {
+	margin: 3px 10px 5px 0px;
+	padding: 0px;
+	float: left;
+	height: 32px;
+	border: none;
+}
+
+.footerblocks {
+}
+
+#footerblocks ul {
+	margin: 0px 0px 10px 0px;
+	padding: 0px;
+}
+
+#footerblocks li {
+	margin: 0px;
+	padding: 7px 0px 7px 0px;
+	line-height: 14px;
+	list-style-type: none;
+	clear: both;
+	background-color: transparent;
+	background-image: none;
+} 
+
+.footerblocks h1 a:link, .footerblocks h1 a:visited, .footerblocks h1 a:active {
+	text-decoration: none;
+	border-bottom: 1px solid #ddd;
+}
+
+.footerblocks h1 a:hover {
+     text-decoration: none;
+     border-bottom: 1px solid #0000ff;
+}
+
+#footerblocks h2 {
+	color: black;
+}
+
+#footerblocks h1 img.avatar {
+     vertical-align: top; 
+     float: right; 
+     padding: 0;
+}
+
+.footerblocks .meta {
+     color: #666666;
+     font-size:0.6em;
+     line-height:1.5em;
+}
+
+div.KonaBody {
+     margin-top: 15px;
+     font-size: 9px;
+}     
+
+.highlight {
+      padding: 10px; 
+      background-color: #ffffe0; 
+      border: 1px solid #ccc; 
+      margin-bottom: 15px; 
+      font-weight: bold;
 }
 
 /* @end */

@@ -1,0 +1,24 @@
+#nav {
+margin-top: -150px;
+clear: both;
+width: 920px;
+margin: 0 auto;
+padding: 0 20px;
+text-align: left;
+padding-top: 9px;
+background: url("../images/nav-bg.png") no-repeat 0 0;
+height: 42px;
+}
+
+#header-inner {
+width: 920px;
+height: 96px;
+margin: 0 auto;
+text-align: left;
+}
+
+#topbar {
+float:left;
+position:absolute;
+left:0%;
+}
