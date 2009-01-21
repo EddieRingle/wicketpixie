@@ -513,9 +513,9 @@ add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
 add_action('admin_menu', 'wicketpixie_add_admin');
 
-require( ABSPATH . 'wp-content/themes/wicketpixie/plugins/sourcemanager.php' );
+require('app/sourcemanager.php');
 add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
-register_activation_hook( ABSPATH . 'wp-content/themes/wicketpixie/plugins/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
+register_activation_hook('app/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
 add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 
 require( ABSPATH . 'wp-content/themes/wicketpixie/app/faves.php');

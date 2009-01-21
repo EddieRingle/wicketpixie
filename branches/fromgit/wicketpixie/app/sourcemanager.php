@@ -174,7 +174,7 @@ class SourceAdmin {
 	
 	private function get_streams() {
 		global $wpdb;
-		require_once ( ABSPATH . 'wp-content/themes/wicketpixie/plugins/simplepie.php' );
+		require_once ('simplepie.php');
 		self::clean_dir();
 
 		$table= $wpdb->prefix . 'wik_sources';
@@ -467,7 +467,7 @@ class SourceAdmin {
 	}
 
 	public function get_feed( $url ) {
-        require_once (ABSPATH . 'wp-content/themes/wicketpixie/plugins/simplepie.php');
+        require_once ('simplepie.php');
         $feed_path= $url;
         $feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 
