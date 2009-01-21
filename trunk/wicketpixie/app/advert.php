@@ -20,10 +20,10 @@
 		array( 'feed' => 'http://feeds.pirillo.com/WicketPixieSocial',
 			   'title' => 'Follow Chris Pirillo on...' ),
 		); 
-	require('simplepie.php');
+	require_once('simplepie.php');
 	foreach( $feeds as $affiliate ) {
 		$feed_path= $affiliate['feed'];
-		$feed= new SimplePie( (string) $feed_path, ABSPATH . '/' . (string) '/wp-content/uploads/activity/' );
+		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity/' );
 		$feed->handle_content_type();
 			if( $feed->data ) {
 				echo '<h3>' . $affiliate['title'] .'</h3>';

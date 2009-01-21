@@ -16,7 +16,7 @@ class SourceUpdate
 	}
 	
 	public function display() {
-        require_once (ABSPATH . 'wp-content/themes/wicketpixie/plugins/simplepie.php');
+        require_once ('simplepie.php');
         $feed= self::select();
         $feed_path= $feed[0]->feed_url;
         $feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
