@@ -6,7 +6,7 @@ class FavesAdmin
 	* Here we install the tables and initial data needed to
 	* power our special functions
 	*/
-	public function install() {
+	 function install() {
 		global $wpdb;
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		$table= $wpdb->prefix . 'wik_faves';
@@ -42,67 +42,13 @@ class FavesAdmin
 					if( !$wpdb->get_var( "SELECT id FROM $table WHERE feed_url = '" . $fave['feed_url'] . "'" ) ) {
 					$i= "INSERT INTO " . $table . " (id,title,feed_url,sortorder) VALUES('', '" . $fave['title'] . "','" . $fave['feed_url'] . "', '" . $fave['sortorder'] . "')";
 					$query= $wpdb->query( $i );
-					self::favicache( $fave['feed_url'], $fave['title'] );
+					$this->favicache( $fave['feed_url'], $fave['title'] );
 					}
 				}
 			
 	}
 	
-	private function fetch_remote_file( $file ) {
-		$path = parse_url( $file );
-
-		if ($fs = @fsockopen($path['host'], isset($path['port'])?$path['port']:80)) {
-
-			$header = "GET " . $path['path'] . " HTTP/1.0\r\nHost: " . $path['host'] . "\r\n\r\n";
-
-			fwrite($fs, $header);
-
-			$buffer = '';
-
-			while ($tmp = fread($fs, 1024)) { $buffer .= $tmp; }
-
-			preg_match('/HTTP\/[0-9\.]{1,3} ([0-9]{3})/', $buffer, $http);
-			preg_match('/Location: (.*)/', $buffer, $redirect);
-
-			if (isset($redirect[1]) && $file != trim($redirect[1])) { return self::fetch_remote_file(trim($redirect[1])); }
-
-			if (isset($http[1]) && $http[1] == 200) { return substr($buffer, strpos($buffer, "\r\n\r\n") +4); } else { return false; }
-
-		} else { return false; }
-
-	}
-	
-	private function favicache( $feed, $name ) {
-		global $wpdb;
-		$table= $wpdb->prefix . 'wik_faves';
-		$folder= 'wp-content/themes/wicketpixie/images/favicache/';
-
-		if ( !is_dir( ABSPATH . $folder ) ) { 
-			mkdir( ABSPATH . $folder, 0777 ); 
-		}
-
-		$url= parse_url( $feed );
-
-		$cache= self::fetch_remote_file( 'http://' . $url['host'] . '/favicon.ico' );
-		
-		if ( !$cache ) {
-			preg_match( '/<link.*(?:rel="icon" href="(.*)"|href="(.*)" rel="icon").*>/U',
-			self::fetch_remote_file( $_POST['link_url'] ), $matches );
-			$cache= self::fetch_remote_file( $matches[1] );
-		}
-
-		if ( $cache ) {
-			file_put_contents( ABSPATH . $folder . md5( $url['host'] ) . '.ico', $cache );
-			$icon= get_option( 'siteurl' ) . '/' . $folder . md5( $url['host'] ) . '.ico';
-		} elseif( is_file( ABSPATH . 'wp-content/themes/wicketpixie/images/' . 'icon-source.gif' ) ) {
-			$icon= get_option( 'siteurl' ) . '/wp-content/themes/wicketpixie/images/icon-source.gif';
-		}
-		
-		$wpdb->query( 'UPDATE `' . $table . '` SET `favicon` = "' . $icon . '" WHERE `title` = "' . $name . '"' );
-		return false;
-	}
-	
-	public function check() {
+	 function check() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
@@ -112,14 +58,14 @@ class FavesAdmin
 		}
 	}
 	
-	public function count() {
+	 function count() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$total= $wpdb->get_results( "SELECT ID as count FROM $table" );
 		return $total[0]->count;
 	}
 	
-	public function add( $_REQUEST ) {
+	 function add( $_REQUEST ) {
 		global $wpdb;
 		
 		$args= $_REQUEST;		
@@ -134,12 +80,12 @@ class FavesAdmin
 				. $args['url'] . "',"
 				. $new_id . ")";
 			$query= $wpdb->query( $i );
-			self::favicache( $args['url'], $args['title'] );
+			$this->favicache( $args['url'], $args['title'] );
 		}
 		}
 	}
 	
-	public function collect() {
+	 function collect() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$sources= $wpdb->get_results( "SELECT * FROM $table" );
@@ -150,7 +96,7 @@ class FavesAdmin
 		}
 	}
 	
-	public function gather( $id ) {
+	 function gather( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$gather= $wpdb->get_results( "SELECT * FROM $table WHERE id= $id" );
@@ -160,7 +106,7 @@ class FavesAdmin
 	/**
 	* Edit the information for a given fave.
 	*/
-	public function edit( $_REQUEST ) {
+	 function edit( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 			$table= $wpdb->prefix . 'wik_faves';
@@ -169,10 +115,10 @@ class FavesAdmin
 						"', feed_url = '" . $args['url'] .
 						"' WHERE id = " . $args['id'];
 			$query= $wpdb->query( $u );
-			self::favicache( $args['url'], $args['title'] );
+			$this->favicache( $args['url'], $args['title'] );
 	}
 	
-	public function burninate( $id ) {
+	 function burninate( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$d= $wpdb->query( "DELETE FROM $table WHERE id = $id" );
@@ -187,21 +133,21 @@ class FavesAdmin
 	* }
 	* </code>
 	*/
-	public function show_faves() {
+	 function show_faves() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$show= $wpdb->get_results( "SELECT * FROM $table ORDER BY sortorder ASC" );
 		return $show;
 	}
 	
-	public function positions() {
+	 function positions() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$numbers= $wpdb->get_results( "SELECT sortorder FROM $table ORDER BY sortorder ASC" );
 		return $numbers;
 	}
 	
-	public function sort( $_REQUEST ) {
+	 function sort( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 		$table= $wpdb->prefix . 'wik_faves';
@@ -214,14 +160,14 @@ class FavesAdmin
 		}
 	}
 	
-	public function addFavesMenu() {
-		add_management_page( __('WicketPixie Faves'), __('WicketPixie Faves'), 9, basename(__FILE__), array( 'FavesAdmin', 'favesMenu' ) );
+	 function addFavesMenu() {
+		add_options_page( __('WicketPixie Faves'), __('WicketPixie Faves'), 9, basename(__FILE__), array( 'FavesAdmin', 'favesMenu' ) );
 	}
 	
 	/**
 	* The admin menu for our faves system
 	*/
-	public function favesMenu() {
+	 function favesMenu() {
 		$faves= new FavesAdmin;
 		if ( $_GET['page'] == basename(__FILE__) ) {
 	        if ( 'add' == $_REQUEST['action'] ) {
@@ -258,13 +204,13 @@ class FavesAdmin
 							<td><?php echo $fave->title; ?></td>
 						   	<td style="text-align:center;"><a href="<?php echo $fave->feed_url; ?>" title="<?php echo $fave->feed_url; ?>"><img src="<?php bloginfo('template_directory'); ?>/images/icon-feed.gif" alt="View"/></a></td>
 						   	<td style="text-align:center;">
-							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;gather=true&amp;id=<?php echo $fave->id; ?>">
+							<form method="post" action="options-general.php?page=faves.php&amp;gather=true&amp;id=<?php echo $fave->id; ?>">
 								<input type="submit" value="Edit" />
 								<input type="hidden" name="action" value="gather" />
 							</form>
 							</td>
 							<td style="text-align:center;">
-							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;delete=true&amp;id=<?php echo $fave->id; ?>">
+							<form method="post" action="options-general.php?page=faves.php&amp;delete=true&amp;id=<?php echo $fave->id; ?>">
 								<input type="submit" name="action" value="Delete" />
 								<input type="hidden" name="action" value="delete" />
 							</form>
@@ -277,7 +223,7 @@ class FavesAdmin
 					<?php } ?>
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
 						<?php $data= $faves->gather( $_REQUEST['id'] ); ?>
-						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;edit=true">
+						<form method="post" action="options-general.php?page=faves.php&amp;edit=true">
 							<h2>Editing "<?php echo $data[0]->title; ?>"</h2>
 							<p><input type="text" name="title" id="title" value="<?php echo $data[0]->title; ?>" /></p>
 							<p><input type="text" name="url" id="url" value="<?php echo $data[0]->feed_url; ?>" /></p>
@@ -289,7 +235,7 @@ class FavesAdmin
 						</form>
 					<?php } ?>
 					<?php if( $faves->check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
-						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;add=true" class="form-table">
+						<form method="post" action="options-general.php?page=faves.php&amp;add=true" class="form-table">
 							<h2>Add a New Fave</h2>
 							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Fave Title')value=''" onblur="if(this.value=='')value='Fave Title';" value="Fave Title" /></p>
 							<p><input type="text" name="url" id="url" onfocus="if(this.value=='Fave Feed URL')value=''" onblur="if(this.value=='')value='Fave Feed URL';" value="Fave Feed URL" /></p>
@@ -300,9 +246,9 @@ class FavesAdmin
 						</form>
 					<?php } ?>
 				</div>
+				<?php include_once('advert.php'); ?>
 <?php
 	}
 }
 add_action ('admin_menu', array( 'FavesAdmin', 'addFavesMenu' ) );
-FavesAdmin::install();
 ?>

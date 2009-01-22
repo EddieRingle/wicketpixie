@@ -19,14 +19,14 @@
 }
 
 #status .avatar {
-	background: #000000;
+	background: none;
 }
 
 #status p {
 	width: 421px;
 	height: 30px;
 	padding-left: 10px;
-	background: #000000;
+	background: none;
 }
 
 #status-bottom {
@@ -43,7 +43,7 @@
 }
 
 #nav {
-	background: url("../images/nav-bg.gif") no-repeat 50.05% 0;
+	background: url("../images/nav-bg.gif") no-repeat 50% 0;
 }
 
 #nav li a:hover {

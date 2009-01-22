@@ -30,9 +30,9 @@
 						</ul>
 					</div>
 					<div class="clearer"></div>
-
+					<div class="KonaBody">
 					<?php the_content('Continue reading &raquo;'); ?>
-					
+					</div>
 				</div>
 				<!-- /post -->
 				
@@ -40,7 +40,7 @@
 				<?php endif; ?>
 				
 				<!-- home-photos
-					Replace the user= value with your own Flickr ID. It can be obtained from http://idgettr.com 
+					Replace the user= value with your own Flickr ID. It can be obtained from http://idgettr.com -->
 				<div id="home-photos">
 					<h2>Recent Photos</h2>
 					<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=49503157467@N01"></script>
@@ -50,7 +50,7 @@
 				<div class="clearer"></div>
 				
 				<!-- youtube
-					width = 500, height = 285 
+					width = 500, height = 285 -->
 				<div id="home-youtube-full">
 					<h2>My Videos</h2>
 					<object width="500" height="285"><param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" type="application/x-shockwave-flash" wmode="transparent" width="500" height="285"></embed></object>
@@ -84,7 +84,7 @@
 			<div id="sidebar">
 				
 				<!-- youtube
-					width = 340, height = 293 
+					width = 340, height = 293 -->
 				<div id="home-youtube">
 					<h3>My Live Video</h3>
 					<embed src="http://www.ustream.tv/553.usc" width="340" height="293" flashvars="autoplay=false&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />

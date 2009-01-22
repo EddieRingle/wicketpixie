@@ -1,8 +1,6 @@
 <?php
 include_once( ABSPATH . 'wp-content/themes/wicketpixie/widgets/sources.php' );
-
-define('WIK_VERSION','1.0.4');
-
+include_once( ABSPATH . 'wp-content/themes/wicketpixie/app/sourcemanager.php' );
 function collect() {
 	global $wpdb;
 	$table= $wpdb->prefix . 'wik_sources';
@@ -60,7 +58,6 @@ if( function_exists( 'register_sidebar_widget' ) ) {
 		$cleaned= preg_replace( '/\W/', ' ', $cleaned );
 		$cleaned= str_replace( " ", "", $cleaned );
 		register_sidebar_widget( 'WicketPixie: ' . $widget->title, 'wicketpixie_' . $cleaned );
-	    //register_widget_control( 'WicketPixie Source: ' . $widget->title, 'wicketpixie_source_' . $cleaned . '_control' );
 	}
 }
 
@@ -173,28 +170,18 @@ $settings= array(
 		"id"	=>	$shortname . "_auth_credit",
 		"std"	=>	1,
 		"status" => 'checked',
-		"type"	=>	'checkbox'),
-    array(
-        "name"  =>  "Enable WicketPixie Notifications",
-        "description"   => "Check this if you want WicketPixie to notify services like Ping.fm about your new blog posts, as configured on the WicketPixie Notifications page.",
-		"id"    =>  $shortname."_notify",
-        "std"   =>  1,
-        "status"    => 'checked',
-        "type"  => 'checkbox')
+		"type"	=>	'checkbox')	
+		
 );
-
-function wicketpixie_add_admin_footer() {
-	echo "Thank you for using WicketPixie v".WIK_VERSION.", a free premium WordPress theme from <a href='http://chris.pirillo.com/'>Chris Pirillo</a>.<br/>";
-}
 
 function wicketpixie_add_admin() {
     global $themename, $shortname, $options, $settings;
-
-    if ( $_GET['page'] == basename(__FILE__) ) {
+	if ( isset( $_GET['page'] ) && $_GET['page'] == basename(__FILE__) ) {
         if ( 'save' == $_REQUEST['action'] ) {
+			check_admin_referer('wicketpixie-settings');
             foreach ( $options as $value ) {
 				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
-            }
+			}
 
             foreach ( $options as $value ) {
 				if( isset( $_REQUEST[ $value['id'] ] ) ) { 
@@ -228,41 +215,42 @@ function wicketpixie_add_admin() {
 				update_option( 'wp_body_bg_image', $_REQUEST['saved_images'] );
 			}
 			
-            header("Location: themes.php?page=functions.php&saved=true");
-            die;
+			wp_redirect("themes.php?page=functions.php&saved=true");
+			die;
 		
 		} elseif ( 'save_settings' == $_REQUEST['action'] ) {
-            foreach ( $settings as $value ) {
-                update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
-            }
-
+			check_admin_referer('wicketpixie-settings');
 	        foreach ( $settings as $value ) {
-                if( isset( $_REQUEST[ $value['id'] ] ) ) { 
-                    if( $value['type'] == 'checkbox' ) {
-                        if( $value['status'] == 'checked' ) {
-                            update_option( $value['id'], 1 );
-                        } else { 
-                            update_option( $value['id'], 0 ); 
-                        }	
-                    } elseif( $value['type'] != 'checkbox' ) {
-                        update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); 
-                    } else { 
-                        update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
-                    }
+				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+			}
+
+			foreach ( $settings as $value ) {
+				if( isset( $_REQUEST[ $value['id'] ] ) ) { 
+					if( $value['type'] == 'checkbox' ) {
+						if( $value['status'] == 'checked' ) {
+							update_option( $value['id'], 1 );
+						} else { 
+							update_option( $value['id'], 0 ); 
+						}	
+					} elseif( $value['type'] != 'checkbox' ) {
+						update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); 
+					} else { 
+						update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+					}
 				}
 			}
 
-	            header("Location: themes.php?page=functions.php&saved=true");
-	            die;
+			wp_redirect("themes.php?page=functions.php&saved=true");
+			die;
 
-        	} elseif( 'reset' == $_REQUEST['action'] ) {
-            	foreach( $options as $value ) {
-                	delete_option( $value['id'] ); 
-				}
-
-           		header("Location: themes.php?page=functions.php&reset=true");
-            	die;
-        	}
+        } elseif( 'reset' == $_REQUEST['action'] ) {
+			check_admin_referer('wicketpixie-settings');
+           	foreach( $options as $value ) {
+               	delete_option( $value['id'] ); 
+			}
+			wp_redirect("themes.php?page=functions.php&saved=true");
+			die;
+        }
     }
 
     add_theme_page($themename." Options", "WicketPixie Options", 'edit_themes', basename(__FILE__), 'wicketpixie_admin');
@@ -292,7 +280,7 @@ function wicketpixie_admin() {
 		<h2>Style Options</h2>
 
 		<form method="post" style="padding:20px 0 10px;" enctype="multipart/form-data" action="themes.php?page=functions.php&amp;saved=true">
-
+		<?php wp_nonce_field('wicketpixie-settings'); ?>
 			<table class="form-table">
 
 			<?php foreach ($options as $value) { 
@@ -391,19 +379,19 @@ function wicketpixie_admin() {
 		<table class="form-table">
 			<?php foreach( $settings as $value ) { ?>
 			<tr valign="top"> 
-				<td>
-					<acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym>
-				</td>
-				<th scope="row" style="font-size:12px; text-align:right;">
+				<th scope="row" style="font-size:12px; text-align:left; padding-right:10px;">
 					<?php
-						if (get_option($value['id'] != false)) { 
-							$status= get_option($value['id']);
+						if ( get_option( $value['id'] ) != "" ) { 
+							$status= get_option( $value['id'] );
 						} else { 
 							$status= $value['std']; 
 						}
 					?>
-					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php echo $value['id']; ?>" checked="<?php if($status == 1) { echo 'checked'; } ?>" />
+					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" <?php if( $status == 1 ) { echo 'checked'; } ?>/>
 				</th>
+				<td style="padding-bottom:10px;">
+					<acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym>
+				</td>
 			</tr>
 			<?php } ?>
 		</table>
@@ -414,7 +402,7 @@ function wicketpixie_admin() {
 		</form>
 
 	</div>
-
+	<?php include_once('app/advert.php'); ?>
 <?php
 }
 
@@ -512,13 +500,5 @@ function wicketpixie_admin_head() {
 add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
 add_action('admin_menu', 'wicketpixie_add_admin');
-
-require( ABSPATH . 'wp-content/themes/wicketpixie/plugins/sourcemanager.php' );
-add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
-register_activation_hook( ABSPATH . 'wp-content/themes/wicketpixie/plugins/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
-add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
-
-require( ABSPATH . 'wp-content/themes/wicketpixie/app/faves.php');
-require( ABSPATH . 'wp-content/themes/wicketpixie/app/notify.php');
-require( ABSPATH . 'wp-content/themes/wicketpixie/app/update.php');
+FavesAdmin::install();
 ?>

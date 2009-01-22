@@ -5,7 +5,6 @@
 **/
 require_once( ABSPATH . WPINC . '/rss-functions.php' );
 $activities= new SourceAdmin;
-$activities->archive_streams();
 ?>
 <?php get_header(); ?>
 			<!-- content -->
@@ -89,3 +88,4 @@ $activities->archive_streams();
 			<!-- sidebar -->
 			
 <?php get_footer(); ?>
+<?php $activities->archive_streams(); ?>
