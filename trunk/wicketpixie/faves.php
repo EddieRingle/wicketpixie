@@ -33,7 +33,7 @@ if ( is_user_logged_in() ) {
 						$class= ( $i++ & 1 ) ? ' odd' : '';
 						require_once ('app/simplepie.php');
 						$feed_path= $fave->feed_url;
-						$feed= new SimplePie( (string) $feed_path, ABSPATH . '/' . (string) '/wp-content/uploads/activity/' );
+						$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 						$feed->handle_content_type();
 							if( $feed->data ) {
 						?>

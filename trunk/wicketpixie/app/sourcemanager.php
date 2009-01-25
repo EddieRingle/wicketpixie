@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: WicketPixie Source Manager
-Plugin URI: http://chrispirillo.com
+Plugin URI: http://chris.pirillo.com
 Description: Management Screen for the sources in WicketPixie
 Author: Chris J. Davis
 Version: 1.0
-Author URI: http://chrispirillo.com
+Author URI: http://chris.pirillo.com
 */
 
 class SourceAdmin {
@@ -104,18 +104,22 @@ class SourceAdmin {
 	
 	function clean_dir() {
 		$cache= ABSPATH . 'wp-content/uploads/activity/';
-		$d= dir( $cache );
-		while( $entry= $d->read() ) {
-			if ( $entry!= "." && $entry!= ".." ) {
-				unlink( $cache . $entry );	
-			}
-		 }
-		$d->close();
+        clearstatcache();
+        if(is_dir($cache))
+        {
+            $d= dir( $cache );
+            while( $entry= $d->read() ) {
+                if ( $entry!= "." && $entry!= ".." ) {
+                    unlink( $cache . $entry );
+                }
+            }
+            $d->close();
+        }
 	}
 	
 	function get_streams() {
 		global $wpdb;
-		require_once( 'simplepie.php' );
+		require_once('simplepie.php');
 		$this->clean_dir();
 
 		$table= $wpdb->prefix . 'wik_sources';
@@ -123,7 +127,7 @@ class SourceAdmin {
 		
 		foreach ( $streams as $stream ) {
 			$feed_path= $stream->feed_url;
-			$feed= new SimplePie( (string) $feed_path, ABSPATH . '/' . (string) '/wp-content/uploads/activity/' );
+			$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 			$feed->set_cache_duration(10);
 			$feed->handle_content_type();
 			if( $feed->data ) {
@@ -238,18 +242,23 @@ class SourceAdmin {
 	function add( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
-			if( $args['lifestream'] == 1 ) { 
-				$stream= 1; 
-			} else { 
-				$stream= 0;
-			}
-			
-			if( $args['updates'] == 1 ) { 
-				$update= 1; 
-			} else { 
-				$update= 0;
-			}
-		
+        if( $args['lifestream'] == 1 ) { 
+            $stream= 1; 
+        } else { 
+            $stream= 0;
+        }
+
+        if( $args['updates'] == 1 ) { 
+            $update= 1; 
+        } else { 
+            $update= 0;
+        }
+        if( $args['url'] == "Profile Feed URL" ) {
+            $dbfeedurl = "";
+        } else {
+            $dbfeedurl = $args['url'];
+        }
+
 		$table= $wpdb->prefix . 'wik_sources';
 		if( $args['title'] != 'Source Title' ) {
 		if( !$wpdb->get_var( "SELECT id FROM $table WHERE feed_url = '" . $args['url'] . "'" ) ) {
@@ -257,7 +266,7 @@ class SourceAdmin {
 		$i= "INSERT INTO " . $table . " (id,title,profile_url,feed_url,type,lifestream,updates,favicon) VALUES('', '" 
 		. $args['title'] . "','" 
 		. $args['profile'] . "', '" 
-		. $args['url'] . "', " 
+		. $dbfeedurl . "', " 
 		. $args['type'] . ", " 
 		. $stream . ", "
 		. $update . ", "
@@ -298,12 +307,17 @@ class SourceAdmin {
 			} else { 
 				$update= 0;
 			}
+            if( $args['url'] == "Profile Feed URL" ) {
+                $dbfeedurl = "";
+            } else {
+                $dbfeedurl = $args['url'];
+            }
 			
 			$table= $wpdb->prefix . 'wik_sources';
 			$u= "UPDATE ". $table . 
 						" SET title = '" . $args['title'] .
 						"', profile_url = '" . $args['profile'] .
-						"', feed_url = '" . $args['url'] .
+						"', feed_url = '" . $dbfeedurl .
 						"', type = " . $args['type'] .
 						", lifestream = " . $stream .
 						", updates = " . $update .
@@ -381,11 +395,10 @@ class SourceAdmin {
 		$name= $wpdb->get_results( "SELECT name FROM $link WHERE type_id = '$id'" );
 		return $name[0]->name;
 	}
-
 	 function get_feed( $url ) {
 		require_once ( 'simplepie.php' );
 			$feed_path= $url;
-			$feed= new SimplePie( (string) $feed_path, ABSPATH . '/' . (string) '/wp-content/uploads/activity/' );
+			$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 			SourceAdmin::clean_dir();
 			$feed->handle_content_type();
 				if( $feed->data ) {
@@ -427,7 +440,7 @@ class SourceAdmin {
 		$data .="echo '</div>';" . "\n";
 		$path= ABSPATH . "wp-content/themes/wicketpixie/widgets/" . $cleaned . ".php";
 		file_put_contents( $path, $data );
-		error_log( 'Creating widget.' );
+		error_log( 'Creating '.$widget->title.' widget.' );
 	}
 
 	 function create_widget() {
@@ -483,8 +496,18 @@ class SourceAdmin {
 			}
 		}
 		?>
-		<?php if ( isset( $_REQUEST['add'] ) ) { ?>
+		<?php if(isset($_REQUEST['add'])) { ?>
 		<div id="message" class="updated fade"><p><strong><?php echo __('Source saved.'); ?></strong></p></div>
+		<?php } elseif(isset($_REQUEST['edit'])) { ?>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Source modified.'); ?></strong></p></div>
+		<?php } elseif(isset($_REQUEST['delete'])) { ?>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Source removed.'); ?></strong></p></div>
+		<?php } elseif(isset($_REQUEST['flush'])) { ?>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Source flushed.'); ?></strong></p></div>
+		<?php } elseif(isset($_REQUEST['install'])) { ?>
+        <div id="message" class="updated fade"><p><strong><?php echo __('SourceManager installed.'); ?></strong></p></div>
+		<?php } elseif(isset($_REQUEST['hulk_smash'])) { ?>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Sources cleared.'); ?></strong></p></div>
 		<?php } ?>
 			<div class="wrap">
 				
@@ -517,28 +540,36 @@ class SourceAdmin {
 						?>		
 						<tr>
 							<td><a href="<?php echo $source->profile_url; ?>"><?php echo $source->title; ?></a></td>
+                        <?php if ($isfeed == 1) { ?>
 					   	<td style="text-align:center;"><a href="<?php echo $source->feed_url; ?>"><img src="<?php bloginfo('template_directory'); ?>/images/icon-feed.gif" alt="View"/></a></td>
+                        <?php } elseif ($isfeed == 0) { ?>
+                        <td style="text-align:center;">N/A</td>
+                        <?php } else { ?>
+                        <td style="text-align:center;">?</td>
+                        <?php } ?>
 					   	<td style="text-align:center;"><?php echo $sources->type_name( $source->type ); ?></td>
 					   	<td style="text-align:center;"><?php echo $streamed; ?></td>
 					   	<td>
-							<form method="post" action="options-general.php?page=sourcemanager.php&amp;gather=true&amp;id=<?php echo $source->id; ?>">
+							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;gather=true&amp;id=<?php echo $source->id; ?>">
 								<input type="submit" value="Edit" />
 								<input type="hidden" name="action" value="gather" />
 							</form>
 							</td>
 							<td>
-							<form method="post" action="options-general.php?page=sourcemanager.php&amp;delete=true&amp;id=<?php echo $source->id; ?>">
+							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;delete=true&amp;id=<?php echo $source->id; ?>">
 								<input type="submit" name="action" value="Delete" />
 								<input type="hidden" name="action" value="delete" />
 							</form>
 							</td>
+                            <?php if ($isfeed == 1) { ?>
 							<td>
-							<form method="post" action="options-general.php?page=sourcemanager.php&amp;flush=true&amp;id=<?php echo $source->id; ?>">
+							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;flush=true&amp;id=<?php echo $source->id; ?>">
 								<input type="submit" value="Flush" />
 								<input type="hidden" name="action" value="flush" />
 								<input type="hidden" name="flush_name" value="<?php echo $source->title; ?>" />
 							</form>
 							</td>
+                            <?php } ?>
 						</tr>
 					<?php } ?>
 					</table>
@@ -547,7 +578,7 @@ class SourceAdmin {
 					<?php } ?>
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
 						<?php $data= $sources->gather( $_REQUEST['id'] ); ?>
-						<form method="post" action="options-general.php?page=sourcemanager.php&amp;edit=true" class="form-table" style="margin-bottom:30px;">
+						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;edit=true" class="form-table" style="margin-bottom:30px;">
 							<h2>Editing "<?php echo $data[0]->title; ?>"</h2>
 							<p><input type="text" name="title" id="title" value="<?php echo $data[0]->title; ?>" /></p>
 							<p><input type="text" name="profile" id="profile" value="<?php echo $data[0]->profile_url; ?>" /></p>
@@ -569,7 +600,7 @@ class SourceAdmin {
 						</form>
 					<?php } ?>
 					<?php if( $sources->check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
-						<form method="post" action="options-general.php?page=sourcemanager.php&amp;add=true" class="form-table" style="margin-bottom:30px;">
+						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;add=true" class="form-table" style="margin-bottom:30px;">
 							<h2>Add a New Source</h2>
 							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Source Title')value=''" onblur="if(this.value=='')value='Source Title';" value="Source Title" /></p>
 							<p><input type="text" name="profile" id="profile" onfocus="if(this.value=='Profile URL')value=''" onblur="if(this.value=='')value='Profile URL';" value="Profile URL" /></p>
@@ -588,7 +619,7 @@ class SourceAdmin {
 								<input type="hidden" name="action" value="add" />
 							</p>
 						</form>
-						<form name="hulk_smash" id="hulk_smash" method="post" action="options-general.php?page=sourcemanager.php&amp;hulk_smash=true">
+						<form name="hulk_smash" id="hulk_smash" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;hulk_smash=true">
 							<h2>Delete the Sources Table</h2>
 							<p>Please note, this is undoable and will result in the loss of all the data you have stored to date. Only do this if you are having problems with your sources and you have exhausted every other option.</p>
 							<p class="submit">
@@ -598,7 +629,7 @@ class SourceAdmin {
 						</form>
 						<?php } else { ?>
 							<p>Table not installed. You should go ahead and run the installer.</p>
-							<form name="install" id="install" method="post" action="options-general.php?page=sourcemanager.php&amp;install=true">
+							<form name="install" id="install" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;install=true">
 								<p class="submit">
 									<input type="hidden" name="action" value="install" />
 									<input type="submit" value="Install Sources" />
@@ -613,11 +644,4 @@ class SourceAdmin {
 <?php
 	}
 }
-
-add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
-register_activation_hook( __FILE__, array( 'SourceAdmin', 'install' ) );
-
-include( ABSPATH . 'wp-content/themes/wicketpixie/app/faves.php');
-include( ABSPATH . 'wp-content/themes/wicketpixie/app/update.php');
-
 ?>

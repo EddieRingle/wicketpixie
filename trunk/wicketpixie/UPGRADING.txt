@@ -1,0 +1,11 @@
+UPGRADING WICKETPIXIE
+
+If you are upgrading from WicketPixie 1.0.1 or 1.0, you'll need to delete the
+WicketPixie plugins from /wp-content/plugins/ and also delete the
+/wp-content/uploads/activity/ folder. You will not have to do this with any
+version of WicketPixie newer than 1.0.1.
+
+Before upgrading to any new version of WicketPixie, save your home.php unless
+otherwise stated here. Please do not save any other file that may get
+overwritten by the new version as there may be important updates required by
+the WicketPixie installation.

@@ -19,12 +19,11 @@ class SourceUpdate
 		require_once('simplepie.php');
 		$feed= self::select();
 		$feed_path= $feed[0]->feed_url;
-		$feed= new SimplePie( (string) $feed_path, ABSPATH . '/' . (string) '/wp-content/uploads/activity/' );
+		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 
 		SourceAdmin::clean_dir();
 
 		$feed->handle_content_type();
-
 		if( $feed->data ) {
 			foreach( $feed->get_items() as $entry ) {
 				$name= $stream->title;
@@ -34,7 +33,10 @@ class SourceUpdate
 				$update[]['date']= strtotime( substr( $entry->get_date(), 0, 25 ) );
 			}
 			
-			$return= array_slice( $update, 0, 5);			
+			$return= array_slice( $update, 0, 5);	
+
+            $return[1]['title'] = preg_replace('((?:\S)+://\S+[[:alnum:]]/?)', '<a href="\0">\0</a>', $return[1]['title']);
+            
 			return substr($return[1]['title'], 0, 150) . ' &mdash; <a href="' . $return[2]['link'] . '" title="">' . date( 'g:ia', $return[3]['date'] ) . '</a>';
 		} else {
 			return 'Thanks for exploring my world! Can you believe this avatar is talking to you?';

@@ -1,3 +1,7 @@
+<?php
+/* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
+$blogfeed = bloginfo('rss2_url');
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
@@ -16,17 +20,29 @@
 	<!--[if gte IE 7]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie7.css" type="text/css" media="screen, projection" /><![endif]-->
 	<!--[if lte IE 6]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie6.css" type="text/css" media="screen, projection" /><![endif]-->	
 	
-	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php bloginfo('rss2_url'); ?>" />
+	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php echo $blogfeed; ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="shortcut icon" type="image/ico" href="<?php bloginfo('home'); ?>/favicon.ico" />	
 	
-	<?php include (TEMPLATEPATH . '/plugins/random-posts.php'); ?>
-	<?php include (TEMPLATEPATH . '/plugins/related-posts.php'); ?>
-	<?php include (TEMPLATEPATH . '/plugins/search-excerpt.php'); ?>
-	<?php include (TEMPLATEPATH . '/plugins/search-highlight.php'); ?>
-	<?php if (is_user_logged_in()) { ?>
-	<script src="http://myintarweb.uservoice.com/pages/general/widgets/tab.js?alignment=left&amp;color=00BCBA" type="text/javascript"></script>
-	<?php } ?>
+	<?php
+    include_once (TEMPLATEPATH . '/plugins/random-posts.php');
+	include_once (TEMPLATEPATH . '/plugins/related-posts.php');
+	include_once (TEMPLATEPATH . '/plugins/search-excerpt.php');
+	include_once (TEMPLATEPATH . '/plugins/search-highlight.php');
+    
+    clearstatcache();
+    if(!is_dir(ABSPATH.'wp-content/uploads/activity'))
+    {
+        if(!is_Dir(ABSPATH.'wp-content/uploads'))
+        {
+            mkdir(ABSPATH.'wp-content/uploads',0777);
+        }
+        mkdir(ABSPATH.'wp-content/uploads/activity',0777);
+    }
+    
+    if(is_user_logged_in()) { ?>
+    <script src="http://myintarweb.uservoice.com/pages/general/widgets/tab.js?alignment=left&amp;color=00BCBA" type="text/javascript"></script>
+    <?php } ?>
 		
 <?php wp_head(); ?>	
 	
@@ -44,6 +60,7 @@
 				<li id="topbar-share"><a href="#">Bookmark/Share</a></li>
 				<?php if (is_user_logged_in()) { ?><li id="topbar-admin"><a href="<?php bloginfo('wpurl'); ?>/wp-admin">Admin</a></li><?php } ?>
 			</ul>		
+            <?php include (TEMPLATEPATH . '/searchform.php'); ?>
 		</div>
 		<!-- /topbar-inner -->
 		
@@ -53,16 +70,16 @@
 	<!-- subscribe -->
 	<div id="subscribe">			
 		<ul>				
-			<li><a href="<? bloginfo('rss2_url') ?>" title="Subscribe to my feed" class="feed">RSS Feed</a></li>
-			<li><a href="http://www.bloglines.com/sub/<? bloginfo('rss2_url') ?>" class="feed">Bloglines</a></li>
-			<li><a href="http://fusion.google.com/add?feedurl=<? bloginfo('rss2_url') ?>" class="feed">Google Reader</a></li>			
-			<li><a href="http://feeds.my.aol.com/add.jsp?url=<? bloginfo('rss2_url') ?>" class="feed">My AOL</a></li>
-			<li><a href="http://my.msn.com/addtomymsn.armx?id=rss&ut=<? bloginfo('rss2_url') ?>&ru=<? echo get_settings('home'); ?>" class="feed">My MSN</a></li>
-			<li><a href="http://add.my.yahoo.com/rss?url=<? bloginfo('rss2_url') ?>" class="feed">My Yahoo!</a></li>
-			<li><a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=<? bloginfo('rss2_url') ?>" class="feed">NewsGator</a></li>			
-			<li><a href="http://www.pageflakes.com/subscribe.aspx?url=<? bloginfo('rss2_url') ?>" class="feed">Pageflakes</a></li>
-			<li><a href="http://technorati.com/faves?add=<? echo get_settings('home'); ?>" class="feed">Technorati</a></li>
-			<li><a href="http://www.live.com/?add=<? bloginfo('rss2_url') ?>" class="feed">Windows Live</a></li>
+			<li><a href="<?php echo $blogfeed; ?>" title="Subscribe to my feed" class="feed">RSS Feed</a></li>
+			<li><a href="http://www.bloglines.com/sub/<?php echo $blogfeed; ?>" class="feed">Bloglines</a></li>
+			<li><a href="http://fusion.google.com/add?feedurl=<?php echo $blogfeed; ?>" class="feed">Google Reader</a></li>			
+			<li><a href="http://feeds.my.aol.com/add.jsp?url=<?php echo $blogfeed; ?>" class="feed">My AOL</a></li>
+			<li><a href="http://my.msn.com/addtomymsn.armx?id=rss&ut=<?php echo $blogfeed; ?>&ru=<?php echo get_settings('home'); ?>" class="feed">My MSN</a></li>
+			<li><a href="http://add.my.yahoo.com/rss?url=<?php echo $blogfeed; ?>" class="feed">My Yahoo!</a></li>
+			<li><a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=<?php echo $blogfeed; ?>" class="feed">NewsGator</a></li>			
+			<li><a href="http://www.pageflakes.com/subscribe.aspx?url=<?php echo $blogfeed; ?>" class="feed">Pageflakes</a></li>
+			<li><a href="http://technorati.com/faves?add=<?php echo get_settings('home'); ?>" class="feed">Technorati</a></li>
+			<li><a href="http://www.live.com/?add=<?php echo $blogfeed; ?>" class="feed">Windows Live</a></li>
 		</ul>		
 	</div>
 	<!-- /subscribe -->

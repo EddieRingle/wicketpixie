@@ -1,6 +1,8 @@
 <?php
 include_once( ABSPATH . 'wp-content/themes/wicketpixie/widgets/sources.php' );
-include_once( ABSPATH . 'wp-content/themes/wicketpixie/app/sourcemanager.php' );
+
+define('WIK_VERSION','1.0.4');
+
 function collect() {
 	global $wpdb;
 	$table= $wpdb->prefix . 'wik_sources';
@@ -171,9 +173,18 @@ $settings= array(
 		"std"	=>	1,
 		"status" => 'checked',
 		"type"	=>	'checkbox')	
-		
+    array(
+        "name"  =>  "Enable WicketPixie Notifications",
+        "description"   => "Check this if you want WicketPixie to notify services like Ping.fm about your new blog posts, as configured on the WicketPixie Notifications page.",
+		"id"    =>  $shortname."_notify",
+        "std"   =>  1,
+        "status"    => 'checked',
+        "type"  => 'checkbox')		
 );
 
+function wicketpixie_add_admin_footer() {
+	echo "Thank you for using WicketPixie v".WIK_VERSION.", a free premium WordPress theme from <a href='http://chris.pirillo.com/'>Chris Pirillo</a>.<br/>";
+}
 function wicketpixie_add_admin() {
     global $themename, $shortname, $options, $settings;
 	if ( isset( $_GET['page'] ) && $_GET['page'] == basename(__FILE__) ) {
@@ -221,9 +232,8 @@ function wicketpixie_add_admin() {
 		} elseif ( 'save_settings' == $_REQUEST['action'] ) {
 			check_admin_referer('wicketpixie-settings');
 	        foreach ( $settings as $value ) {
-				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+				update_option( $value['id'], $_REQUEST[ $value['id'] ] );
 			}
-
 			foreach ( $settings as $value ) {
 				if( isset( $_REQUEST[ $value['id'] ] ) ) { 
 					if( $value['type'] == 'checkbox' ) {
@@ -500,5 +510,14 @@ function wicketpixie_admin_head() {
 add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
 add_action('admin_menu', 'wicketpixie_add_admin');
-FavesAdmin::install();
+
+require('app/sourcemanager.php');
+add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
+register_activation_hook('app/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
+add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
+
+require( ABSPATH . 'wp-content/themes/wicketpixie/app/faves.php');
+require( ABSPATH . 'wp-content/themes/wicketpixie/app/notify.php');
+require( ABSPATH . 'wp-content/themes/wicketpixie/app/update.php');
+
 ?>

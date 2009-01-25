@@ -204,13 +204,13 @@ class FavesAdmin
 							<td><?php echo $fave->title; ?></td>
 						   	<td style="text-align:center;"><a href="<?php echo $fave->feed_url; ?>" title="<?php echo $fave->feed_url; ?>"><img src="<?php bloginfo('template_directory'); ?>/images/icon-feed.gif" alt="View"/></a></td>
 						   	<td style="text-align:center;">
-							<form method="post" action="options-general.php?page=faves.php&amp;gather=true&amp;id=<?php echo $fave->id; ?>">
+							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;gather=true&amp;id=<?php echo $fave->id; ?>">
 								<input type="submit" value="Edit" />
 								<input type="hidden" name="action" value="gather" />
 							</form>
 							</td>
 							<td style="text-align:center;">
-							<form method="post" action="options-general.php?page=faves.php&amp;delete=true&amp;id=<?php echo $fave->id; ?>">
+							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;delete=true&amp;id=<?php echo $fave->id; ?>">
 								<input type="submit" name="action" value="Delete" />
 								<input type="hidden" name="action" value="delete" />
 							</form>
@@ -223,7 +223,7 @@ class FavesAdmin
 					<?php } ?>
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
 						<?php $data= $faves->gather( $_REQUEST['id'] ); ?>
-						<form method="post" action="options-general.php?page=faves.php&amp;edit=true">
+						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;edit=true">
 							<h2>Editing "<?php echo $data[0]->title; ?>"</h2>
 							<p><input type="text" name="title" id="title" value="<?php echo $data[0]->title; ?>" /></p>
 							<p><input type="text" name="url" id="url" value="<?php echo $data[0]->feed_url; ?>" /></p>
@@ -233,9 +233,9 @@ class FavesAdmin
 								<input type="hidden" name="id" value="<?php echo $data[0]->id; ?>">
 							</p>
 						</form>
-					<?php } ?>
+                    <?php } ?>
 					<?php if( $faves->check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
-						<form method="post" action="options-general.php?page=faves.php&amp;add=true" class="form-table">
+						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;add=true" class="form-table">
 							<h2>Add a New Fave</h2>
 							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Fave Title')value=''" onblur="if(this.value=='')value='Fave Title';" value="Fave Title" /></p>
 							<p><input type="text" name="url" id="url" onfocus="if(this.value=='Fave Feed URL')value=''" onblur="if(this.value=='')value='Fave Feed URL';" value="Fave Feed URL" /></p>
@@ -251,4 +251,5 @@ class FavesAdmin
 	}
 }
 add_action ('admin_menu', array( 'FavesAdmin', 'addFavesMenu' ) );
+FavesAdmin::install();
 ?>
