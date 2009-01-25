@@ -41,7 +41,7 @@ $blogfeed = get_bloginfo_rss('rss2_url');
     }
     
     if(is_user_logged_in()) { ?>
-    <script src="http://myintarweb.uservoice.com/pages/general/widgets/tab.js?alignment=left&amp;color=00BCBA" type="text/javascript"></script>
+    <script src="http://wicketpixie.uservoice.com/pages/general/widgets/tab.js?alignment=right&amp;color=000000" type="text/javascript"></script>
     <?php } ?>
 		
 <?php wp_head(); ?>	

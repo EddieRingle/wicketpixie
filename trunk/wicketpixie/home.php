@@ -87,7 +87,7 @@
 					width = 340, height = 293 -->
 				<div id="home-youtube">
 					<h3>My Live Video</h3>
-					<embed src="http://www.ustream.tv/553.usc" width="340" height="293" flashvars="autoplay=false&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />
+					<embed src="http://www.ustream.tv/flash/live/553" width="340" height="293" wmode="transparent" flashvars="autoplay=false&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />
                          <p align="center"><a href="http://live.pirillo.com/">Join the Live Chat Room</a></p>
 				</div>
 				<!-- /youtube -->

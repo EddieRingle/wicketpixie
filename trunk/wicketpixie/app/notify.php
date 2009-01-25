@@ -208,6 +208,7 @@ class NotifyAdmin
 							</p>
 						</form>
 				</div>
+                <?php include_once('app/advert.php'); ?>
 <?php
 	}
 }
