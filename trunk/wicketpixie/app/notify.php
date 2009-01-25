@@ -130,7 +130,7 @@ class NotifyAdmin
 	}
 	
 	public function addNotifyMenu() {
-		add_management_page( __('WicketPixie Notifications'), __('WicketPixie Notifications'), 9, basename(__FILE__), array( 'NotifyAdmin', 'notifyMenu' ) );
+		add_options_page( __('WicketPixie Notifications'), __('WicketPixie Notifications'), 9, basename(__FILE__), array( 'NotifyAdmin', 'notifyMenu' ) );
 	}
 	
 	/**

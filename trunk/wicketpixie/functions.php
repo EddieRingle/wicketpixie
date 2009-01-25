@@ -172,14 +172,14 @@ $settings= array(
 		"id"	=>	$shortname . "_auth_credit",
 		"std"	=>	1,
 		"status" => 'checked',
-		"type"	=>	'checkbox')	
+		"type"	=>	'checkbox'),	
     array(
         "name"  =>  "Enable WicketPixie Notifications",
         "description"   => "Check this if you want WicketPixie to notify services like Ping.fm about your new blog posts, as configured on the WicketPixie Notifications page.",
 		"id"    =>  $shortname."_notify",
         "std"   =>  1,
         "status"    => 'checked',
-        "type"  => 'checkbox')		
+        "type"  => 'checkbox')
 );
 
 function wicketpixie_add_admin_footer() {
@@ -189,7 +189,7 @@ function wicketpixie_add_admin() {
     global $themename, $shortname, $options, $settings;
 	if ( isset( $_GET['page'] ) && $_GET['page'] == basename(__FILE__) ) {
         if ( 'save' == $_REQUEST['action'] ) {
-			check_admin_referer('wicketpixie-settings');
+            check_admin_referer('wicketpixie-settings');
             foreach ( $options as $value ) {
 				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
 			}
@@ -288,9 +288,9 @@ function wicketpixie_admin() {
 	<div id="admin-options">
 	
 		<h2>Style Options</h2>
-
+        
 		<form method="post" style="padding:20px 0 10px;" enctype="multipart/form-data" action="themes.php?page=functions.php&amp;saved=true">
-		<?php wp_nonce_field('wicketpixie-settings'); ?>
+            <?php wp_nonce_field('wicketpixie-settings'); ?>
 			<table class="form-table">
 
 			<?php foreach ($options as $value) { 
@@ -379,6 +379,7 @@ function wicketpixie_admin() {
 		</form>
 
 		<form method="post" action="themes.php?page=functions.php&amp;reset=true" style="padding-bottom:40px;">
+            <?php wp_nonce_field('wicketpixie-settings'); ?>
 			<input name="reset" type="submit" value="Reset Style Options" class="button-secondary" />
 			<input type="hidden" name="action" value="reset" />
 		</form>
@@ -386,22 +387,23 @@ function wicketpixie_admin() {
 		<br style="clear:both;" />
 		<h2><?php echo $themename; ?> Settings</h2>
 		<form method="post" style="padding:20px 0 40px;" action="themes.php?page=functions.php&amp;saved=true">
+        <?php wp_nonce_field('wicketpixie-settings'); ?>
 		<table class="form-table">
 			<?php foreach( $settings as $value ) { ?>
 			<tr valign="top"> 
-				<th scope="row" style="font-size:12px; text-align:left; padding-right:10px;">
-					<?php
-						if ( get_option( $value['id'] ) != "" ) { 
-							$status= get_option( $value['id'] );
-						} else { 
-							$status= $value['std']; 
-						}
-					?>
-					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" <?php if( $status == 1 ) { echo 'checked'; } ?>/>
-				</th>
-				<td style="padding-bottom:10px;">
+				<td>
 					<acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym>
 				</td>
+				<th scope="row" style="font-size:12px; text-align:right;">
+					<?php
+						if (get_option($value['id']) != false) {
+							$status = get_option($value['id']);
+						} else { 
+							$status = $value['std']; 
+						}
+					?>
+					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php echo $value['id']; ?>" checked="<?php if($status == 1) { echo 'checked'; } ?>" />
+				</th>
 			</tr>
 			<?php } ?>
 		</table>
@@ -519,5 +521,4 @@ add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 require( ABSPATH . 'wp-content/themes/wicketpixie/app/faves.php');
 require( ABSPATH . 'wp-content/themes/wicketpixie/app/notify.php');
 require( ABSPATH . 'wp-content/themes/wicketpixie/app/update.php');
-
 ?>

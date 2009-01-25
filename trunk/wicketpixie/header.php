@@ -1,6 +1,6 @@
 <?php
 /* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
-$blogfeed = bloginfo('rss2_url');
+$blogfeed = get_bloginfo_rss('rss2_url');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">

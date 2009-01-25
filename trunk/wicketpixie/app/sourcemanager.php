@@ -192,6 +192,19 @@ class SourceAdmin {
 		$which= $wpdb->get_results( "SELECT profile_url, favicon FROM $table WHERE title = '$name'" );
 		return $which[0];
 	}
+    
+    function feed_check ($name) {
+        global $wpdb;
+        $table = $wpdb->prefix . 'wik_sources';
+        $feedlink = $wpdb->get_var("SELECT feed_url FROM $table WHERE title = '$name'");
+        if ($feedlink == "")
+        {
+            $isfeed = 0;
+        } elseif ($feedlink != "") {
+            $isfeed = 1;
+        }
+        return $isfeed;
+    }
 	
 	function legend_types() {
 		global $wpdb;
@@ -253,6 +266,7 @@ class SourceAdmin {
         } else { 
             $update= 0;
         }
+        
         if( $args['url'] == "Profile Feed URL" ) {
             $dbfeedurl = "";
         } else {
@@ -281,7 +295,7 @@ class SourceAdmin {
 		return $message;
 	}
 	
-	 function gather( $id ) {
+	function gather( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$gather= $wpdb->get_results( "SELECT * FROM $table WHERE id= $id" );
@@ -291,7 +305,7 @@ class SourceAdmin {
 	/**
 	* Edit the information for a given source.
 	*/
-	 function edit( $_REQUEST ) {
+	function edit( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 			if( $args['lifestream'] == 1 ) { 
@@ -326,7 +340,7 @@ class SourceAdmin {
 			$this->create_widget();
 	}
 	
-	 function toggle( $id, $direction ) {
+	function toggle( $id, $direction ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$name= $wpdb->get_results( "SELECT title FROM $table WHERE id = $id" );
@@ -347,7 +361,7 @@ class SourceAdmin {
 	* $sources->burninate( $id );
 	* </code>
 	*/
-	 function burninate( $id ) {
+	function burninate( $id ) {
 		global $wpdb;
 		$this->toggle( $id, 0 );
 		$table= $wpdb->prefix . 'wik_sources';
@@ -358,7 +372,7 @@ class SourceAdmin {
 		$this->create_widget();
 	}
 	
-	 function hulk_smash() {
+	function hulk_smash() {
 		global $wpdb;
 		$puny_table= $wpdb->prefix . 'wik_sources';
 		$to_smash= $wpdb->query( "DROP TABLE $puny_table" );
@@ -371,7 +385,7 @@ class SourceAdmin {
 	* $sources->types();
 	* </code>
 	*/
-	 function types() {
+	function types() {
 		global $wpdb;
 		$link= $wpdb->prefix . 'wik_source_types';
 		$types= $wpdb->get_results( "SELECT * FROM $link" );
@@ -397,31 +411,31 @@ class SourceAdmin {
 	}
 	 function get_feed( $url ) {
 		require_once ( 'simplepie.php' );
-			$feed_path= $url;
-			$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
-			SourceAdmin::clean_dir();
-			$feed->handle_content_type();
-				if( $feed->data ) {
-					foreach( $feed->get_items() as $entry ) {
-						$name= $stream->title;
-						$date = strtotime( substr( $entry->get_date(), 0, 25 ) );
-						$widget_contents[$date]['name']= (string) $name;
-						$widget_contents[$date]['title']= $entry->get_title();
-						$widget_contents[$date]['link']= $entry->get_permalink();
-						$widget_contents[$date]['date']= strtotime( substr( $entry->get_date(), 0, 25 ) );
-						if ( $enclosure = $entry->get_enclosure( 0 ) ) {
-							$widget_contents[$date]['enclosure'] = $enclosure->get_link();
-						}
+		$feed_path= $url;
+		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
+		SourceAdmin::clean_dir();
+		$feed->handle_content_type();
+			if( $feed->data ) {
+				foreach( $feed->get_items() as $entry ) {
+					$name= $stream->title;
+					$date = strtotime( substr( $entry->get_date(), 0, 25 ) );
+					$widget_contents[$date]['name']= (string) $name;
+					$widget_contents[$date]['title']= $entry->get_title();
+					$widget_contents[$date]['link']= $entry->get_permalink();
+					$widget_contents[$date]['date']= strtotime( substr( $entry->get_date(), 0, 25 ) );
+					if ( $enclosure = $entry->get_enclosure( 0 ) ) {
+						$widget_contents[$date]['enclosure'] = $enclosure->get_link();
 					}
 				}
-				return $widget_contents;
+			}
+		return $widget_contents;
 	}
 
 	 function create_file( $widget ) {
-		$cleaned= strtolower( $widget->title );
-		$cleaned= preg_replace( '/\W/', ' ', $cleaned );
-		$cleaned= str_replace( " ", "", $cleaned );
-		$favicon_url= explode('/', $widget->profile_url);
+		$cleaned = strtolower( $widget->title );
+		$cleaned = preg_replace( '/\W/', ' ', $cleaned );
+		$cleaned = str_replace( " ", "", $cleaned );
+		$favicon_url = explode('/', $widget->profile_url);
 		
 		$data= '';
 		$data .= '<?php' . "\n";
@@ -447,15 +461,17 @@ class SourceAdmin {
 		$data= '';
 		$data='<?php';
 		foreach( $this->collect() as $widget ) {
-			$cleaned= strtolower( $widget->title );
-			$cleaned= preg_replace( '/\W/', ' ', $cleaned );
-			$cleaned= str_replace( " ", "", $cleaned );
-			$data .= "
-			function wicketpixie_$cleaned() {
-				include( ABSPATH . 'wp-content/themes/wicketpixie/widgets/$cleaned.php');
-			}";
-			add_option( $cleaned . '-num', 5 );	
-			$this->create_file( $widget );
+            if($this->feed_check($widget->title) == 1) {
+                $cleaned= strtolower( $widget->title );
+                $cleaned= preg_replace( '/\W/', ' ', $cleaned );
+                $cleaned= str_replace( " ", "", $cleaned );
+                $data .= "
+                function wicketpixie_$cleaned() {
+                    include( ABSPATH . 'wp-content/themes/wicketpixie/widgets/$cleaned.php');
+                }";
+                add_option( $cleaned . '-num', 5 );	
+                $this->create_file( $widget );
+            }
 		}
 		$data .= ' ?>';
 		file_put_contents( ABSPATH . 'wp-content/themes/wicketpixie/widgets/sources.php', $data );
@@ -537,6 +553,7 @@ class SourceAdmin {
 								} else {
 									$streamed= 'Yes';
 								}
+                                $isfeed = $sources->feed_check($source->title);
 						?>		
 						<tr>
 							<td><a href="<?php echo $source->profile_url; ?>"><?php echo $source->title; ?></a></td>
