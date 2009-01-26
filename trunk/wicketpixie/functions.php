@@ -1,5 +1,5 @@
 <?php
-include_once( ABSPATH . 'wp-content/themes/wicketpixie/widgets/sources.php' );
+include_once( get_template_directory_uri() . '/widgets/sources.php' );
 
 define('WIK_VERSION','1.0.4');
 
@@ -528,12 +528,12 @@ add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
 add_action('admin_menu', 'wicketpixie_add_admin');
 
-require( ABSPATH . 'wp-content/themes/wicketpixie/app/sourcemanager.php' );
+require( get_template_directory_uri() . '/app/sourcemanager.php' );
 add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
 register_activation_hook('app/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
 add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 
-require( ABSPATH . 'wp-content/themes/wicketpixie/app/faves.php');
-require( ABSPATH . 'wp-content/themes/wicketpixie/app/notify.php');
-require( ABSPATH . 'wp-content/themes/wicketpixie/app/update.php');
+require( get_template_directory_uri() . '/app/faves.php');
+require( get_template_directory_uri() . '/app/notify.php');
+require( get_template_directory_uri() . '/app/update.php');
 ?>
