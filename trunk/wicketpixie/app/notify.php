@@ -209,7 +209,7 @@ class NotifyAdmin
 							</p>
 						</form>
 				</div>
-                <?php include_once('app/advert.php'); ?>
+                <?php include_once('advert.php'); ?>
 <?php
 	}
 }

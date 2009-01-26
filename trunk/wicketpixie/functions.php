@@ -1,5 +1,5 @@
 <?php
-include_once( get_template_directory_uri() . '/widgets/sources.php' );
+include_once( TEMPLATEPATH . '/widgets/sources.php' );
 
 define('WIK_VERSION','1.0.4');
 
@@ -64,11 +64,11 @@ if( function_exists( 'register_sidebar_widget' ) ) {
 }
 
 function wicketpixie_recent_posts() {	
-	include( ABSPATH . 'wp-content/themes/wicketpixie/widgets/recent-posts.php'); 
+	include( TEMPLATEPATH . '/widgets/recent-posts.php'); 
 }
 
 function wicketpixie_my_profiles() {
-	include( ABSPATH . 'wp-content/themes/wicketpixie/widgets/my-profiles.php'); 
+	include( TEMPLATEPATH . '/widgets/my-profiles.php'); 
 }
 
 $themename = "WicketPixie";
@@ -208,7 +208,7 @@ function wicketpixie_add_admin() {
 			
 			if ( $_REQUEST['completed'] == 1 && $_FILES['wp_body_bg_image']['tmp_name'] != '' ) {
 				$new_name= $_FILES['wp_body_bg_image']['name'];
-				$new_home= ABSPATH . '/wp-content/themes/wicketpixie/images/backgrounds/' . $new_name;
+				$new_home= TEMPLATEPATH . '/images/backgrounds/' . $new_name;
 				if( move_uploaded_file( $_FILES['wp_body_bg_image']['tmp_name'], $new_home ) ) {
 					if ( get_option( 'wp_body_bg_image' ) ) {
 						update_option( 'wp_body_bg_image', $new_name );
@@ -270,7 +270,7 @@ function wicketpixie_add_admin() {
 function wicketpixie_admin() {
     global $themename, $shortname, $options, $settings;
 
-	$uploaded= opendir( ABSPATH . '/wp-content/themes/wicketpixie/images/backgrounds/' ); 
+	$uploaded= opendir( TEMPLATEPATH .'/images/backgrounds/' ); 
 	$images= array();
 		while ( $file= readdir( $uploaded ) ) { 
 			$pattern = "/[\"‘]?([^\"’]?.*(png|jpg|gif))[\"’]?/i";
@@ -353,7 +353,7 @@ function wicketpixie_admin() {
 									echo $value['std'];
 								} elseif( $image_check!= '0' ) {
 								?>
-								<a href="../wp-content/themes/wicketpixie/images/backgrounds/<?php echo get_option( $value['id'] ); ?>" title="<?php echo get_option( $value['id'] ); ?>"><?php echo get_option( $value['id'] ); ?></a>
+								<a href="<?php echo TEMPLATEPATH .'/images/backgrounds/'. get_option( $value['id'] ); ?>" title="<?php echo get_option( $value['id'] ); ?>"><?php echo get_option( $value['id'] ); ?></a>
 								<?php
 								} else {
 									echo 'None'; 
@@ -528,12 +528,12 @@ add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
 add_action('admin_menu', 'wicketpixie_add_admin');
 
-require( get_template_directory_uri() . '/app/sourcemanager.php' );
+require( TEMPLATEPATH .'/app/sourcemanager.php' );
 add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
 register_activation_hook('app/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
 add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 
-require( get_template_directory_uri() . '/app/faves.php');
-require( get_template_directory_uri() . '/app/notify.php');
-require( get_template_directory_uri() . '/app/update.php');
+require( TEMPLATEPATH .'/app/faves.php');
+require( TEMPLATEPATH .'/app/notify.php');
+require( TEMPLATEPATH .'/app/update.php');
 ?>
