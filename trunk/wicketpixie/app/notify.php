@@ -156,11 +156,19 @@ class NotifyAdmin
 				<div id="admin-options">
 					<h2><?php _e('Notification Settings'); ?></h2>
                     <?php if($wp_notify != 1) { ?>
-                    <b>WicketPixie Notifications are currently disabled, please go to the WicketPixie Options page to enable them.</b><br />
+                    <p><strong>WicketPixie Notifications are currently disabled, please go to the WicketPixie Options page to enable them.</strong><br /></p>
                     <?php } ?>
-                    What are WicketPixie Notifications? They send out messages to different services like Twitter and Ping.fm to let your followers know of any new blog posts.<br />
-                    If you choose to use Ping.fm, unless the other services are not setup in your Ping.fm account please do not add your details for them, as the notification will be sent out twice.<br />
-                    <i><b>Please note:</b> When entering service details, you may only need to enter a username and password, you may only need to enter an API/App key, or you may enter both. It all depends on which service you select.</i><br />
+                    <p>What are WicketPixie Notifications? They send out messages to different services like Twitter and Ping.fm to let your followers know of any new blog posts. Need more help? <a href="#explain" title="Click for more info" id="explaintext">It's only a click away</a>.</p>
+					<div id="explain">
+                        <h3>For those that need help, here's some guidelines:</h3>
+                            <ol>
+                                <li>Use of the Ping.fm service only requires you to enter your App key, which you can obtain <a href="http://ping.fm/key">here</a>.</li>
+                                <li>Use of the Twitter service only requires you to enter your Twitter username and password, no API/App key required.</li>
+                                <li>WicketPixie is completely open-source, so if you don't believe this doesn't steal your information, check the source code ;)</li>
+                            </ol>
+					</div>
+                    <p>If you choose to use Ping.fm, unless the other services are not setup in your Ping.fm account please do not add your details for them, as the notification will be sent out twice.</p>
+                    <p><strong>Please note:</strong> <em>When entering service details, you may only need to enter a username and password, you may only need to enter an API/App key, or you may enter both. It all depends on which service you select.</em></p>
 					<?php if( $notify->check() != 'false' && $notify->count() != '' ) { ?>
 					<table class="form-table" style="margin-bottom:30px;">
 						<tr>
@@ -186,13 +194,6 @@ class NotifyAdmin
 					<?php } else { ?>
 						<p>You haven't added any services, add them here.</p>
 					<?php } ?>
-                        <p>For those that need help, here's some guidelines:
-                            <ul>
-                                <li>Use of the Ping.fm service only requires you to enter your App key, which you can obtain <a href="http://ping.fm/key">here</a>.</li>
-                                <li>Use of the Twitter service only requires you to enter your Twitter username and password, no API/App key required.</li>
-                                <li>WicketPixie is completely open-source, so if you don't believe this doesn't steal your information, check the source code ;)</li>
-                            </ul>
-                        </p>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=notify.php&amp;add=true" class="form-table">
 							<h2>Add a Service</h2>
 							<p><select name="service" id="title">

@@ -476,6 +476,14 @@ function wicketpixie_admin_head() {
             $("#wp_color_links_sidebar").attachColorPicker();
         });
 	</script>
+	<script>
+	jQuery(function($) {
+		$('#explaintext').click(function(){
+			$('#explain').toggle();
+			return false;
+		});
+	});
+	</script>
 	<style type="text/css">
 	#ColorPickerDiv 
 	{
@@ -504,6 +512,13 @@ function wicketpixie_admin_head() {
 		padding: 0 10px;	
 		position: relative;
 		cursor: pointer;
+	}
+	
+	#explain
+	{
+		display:none;
+		background: #eee;
+		padding: 5px;
 	}
 	</style>
 <?php
