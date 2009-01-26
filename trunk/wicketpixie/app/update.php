@@ -1,23 +1,23 @@
 <?php
 class SourceUpdate
 {
-	public function activated() {
+	function activated() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$check= $wpdb->get_results( "SELECT updates FROM $table" );
 		return $check;
 	}
 	
-	public function select() {
+	function select() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$newest= $wpdb->get_results( "SELECT * FROM $table WHERE updates = 1" );
 		return $newest;
 	}
 	
-	public function display() {
+	function display() {
 		require_once('simplepie.php');
-		$feed= self::select();
+		$feed= $this->select();
 		$feed_path= $feed[0]->feed_url;
 		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 
