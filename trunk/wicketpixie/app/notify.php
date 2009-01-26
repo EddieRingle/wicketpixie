@@ -6,7 +6,7 @@ class NotifyAdmin
 	* Here we install the tables and initial data needed to
 	* power our special functions
 	*/
-	public function install() {
+	 function install() {
 		global $wpdb;
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		$table= $wpdb->prefix . 'wik_notify';
@@ -28,7 +28,7 @@ class NotifyAdmin
 		}			
 	}
 	
-	public function check() {
+	 function check() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
@@ -38,14 +38,14 @@ class NotifyAdmin
 		}
 	}
 	
-	public function count() {
+	 function count() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$total= $wpdb->get_results( "SELECT ID as count FROM $table" );
 		return $total[0]->count;
 	}
 	
-	public function add( $_REQUEST ) {
+	 function add( $_REQUEST ) {
 		global $wpdb;
 		
 		$args= $_REQUEST;		
@@ -69,7 +69,7 @@ class NotifyAdmin
 		}
 	}
 	
-	public function collect() {
+	 function collect() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$sources= $wpdb->get_results( "SELECT * FROM $table" );
@@ -80,14 +80,14 @@ class NotifyAdmin
 		}
 	}
 	
-	public function gather( $id ) {
+	 function gather( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$gather= $wpdb->get_results( "SELECT * FROM $table WHERE id= $id" );
 		return $gather;
 	}
 	
-	public function burninate( $id ) {
+	 function burninate( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$d= $wpdb->query( "DELETE FROM $table WHERE id = $id" );
@@ -102,21 +102,21 @@ class NotifyAdmin
 	* }
 	* </code>
 	*/
-	public function show_notifications() {
+	 function show_notifications() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$show= $wpdb->get_results( "SELECT * FROM $table ORDER BY sortorder ASC" );
 		return $show;
 	}
 	
-	public function positions() {
+	 function positions() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$numbers= $wpdb->get_results( "SELECT sortorder FROM $table ORDER BY sortorder ASC" );
 		return $numbers;
 	}
 	
-	public function sort( $_REQUEST ) {
+	 function sort( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 		$table= $wpdb->prefix . 'wik_notify';
@@ -129,14 +129,14 @@ class NotifyAdmin
 		}
 	}
 	
-	public function addNotifyMenu() {
+	 function addNotifyMenu() {
 		add_options_page( __('WicketPixie Notifications'), __('WicketPixie Notifications'), 9, basename(__FILE__), array( 'NotifyAdmin', 'notifyMenu' ) );
 	}
 	
 	/**
 	* The admin menu for our faves system
 	*/
-	public function notifyMenu() {
+	 function notifyMenu() {
 		$notify= new NotifyAdmin;
         $wp_notify = get_option('wp_notify');
 		if ( $_GET['page'] == basename(__FILE__) ) {
