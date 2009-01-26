@@ -42,7 +42,6 @@ class FavesAdmin
 					if( !$wpdb->get_var( "SELECT id FROM $table WHERE feed_url = '" . $fave['feed_url'] . "'" ) ) {
 					$i= "INSERT INTO " . $table . " (id,title,feed_url,sortorder) VALUES('', '" . $fave['title'] . "','" . $fave['feed_url'] . "', '" . $fave['sortorder'] . "')";
 					$query= $wpdb->query( $i );
-					$this->favicache( $fave['feed_url'], $fave['title'] );
 					}
 				}
 			
@@ -80,7 +79,6 @@ class FavesAdmin
 				. $args['url'] . "',"
 				. $new_id . ")";
 			$query= $wpdb->query( $i );
-			$this->favicache( $args['url'], $args['title'] );
 		}
 		}
 	}
@@ -115,7 +113,6 @@ class FavesAdmin
 						"', feed_url = '" . $args['url'] .
 						"' WHERE id = " . $args['id'];
 			$query= $wpdb->query( $u );
-			$this->favicache( $args['url'], $args['title'] );
 	}
 	
 	 function burninate( $id ) {
