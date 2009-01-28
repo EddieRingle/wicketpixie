@@ -1,0 +1,105 @@
+#wrapper {
+	background: url("../images/wrapper-bg.gif") repeat-y 0 0;
+}
+
+#topbar {
+	margin-top: -10px;
+	background: url("../images/topbar-bg.gif") repeat-x 0 100%;
+}
+
+#subscribe, #share {
+	display: none;
+	position: absolute;
+	top: 31px;
+	left: 50%;
+	width: 220px;
+	margin: -1px 0 0 -469px;
+	padding: 10px 19px;
+	background: #000;
+}
+
+#status .avatar {
+	background: none;
+}
+
+#status p {
+	width: 421px;
+	height: 30px;
+	padding-left: 10px;
+	background: none;
+}
+
+#status-bottom {
+	background: none;
+}
+
+#header {
+	padding: 10px 0 0;
+}
+
+#leaderboard {
+	padding: 0;
+	background: none;
+}
+
+#nav {
+	background: url("../images/nav-bg.gif") no-repeat 50% 0;
+}
+
+#nav li a:hover {
+	color: #fff;
+	background: url("../images/nav-li-hover.gif") repeat-x 0 -1px;
+}
+
+#nav ul li ul li a {
+	display: block;
+}
+
+#nav ul li ul li a {
+	float: none;
+	display: inline-block;
+}
+
+#nav ul li ul {
+	background: #000;
+}
+
+#content {
+	overflow: hidden;
+}
+
+#content .post-comments {
+	float: right;
+	width: 40px;
+	background: #eee;
+}
+
+#content .post-comments ul {
+	margin: 0;
+	padding: 8px 10px;
+	background: none;
+}
+
+#content .post-comments ul li {
+	float: none;
+}
+
+#content .post-comments li.post-comments-count {
+	margin: 0;
+}
+
+#content .post-comments li.post-comments-add {
+	display: none;
+}
+
+#comment-form label {
+	width: 100px;
+}
+
+#sidebar {
+	margin-right: 10px;
+}
+
+#footer {
+	background: url("../images/footer-bg.gif") no-repeat 0 0;
+}
