@@ -33,3 +33,7 @@ v1.0.4 - January 19, 2009 by Eddie Ringle
  * FEATURE: WicketPixie Services Notification System. Basically, when a
  user publishes a blog post, Ping.fm or Twitter, depending on what the
  user setup, is notified and a link to that blog post is sent out.
+ 
+WORKING - ???, 2009
+ * UPDATED: Twitter post will show "from WicketPixie" now after you publish
+ a blog post and have Twitter set to be notified by WicketPixie.
