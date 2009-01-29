@@ -277,7 +277,7 @@ function notify_go($service,$type,$postdata,$ident) {
         $postdata = urlencode(stripslashes(urldecode($postdata)));
         
         // Set the url based on type and add the POST data
-        $url = "http://twitter.com/".$type."?status=".$postdata;
+        $url = "http://twitter.com/".$type."?status=".$postdata."&source=wicketpixie";
         
         // Setup cURL
         $ch = curl_init();
