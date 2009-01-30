@@ -97,7 +97,18 @@ $blogfeed = get_bloginfo_rss('rss2_url');
 		<div id="header-inner">
 			
 			<div id="logo">
-				<a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a>
+                <?php
+                if(get_option('wp_headersize')) {
+                    $fontsize = get_option('wp_headersize');
+                    echo "<font style='font-size: ".$fontsize."px;'>";
+                    ?>
+                        <a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a>
+                    <?php
+                    echo "</font>";
+                } else {
+                ?>
+                <a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a>
+                <?php } ?>
 			</div>
 			
 			<?php 

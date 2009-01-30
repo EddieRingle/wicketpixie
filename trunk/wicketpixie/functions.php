@@ -121,6 +121,13 @@ $options = array (
 		"type" => "select",
 		"options" => array("Georgia, Times New Roman, Times, serif", "Times New Roman, Georgia, Times, serif", "Times, Times New Roman, Georgia, serif", "Lucida Grande, Arial, Verdana, sans-serif", "Helvetica, Arial, Verdana, sans-serif", "Arial, Verdana, sans-serif", "Verdana, Arial sans-serif")),
 
+    array(  
+		"name" => "Header Font Size",
+		"description" => "The font size of the header logo, in px.",
+		"id" => $shortname."_headersize",
+		"std" => "40",
+		"type" => "text"),
+
 	array(  
 		"name" => "Logo Text Color",
 		"description" => "The color of the logo text.",
@@ -300,7 +307,7 @@ function wicketpixie_admin() {
 			<tr valign="top"> 
 			    <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
 			    <td style="padding-bottom:10px;">
-			        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" />
+			        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /><?php if ($value['id'] == 'wp_headersize') { echo 'px'; } ?>
 			    </td>
 			</tr>
 
