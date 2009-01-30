@@ -18,6 +18,11 @@ class SourceUpdate
 	function display() {
 		require_once('simplepie.php');
 		$feed= $this->select();
+        
+        if( preg_match('/twitter\.com/',$feed[0]->feed_url) == true ) {
+            $istwitter = 1;
+        }
+        
 		$feed_path= $feed[0]->feed_url;
 		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 
@@ -36,8 +41,12 @@ class SourceUpdate
 			$return= array_slice( $update, 0, 5);	
 
             $return[1]['title'] = preg_replace('((?:\S)+://\S+[[:alnum:]]/?)', '<a href="\0">\0</a>', $return[1]['title']);
+          
+            if( $istwitter == 1 ) {
+                $return[1]['title'] = preg_replace('/(@)([A-Za-z0-9]+)/', '<a href="http://twitter.com/\2">\0</a>', $return[1]['title']);
+            }
             
-			return substr($return[1]['title'], 0, 150) . ' &mdash; <a href="' . $return[2]['link'] . '" title="">' . date( 'g:ia', $return[3]['date'] ) . '</a>';
+			return substr($return[1]['title'], 0, 1000) . ' &mdash; <a href="' . $return[2]['link'] . '" title="">' . date( 'g:ia', $return[3]['date'] ) . '</a>';
 		} else {
 			return 'Thanks for exploring my world! Can you believe this avatar is talking to you?';
 		}

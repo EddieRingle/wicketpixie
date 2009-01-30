@@ -37,3 +37,5 @@ v1.0.4 - January 19, 2009 by Eddie Ringle
 WORKING - ???, 2009
  * UPDATED: Twitter post will show "from WicketPixie" now after you publish
  a blog post and have Twitter set to be notified by WicketPixie.
+ * UPDATED: @<username here> in status updates will now link to that user's
+ Twitter profile, if Twitter is set to provide the updates of course.
