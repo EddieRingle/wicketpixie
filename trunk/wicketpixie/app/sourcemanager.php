@@ -513,17 +513,17 @@ class SourceAdmin {
 		}
 		?>
 		<?php if(isset($_REQUEST['add'])) { ?>
-		<div id="message" class="updated fade"><p><strong><?php echo __('Social Me saved.'); ?></strong></p></div>
+		<div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account saved.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['edit'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me modified.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account modified.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['delete'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me removed.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['flush'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me flushed.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account flushed.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['install'])) { ?>
         <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['hulk_smash'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Mes cleared.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me database cleared.'); ?></strong></p></div>
 		<?php } ?>
 			<div class="wrap">
 				
