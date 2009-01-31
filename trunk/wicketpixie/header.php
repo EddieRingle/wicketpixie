@@ -1,6 +1,7 @@
 <?php
 /* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
-$blogfeed = get_bloginfo_rss('rss2_url');
+$blogfeed = 
+if( get_option('wp_feed_url')get_bloginfo_rss('rss2_url');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -50,6 +51,10 @@ $blogfeed = get_bloginfo_rss('rss2_url');
 
 <body>
 	
+    <?php
+    if(get_option('wp_topbar')) {
+        if(get_option('wp_topbar') == 1) {
+        ?>
 	<!-- topbar -->
 	<div id="topbar">
 		
@@ -89,7 +94,56 @@ $blogfeed = get_bloginfo_rss('rss2_url');
 		
 	</div>
 	<!-- /share -->
+    <?php
+        } else {
+    ?>
+    <!-- If you'd like, turn the topbar on in WicketPixie's settings -->
+    <?php
+        }
+    } else {
+    ?>
+    <!-- topbar -->
+	<div id="topbar">
 		
+		<!-- topbar-inner -->
+		<div id="topbar-inner">			
+			<ul>
+				<li id="topbar-subscribe"><a href="#">Subscribe</a></li>
+				<li id="topbar-share"><a href="#">Bookmark/Share</a></li>
+				<?php if (is_user_logged_in()) { ?><li id="topbar-admin"><a href="<?php bloginfo('wpurl'); ?>/wp-admin">Admin</a></li><?php } ?>
+			</ul>		
+            <?php include (TEMPLATEPATH . '/searchform.php'); ?>
+		</div>
+		<!-- /topbar-inner -->
+		
+	</div>
+	<!-- /topbar -->
+	
+	<!-- subscribe -->
+	<div id="subscribe">			
+		<ul>				
+			<li><a href="<?php echo $blogfeed; ?>" title="Subscribe to my feed" class="feed">RSS Feed</a></li>
+			<li><a href="http://www.bloglines.com/sub/<?php echo $blogfeed; ?>" class="feed">Bloglines</a></li>
+			<li><a href="http://fusion.google.com/add?feedurl=<?php echo $blogfeed; ?>" class="feed">Google Reader</a></li>			
+			<li><a href="http://feeds.my.aol.com/add.jsp?url=<?php echo $blogfeed; ?>" class="feed">My AOL</a></li>
+			<li><a href="http://my.msn.com/addtomymsn.armx?id=rss&ut=<?php echo $blogfeed; ?>&ru=<?php echo get_settings('home'); ?>" class="feed">My MSN</a></li>
+			<li><a href="http://add.my.yahoo.com/rss?url=<?php echo $blogfeed; ?>" class="feed">My Yahoo!</a></li>
+			<li><a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=<?php echo $blogfeed; ?>" class="feed">NewsGator</a></li>			
+			<li><a href="http://www.pageflakes.com/subscribe.aspx?url=<?php echo $blogfeed; ?>" class="feed">Pageflakes</a></li>
+			<li><a href="http://technorati.com/faves?add=<?php echo get_settings('home'); ?>" class="feed">Technorati</a></li>
+			<li><a href="http://www.live.com/?add=<?php echo $blogfeed; ?>" class="feed">Windows Live</a></li>
+		</ul>		
+	</div>
+	<!-- /subscribe -->
+	
+	<!-- share -->
+	<div id="share">
+		
+	</div>
+	<!-- /share -->
+    <?php
+    }
+    ?>
 	<!-- header -->
 	<div id="header">
 		

@@ -95,7 +95,17 @@
 				<!-- recent-posts -->
 				<div id="sidebar1">					
 					<div id="recent-posts" class="widget">
-						
+						<h3>Subscribe to Chris Pirillo's Newsletter!</h3>
+                        <form action="http://whatcounts.com/bin/listctrl" method="post">
+                            <input type=hidden name="slid" value="4EB045FEF6973258752D42129F9F915C" />
+                            <input type=hidden name="cmd" value="subscribe" />
+                            <input type=hidden name="goto" value="http://chris.pirillo.com/" />
+                            <input type=hidden name="key" value="slid" />
+                            E-Mail: <input type=text name=email size=13 />
+                            <input type=hidden name="format" value="plain" />
+                            <input type=submit value="Subscribe" />
+                        </form>
+
 						<h3>Recent Posts</h3>
 						<?php query_posts('showposts=5&offset=1'); ?>
 						<?php while (have_posts()) : the_post(); ?>
