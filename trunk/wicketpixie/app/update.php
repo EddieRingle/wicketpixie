@@ -43,7 +43,7 @@ class SourceUpdate
             $return[1]['title'] = preg_replace('((?:\S)+://\S+[[:alnum:]]/?)', '<a href="\0">\0</a>', $return[1]['title']);
           
             if( $istwitter == 1 ) {
-                $return[1]['title'] = preg_replace('/(@)([A-Za-z0-9]+)/', '<a href="http://twitter.com/\2">\0</a>', $return[1]['title']);
+                $return[1]['title'] = preg_replace('/(@)([A-Za-z0-9_-]+)/', '<a href="http://twitter.com/\2">\0</a>', $return[1]['title']);
             }
             
 			return substr($return[1]['title'], 0, 1000) . ' &mdash; <a href="' . $return[2]['link'] . '" title="">' . date( 'g:ia', $return[3]['date'] ) . '</a>';
