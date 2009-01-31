@@ -80,7 +80,7 @@ class SourceAdmin {
 	* Just calling WP's method to add a new menu to the design section.
 	*/
 	function addMenu() {
-		add_options_page( __('WicketPixie Sources'), __('WicketPixie Sources'), 9, basename(__FILE__), array( 'SourceAdmin', 'sourceMenu' ) );
+		add_options_page( __('WicketPixie Social Me'), __('WicketPixie Social Me'), 9, basename(__FILE__), array( 'SourceAdmin', 'sourceMenu' ) );
 	}
 	
 	/**
@@ -274,7 +274,7 @@ class SourceAdmin {
         }
 
 		$table= $wpdb->prefix . 'wik_sources';
-		if( $args['title'] != 'Source Title' ) {
+		if( $args['title'] != 'Social Site Title' ) {
 		if( !$wpdb->get_var( "SELECT id FROM $table WHERE feed_url = '" . $args['url'] . "'" ) ) {
 		$favicon_url= explode('/', $args['profile']);
 		$i= "INSERT INTO " . $table . " (id,title,profile_url,feed_url,type,lifestream,updates,favicon) VALUES('', '" 
@@ -287,7 +287,7 @@ class SourceAdmin {
 		. "'http://www.google.com/s2/favicons?domain=$favicon_url[2]')";
 		$query= $wpdb->query( $i );
 		$this->create_widget();
-		$message= 'Source Saved';
+		$message= 'Social Site Saved';
 		} else {
 			$message= 'You forgot to fill out some information, please try again.';
 		}
@@ -513,23 +513,29 @@ class SourceAdmin {
 		}
 		?>
 		<?php if(isset($_REQUEST['add'])) { ?>
-		<div id="message" class="updated fade"><p><strong><?php echo __('Source saved.'); ?></strong></p></div>
+		<div id="message" class="updated fade"><p><strong><?php echo __('Social Me saved.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['edit'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Source modified.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me modified.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['delete'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Source removed.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me removed.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['flush'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Source flushed.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me flushed.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['install'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('SourceManager installed.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
 		<?php } elseif(isset($_REQUEST['hulk_smash'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Sources cleared.'); ?></strong></p></div>
+        <div id="message" class="updated fade"><p><strong><?php echo __('Social Mes cleared.'); ?></strong></p></div>
 		<?php } ?>
 			<div class="wrap">
 				
 				<div id="admin-options">
 				
-					<h2><?php _e('Manage My Sources'); ?></h2>
+					<h2><?php _e('Manage My "Social Me" Page'); ?></h2>
+                    <p>If you'd like to let your visitors know where else they may find you throughout the Web,
+                    you can do it easily through your "Social Me" page. This is an exclusive feature of the WicketPixie theme for WordPress.
+                    If you have accounts on other blogs, social networks, forums, Web sites, etc, add them here. For example,
+                    you might add your Twitter, YouTube, and Flickr accounts here - making sure you use the corresponding RSS (or Atom) feeds for your profile,
+                    so that WicketPixie can display your latest content from them on your Social Me page.<br /><br />
+                    You can also include the list of these accounts in your sidebar - just be sure to enable the <a href="widgets.php">WicketPixie Social Me widget</a> first!</p>
 					<?php if( $sources->check() != 'false' && $sources->count() != '' ) { ?>
 					<form>
 						<p style="margin-bottom:0;">Sort by: <select name="type" id="type">
@@ -540,6 +546,7 @@ class SourceAdmin {
 					</form>
 					<table class="form-table" style="margin-bottom:20px;">
 						<tr>
+                            <th>Icon</th>
 							<th>Title</th>
 							<th style="text-align:center;">Feed</th>
 							<th style="text-align:center;">Type</th>
@@ -556,7 +563,8 @@ class SourceAdmin {
                                 $isfeed = $sources->feed_check($source->title);
 						?>		
 						<tr>
-							<td><a href="<?php echo $source->profile_url; ?>"><?php echo $source->title; ?></a></td>
+							<td style="width:16px;"><img src="<?php echo $source->favicon; ?>" alt="Favicon" style="width: 16px; height: 16;" /></td>
+                            <td><a href="<?php echo $source->profile_url; ?>"><?php echo $source->title; ?></a></td>
                         <?php if ($isfeed == 1) { ?>
 					   	<td style="text-align:center;"><a href="<?php echo $source->feed_url; ?>"><img src="<?php bloginfo('template_directory'); ?>/images/icon-feed.gif" alt="View"/></a></td>
                         <?php } elseif ($isfeed == 0) { ?>
@@ -591,7 +599,7 @@ class SourceAdmin {
 					<?php } ?>
 					</table>
 					<?php } else { ?>
-						<p>You don't have any sources, why not add some?</p>
+						<p>You don't have any Social Mes, why not add some?</p>
 					<?php } ?>
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
 						<?php $data= $sources->gather( $_REQUEST['id'] ); ?>
@@ -610,7 +618,7 @@ class SourceAdmin {
 								</select>
 							</p>
 							<p class="submit">
-								<input name="save" type="submit" value="Save Source" />
+								<input name="save" type="submit" value="Save Social Me" />
 								<input type="hidden" name="action" value="edit" />
 								<input type="hidden" name="id" value="<?php echo $data[0]->id; ?>">
 							</p>
@@ -618,8 +626,8 @@ class SourceAdmin {
 					<?php } ?>
 					<?php if( $sources->check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;add=true" class="form-table" style="margin-bottom:30px;">
-							<h2>Add a New Source</h2>
-							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Source Title')value=''" onblur="if(this.value=='')value='Source Title';" value="Source Title" /></p>
+							<h2>Add a New Social Me</h2>
+							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Social Me Title')value=''" onblur="if(this.value=='')value='Social Me Title';" value="Social Me Title" /></p>
 							<p><input type="text" name="profile" id="profile" onfocus="if(this.value=='Profile URL')value=''" onblur="if(this.value=='')value='Profile URL';" value="Profile URL" /></p>
 							<p><input type="text" name="url" id="url" onfocus="if(this.value=='Profile Feed URL')value=''" onblur="if(this.value=='')value='Profile Feed URL';" value="Profile Feed URL" /></p>
 							<p><input type="checkbox" name="lifestream" id="lifestream" value="1" checked="checked"> Add to Activity Stream?</p>
@@ -632,15 +640,15 @@ class SourceAdmin {
 								</select>
 							</p>
 							<p class="submit">
-								<input name="save" type="submit" value="Save Source" />    
+								<input name="save" type="submit" value="Save Social Me" />    
 								<input type="hidden" name="action" value="add" />
 							</p>
 						</form>
 						<form name="hulk_smash" id="hulk_smash" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;hulk_smash=true">
-							<h2>Delete the Sources Table</h2>
-							<p>Please note, this is undoable and will result in the loss of all the data you have stored to date. Only do this if you are having problems with your sources and you have exhausted every other option.</p>
+							<h2>Delete the Social Mes Table</h2>
+							<p>Please note, this is undoable and will result in the loss of all the data you have stored to date. Only do this if you are having problems with your social mes and you have exhausted every other option.</p>
 							<p class="submit">
-								<input name="save" type="submit" value="Delete Sources" />    
+								<input name="save" type="submit" value="Delete Social Mes" />    
 								<input type="hidden" name="action" value="hulk_smash" />
 							</p>
 						</form>
@@ -649,7 +657,7 @@ class SourceAdmin {
 							<form name="install" id="install" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;install=true">
 								<p class="submit">
 									<input type="hidden" name="action" value="install" />
-									<input type="submit" value="Install Sources" />
+									<input type="submit" value="Install Social Me" />
 								</p>
 							</form>
 						<?php } ?>

@@ -86,7 +86,7 @@ body {
 	padding: 10px 19px;
 	font: 1.2em Arial, Helvetica, Geneva, sans-serif;
 	text-align: left;
-	background: url("../images/topbar-dropdown.png") no-repeat 0 100%;
+	background: #000000 url("../images/topbar-dropdown.png") no-repeat 0 100%;
 }
 
 #subscribe {
@@ -241,7 +241,7 @@ body {
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
 #nav {
-     clear: both;
+    clear: both;
 	float: left;
 	width: 100%;
 	text-align: center;
@@ -271,7 +271,7 @@ body {
 #nav li a:hover, #nav li:hover > a {
 	color: #fff;
 	text-decoration: none;
-	background: url("../images/nav-li-hover.gif") repeat-x 50% 0;
+	background: #000000 url("../images/nav-li-hover.gif") repeat-x 50% 0;
 }
 
 #nav ul li ul {
@@ -377,7 +377,7 @@ body {
 #mid {
 	float: left;
 	width: 100%;
-	background: url("../images/mid-bg.jpg") no-repeat 0 0;
+	background: #FFFFFF url("../images/mid-bg.jpg") no-repeat 0 0;
 }
 
 #mid-inner {
@@ -1260,7 +1260,7 @@ body {
 
 #sidebar1 .widget {
 	padding: 20px 20px 6px;
-	background: url("../images/sidebar-box-top.gif") no-repeat 0 0;
+	background: #FFFFFF url("../images/sidebar-box-top.gif") no-repeat 0 0;
 }
 
 #sidebar1 .widget img {
