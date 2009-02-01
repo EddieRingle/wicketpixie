@@ -32,13 +32,15 @@ $blogfeed = get_bloginfo_rss('rss2_url');
     include_once (TEMPLATEPATH . '/app/gapikey.php');
     
     clearstatcache();
-    if(!is_dir(ABSPATH.'wp-content/uploads/activity'))
-    {
-        if(!is_Dir(ABSPATH.'wp-content/uploads'))
+    if(!is_dir(ABSPATH.'wp-content/uploads/activity')) {
+        if(!is_dir(ABSPATH.'wp-content/uploads'))
         {
             mkdir(ABSPATH.'wp-content/uploads',0777);
         }
         mkdir(ABSPATH.'wp-content/uploads/activity',0777);
+    }
+    if(!is_dir(TEMPLATEPATH.'app/cache')) {
+        mkdir(TEMPLATEPATH.'app/cache',0777);
     }
     
     if(is_user_logged_in()) { ?>

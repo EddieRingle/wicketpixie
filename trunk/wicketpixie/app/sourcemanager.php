@@ -103,14 +103,28 @@ class SourceAdmin {
 	}
 	
 	function clean_dir() {
-		$cache= ABSPATH . 'wp-content/uploads/activity/';
         clearstatcache();
+    
+        // Clean the activity stream
+		$cache = ABSPATH . 'wp-content/uploads/activity/';
         if(is_dir($cache))
         {
-            $d= dir( $cache );
-            while( $entry= $d->read() ) {
-                if ( $entry!= "." && $entry!= ".." ) {
-                    unlink( $cache . $entry );
+            $d = dir($cache);
+            while($entry = $d->read()) {
+                if ($entry != "." && $entry != "..") {
+                    unlink($cache . $entry);
+                }
+            }
+            $d->close();
+        }
+        // Clean the WiPi cache
+        $cache = TEMPLATEPATH . 'app/cache/';
+        if(is_dir($cache))
+        {
+            $d = dir($cache);
+            while($entry = $d->read()) {
+                if($entry != "." && $entry != "..") {
+                    unlink($cache . $entry);
                 }
             }
             $d->close();
