@@ -81,11 +81,10 @@ class SourceUpdate
     
     function cacheit($f) {        
         // Use SimplePie to fetch the latest feed
-        $latest = fetchfeed();
+        $latest = $this->fetchfeed();
         
         // Store it in a file
         file_put_contents($f,$latest);
-        
         // Set the file's last modified time to right now
         touch($f);
     }
@@ -96,17 +95,17 @@ class SourceUpdate
     }
     
 	function display() {
-        $feedfile = 'cache/statusupdate.cache'; // The location of the feed file
+        $f = ABSPATH . (string)'wp-content/themes/wicketpixie/app/cache/statusupdate.cache'; // The location of the feed file
         // Check to see if we're using a recent feed file
-        $result = chkfile($feedfile);
+        $result = $this->chkfile($f);
         
         // If feed file is outdated, store a new one
         if($result == false) {
-            cacheit($f);
+            $this->cacheit($f);
         }
         
         // Now prepare to display the latest item
-        $out = getfeedfile($f);
+        $out = $this->getfeedfile($f);
         
         // Time to let people know what's up!
         return $out;
