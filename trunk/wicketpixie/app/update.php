@@ -38,8 +38,11 @@ class SourceUpdate
 				$update[]['date']= strtotime( substr( $entry->get_date(), 0, 25 ) );
 			}
 			
-			$return= array_slice( $update, 0, 5);	
-
+            if($update == null && $istwitter == 1) {
+                return "Twitter is experiencing issues, please try again later.";
+            }
+                $return= array_slice( $update, 0, 5);	
+            
             $return[1]['title'] = preg_replace('((?:\S)+://\S+[[:alnum:]]/?)', '<a href="\0">\0</a>', $return[1]['title']);
           
             if( $istwitter == 1 ) {
