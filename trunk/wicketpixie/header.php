@@ -1,7 +1,6 @@
 <?php
 /* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
-$blogfeed = 
-if( get_option('wp_feed_url')get_bloginfo_rss('rss2_url');
+$blogfeed = get_bloginfo_rss('rss2_url');
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -30,6 +29,7 @@ if( get_option('wp_feed_url')get_bloginfo_rss('rss2_url');
 	include_once (TEMPLATEPATH . '/plugins/related-posts.php');
 	include_once (TEMPLATEPATH . '/plugins/search-excerpt.php');
 	include_once (TEMPLATEPATH . '/plugins/search-highlight.php');
+    include_once (TEMPLATEPATH . '/app/gapikey.php');
     
     clearstatcache();
     if(!is_dir(ABSPATH.'wp-content/uploads/activity'))
@@ -44,6 +44,10 @@ if( get_option('wp_feed_url')get_bloginfo_rss('rss2_url');
     if(is_user_logged_in()) { ?>
     <script src="http://wicketpixie.uservoice.com/pages/general/widgets/tab.js?alignment=right&amp;color=000000" type="text/javascript"></script>
     <?php } ?>
+    
+    <script type="text/javascript">
+    google.load("jquery", "1.3.1", {uncompressed:true});
+    </script>
 		
 <?php wp_head(); ?>	
 	

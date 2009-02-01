@@ -16,7 +16,6 @@
 	
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/suckerfish-keyboard.js"></script>
 	<!--[if lte IE 6]><script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/suckerfish-ie.js"></script><![endif]-->
-	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 		  $('#subscribe').hide();
