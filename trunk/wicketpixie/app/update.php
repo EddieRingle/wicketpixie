@@ -79,6 +79,19 @@ class SourceUpdate
         }            
     }
     
+    /**
+    * Let's make sure the files don't match so we don't waste that request.
+    **/
+    function cmpcache($f) {
+        $latest = $this->fetchfeed();
+        
+        if(file_get_contents($f) == $latest) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     function cacheit($f) {        
         // Use SimplePie to fetch the latest feed
         $latest = $this->fetchfeed();
@@ -99,9 +112,11 @@ class SourceUpdate
         // Check to see if we're using a recent feed file
         $result = $this->chkfile($f);
         
-        // If feed file is outdated, store a new one
+        // If feed file is outdated and the cache and latest feed don't match, store a new one
         if($result == false) {
-            $this->cacheit($f);
+            if($this->cmpcache($f) == false) {
+                $this->cacheit($f);
+            }
         }
         
         // Now prepare to display the latest item
