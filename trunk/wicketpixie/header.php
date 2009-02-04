@@ -1,6 +1,8 @@
 <?php
 /* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
-$blogfeed = get_bloginfo_rss('rss2_url');
+$blogfeed = "http://feeds.eddieringle.com/EddieRingle";
+$status= new SourceUpdate;
+$sources= new SourceAdmin;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -8,9 +10,9 @@ $blogfeed = get_bloginfo_rss('rss2_url');
 
 <head profile="http://gmpg.org/xfn/11">
 	
-	<meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
-
-	<title><?php if (is_home()) { ?><?php bloginfo('name'); ?><?php } else { ?><?php wp_title('',true,''); ?> &raquo; <?php bloginfo('name'); ?><?php } ?></title>	
+    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+    
+    <title><?php if (is_home()) { ?><?php bloginfo('name'); ?><?php } else { ?><?php wp_title('',true,''); ?> &raquo; <?php bloginfo('name'); ?><?php } ?></title>	
 
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css" type="text/css" media="screen, projection" />	
@@ -53,10 +55,29 @@ $blogfeed = get_bloginfo_rss('rss2_url');
 		
 <?php wp_head(); ?>	
 	
+    <?php
+    $blogurl = get_bloginfo('url');
+    $currurl = $blogurl.$_SERVER['REQUEST_URI'];
+    $currurl = preg_quote($currurl,'/');
+    if(preg_match('/('.$currurl.'index.php)/','http://'.$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF']) || preg_match('/('.$currurl.'index.php)/','https://'.$_SERVER['SERVER_NAME'].$_SERVER['PHP_SELF'])) {
+        if(get_bloginfo('description') != '') {
+            $metadesc = get_bloginfo('description'); // We're at the home page
+        } else {
+            $supdate = new SourceUpdate;
+            $metadesc = $supdate->display(0);
+        }
+    } else {
+        // We must be in a page or a post
+        $postdata = get_post($postid,ARRAY_A);
+        $metadesc = substr($postdata['post_content'],0,140) . ' [...]';
+    }
+    
+    $metadesc = strip_tags($metadesc);
+    ?>
+    <meta name="description" value="<?php echo $metadesc; ?>" />
 </head>
 
 <body>
-	
     <?php
     if(get_option('wp_topbar')) {
         if(get_option('wp_topbar') == 1) {
@@ -171,10 +192,6 @@ $blogfeed = get_bloginfo_rss('rss2_url');
                 <?php } ?>
 			</div>
 			
-			<?php 
-				$status= new SourceUpdate;
-				$sources= new SourceAdmin;
-			?>
 			<?php if (function_exists('aktt_latest_tweet')) { ?>				
 			<!-- status -->
 			<div id="status">	

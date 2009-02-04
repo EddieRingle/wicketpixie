@@ -6,6 +6,7 @@
 				
 				<?php if (have_posts()) : ?>	
 				<?php while (have_posts()) : the_post(); ?>
+                <?php $postid =  $post->ID; ?>
 				
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">

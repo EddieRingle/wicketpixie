@@ -41,7 +41,7 @@ class SourceUpdate
             $return = array_slice($update,0,5);
             
             $return[1]['title'] = preg_replace('((?:\S)+://\S+[[:alnum:]]/?)', '<a href="\0">\0</a>', $return[1]['title']);
-          
+            
             if( $istwitter == 1 ) {
                 $return[1]['title'] = preg_replace('/(@)([A-Za-z0-9_-]+)/', '<a href="http://twitter.com/\2">\0</a>', $return[1]['title']);
             }
@@ -107,6 +107,9 @@ class SourceUpdate
         return file_get_contents($f);
     }
     
+    /**
+    * Displays the feed entry.
+    **/
 	function display() {
         $f = ABSPATH . (string)'wp-content/themes/wicketpixie/app/cache/statusupdate.cache'; // The location of the feed file
         // Check to see if we're using a recent feed file
