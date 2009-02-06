@@ -1647,4 +1647,30 @@ div.KonaBody {
      margin-top: 15px
 }     
 
+/* Skiddily Doo */
+.TweetWrapper {
+    clear: left;
+    padding: 5px 0 0 20px;
+}
+
+.TweetBody {
+    clear: left;
+}
+
+.TweetAvatar {
+    border: 0;
+    float: left;
+    padding: 4px 15px 25px 0;
+    width: 40px;
+    height: 40px;
+}
+
+.TweetStatus {
+    font-size: 8pt;
+    line-height: 12pt;
+}
+
+.TweetDate, .TweetPermadate, .TweetPermalink {
+    float: left;
+}
 /* @end */
