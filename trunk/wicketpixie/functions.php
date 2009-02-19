@@ -1,7 +1,7 @@
 <?php
 include_once( TEMPLATEPATH . '/widgets/sources.php' );
 
-define('WIK_VERSION','1.0.4');
+define('WIK_VERSION','1.1');
 
 function collect() {
 	global $wpdb;

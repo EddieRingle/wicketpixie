@@ -41,8 +41,8 @@ $sources= new SourceAdmin;
         }
         mkdir(ABSPATH.'wp-content/uploads/activity',0777);
     }
-    if(!is_dir(ABSPATH.'wp-content/themes/wicketpixie/app/cache')) {
-        mkdir(ABSPATH.'wp-content/themes/wicketpixie/app/cache',0777);
+    if(!is_dir(TEMPLATEPATH . '/app/cache')) {
+        mkdir(TEMPLATEPATH . '/app/cache',0777);
     }
     
     if(is_user_logged_in()) { ?>

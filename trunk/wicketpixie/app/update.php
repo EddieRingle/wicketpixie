@@ -79,19 +79,6 @@ class SourceUpdate
         }            
     }
     
-    /**
-    * Let's make sure the files don't match so we don't waste that request.
-    **/
-    function cmpcache($f) {
-        $latest = $this->fetchfeed();
-        
-        if(file_get_contents($f) == $latest) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-    
     function cacheit($f) {        
         // Use SimplePie to fetch the latest feed
         $latest = $this->fetchfeed();
@@ -111,15 +98,15 @@ class SourceUpdate
     * Displays the feed entry.
     **/
 	function display() {
-        $f = ABSPATH . (string)'wp-content/themes/wicketpixie/app/cache/statusupdate.cache'; // The location of the feed file
+        $f = TEMPLATEPATH . '/app/cache/statusupdate.cache'; // The location of the feed file
         // Check to see if we're using a recent feed file
         $result = $this->chkfile($f);
         
-        // If feed file is outdated and the cache and latest feed don't match, store a new one
-        if($result == false) {
-            if($this->cmpcache($f) == false) {
-                $this->cacheit($f);
-            }
+        // If feed file is outdated, store a new one
+        if($result == 2) {
+            $this->cacheit($f);
+        } elseif($result == 1) {
+            
         }
         
         // Now prepare to display the latest item
