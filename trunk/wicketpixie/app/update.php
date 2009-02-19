@@ -103,10 +103,8 @@ class SourceUpdate
         $result = $this->chkfile($f);
         
         // If feed file is outdated, store a new one
-        if($result == 2) {
+        if($result == false) {
             $this->cacheit($f);
-        } elseif($result == 1) {
-            
         }
         
         // Now prepare to display the latest item
