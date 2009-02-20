@@ -39,3 +39,11 @@ WORKING - ???, 2009
  a blog post and have Twitter set to be notified by WicketPixie.
  * UPDATED: @<username here> in status updates will now link to that user's
  Twitter profile, if Twitter is set to provide the updates of course.
+ * PERFORMANCE: We are using Google to serve jQuery and favicons, so page load
+ times will have decreased.
+ * FEATURE: The Custom Header feature allows you to add custom code to
+ header.php without modifying it yourself. The code is included within the
+ <head></head> tags.
+ * PERFORMANCE: Status update caching caches the latest feed item from the
+ designated source for status updates. If the cache is older than 45 seconds,
+ a new cache is built.

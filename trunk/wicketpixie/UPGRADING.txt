@@ -5,7 +5,7 @@ WicketPixie plugins from /wp-content/plugins/ and also delete the
 /wp-content/uploads/activity/ folder. You will not have to do this with any
 version of WicketPixie newer than 1.0.1.
 
-Before upgrading to any new version of WicketPixie, save your home.php unless
-otherwise stated here. Please do not save any other file that may get
-overwritten by the new version as there may be important updates required by
-the WicketPixie installation.
+As of WicketPixie 1.1, you no longer need to modify header.php to add in any
+extra code, thanks to the new Custom Header feature. Just be sure to save any
+custom code you had in header.php so you can add it to the Custom Header admin
+page.

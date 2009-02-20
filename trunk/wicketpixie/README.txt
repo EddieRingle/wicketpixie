@@ -23,7 +23,7 @@ then activate the theme.
 UPGRADING
 
 Please see UPGRADING.txt for more information about upgrading to a new version
-WicketPixie.
+of WicketPixie.
 
 CHANGELOG
 
