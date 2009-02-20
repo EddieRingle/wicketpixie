@@ -196,11 +196,22 @@ $settings= array(
         "type"  =>  'checkbox')
 );
 
+$plugins = array(
+
+    array(
+        "name" => "IntenseDebate",
+        "description" => "Activate the IntenseDebate plugin.",
+        "id"    => $shortname."_plug_intensedebate",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"  => 'checkbox')
+);
+
 function wicketpixie_add_admin_footer() {
 	echo "Thank you for using WicketPixie v".WIK_VERSION.", a free premium WordPress theme from <a href='http://chris.pirillo.com/'>Chris Pirillo</a>.<br/>";
 }
 function wicketpixie_add_admin() {
-    global $themename, $shortname, $options, $settings;
+    global $themename, $shortname, $options, $settings, $plugins;
 	if ( isset( $_GET['page'] ) && $_GET['page'] == basename(__FILE__) ) {
         if ( 'save' == $_REQUEST['action'] ) {
             check_admin_referer('wicketpixie-settings');
@@ -263,10 +274,30 @@ function wicketpixie_add_admin() {
 					}
 				}
 			}
-
-			wp_redirect("themes.php?page=functions.php&saved=true");
-			die;
-
+            wp_redirect("themes.php?page=functions.php&saved=true");
+            die;
+        } elseif ( 'save_plugins' == $_REQUEST['action'] ) {
+            check_admin_referer('wicketpixie-settings');
+            foreach ( $plugins as $value ) {
+                update_option( $value['id'], $_REQUEST[ $value['id'] ] );
+            }
+            foreach ( $plugins as $value ) {
+                if( isset( $_REQUEST[ $value['id'] ] ) ) { 
+                    if( $value['type'] == 'checkbox' ) {
+                        if( $value['status'] == 'checked' ) {
+                            update_option( $value['id'], 1 );
+                        } else { 
+                            update_option( $value['id'], 0 ); 
+                        }	
+                    } elseif( $value['type'] != 'checkbox' ) {
+                        update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+                    } else {
+                        update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+                    }
+                }
+            }
+            wp_redirect("themes.php?page=functions.php&saved=true");
+            die;
         } elseif( 'reset' == $_REQUEST['action'] ) {
 			check_admin_referer('wicketpixie-settings');
            	foreach( $options as $value ) {
@@ -278,11 +309,10 @@ function wicketpixie_add_admin() {
     }
 
     add_theme_page($themename." Options", "WicketPixie Options", 'edit_themes', basename(__FILE__), 'wicketpixie_admin');
-
 }
 
 function wicketpixie_admin() {
-    global $themename, $shortname, $options, $settings;
+    global $themename, $shortname, $options, $settings, $plugins;
 
 	$uploaded= opendir( TEMPLATEPATH .'/images/backgrounds/' ); 
 	$images= array();
@@ -426,6 +456,35 @@ function wicketpixie_admin() {
 			<input type="hidden" name="action" value="save_settings" />
 			</p>
 		</form>
+        
+        <br style="clear:both;" />
+		<h2><?php echo $themename; ?> Plugins</h2>
+		<form method="post" style="padding:20px 0 40px;" action="themes.php?page=functions.php&amp;saved=true">
+        <?php wp_nonce_field('wicketpixie-settings'); ?>
+		<table class="form-table">
+			<?php foreach( $plugins as $value ) { ?>
+			<tr valign="top"> 
+				<td>
+					<acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym>
+				</td>
+				<th scope="row" style="font-size:12px; text-align:right;">
+					<?php
+						if (get_option($value['id']) != false) {
+							$status = get_option($value['id']);
+						} else { 
+							$status = $value['std'];
+						}
+					?>
+					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php echo $value['id']; ?>" checked="<?php if($status == 1) { echo 'checked'; } ?>" />
+				</th>
+			</tr>
+			<?php } ?>
+		</table>
+			<p class="submit">
+			<input name="save_plugins" type="submit" value="Save changes" />    
+			<input type="hidden" name="action" value="save_plugins" />
+			</p>
+		</form>
 
 	</div>
 	<?php include_once('app/advert.php'); ?>
@@ -541,6 +600,7 @@ function wicketpixie_admin_head() {
 add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
 add_action('admin_menu', 'wicketpixie_add_admin');
+require( TEMPLATEPATH .'/plugins.php');
 
 require( TEMPLATEPATH .'/app/sourcemanager.php' );
 add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
@@ -549,5 +609,6 @@ add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 
 require( TEMPLATEPATH .'/app/faves.php');
 require( TEMPLATEPATH .'/app/notify.php');
+require( TEMPLATEPATH .'/app/customheader.php');
 require( TEMPLATEPATH .'/app/update.php');
 ?>
