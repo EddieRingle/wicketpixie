@@ -98,7 +98,7 @@ class SourceUpdate
     * Displays the feed entry.
     **/
 	function display() {
-        $f = TEMPLATEPATH . 'app/cache/statusupdate.cache'; // The location of the feed file
+        $f = TEMPLATEPATH . '/app/cache/statusupdate.cache'; // The location of the feed file
         // Check to see if we're using a recent feed file
         $result = $this->chkfile($f);
         

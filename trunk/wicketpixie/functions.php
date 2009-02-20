@@ -544,7 +544,7 @@ add_action('admin_menu', 'wicketpixie_add_admin');
 
 require( TEMPLATEPATH .'/app/sourcemanager.php' );
 add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
-register_activation_hook('app/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
+register_activation_hook('/app/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
 add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 
 require( TEMPLATEPATH .'/app/faves.php');
