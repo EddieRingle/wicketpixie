@@ -466,7 +466,7 @@ class SourceAdmin {
 		$data .= '}' . "\n";
 		$data .= "echo '</ul>';" . "\n";
 		$data .="echo '</div>';" . "\n";
-		$path= ABSPATH . "wp-content/themes/wicketpixie/widgets/" . $cleaned . ".php";
+		$path= TEMPLATEPATH . "widgets/" . $cleaned . ".php";
 		file_put_contents( $path, $data );
 		error_log( 'Creating '.$widget->title.' widget.' );
 	}
@@ -481,14 +481,14 @@ class SourceAdmin {
                 $cleaned= str_replace( " ", "", $cleaned );
                 $data .= "
                 function wicketpixie_$cleaned() {
-                    include( ABSPATH . 'wp-content/themes/wicketpixie/widgets/$cleaned.php');
+                    include( TEMPLATEPATH . 'widgets/$cleaned.php');
                 }";
                 add_option( $cleaned . '-num', 5 );	
                 $this->create_file( $widget );
             }
 		}
 		$data .= ' ?>';
-		file_put_contents( ABSPATH . 'wp-content/themes/wicketpixie/widgets/sources.php', $data );
+		file_put_contents( TEMPLATEPATH . 'widgets/sources.php', $data );
 	}
 
 	/**

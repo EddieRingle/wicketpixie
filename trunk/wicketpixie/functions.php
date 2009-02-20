@@ -186,7 +186,14 @@ $settings= array(
 		"id"    =>  $shortname."_notify",
         "std"   =>  1,
         "status"    => 'checked',
-        "type"  => 'checkbox')
+        "type"  => 'checkbox'),
+    array(
+        "name"  =>  "Display topbar",
+        "description"   => "Check this if you want the hovering black bar to appear on the top of your blog.",
+        "id"    => $shortname."_topbar",
+        "std"   => 1,
+        "status"    => 'checked';
+        "type"  =>  'checkbox')
 );
 
 function wicketpixie_add_admin_footer() {
