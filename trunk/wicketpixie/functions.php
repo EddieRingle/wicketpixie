@@ -192,7 +192,7 @@ $settings= array(
         "description"   => "Check this if you want the hovering black bar to appear on the top of your blog.",
         "id"    => $shortname."_topbar",
         "std"   => 1,
-        "status"    => 'checked';
+        "status"    => 'checked',
         "type"  =>  'checkbox')
 );
 
