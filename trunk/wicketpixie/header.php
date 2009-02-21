@@ -3,6 +3,8 @@
 $blogfeed = "http://feeds.eddieringle.com/EddieRingle";
 $status= new SourceUpdate;
 $sources= new SourceAdmin;
+global $adsense;
+$adsense = new AdsenseAdmin;
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -28,7 +30,11 @@ $sources= new SourceAdmin;
 	
 	<?php
     include_once (TEMPLATEPATH . '/plugins/random-posts.php');
-	include_once (TEMPLATEPATH . '/plugins/related-posts.php');
+    if(get_option('wp_plug_related-posts')) {
+        if(get_option('wp_plug_related-posts') != "0") {
+	        include_once (TEMPLATEPATH . '/plugins/related-posts.php');
+	    }
+	}
 	include_once (TEMPLATEPATH . '/plugins/search-excerpt.php');
 	include_once (TEMPLATEPATH . '/plugins/search-highlight.php');
     include_once (TEMPLATEPATH . '/app/gapikey.php');
@@ -78,9 +84,10 @@ $sources= new SourceAdmin;
 </head>
 
 <body>
+<!-- google_ad_section_start(weight=ignore) -->
     <?php
     if(get_option('wp_topbar')) {
-        if(get_option('wp_topbar') == 1) {
+        if(get_option('wp_topbar') == "1") {
     ?>
 	<!-- topbar -->
 	<div id="topbar">
@@ -192,6 +199,7 @@ $sources= new SourceAdmin;
                 <?php } ?>
 			</div>
 			
+			<!-- google_ad_section_end -->
 			<?php if (function_exists('aktt_latest_tweet')) { ?>				
 			<!-- status -->
 			<div id="status">	
@@ -213,11 +221,22 @@ $sources= new SourceAdmin;
 			<?php } else { ?>
 			<p id="description"><?php bloginfo('description'); ?></p>
 			<?php } ?>
+			<!-- google_ad_section_start(weight=ignore) -->
 			
 			<!-- leaderboard -->
-			<!-- <div id="leaderboard">
-				ad code goes here
-			</div> -->
+			<?php
+			if(is_enabled_adsense() == true) {
+			?>
+			    <div id="leaderboard">
+				<?php $adsense->wp_adsense("blog_header"); ?>
+			    </div>
+			<?php
+			} elseif(is_enabled_adsense() == false) {
+			?>
+			    <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
+			<?php
+			}
+			?>
 			<!-- /leaderboard -->
 			
 		</div>
@@ -235,6 +254,7 @@ $sources= new SourceAdmin;
 	</div>
 	<!-- /nav -->
 
+    <!-- google_ad_section_end -->
 	<!-- wrapper -->
 	<div id="wrapper">
 		

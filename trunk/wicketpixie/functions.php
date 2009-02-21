@@ -1,4 +1,5 @@
 <?php
+require( TEMPLATEPATH .'/app/wipioptions.php');
 include_once( TEMPLATEPATH . '/widgets/sources.php' );
 
 define('WIK_VERSION','1.1');
@@ -202,6 +203,13 @@ $plugins = array(
         "name" => "IntenseDebate",
         "description" => "Activate the IntenseDebate plugin.",
         "id"    => $shortname."_plug_intensedebate",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"  => 'checkbox'),
+    array(
+        "name"  => "WP Related Posts",
+        "description"   => "Generates a list of related posts.",
+        "id"    => $shortname."_plug_related-posts",
         "std"   => 1,
         "status"    => 'checked',
         "type"  => 'checkbox')
@@ -609,6 +617,7 @@ add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 
 require( TEMPLATEPATH .'/app/faves.php');
 require( TEMPLATEPATH .'/app/notify.php');
+require( TEMPLATEPATH .'/app/adsenseads.php');
 require( TEMPLATEPATH .'/app/customheader.php');
 require( TEMPLATEPATH .'/app/update.php');
 ?>

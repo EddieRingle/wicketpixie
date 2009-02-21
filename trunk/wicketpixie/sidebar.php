@@ -1,3 +1,4 @@
+<!-- google_ad_section_start(weight=ignore) -->
 <!-- sidebar1 -->
 <div id="sidebar1">
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar1') ) : ?><?php endif; ?>
@@ -29,6 +30,13 @@
 <!-- sidebar5 -->
 <div id="sidebar5">
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar5') ) : ?><?php endif; ?>
+	<br />
+	<?php
+	if(is_enabled_adsense() == true) {
+	    $adsense = new AdsenseAdmin;
+	    $adsense->wp_adsense('blog_sidebar');
+	}
+	?>
 </div>
 <!-- /sidebar5 -->
 
@@ -40,3 +48,4 @@
 <!-- /sidebar6 -->
 
 <div class="clearer"></div>
+<!-- google_ad_section_end -->

@@ -3,7 +3,7 @@
 			
 			<!-- content -->
 			<div id="content">
-				
+			<!-- google_ad_section_start -->	
 				<?php if (have_posts()) : ?>	
 				<?php while (have_posts()) : the_post(); ?>
                 <?php $postid =  $post->ID; ?>
@@ -32,15 +32,27 @@
 					<div class="clearer"></div>
 					
 					<!-- post-ad -->
-					<!-- <div id="post-ad">
-						ad code goes here
-					</div> -->
+					<?php
+					if(is_enabled_adsense() == true) {
+					?>
+					    <div id="post-ad">
+						    <?php $adsense->wp_adsense('blog_post_side'); ?>
+					    </div>
+					<?php
+					} else {
+					?>
+					    <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
+					<?php
+					}
+					?>
 					<!-- /post-ad -->
 
 					<?php the_content(); ?>					
 					
 				</div>
 				<!-- /post -->
+				
+				<!-- google_ad_section_end -->
 				
 				<!-- post-meta -->
 				<div class="post-meta">

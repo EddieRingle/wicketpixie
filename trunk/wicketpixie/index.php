@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <?php $wp_auth_credit= get_option( 'wp_auth_credit' ); ?>
 
+            <!-- google_ad_section_start -->
 			<!-- content -->
 			<div id="content">
 				
@@ -35,6 +36,7 @@
 				</div>
 				<!-- /post -->
 				
+                <!-- google_ad_section_end -->
 				<?php endwhile; ?>
 
 				<div class="navigation">

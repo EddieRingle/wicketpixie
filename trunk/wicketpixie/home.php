@@ -3,7 +3,8 @@
 
 			<!-- content -->
 			<div id="content">
-				
+		    
+		    <!-- google_ad_section_start -->
 				<?php query_posts('showposts=1'); ?>
 				<?php if (have_posts()) : ?>	
 				<?php while (have_posts()) : the_post(); ?>
@@ -13,6 +14,14 @@
 					
 					<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
+                
+					<div class="post-comments">
+						<ul>
+							<li class="post-comments-count" title="View all 21 Comments"><?php comments_popup_link('0', '1', '%'); ?></li>
+							<li class="post-comments-add" title="Add a Comment"><a href="<?php the_permalink() ?>#respond"><span>&nbsp;</span>Add a Comment</a></li>
+						</ul>
+					</div>
+					
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
@@ -23,21 +32,58 @@
 							at <?php the_time('g:ia') ?></p>
 						<?php } ?>
 					</div>
-					<div class="post-comments">
-						<ul>
-							<li class="post-comments-count" title="View all 21 Comments"><?php comments_popup_link('0', '1', '%'); ?></li>
-							<li class="post-comments-add" title="Add a Comment"><a href="<?php the_permalink() ?>#respond"><span>&nbsp;</span>Add a Comment</a></li>
-						</ul>
-					</div>
 					<div class="clearer"></div>
+					
+					<!-- post-ad -->
+					<?php
+					if(is_enabled_adsense() == true) {
+					?>
+					    <div id="post-ad">
+						    <?php $adsense->wp_adsense('blog_post_side'); ?>
+					    </div>
+					<?php
+					} else {
+					?>
+					    <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
+					<?php
+					}
+					?>
+					<!-- /post-ad -->
+					
 					<div class="KonaBody">
 					<?php the_content('Continue reading &raquo;'); ?>
 					</div>
 				</div>
 				<!-- /post -->
 				
+				<!-- google_ad_section_end -->
 				<?php endwhile; ?>
 				<?php endif; ?>
+				
+				
+				<?php
+				if(is_enabled_adsense() == true) {
+			    ?>
+			        <!-- don't ask why we're using the youtube CSS id for this. -->
+			        <div id="home-youtube-full">
+			        <?php
+			            $adsense->wp_adsense('blog_post_bottom');
+			        ?>
+			        </div>
+			    <?php
+				} elseif(is_enabled_adsense() == false) {
+				?>
+				    <!-- Enable Adsense on the WicketPixie Adsense admin page. -->
+				<?php
+				}
+				?>
+				
+				<div id="home-categories">
+				    <h2>My Videos</h2>
+					<object width="500" height="285"><param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" type="application/x-shockwave-flash" wmode="transparent" width="500" height="285"></embed></object>
+			    </div>
+			    
+				<div class="clearer"></div>
 				
 				<!-- home-photos
 					Replace the user= value with your own Flickr ID. It can be obtained from http://idgettr.com -->
@@ -48,24 +94,6 @@
 				<!-- /home-photos -->
 				
 				<div class="clearer"></div>
-				
-				<!-- youtube
-					width = 500, height = 285 -->
-				<div id="home-youtube-full">
-					<h2>My Videos</h2>
-					<object width="500" height="285"><param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" type="application/x-shockwave-flash" wmode="transparent" width="500" height="285"></embed></object>
-				</div>
-				<!-- /youtube -->
-				
-				<!-- home-categories -->
-				<div id="home-categories">					
-					<h2>Categories</h2>
-					<ul>
-						<?php wp_list_categories('orderby=name&show_count=1&title_li='); ?>
-					</ul>
-					<div class="clearer"></div>					
-				</div>
-				<!-- /home-categories -->
 				
 				<!-- home-tags -->
 				<div id="home-tags">					
