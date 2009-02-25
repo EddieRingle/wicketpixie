@@ -18,7 +18,10 @@ your own at this point.
 INSTALLING
 
 Just place the wicketpixie folder in your /wp-content/themes/ directory and
-then activate the theme.
+then activate the theme. Then make sure the httpd user has write access to
+the widgets folder and it's contents (chmod -R a+rwx) and the app folder
+(chmod a+rwx). Remember, if your web server uses the same user that owns
+the wicketpixie files, there is no need to change permissions.
 
 UPGRADING
 
