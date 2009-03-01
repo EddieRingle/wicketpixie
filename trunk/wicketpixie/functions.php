@@ -2,7 +2,13 @@
 require( TEMPLATEPATH .'/app/wipioptions.php');
 include_once( TEMPLATEPATH . '/widgets/sources.php' );
 
-define('WIK_VERSION','1.1');
+// No spaces in this constant please
+/*
+* a = alpha (unstable, most likely broken)
+* b = beta (testing, works but may have bugs)
+* rc = release candidate (stable testing, minor issues are left)
+*/
+define('WIK_VERSION','1.1b1');
 
 function collect() {
 	global $wpdb;
@@ -173,7 +179,13 @@ $options = array (
 );
 
 $settings= array(
-			
+		
+	array(
+	    "name" => "Blog Feed URL",
+	    "description" => "The Feed URI used in the Subscribe menu and metadata.",
+	    "id" => $shortname."_blog_feed_url",
+	    "std" => "http://feeds.pirillo.com/ChrisPirillo",
+	    "type" => "text"	),	
 	array(
 		"name"	=>	"Show author on posts",
 		"description"	=>	"Whether or not to show who wrote a particular post.",
@@ -212,6 +224,13 @@ $plugins = array(
         "id"    => $shortname."_plug_related-posts",
         "std"   => 1,
         "status"    => 'checked',
+        "type"  => 'checkbox'),
+    array(
+        "name"  => "Search Highlight",
+        "description"   => "Highlights the keywords you searched for in the search results.",
+        "id"    => $shortname."_plug_search_highlight",
+        "std"   => 1,
+        "status"    => 'checked',
         "type"  => 'checkbox')
 );
 
@@ -221,102 +240,215 @@ function wicketpixie_add_admin_footer() {
 function wicketpixie_add_admin() {
     global $themename, $shortname, $options, $settings, $plugins;
 	if ( isset( $_GET['page'] ) && $_GET['page'] == basename(__FILE__) ) {
-        if ( 'save' == $_REQUEST['action'] ) {
+        if ( 'save' == $_POST['action'] ) {
             check_admin_referer('wicketpixie-settings');
             foreach ( $options as $value ) {
-				update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+                if(wp_get_option($value['id'])) {
+				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
+				} else {
+				    if(wp_option_isempty($value['id']) == true) {
+				        wp_update_option($value['id'],$_POST[$value['id']]);
+				    } else {
+				        wp_add_option($value['id'],$_POST[$value['id']]);
+				    }
+				}
 			}
 
             foreach ( $options as $value ) {
-				if( isset( $_REQUEST[ $value['id'] ] ) ) { 
-					update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); 
-				} else { 
-					delete_option( $value['id'] ); 
-				} 
+				if( isset( $_POST[ $value['id'] ] ) ) {
+				    if(wp_get_option($value['id'])) {
+					    wp_update_option( $value['id'], $_POST[ $value['id'] ]  );
+					} else {
+					    if(wp_option_isempty($value['id']) == true) {
+					        wp_update_option($value['id'], $_POST[$value['id']]);
+					    } else {
+					        wp_add_option($value['id'],$_POST[$value['id']]);
+					    }
+					}
+				} else {
+				    if(wp_get_option($value['id'])) {
+					    wp_delete_option( $value['id'] );
+					}
+				}
 			}
 			
-			if( $_REQUEST['no_image'] ) {
-				update_option('wp_body_bg_image', '0' );
+			if( $_POST['no_image'] ) {
+			    if(wp_get_option('wp_body_bg_image')) {
+				    wp_update_option('wp_body_bg_image', '0' );
+				} else {
+				    if(wp_option_isempty('wp_body_bg_image') == true) {
+				        wp_update_option('wp_body_bg_image', '0');
+				    } else {
+				        wp_add_option('wp_body_bg_image','0');
+				    }
+				}
 			}
 			
-			if ( $_REQUEST['completed'] == 1 && $_FILES['wp_body_bg_image']['tmp_name'] != '' ) {
+			if ( $_POST['completed'] == 1 && $_FILES['wp_body_bg_image']['tmp_name'] != '' ) {
 				$new_name= $_FILES['wp_body_bg_image']['name'];
 				$new_home= TEMPLATEPATH . '/images/backgrounds/' . $new_name;
 				if( move_uploaded_file( $_FILES['wp_body_bg_image']['tmp_name'], $new_home ) ) {
-					if ( get_option( 'wp_body_bg_image' ) ) {
-						update_option( 'wp_body_bg_image', $new_name );
+					if ( wp_get_option( 'wp_body_bg_image' ) ) {
+						wp_update_option( 'wp_body_bg_image', $new_name );
 					} else {
-						$deprecated= '';
-					    $autoload= 'no';
-						add_option( 'wp_body_bg_image', $new_name, $deprecated, $autoload );
+					    if(wp_option_isempty('wp_body_bg_image') == true) {
+					        wp_update_option('wp_body_bg_image');
+					    } else {
+						    wp_add_option( 'wp_body_bg_image', $new_name);
+						}
 					}
 				} else {
 					error_log( 'No joy, no uploaded file' );
 				}
 			}
 			
-			if( $_REQUEST['saved_images'] != '' ) {
-				update_option( 'wp_body_bg_image', $_REQUEST['saved_images'] );
+			if( $_POST['saved_images'] != '' ) {
+			    if(wp_get_option('wp_body_bg_image') != false) {
+				    wp_update_option( 'wp_body_bg_image', $_POST['saved_images'] );
+				} else {
+				    if(wp_option_isempty('wp_body_bg_image') == true) {
+				        wp_update_option('wp_body_bg_image', $_POST['saved_images']);
+				    } else {
+				        wp_add_option('wp_body_bg_image', $_POST['saved_images']);
+				    }
+				}
 			}
 			
-			wp_redirect("themes.php?page=functions.php&saved=true");
+			wp_redirect($_SERVER['PHP_SELF'] ."?page=functions.php&saved=true");
 			die;
 		
-		} elseif ( 'save_settings' == $_REQUEST['action'] ) {
+		} elseif ( 'save_settings' == $_POST['action'] ) {
 			check_admin_referer('wicketpixie-settings');
 	        foreach ( $settings as $value ) {
-				update_option( $value['id'], $_REQUEST[ $value['id'] ] );
+	            if(wp_get_option($value['id'])) {
+				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
+				} else {
+				    if(wp_option_isempty($value['id']) == true) {
+				        wp_update_option($value['id'],$_POST[$value['id']]);
+				    } else {
+				        wp_add_option($value['id'],$_POST[$value['id']]);
+				    }
+				}
 			}
 			foreach ( $settings as $value ) {
-				if( isset( $_REQUEST[ $value['id'] ] ) ) { 
+				if( isset( $_POST[ $value['id'] ] ) ) { 
 					if( $value['type'] == 'checkbox' ) {
 						if( $value['status'] == 'checked' ) {
-							update_option( $value['id'], 1 );
-						} else { 
-							update_option( $value['id'], 0 ); 
-						}	
+						    if(wp_get_option($value['id'])) {
+							    wp_update_option( $value['id'], 1 );
+							} else {
+							    if(wp_option_isempty($value['id']) == true) {
+							        wp_update_option($value['id'],1);
+							    } else {
+							        wp_add_option($value['id'], 1);
+							    }
+							}
+						} else {
+						    if(wp_get_option($value['id'])) {
+							    wp_update_option( $value['id'], 0 );
+							} else {
+							    if(wp_option_isempty($value['id']) == true) {
+							        wp_update_option($value['id'],0);
+							    } else {
+							        wp_add_option($value['id'], 0);
+							    }
+							}
+						}
 					} elseif( $value['type'] != 'checkbox' ) {
-						update_option( $value['id'], $_REQUEST[ $value['id'] ]  ); 
-					} else { 
-						update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+					    if(wp_get_option($value['id'])) {
+						    wp_update_option( $value['id'], $_POST[ $value['id'] ]  );
+						} else {
+						    wp_add_option($value['id'],$_POST[$value['id']]);
+						}
+					} else {
+						if(wp_get_option($value['id'])) {
+						    wp_update_option( $value['id'], $_POST[ $value['id'] ]  );
+						} else {
+						    wp_add_option($value['id'],$_POST[$value['id']]);
+						}
 					}
 				}
 			}
-            wp_redirect("themes.php?page=functions.php&saved=true");
+            wp_redirect($_SERVER['PHP_SELF'] ."?page=functions.php&saved=true");
             die;
-        } elseif ( 'save_plugins' == $_REQUEST['action'] ) {
+        } elseif ( 'save_plugins' == $_POST['action'] ) {
             check_admin_referer('wicketpixie-settings');
             foreach ( $plugins as $value ) {
-                update_option( $value['id'], $_REQUEST[ $value['id'] ] );
+                if(wp_get_option($value['id'])) {
+				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
+				} else {
+				    if(wp_option_isempty($value['id']) == true) {
+				        wp_update_option($value['id'],$_POST[$value['id']]);
+				    } else {
+				        wp_add_option($value['id'],$_POST[$value['id']]);
+				    }
+				}
             }
             foreach ( $plugins as $value ) {
-                if( isset( $_REQUEST[ $value['id'] ] ) ) { 
+                if( isset( $_POST[ $value['id'] ] ) ) { 
                     if( $value['type'] == 'checkbox' ) {
                         if( $value['status'] == 'checked' ) {
-                            update_option( $value['id'], 1 );
-                        } else { 
-                            update_option( $value['id'], 0 ); 
+                            if(wp_get_option($value['id'])) {
+				                wp_update_option( $value['id'], 1);
+				            } else {
+				                if(wp_option_isempty($value['id']) == true) {
+				                    wp_update_option($value['id'],1);
+				                } else {
+				                    wp_add_option($value['id'],1);
+				                }
+				            }
+                        } else {
+                            if(wp_get_option($value['id'])) {
+				                wp_update_option( $value['id'], 0);
+				            } else {
+				                if(wp_option_isempty($value['id']) == true) {
+				                    wp_update_option($value['id'],0);
+				                } else {
+				                    wp_add_option($value['id'],0);
+				                }
+				            }
                         }	
                     } elseif( $value['type'] != 'checkbox' ) {
-                        update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+                    if(wp_get_option($value['id'])) {
+				        wp_update_option( $value['id'], $_POST[ $value['id'] ] );
+				    } else {
+				        if(wp_option_isempty($value['id']) == true) {
+				            wp_update_option($value['id'],$_POST[$value['id']]);
+				        } else {
+				            wp_add_option($value['id'],$_POST[$value['id']]);
+				        }
+				    }
                     } else {
-                        update_option( $value['id'], $_REQUEST[ $value['id'] ] ); 
+                        if(wp_get_option($value['id'])) {
+				            wp_update_option( $value['id'], $_POST[ $value['id'] ] );
+				        } else {
+				            if(wp_option_isempty($value['id']) == true) {
+				                wp_update_option($value['id'],$_POST[$value['id']]);
+				            } else {
+				                wp_add_option($value['id'],$_POST[$value['id']]);
+				            }
+				        }
                     }
                 }
             }
-            wp_redirect("themes.php?page=functions.php&saved=true");
+            wp_redirect($_SERVER['PHP_SELF'] ."?page=functions.php&saved=true");
             die;
-        } elseif( 'reset' == $_REQUEST['action'] ) {
+        } elseif( 'reset' == $_POST['action'] ) {
 			check_admin_referer('wicketpixie-settings');
            	foreach( $options as $value ) {
-               	delete_option( $value['id'] ); 
+           	    if(wp_get_option($value['id'])) {
+                   	wp_delete_option( $value['id'] );
+                }
 			}
-			wp_redirect("themes.php?page=functions.php&saved=true");
+			wp_redirect($_SERVER['PHP_SELF'] ."?page=functions.php&saved=true");
 			die;
         }
     }
 
+/*
     add_theme_page($themename." Options", "WicketPixie Options", 'edit_themes', basename(__FILE__), 'wicketpixie_admin');
+*/
+    add_submenu_page('wicketpixie-admin.php','WicketPixie Theme Options','Theme Options','edit_themes',basename(__FILE__),'wicketpixie_admin');
 }
 
 function wicketpixie_admin() {
@@ -341,7 +473,7 @@ function wicketpixie_admin() {
 	
 		<h2>Style Options</h2>
         
-		<form method="post" style="padding:20px 0 10px;" enctype="multipart/form-data" action="themes.php?page=functions.php&amp;saved=true">
+		<form method="post" style="padding:20px 0 10px;" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=functions.php&amp;saved=true">
             <?php wp_nonce_field('wicketpixie-settings'); ?>
 			<table class="form-table">
 
@@ -352,7 +484,7 @@ function wicketpixie_admin() {
 			<tr valign="top"> 
 			    <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
 			    <td style="padding-bottom:10px;">
-			        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option( $value['id'] ) != "") { echo get_option( $value['id'] ); } else { echo $value['std']; } ?>" /><?php if ($value['id'] == 'wp_headersize') { echo 'px'; } ?>
+			        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( wp_get_option( $value['id'] ) != false) { echo wp_get_option( $value['id'] ); } else { echo $value['std']; } ?>" /><?php if ($value['id'] == 'wp_headersize') { echo 'px'; } ?>
 			    </td>
 			</tr>
 
@@ -364,9 +496,9 @@ function wicketpixie_admin() {
 			            <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
 			                <?php foreach ($value['options'] as $option) { ?>
 			                <option<?php
-								if ( $option == get_option( $value['id'] ) ) { 
+								if ( $option == wp_get_option( $value['id'] ) ) { 
 									echo ' selected="selected"'; 
-								} elseif( $option == $value['std'] && !get_option( $value['id'] ) ) {
+								} elseif( $option == $value['std'] && !wp_get_option( $value['id'] ) ) {
 									echo ' selected="selected"';
 								} ?>
 							><?php echo $option; ?></option>
@@ -383,16 +515,16 @@ function wicketpixie_admin() {
 						</th>
 		        <td style="padding-bottom:10px;">
 							<?php
-								$image_check= get_option( 'wp_body_bg_image' );
+								$image_check= wp_get_option( 'wp_body_bg_image' );
 								if( isset( $image_check ) && $image_check != '' ) {
-									$image_check= get_option('wp_body_bg_image');
+									$image_check= wp_get_option('wp_body_bg_image');
 								} else {
 									$image_check= 'false';
 								}
 								//var_dump( $image_check ); exit;
 							?>
-							<?php if( get_option( $value['id'] ) ) { ?>
-							<input type="hidden" name="<?php echo $value['id']; ?>" value="<?php echo get_option( $value['id'] ); ?>">				
+							<?php if( wp_get_option( $value['id'] ) ) { ?>
+							<input type="hidden" name="<?php echo $value['id']; ?>" value="<?php echo wp_get_option( $value['id'] ); ?>">				
 							<?php } ?>
 							<select name="saved_images" id="saved_images">
 								<option value="">Choose an image</option>
@@ -405,7 +537,7 @@ function wicketpixie_admin() {
 									echo $value['std'];
 								} elseif( $image_check!= '0' ) {
 								?>
-								<a href="<?php echo TEMPLATEPATH .'/images/backgrounds/'. get_option( $value['id'] ); ?>" title="<?php echo get_option( $value['id'] ); ?>"><?php echo get_option( $value['id'] ); ?></a>
+								<a href="<?php echo TEMPLATEPATH .'/images/backgrounds/'. wp_get_option( $value['id'] ); ?>" title="<?php echo wp_get_option( $value['id'] ); ?>"><?php echo wp_get_option( $value['id'] ); ?></a>
 								<?php
 								} else {
 									echo 'None'; 
@@ -430,7 +562,7 @@ function wicketpixie_admin() {
 
 		</form>
 
-		<form method="post" action="themes.php?page=functions.php&amp;reset=true" style="padding-bottom:40px;">
+		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=functions.php&amp;reset=true" style="padding-bottom:40px;">
             <?php wp_nonce_field('wicketpixie-settings'); ?>
 			<input name="reset" type="submit" value="Reset Style Options" class="button-secondary" />
 			<input type="hidden" name="action" value="reset" />
@@ -438,24 +570,35 @@ function wicketpixie_admin() {
 
 		<br style="clear:both;" />
 		<h2><?php echo $themename; ?> Settings</h2>
-		<form method="post" style="padding:20px 0 40px;" action="themes.php?page=functions.php&amp;saved=true">
+		<form method="post" style="padding:20px 0 10px;" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=functions.php&amp;saved=true">
         <?php wp_nonce_field('wicketpixie-settings'); ?>
 		<table class="form-table">
 			<?php foreach( $settings as $value ) { ?>
 			<tr valign="top"> 
-				<td>
+				<th scope="row" style="font-size:12px;text-align:left;padding-right:10px;">
 					<acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym>
-				</td>
-				<th scope="row" style="font-size:12px; text-align:right;">
+				</th>
+				<?php
+				if($value['type'] == 'checkbox') {
+				?>
+				<td style="padding-right:10px;">
 					<?php
-						if (get_option($value['id']) != false) {
-							$status = get_option($value['id']);
+						if (wp_get_option($value['id']) != false) {
+							$checked = wp_get_option($value['id']);
 						} else { 
-							$status = $value['std']; 
+							$checked = $value['std']; 
 						}
 					?>
-					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php echo $value['id']; ?>" checked="<?php if($status == 1) { echo 'checked'; } ?>" />
-				</th>
+					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php echo $value['id']; ?>" <?php if($checked === '1') { echo "checked='checked'"; } ?> />
+				<?php
+				} elseif($value['type'] == 'text') {
+				?>
+				<td style="padding-bottom:10px;">
+			        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( wp_get_option( $value['id'] ) != false) { echo wp_get_option( $value['id'] ); } else { echo $value['std']; } ?>" />
+			    </td>
+				<?php
+				}
+				?>
 			</tr>
 			<?php } ?>
 		</table>
@@ -467,24 +610,24 @@ function wicketpixie_admin() {
         
         <br style="clear:both;" />
 		<h2><?php echo $themename; ?> Plugins</h2>
-		<form method="post" style="padding:20px 0 40px;" action="themes.php?page=functions.php&amp;saved=true">
+		<form method="post" style="padding:20px 0 40px;" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=functions.php&amp;saved=true">
         <?php wp_nonce_field('wicketpixie-settings'); ?>
 		<table class="form-table">
 			<?php foreach( $plugins as $value ) { ?>
 			<tr valign="top"> 
-				<td>
+				<th scope="row" style="font-size:12px;text-align:left;padding-right:10px;">
 					<acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym>
-				</td>
-				<th scope="row" style="font-size:12px; text-align:right;">
+				</th>
+				<td style="padding-right:10px;">
 					<?php
-						if (get_option($value['id']) != false) {
-							$status = get_option($value['id']);
+						if (wp_get_option($value['id']) != false) {
+							$checked = wp_get_option($value['id']);
 						} else { 
-							$status = $value['std'];
+							$checked = $value['std']; 
 						}
 					?>
-					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php echo $value['id']; ?>" checked="<?php if($status == 1) { echo 'checked'; } ?>" />
-				</th>
+					<input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php echo $value['id']; ?>" <?php if($checked === '1') { echo "checked='checked'"; } ?> />
+				</td>
 			</tr>
 			<?php } ?>
 		</table>
@@ -503,16 +646,16 @@ function wicketpixie_wp_head() { ?>
 	<?php
 	global $options;
 	foreach ( $options as $value ) {
-	    if ( get_settings( $value['id'] ) === FALSE ) { 
+	    if ( wp_get_option( $value['id'] ) === FALSE ) { 
 			$$value['id'] = $value['std']; 
 		} else { 
-			$$value['id'] = get_settings( $value['id'] ); 
+			$$value['id'] = wp_get_option( $value['id'] ); 
 		} 
 	}
 	
-	$image_check= get_option( 'wp_body_bg_image' );
+	$image_check= wp_get_option( 'wp_body_bg_image' );
 	if( isset( $image_check ) && $image_check != '' ) {
-		$image_check= get_option('wp_body_bg_image');
+		$image_check= wp_get_option('wp_body_bg_image');
 	} else {
 		$image_check= 'false';
 	}
@@ -520,7 +663,7 @@ function wicketpixie_wp_head() { ?>
 	?>
 	
 	<style type="text/css">
-		body { font-family: <?php echo $wp_body_font; ?>; background: <?php echo $wp_body_bg_color; ?> <?php if( get_option('wp_body_bg_image') != 'false' ) { ?>url("<?php bloginfo('template_directory'); ?>/images/backgrounds/<?php echo $wp_body_bg_image; ?>") <?php echo $wp_body_bg_position; ?> <?php echo $wp_body_bg_repeat; ?> 50% 0<?php } ?>; }
+		body { font-family: <?php echo $wp_body_font; ?>; background: <?php echo $wp_body_bg_color; ?> <?php if( wp_get_option('wp_body_bg_image') != 'false' ) { ?>url("<?php bloginfo('template_directory'); ?>/images/backgrounds/<?php echo $wp_body_bg_image; ?>") <?php echo $wp_body_bg_position; ?> <?php echo $wp_body_bg_repeat; ?> 50% 0<?php } ?>; }
 		#logo { font-family: <?php echo $wp_headings_font; ?>; color: <?php echo $wp_color_logo; ?>; }
 		#logo a:link, #logo a:visited, #logo a:active { color: <?php echo $wp_color_logo; ?>; }
 		#logo a:hover { color: #fff; }
@@ -607,6 +750,10 @@ function wicketpixie_admin_head() {
 
 add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
+
+require( TEMPLATEPATH .'/wicketpixie-admin.php');
+add_action('admin_menu','wicketpixie_toplevel_admin');
+
 add_action('admin_menu', 'wicketpixie_add_admin');
 require( TEMPLATEPATH .'/plugins.php');
 

@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= get_option( 'wp_auth_credit' ); ?>
+<?php $wp_auth_credit= wp_get_option( 'wp_auth_credit' ); ?>
 
 			<!-- content -->
 			<div id="content">

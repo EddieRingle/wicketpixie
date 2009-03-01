@@ -3,8 +3,8 @@
 Plugin Name: WicketPixie Source Manager
 Plugin URI: http://chris.pirillo.com
 Description: Management Screen for the sources in WicketPixie
-Author: Chris J. Davis
-Version: 1.0
+Author: Chris J. Davis and Eddie Ringle
+Version: 1.1
 Author URI: http://chris.pirillo.com
 */
 
@@ -72,7 +72,7 @@ class SourceAdmin {
 					}
 				}
 			
-			add_option( 'wik_db_version', $db_version );
+			wp_add_option( 'wik_db_version', $db_version );
 			
 	}
 	
@@ -80,7 +80,7 @@ class SourceAdmin {
 	* Just calling WP's method to add a new menu to the design section.
 	*/
 	function addMenu() {
-		add_options_page( __('WicketPixie Social Me'), __('WicketPixie Social Me'), 9, basename(__FILE__), array( 'SourceAdmin', 'sourceMenu' ) );
+		add_submenu_page('wicketpixie-admin.php', __('WicketPixie Social Me'), __('Social Me Manager'), 9, basename(__FILE__), array( 'SourceAdmin', 'sourceMenu' ) );
 	}
 	
 	/**

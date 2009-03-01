@@ -1,6 +1,10 @@
 <?php
 /* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
-$blogfeed = "http://feeds.eddieringle.com/EddieRingle";
+if(wp_get_option('wp_blog_feed_url') != false) {
+    $blogfeed = wp_get_option('wp_blog_feed_url');
+} else {
+    $blogfeed = 'http://feeds.pirillo.com/ChrisPirillo';
+}
 $status= new SourceUpdate;
 $sources= new SourceAdmin;
 global $adsense;
@@ -30,13 +34,21 @@ $adsense = new AdsenseAdmin;
 	
 	<?php
     include_once (TEMPLATEPATH . '/plugins/random-posts.php');
-    if(get_option('wp_plug_related-posts')) {
-        if(get_option('wp_plug_related-posts') != "0") {
+    if(wp_get_option('wp_plug_related-posts')) {
+        if(wp_get_option('wp_plug_related-posts') != "0") {
 	        include_once (TEMPLATEPATH . '/plugins/related-posts.php');
 	    }
+	} else {
+	    include_once(TEMPLATEPATH .'/plugins/related-posts.php');
 	}
 	include_once (TEMPLATEPATH . '/plugins/search-excerpt.php');
-	include_once (TEMPLATEPATH . '/plugins/search-highlight.php');
+	if(wp_get_option('wp_plug_search_highlight')) {
+	    if(wp_get_option('wp_plug_search_highlight') != "0") {
+	        include_once (TEMPLATEPATH . '/plugins/search-highlight.php');
+	    }
+	} else {
+	    include_once(TEMPLATEPATH .'/plugins/search-highlight.php');
+	}
     include_once (TEMPLATEPATH . '/app/gapikey.php');
     
     clearstatcache();
@@ -86,8 +98,8 @@ $adsense = new AdsenseAdmin;
 <body>
 <!-- google_ad_section_start(weight=ignore) -->
     <?php
-    if(get_option('wp_topbar')) {
-        if(get_option('wp_topbar') == "1") {
+    if(wp_get_option('wp_topbar')) {
+        if(wp_get_option('wp_topbar') == "1") {
     ?>
 	<!-- topbar -->
 	<div id="topbar">
@@ -186,8 +198,8 @@ $adsense = new AdsenseAdmin;
 			
 			<div id="logo">
                 <?php
-                if(get_option('wp_headersize')) {
-                    $fontsize = get_option('wp_headersize');
+                if(wp_get_option('wp_headersize')) {
+                    $fontsize = wp_get_option('wp_headersize');
                     echo "<font style='font-size: ".$fontsize."px;'>";
                     ?>
                         <a href="<?php echo get_option('home'); ?>/"><?php bloginfo('name'); ?></a>

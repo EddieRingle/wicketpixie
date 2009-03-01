@@ -1,49 +1,51 @@
 WICKETPIXIE CHANGELOG
 
-v1.0 - June 7, 2008
- * Initial Release
-
-v1.0.1 - June 8, 2008
- * UPDATED: Updated documentation
- * FIXED: Eliminated activity.php error 
- 
-v1.0.2 - January 4, 2009 by Eddie Ringle
- * UPDATED: Updated Source Manager and Faves Manager for Wordpress 2.7+
- as well as leaving it backwards compatible with Wordpress 2.5+
- * FIXED: Fixed the activity stream, it now shows your activity stream!
- * FEATURE: UI improvements to certain WicketPixie forms. For example,
- if a source has no feed associated, it will show "N/A" on the
- Sources Manager page. Also, you can't flush non-feed streams,
- so the buttons to flush them have been removed.
-
-v1.0.3 - January 7, 2009 by Eddie Ringle
- * FEATURE: Now only the wicketpixie folder is required, and everything
- has been either automated or moved into the theme folder,
- making things much easier on the user.
- * FEATURE: Added a footer notice in the admin area including the current
- version of WicketPixie.
- * FEATURE: More UI improvements, now the all the admin pages WicketPixie
- adds load much faster and do not halt in the middle of loading.
- * UPDATED: Updated SimplePie version.
+WORKING - TBA, 2009
+ * FEATURE: The Custom Header feature allows you to add custom code to
+ header.php without modifying it yourself. The code is included within the
+ <head></head> tags.
+ * ADDED: WicketPixie has it's own top-level menu in WordPress' admin area.
+ * PERFORMANCE: We are using Google to serve jQuery and favicons, so page load
+ times will have decreased.
+ * PERFORMANCE: Status update caching caches the latest feed item from the
+ designated source for status updates. If the cache is older than 45 seconds,
+ a new cache is built.
+ * UPDATED: Twitter post will show "from WicketPixie" now after you publish
+ a blog post and have Twitter set to be notified by WicketPixie.
+ * UPDATED: @<username here> in status updates will now link to that user's
+ Twitter profile, if Twitter is set to provide the updates of course.
+ * UPDATED: Made the search highlight plugin optional.
+ * FIXED: Checkboxes in WicketPixie Options will remember their settings.
 
 v1.0.4 - January 19, 2009 by Eddie Ringle
- * FIXED: Fixed a few CSS issues
  * FEATURE: Plain-text URLs in the Status Updates box are now hyperlinked,
  now only one click is required for visitors.
  * FEATURE: WicketPixie Services Notification System. Basically, when a
  user publishes a blog post, Ping.fm or Twitter, depending on what the
  user setup, is notified and a link to that blog post is sent out.
- 
-WORKING - ???, 2009
- * UPDATED: Twitter post will show "from WicketPixie" now after you publish
- a blog post and have Twitter set to be notified by WicketPixie.
- * UPDATED: @<username here> in status updates will now link to that user's
- Twitter profile, if Twitter is set to provide the updates of course.
- * PERFORMANCE: We are using Google to serve jQuery and favicons, so page load
- times will have decreased.
- * FEATURE: The Custom Header feature allows you to add custom code to
- header.php without modifying it yourself. The code is included within the
- <head></head> tags.
- * PERFORMANCE: Status update caching caches the latest feed item from the
- designated source for status updates. If the cache is older than 45 seconds,
- a new cache is built.
+ * FIXED: Fixed a few CSS issues
+
+v1.0.3 - January 7, 2009 by Eddie Ringle
+ * FEATURE: Now only the wicketpixie folder is required, and everything
+ has been either automated or moved into the theme folder,
+ making things much easier on the user.
+ * ADDED: Added a footer notice in the admin area including the current
+ version of WicketPixie.
+ * PERFORMANCE: More UI improvements, now the all the admin pages WicketPixie
+ adds load much faster and do not halt in the middle of loading.
+ * UPDATED: Updated SimplePie version.
+
+v1.0.2 - January 4, 2009 by Eddie Ringle
+ * FEATURE: UI improvements to certain WicketPixie forms. For example,
+ if a source has no feed associated, it will show "N/A" on the
+ Sources Manager page. Also, you can't flush non-feed streams,
+ so the buttons to flush them have been removed.
+ * UPDATED: Updated Source Manager and Faves Manager for Wordpress 2.7+
+ as well as leaving it backwards compatible with Wordpress 2.5+
+ * FIXED: Fixed the activity stream, it now shows your activity stream!
+v1.0.1 - June 8, 2008
+ * UPDATED: Updated documentation
+ * FIXED: Eliminated activity.php error 
+
+v1.0 - June 7, 2008
+ * Initial Release

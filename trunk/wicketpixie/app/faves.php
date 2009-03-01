@@ -158,7 +158,7 @@ class FavesAdmin
 	}
 	
 	 function addFavesMenu() {
-		add_options_page( __('WicketPixie Faves'), __('WicketPixie Faves'), 9, basename(__FILE__), array( 'FavesAdmin', 'favesMenu' ) );
+		add_submenu_page( 'wicketpixie-admin.php', __('WicketPixie Faves'), __('Faves Manager'), 9, basename(__FILE__), array( 'FavesAdmin', 'favesMenu' ) );
 	}
 	
 	/**

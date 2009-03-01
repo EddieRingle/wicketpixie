@@ -981,6 +981,7 @@ body {
 #content .comment p {
 	margin-bottom: 1.2em;
 	font-size: 1.2em;
+	overflow: hidden;
 }
 
 #content .comment h3, #content .comment h5 {

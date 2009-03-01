@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= get_option( 'wp_auth_credit' ); ?>
+<?php $wp_auth_credit= wp_get_option( 'wp_auth_credit' ); ?>
 			
 			<!-- content -->
 			<div id="content">
@@ -13,6 +13,13 @@
 					
 					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>					
 
+                    <div class="post-comments">
+						<ul>
+							<li class="post-comments-count"><a href="#comments" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
+							<li class="post-comments-add"><a href="<?php the_permalink() ?>#respond" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
+						</ul>
+					</div>
+
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
@@ -23,12 +30,7 @@
 							at <?php the_time('g:ia') ?></p>
 						<?php } ?>
 					</div>
-					<div class="post-comments">
-						<ul>
-							<li class="post-comments-count"><a href="#comments" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
-							<li class="post-comments-add"><a href="<?php the_permalink() ?>#respond" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
-						</ul>
-					</div>
+					
 					<div class="clearer"></div>
 					
 					<!-- post-ad -->

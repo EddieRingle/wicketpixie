@@ -130,7 +130,7 @@ class NotifyAdmin
 	}
 	
 	 function addNotifyMenu() {
-		add_options_page( __('WicketPixie Notifications'), __('WicketPixie Notifications'), 9, basename(__FILE__), array( 'NotifyAdmin', 'notifyMenu' ) );
+		add_submenu_page( 'wicketpixie-admin.php', __('WicketPixie Notifications'), __('Notifications Manager'), 9, basename(__FILE__), array( 'NotifyAdmin', 'notifyMenu' ) );
 	}
 	
 	/**
@@ -138,7 +138,7 @@ class NotifyAdmin
 	*/
 	 function notifyMenu() {
 		$notify= new NotifyAdmin;
-        $wp_notify = get_option('wp_notify');
+        $wp_notify = wp_get_option('wp_notify');
 		if ( $_GET['page'] == basename(__FILE__) ) {
 	        if ( 'add' == $_REQUEST['action'] ) {
 				$notify->add( $_REQUEST );
@@ -213,7 +213,7 @@ class NotifyAdmin
 <?php
 	}
 }
-$wp_notify = get_option('wp_notify');
+$wp_notify = wp_get_option('wp_notify');
 /**
 * This gets called when a post gets published and
 * prepares to notify all services listed in the database

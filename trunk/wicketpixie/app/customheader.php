@@ -3,7 +3,7 @@
 define("CUSTOMPATH",TEMPLATEPATH ."/app/custom");
 function customheader_add_admin()
 {
-	add_theme_page("WicketPixie Custom Header","WicketPixie Custom Header",'edit_themes',basename(__FILE__),'customheader_admin');
+	add_submenu_page('wicketpixie-admin.php',"WicketPixie Custom Header","Custom Header",'edit_themes',basename(__FILE__),'customheader_admin');
 }
 
 function checkfs($q,$file = NULL)

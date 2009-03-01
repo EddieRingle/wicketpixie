@@ -178,7 +178,7 @@ class AdsenseAdmin
 	}
 	
 	 function addAdsenseMenu() {
-		add_options_page( __('WicketPixie Adsense Settings'), __('WicketPixie Adsense Settings'), 9, basename(__FILE__), array( 'AdsenseAdmin', 'adsenseMenu' ) );
+		add_submenu_page( 'wicketpixie-admin.php', __('WicketPixie Adsense Settings'), __('Adsense Settings'), 9, basename(__FILE__), array( 'AdsenseAdmin', 'adsenseMenu' ) );
 	}
 	
 	/**
