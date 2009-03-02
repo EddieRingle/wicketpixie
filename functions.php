@@ -1,4 +1,13 @@
 <?php
+/*
+WicketPixie - A Social Media WordPress Theme
+Licensed under the New BSD License.
+Copyright (c) 2006-2008 Chris Pirillo <chris@pirillo.com>,
+                        Eddie Ringle <eddie@eringle.net>,
+                        Chris J. Davis <cjdavis@viewzi.com>.
+All rights reserved.
+*/
+
 require( TEMPLATEPATH .'/app/wipioptions.php');
 include_once( TEMPLATEPATH . '/widgets/sources.php' );
 
