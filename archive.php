@@ -20,10 +20,10 @@
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
 						<p><strong><?php the_time('l, F jS, Y') ?></strong><br/>
-							by <?php the_author_posts_link(); ?></p>
+							by <?php the_author_posts_link(); ?><?php edit_post_link('Edit', ' - ', ''); ?></p>
 						<?php } else { ?>
 						<p><strong><?php the_time('l, F jS, Y') ?></strong><br/>
-							at <?php the_time('g:ia') ?></p>
+							at <?php the_time('g:ia') ?><?php edit_post_link('Edit', ' - ', ''); ?></p>
 						<?php } ?>
 					</div>
 					<div class="post-comments">
