@@ -11,6 +11,8 @@
 				<?php if (have_posts()) : ?>	
 				<?php while (have_posts()) : the_post(); ?>
 				
+				<?php $adsense->wp_adsense('blog_post_bottom'); ?>
+				
 				<!-- post -->
 				<div class="post">
 					

@@ -7,7 +7,7 @@
 					
 					<?php $hit_count = $wp_query->found_posts; ?>
 					<p style="margin:0 20px 1.8em;">Your search for "<span class="hilite"><?php the_search_query(); ?></span>" returned <?php echo $hit_count . ' results'; ?>.</p>
-					
+				<?php $adsense->wp_adsense('blog_post_bottom'); ?>
 				<?php while (have_posts()) : the_post(); ?>
 				
 				<!-- post -->
