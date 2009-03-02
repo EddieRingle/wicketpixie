@@ -1,6 +1,14 @@
 <?php
 class AdsenseAdmin
 {
+
+    $chrisadsense = array(
+        "pubid" => "pub-7561297527511227",
+        "120x240"   => "3837687211",
+        "250x300"   => "0722333443",
+        "728x90"    => "5760307022",
+        "120x600"   => "7794173943"
+    )
         
 	/**
 	* Here we install the tables and initial data needed to
@@ -173,7 +181,38 @@ class AdsenseAdmin
 
             echo $codeblock;
         } else {
-            echo "<!-- No ad found for this placement. -->";
+            if($placement == 'blog_header') {
+	            $width = "728";
+	            $height = "90";
+	            $ad_id = $chrisadsense['728x90'];
+	        } elseif($placement == 'blog_post_side') {
+	            $width = "120";
+	            $height = "240";
+	            $ad_id = $chrisadsense['120x240'];
+	        } elseif($placement == 'blog_post_bottom') {
+	            $width = "300";
+	            $height = "250";
+	            $ad_id = $chrisadsense['300x250'];
+	        } elseif($placement == 'blog_sidebar') {
+	            $width = "120";
+	            $height = "600";
+	            $ad_id = $chrisadsense['120x600'];
+	        } else {
+	            $width = "";
+	            $height = "";
+	        }
+	        $codeblock = "<script type='text/javascript'><!--
+    google_ad_client = '".$chrisadsense['pubid']."';
+    google_ad_slot = '$ad_id';
+    google_ad_width = $width;
+    google_ad_height = $height;
+    //-->
+    </script>
+    <script type='text/javascript'
+    src='http://pagead2.googlesyndication.com/pagead/show_ads.js'>
+    </script>";
+
+            echo $codeblock;
         }
 	}
 	
