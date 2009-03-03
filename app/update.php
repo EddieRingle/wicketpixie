@@ -1,6 +1,9 @@
 <?php
 class SourceUpdate
 {
+    /**
+    * Checks to see if any source is used for our Updates
+    **/
 	function activated() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
@@ -8,13 +11,19 @@ class SourceUpdate
 		return $check;
 	}
 	
+	/**
+	* Selects the source whose feed will be used for updates
+	**/
 	function select() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
-		$newest= $wpdb->get_results( "SELECT * FROM $table WHERE updates = 1" );
+		$newest= $wpdb->get_results( "SELECT * FROM $table WHERE updates = 1 LIMIT 1" );
 		return $newest;
 	}
     
+    /**
+    * Fetches the latest entry from the source's feed
+    **/
     function fetchfeed() {
         require_once('simplepie.php');
         $feed = $this->select();
@@ -40,8 +49,13 @@ class SourceUpdate
             
             $return = array_slice($update,0,5);
             
+            // This auto-hyperlinks URLs
             $return[1]['title'] = preg_replace('((?:\S)+://\S+[[:alnum:]]/?)', '<a href="\0">\0</a>', $return[1]['title']);
             
+            /**
+            * If Twitter is the source, then we hyperlink any '@username's
+            * to that user's Twitter address.
+            **/
             if( $istwitter == 1 ) {
                 $return[1]['title'] = preg_replace('/(@)([A-Za-z0-9_-]+)/', '<a href="http://twitter.com/\2">\0</a>', $return[1]['title']);
             }
@@ -52,6 +66,9 @@ class SourceUpdate
         }
     }
     
+    /**
+    * Checks the update cache
+    **/
     function chkfile($f) {
         clearstatcache();
         // Check to see if the feed file exists
@@ -79,6 +96,9 @@ class SourceUpdate
         }            
     }
     
+    /**
+    * Calls fetchfeed() to create a new update cache file
+    **/
     function cacheit($f) {        
         // Use SimplePie to fetch the latest feed
         $latest = $this->fetchfeed();
@@ -89,6 +109,9 @@ class SourceUpdate
         touch($f);
     }
     
+    /**
+    * Self-explanatory
+    **/
     function getfeedfile($f) {
         // Simple, open the file and return the contents
         return file_get_contents($f);
@@ -98,7 +121,8 @@ class SourceUpdate
     * Displays the feed entry.
     **/
 	function display() {
-        $f = TEMPLATEPATH . '/app/cache/statusupdate.cache'; // The location of the feed file
+	    // The location of the update cache file
+        $f = TEMPLATEPATH . '/app/cache/statusupdate.cache';
         // Check to see if we're using a recent feed file
         $result = $this->chkfile($f);
         

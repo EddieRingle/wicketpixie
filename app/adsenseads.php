@@ -2,6 +2,7 @@
 class AdsenseAdmin
 {
 
+    // Chris' Adsense Defaults
     $chrisadsense = array(
         "pubid" => "pub-7561297527511227",
         "120x240"   => "3837687211",
@@ -51,6 +52,7 @@ class AdsenseAdmin
 		return $total[0]->count;
 	}
 	
+	// Adds an ad slot to the database
 	 function add( $_REQUEST ) {
 		global $wpdb;
 		
@@ -69,6 +71,7 @@ class AdsenseAdmin
 		}
 	}
 	
+	// Turns WicketPixie's Adsense features on and off
 	function toggle() {
 	    if(wp_get_option('enable_adsense')) {
 	        if(wp_get_option('enable_adsense') == 'true') {
@@ -81,6 +84,7 @@ class AdsenseAdmin
 	    }
 	}
 	
+	// Sets the user's pub-id
 	function pub_id($_REQUEST) {
 	    $args = $_REQUEST;
 	    
@@ -168,6 +172,8 @@ class AdsenseAdmin
 	            $width = "";
 	            $height = "";
 	        }
+	        
+	        // The JavaScript for the ad
 	        $codeblock = "<script type='text/javascript'><!--
     google_ad_client = '$pubid';
     google_ad_slot = '$ad_id';
@@ -358,6 +364,7 @@ class AdsenseAdmin
 	}
 }
 
+// This checks to see if WicketPixie's Adsense features are enabled
 function is_enabled_adsense() {
     if(wp_get_option('enable_adsense')) {
         if(wp_get_option('enable_adsense') == 'true') {

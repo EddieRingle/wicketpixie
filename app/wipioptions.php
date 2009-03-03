@@ -1,5 +1,11 @@
 <?php
+/**
+* WicketPixie File-based Config System
+* Why did I write one when WordPress has one of it's own?
+* Because I can.
+**/
 
+// The directory where options are stored.
 define("WIPIOPTSPATH",TEMPLATEPATH .'/app/wipioptions');
 function checkdir() {
     clearstatcache();
@@ -11,6 +17,9 @@ function checkdir() {
     }
 }
 
+/**
+* Checks to see if that option file contains no data.
+**/
 function wp_option_isempty($option) {
     $dirchk = checkdir();
     
@@ -24,6 +33,10 @@ function wp_option_isempty($option) {
         return false;
     }
 }
+
+/**
+* Returns the contents of an option file
+**/
 function wp_get_option($option) {
     $dirchk = checkdir();
     if($dirchk == false) {
@@ -41,6 +54,9 @@ function wp_get_option($option) {
     }
 }
 
+/**
+* Adds a new option file
+**/
 function wp_add_option($option,$value) {
     $dirchk = checkdir();
     
@@ -52,6 +68,9 @@ function wp_add_option($option,$value) {
     return true;
 }
 
+/**
+* Updates the contents of an existing option file
+**/
 function wp_update_option($option,$newvalue) {
     $dirchk = checkdir();
     
@@ -63,6 +82,9 @@ function wp_update_option($option,$newvalue) {
     }
 }
 
+/**
+* Deletes an option file
+**/
 function wp_delete_option($option) {
     $dirchk = checkdir();
     

@@ -4,7 +4,7 @@ Plugin Name: WicketPixie Source Manager
 Plugin URI: http://chris.pirillo.com
 Description: Management Screen for the sources in WicketPixie
 Author: Chris J. Davis and Eddie Ringle
-Version: 1.1
+Version: 1.1b1
 Author URI: http://chris.pirillo.com
 */
 
@@ -102,6 +102,9 @@ class SourceAdmin {
 		}
 	}
 	
+	/**
+	* Called when we think the caches are getting messy
+	**/
 	function clean_dir() {
         clearstatcache();
     
@@ -471,7 +474,11 @@ class SourceAdmin {
 		error_log( 'Creating '.$widget->title.' widget.' );
 	}
 
-	 function create_widget() {
+    /**
+    * Makes a widget which you can put in your sidebar.
+    * The widget displays the 5 most recent entries in the source's feed.
+    **/
+	function create_widget() {
 		$data= '';
 		$data='<?php';
 		foreach( $this->collect() as $widget ) {
@@ -492,8 +499,8 @@ class SourceAdmin {
 	}
 
 	/**
-	* The admin menu for our sources/activity system.
-	*/
+	* The admin page for our sources/activity system.
+	**/
 	 function sourceMenu() {
 		$sources= new SourceAdmin;
 		if ( $_GET['page'] == basename(__FILE__) ) {

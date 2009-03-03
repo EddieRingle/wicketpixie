@@ -95,28 +95,24 @@ class NotifyAdmin
 	}
 	
 	/**
-	* Method to grab all of our lifestream data from the DB.
-	* <code>
-	* foreach( $sources->show_streams() as $stream ) {
-	*	// do something clever
-	* }
-	* </code>
-	*/
-	 function show_notifications() {
+	* Returns the list of services that WicketPixie will notify when
+	* a blog post is published.
+	**/
+	function show_notifications() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$show= $wpdb->get_results( "SELECT * FROM $table ORDER BY sortorder ASC" );
 		return $show;
 	}
 	
-	 function positions() {
+	function positions() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$numbers= $wpdb->get_results( "SELECT sortorder FROM $table ORDER BY sortorder ASC" );
 		return $numbers;
 	}
 	
-	 function sort( $_REQUEST ) {
+	function sort( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 		$table= $wpdb->prefix . 'wik_notify';
@@ -134,7 +130,8 @@ class NotifyAdmin
 	}
 	
 	/**
-	* The admin menu for our faves system
+	* The admin page where the user selects the services that
+	* should be notified whenever a blog post is published.
 	*/
 	 function notifyMenu() {
 		$notify= new NotifyAdmin;
@@ -213,11 +210,16 @@ class NotifyAdmin
 <?php
 	}
 }
-$wp_notify = wp_get_option('wp_notify');
 /**
-* This gets called when a post gets published and
+* A variable that is checked when we want to know if WicketPixie Notifications
+* are enabled or not.
+**/
+$wp_notify = wp_get_option('wp_notify');
+
+/**
+* This is called when a post is published and
 * prepares to notify all services listed in the database
-*/
+**/
 function prep_notify($id) {
     global $wpdb;
     $table = $wpdb->posts;
@@ -225,7 +227,10 @@ function prep_notify($id) {
     $post['link'] = get_permalink($id);
     $post['id'] = $id;
     
-    // Developer API Keys DO NOT MODIFY FOR ANY REASON!
+    /**
+    * Developer API Keys
+    * DO NOT MODIFY FOR ANY REASON!
+    **/
     $devkeys = array(
     "ping.fm" => "7cf76eb04856576acaec0b2abd2da88b"
     );
@@ -235,8 +240,8 @@ function prep_notify($id) {
 }
 
 /**
-* This calls each services' notification function
-*/
+* This calls each service's notification function
+**/
 function notify($post,$devkeys) {
 $notify = new NotifyAdmin();
     foreach($notify->collect() as $services) {
@@ -341,6 +346,7 @@ function notify_twitter($post,$dbdata) {
 }
 
 add_action ('admin_menu', array( 'NotifyAdmin', 'addNotifyMenu' ) );
+
 if($wp_notify == 1)
 {
     add_action ('publish_post', 'prep_notify');

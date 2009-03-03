@@ -6,6 +6,14 @@ function customheader_add_admin()
 	add_submenu_page('wicketpixie-admin.php',"WicketPixie Custom Header","Custom Header",'edit_themes',basename(__FILE__),'customheader_admin');
 }
 
+/**
+* This function checks if the directory set to CUSTOMPATH exists
+* or the files within it.
+* Arguments:
+* $q: The mode; If 1, then we check for the directory;
+*     If 2, we check for the file
+* $file: A certain file to look for. (optional)(NOT IMPLEMENTED)
+**/
 function checkfs($q,$file = NULL)
 {
     clearstatcache();
@@ -28,8 +36,15 @@ function checkfs($q,$file = NULL)
     }
 }
 
+/**
+* Writes the submitted code to the custom header file.
+* Arguments:
+* $code: The code to be submitted
+* $magick: Whether or not we should strip slashes
+**/
 function writeto($code,$magick = false)
 {
+    // Check and make sure everything is created and writable
     checkfs(1);
     checkfs(2);
     
@@ -37,6 +52,9 @@ function writeto($code,$magick = false)
     file_put_contents(CUSTOMPATH ."/head.php",($magick)?$code:stripslashes($code));
 }
 
+/**
+* This returns the custom code if any. If not, returns an HTML comment.
+**/
 function fetchcustomheader()
 {
     if(file_exists(CUSTOMPATH) && file_exists(CUSTOMPATH .'/head.php')) {
@@ -47,7 +65,7 @@ function fetchcustomheader()
 }
     
 /**
-* The admin menu for our faves system
+* The admin page where the user enters the custom header code.
 */
 function customheader_admin()
 {
@@ -90,7 +108,7 @@ function customheader_admin()
 }
 
 /**
-* This is what is displayed in the header
+* This is called in header.php and displays the custom header code.
 **/
 function wp_customheader()
 {
