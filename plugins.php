@@ -11,4 +11,7 @@ Example:
 if(wp_get_option("wp_plug_intensedebate")) {
     include TEMPLATEPATH ."/plugins/intensedebate/intensedebate.php";
 }
+if(wp_get_option("wp_plug_disqus")) {
+    include TEMPLATEPATH ."/plugins/disqus-comment-system/disqus.php";
+}
 ?>

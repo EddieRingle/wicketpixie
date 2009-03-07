@@ -222,8 +222,15 @@ $plugins = array(
 
     array(
         "name" => "IntenseDebate",
-        "description" => "Activate the IntenseDebate plugin.",
+        "description" => "Use IntenseDebate for comments.",
         "id"    => $shortname."_plug_intensedebate",
+        "std"   => 0,
+        "status"    => 'checked',
+        "type"  => 'checkbox'),
+    array(
+        "name" => "DISQUS Comment System",
+        "description" => "Use DISQUS for comments.",
+        "id"    => $shortname."_plug_disqus",
         "std"   => 1,
         "status"    => 'checked',
         "type"  => 'checkbox'),
