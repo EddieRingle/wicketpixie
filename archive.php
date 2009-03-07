@@ -9,14 +9,14 @@
 				</div>
 				
 				<?php if (have_posts()) : ?>	
-				<?php while (have_posts()) : the_post(); ?>
-				
-				<?php $adsense->wp_adsense('blog_post_bottom'); ?>
+				<?php $adsense_counter = 0; ?>
+		
+		        <?php while (have_posts()) : the_post(); ?>
 				
 				<!-- post -->
 				<div class="post">
 					
-					<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+					<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
@@ -36,11 +36,18 @@
 					</div>
 					<div class="clearer"></div>
 
-					<?php the_content('Continue reading &raquo;'); ?>
+					<div class=KonaBody><?php the_excerpt(); ?></div>
 					
 				</div>
-				<!-- /post -->
 				
+			<?php if ($adsense_counter == 0) { ?>
+				<div align="center" style="margin: 15px 0 30px 0">
+					<?php $adsense->wp_adsense('blog_post_bottom'); ?>
+				</div>
+			<?php } ?>
+
+			<?php $adsense_counter++; ?>
+			
 				<?php endwhile; ?>
 
 				<div class="navigation">
@@ -49,6 +56,8 @@
 				</div>
 
 				<?php endif; ?>
+
+                    <p style="margin-left: 100px"><?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?></p>
 
 			</div>
 			<!-- content -->
