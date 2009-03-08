@@ -71,7 +71,11 @@ $adsense = new AdsenseAdmin;
     google.load("jquery", "1.3.1", {uncompressed:true});
     </script>
 		
-<?php wp_head(); ?>	
+<?php wp_head(); ?>
+<?php
+    echo '\n';
+    wp_customheader();
+?>
 	
     <?php
     $blogurl = get_bloginfo('url');
