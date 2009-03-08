@@ -330,7 +330,7 @@
 
 <!-- /embed_thread_profile.html -->
 
-<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<a href="http://disqus.com" class="dsq-brlink" style="padding: 0 10px !important;">blog comments powered by <span class="logo-disqus">Disqus</span></a>
 <script type="text/javascript" charset="utf-8">
 	var disqusMediaUrl = "<?php echo DISQUS_MEDIA_URL; ?>";
 	var threadEl = document.getElementById('dsq-content');

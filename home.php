@@ -17,8 +17,19 @@
                 
 					<div class="post-comments">
 						<ul>
-							<li class="post-comments-count" title="View all 21 Comments"><?php comments_popup_link('0', '1', '%'); ?></li>
-							<li class="post-comments-add" title="Add a Comment"><a href="<?php the_permalink() ?>#respond"><span>&nbsp;</span>Add a Comment</a></li>
+						<?php
+						if(wp_get_option('wp_plug_disqus')) {
+						    if(wp_get_option('wp_plug_disqus') == 1) {
+						        $disqus = 1;
+						    } else {
+						        $disqus = 0;
+						    }
+						} else {
+						    $disqus = 0;
+						}
+						?>
+							<li class="post-comments-count"><a href="<?php if ($disqus == 1) ? echo '#disqus_thread' : echo '#comments'; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
+							<li class="post-comments-add"><a href="<?php the_permalink(); if ($disqus == 1) ? echo '#disqus_thread' : echo '#respond'; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
 						</ul>
 					</div>
 					

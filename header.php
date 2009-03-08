@@ -66,14 +66,18 @@ $adsense = new AdsenseAdmin;
     if(is_user_logged_in()) { ?>
     <script src="http://wicketpixie.uservoice.com/pages/general/widgets/tab.js?alignment=right&amp;color=000000" type="text/javascript"></script>
     <?php } ?>
-    
     <script type="text/javascript">
     google.load("jquery", "1.3.1", {uncompressed:true});
     </script>
 		
 <?php wp_head(); ?>
+<style type="text/css">
+#disqus_thread #dsq-content {
+    padding: 0 20px !important;
+}
+</style>
 <?php
-    echo '\n';
+    echo "\n";
     wp_customheader();
 ?>
 	

@@ -297,7 +297,9 @@ function dsq_comments_number($comment_text) {
 		$the_permalink = ob_get_contents();
 		ob_end_clean();
 
-		return '</a><noscript><a href="http://' . strtolower(get_option('disqus_forum_url')) . '.' . DISQUS_DOMAIN . '/?url=' . $the_permalink .'">View comments</a></noscript><a class="dsq-comment-count" href="' . $the_permalink . '#disqus_thread">Comments</a>';
+        $num_comments = "?";
+		/*return '</a><noscript><a href="http://' . strtolower(get_option('disqus_forum_url')) . '.' . DISQUS_DOMAIN . '/?url=' . $the_permalink .'">View comments</a></noscript><a class="dsq-comment-count" href="' . $the_permalink . '#disqus_thread">Comments</a>';*/
+		return "<a href='#comments' title='View all $num_comments Comments'>$num_comments</a>";
 	} else {
 		return $comment_text;
 	}
@@ -375,8 +377,8 @@ add_action('admin_notices', 'dsq_check_version');
 
 // Only replace comments if the disqus_forum_url option is set.
 add_filter('comments_template', 'dsq_comments_template');
-add_filter('comments_number', 'dsq_comments_number');
-add_filter('get_comments_number', 'dsq_get_comments_number');
+// add_filter('comments_number', 'dsq_comments_number');
+// add_filter('get_comments_number', 'dsq_get_comments_number');
 add_filter('bloginfo_url', 'dsq_bloginfo_url');
 add_action('loop_start', 'dsq_loop_start');
 

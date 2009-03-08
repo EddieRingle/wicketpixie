@@ -2,14 +2,16 @@
 class AdsenseAdmin
 {
 
-    // Chris' Adsense Defaults
-    $chrisadsense = array(
-        "pubid" => "pub-7561297527511227",
-        "120x240"   => "3837687211",
-        "250x300"   => "0722333443",
-        "728x90"    => "5760307022",
-        "120x600"   => "7794173943"
-    )
+    function __construct() {
+        // Chris' Adsense Defaults
+        $chrisadsense = array(
+            "pubid" => "pub-7561297527511227",
+            "120x240"   => "3837687211",
+            "250x300"   => "0722333443",
+            "728x90"    => "5760307022",
+            "120x600"   => "7794173943"
+        );
+    }
         
 	/**
 	* Here we install the tables and initial data needed to
