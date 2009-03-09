@@ -17,9 +17,9 @@ function customcode_add_admin()
 * Arguments:
 * $q: The mode; If 1, then we check for the directory;
 *     If 2, we check for the file
-* $file: A certain file to look for.
+* $file: A certain file to look for. (not needed if $q == 1)
 **/
-function checkfs($q,$file)
+function checkfs($q,$file = NULL)
 {
     clearstatcache();
     if($q == 1) {
