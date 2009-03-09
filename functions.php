@@ -235,8 +235,15 @@ $plugins = array(
         "status"    => 'checked',
         "type"  => 'checkbox'),
     array(
+        "name"  => "Automatically Hyperlink URLs",
+        "description"   => "Automatically hyperlinks URLs in post contents.",
+        "id"    => $shortname."_plug_autohyperlink-urls",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"  => 'checkbox'),
+    array(
         "name"  => "WP Related Posts",
-        "description"   => "Generates a list of related posts.",
+        "description"   => "Generates a list of related posts. Deselect if you prefer a different related posts plugin. (that works with the commands we use!)",
         "id"    => $shortname."_plug_related-posts",
         "std"   => 1,
         "status"    => 'checked',

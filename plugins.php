@@ -8,10 +8,13 @@ Example:
 "pluginname" is the name of the plugin.
 */
 
-if(wp_get_option("wp_plug_intensedebate")) {
+if(wp_get_option("wp_plug_intensedebate") == "1") {
     include TEMPLATEPATH ."/plugins/intensedebate/intensedebate.php";
 }
-if(wp_get_option("wp_plug_disqus")) {
+if(wp_get_option("wp_plug_disqus") == "1") {
     include TEMPLATEPATH ."/plugins/disqus-comment-system/disqus.php";
+}
+if(wp_get_option("wp_plug_autohyperlink-urls") == "1") {
+    include TEMPLATEPATH ."/plugins/autohyperlink-urls/autohyperlink-urls.php";
 }
 ?>
