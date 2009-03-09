@@ -788,6 +788,6 @@ add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 require( TEMPLATEPATH .'/app/faves.php');
 require( TEMPLATEPATH .'/app/notify.php');
 require( TEMPLATEPATH .'/app/adsenseads.php');
-require( TEMPLATEPATH .'/app/customheader.php');
+require( TEMPLATEPATH .'/app/customcode.php');
 require( TEMPLATEPATH .'/app/update.php');
 ?>

@@ -45,5 +45,7 @@
 <!-- start Vibrant Media IntelliTXT script section --> 
 <script type="text/javascript" src="http://chrispirillo.us.intellitxt.com/intellitxt/front.asp?ipid=16524"></script>
 <!-- end Vibrant Media IntelliTXT script section -->
+<?php echo "\n"; ?>
+<?php wp_customfooter(); ?>
 </body>
 </html>
