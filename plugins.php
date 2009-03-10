@@ -20,4 +20,7 @@ if(wp_get_option("wp_plug_autohyperlink-urls") == "1") {
 if(wp_get_option("wp_plug_kontera") == "1") {
     include TEMPLATEPATH ."/plugins/kontera/kontera.php";
 }
+if(wp_get_option("wp_plug_obfuscate-email") == "1") {
+    include TEMPLATEPATH ."/plugins/obfuscate-email/obfuscate-email.php";
+}
 ?>

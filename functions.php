@@ -249,6 +249,13 @@ $plugins = array(
         "status"    => 'checked',
         "type"  => 'checkbox'),
     array(
+        "name"  => "Obfuscate Email",
+        "description"   => "Modifies email addresses to prevent email harvesting.",
+        "id"    => $shortname."_plug_obfuscate-email",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"  => 'checkbox'),
+    array(
         "name"  => "WP Related Posts",
         "description"   => "Generates a list of related posts. Deselect if you prefer a different related posts plugin. (that works with the commands we use!)",
         "id"    => $shortname."_plug_related-posts",
