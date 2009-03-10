@@ -1,0 +1,61 @@
+
+
+#pal_img { float:left; margin: 10px 4px 2px;}
+
+#color_preview {
+/*
+width: 20px;
+height: 19px;
+border: 1px solid #000000;
+background-color: #0000ff;
+*/
+float: left;
+margin: 8px 0 2px;
+cursor:pointer;
+color: #0000ff;
+text-decoration:underline;
+border-bottom: 1px solid;
+padding-bottom: 1px;
+font-size: 14px;
+
+
+}
+
+#color_value {float:left;}
+
+#palette {
+background-image:url(./pal_bg1.gif);
+width:182px;
+height:129px;
+background-repeat:no-repeat;
+display: none;
+position:absolute;
+
+}
+
+#palette h2 {
+color: #a2c346;
+font-family:Verdana, Arial, Helvetica, sans-serif;
+font-size: 12px;
+font-weight: bold;
+line-height: 24px;
+text-indent: 8px;
+margin: 0 0 5px 0 ;
+
+
+}
+
+div.swatch {
+background-color: #0000ff;
+border: 1px solid #000000;
+width:8px;
+height:10px;
+margin: 0 2px 2px 0;
+padding:0;
+font-size: 2px;
+
+
+}
+
+#swatches {margin-left: 8px;}
+

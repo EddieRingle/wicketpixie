@@ -235,6 +235,13 @@ $plugins = array(
         "status"    => 'checked',
         "type"  => 'checkbox'),
     array(
+        "name" => "Kontera",
+        "description" => "Enable Kontera Advertising.",
+        "id"    => $shortname."_plug_kontera",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"  => 'checkbox'),
+    array(
         "name"  => "Automatically Hyperlink URLs",
         "description"   => "Automatically hyperlinks URLs in post contents.",
         "id"    => $shortname."_plug_autohyperlink-urls",
