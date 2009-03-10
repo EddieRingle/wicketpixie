@@ -23,4 +23,7 @@ if(wp_get_option("wp_plug_kontera") == "1") {
 if(wp_get_option("wp_plug_obfuscate-email") == "1") {
     include TEMPLATEPATH ."/plugins/obfuscate-email/obfuscate-email.php";
 }
+if(wp_get_option("wp_plug_nofollow_navigation") == "1") {
+    include TEMPLATEPATH ."/plugins/nofollow-navi/nofollow-navi.php";
+}
 ?>
