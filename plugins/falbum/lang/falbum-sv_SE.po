@@ -1,0 +1,398 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Falbum\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2005-11-14 22:26+0200\n"
+"Last-Translator: Sebastian Djupsjöbacka <sebastian.djupsjobacka@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Swedish\n"
+"X-Poedit-Country: SWEDEN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:109
+msgid "Options saved"
+msgstr "Inställningarna sparade"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:126
+msgid "Mod rewrite rules updated"
+msgstr "Mod_rewrite-reglerna sparade"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:150
+msgid "Cache cleared"
+msgstr "Cacheminnet rensat"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:138
+msgid "Flickr authorization reset"
+msgstr "Flickr-auktorisationen återställd"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:178
+msgid "Successfully set token"
+msgstr "Koden hämtad och inställd"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+msgid "FAlbum Options"
+msgstr "FAlbum-inställningar"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:229
+msgid "Initial Setup"
+msgstr "Första installationsskedet"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:257
+msgid "Please complete the following step to allow FAlbum to access your Flickr photos."
+msgstr "Slutför det följande skedet för att ge FAlbum tillgång till dina foton på Flickr."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:261
+msgid "Step 1:"
+msgstr "Steg 1:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:261
+msgid "Authorize FAlbum with access your Flickr account"
+msgstr "Auktorisera FAlbum att använda ditt Flickr-konto"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:266
+msgid "Step 2:"
+msgstr "Steg 2:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:369
+msgid "Get Authentication Token"
+msgstr "Hämta auktorisationskod"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+msgid "FAlbum Admin"
+msgstr "FAlbum-administration"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:382
+msgid "Clear Cache"
+msgstr "Töm cacheminnet"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:138
+msgid "Reset Flickr Authorization"
+msgstr "Återställ Flickr-auktorisationen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:292
+msgid "Set Up"
+msgstr "Inställningar"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:296
+msgid "Thumbnail Size"
+msgstr "Tumnagelstorlek"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:322
+msgid "Square"
+msgstr "Kvadrat"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:296
+msgid "Thumbnail"
+msgstr "Tumnagel"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+msgid "Small"
+msgstr "Liten"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:303
+msgid "Size of the thumbnail you want to appear in the album thumbnail page"
+msgstr "Tumnagelsstorlek som du vill att skall användas på sidan med albumtumnaglar"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:307
+msgid "Albums Per Page"
+msgstr "Album per sida"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:309
+msgid "How many albums to show on a page (0 for no paging)"
+msgstr "Hur många album skall visas på en sida (0 för att visa alla på en sida)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:312
+msgid "Photos Per Page"
+msgstr "Foton per sida"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:314
+msgid "How many photos to show on a page (0 for no paging)"
+msgstr "Hur många foton skall visas på en sida (0 för att visa alla foton på en sida)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:111
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:284
+msgid "Recent Images"
+msgstr "Senaste bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:440
+msgid "How many of the most recent photos to show (0 for no recent images / -1 to show all available images)"
+msgstr "Hur många av de senaste fotografierna skall visas (0 för inga bilder / -1 för att visa all tillgängliga bilder)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:318
+msgid "Max Photo Width"
+msgstr "Maximal fotobredd"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:320
+msgid "Maximum photo width in pixels (0 for resizing).  The default size of the images returned from Flickr is 500 pixels."
+msgstr "Maximal fotobredd i pixlar (0 att ändra storlek). Den förvalda storleken från Flickr är 500 pixlar."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:402
+msgid "Display Drop Shadows"
+msgstr "Visa skuggor"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:327
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:338
+msgid "true"
+msgstr "på"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:328
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:339
+msgid "false"
+msgstr "av"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+msgid "Whether or not to show drop shadows under photos"
+msgstr "Skall skuggor visas under fotografierna"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:402
+msgid "Display Photo Sizes"
+msgstr "Visa fotostorlekar"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+msgid "Whether or not to show photo sizes links"
+msgstr "Skall länkar till olika fotostorlekar visas"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:449
+msgid "Display EXIF Data"
+msgstr "Visa EXIF-data"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+msgid "Whether or not to show EXIF link"
+msgstr "Skall EXIF-länken visas eller inte"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+msgid "Show Private"
+msgstr "Visa privata"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+msgid "Whether or not to show your \"private\" Flickr photos"
+msgstr "Skall dina \"privata\" Flickr-foton visas"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:494
+msgid "WordPress User Level"
+msgstr "Användarnivå i WordPress"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:497
+msgid "Set the Wordpress user level that is allowed to view \"private\" Flickr photos if \"Show Private\" is true. <br /> (0 to allow anonymous users)"
+msgstr "Sätt den användarnivå i Wordpress som krävs för att visa \"privata\" Flickr-fotografier ifall \"Visa privata\" är på. <br /> (0 för att tillåta anonyma användare)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:335
+msgid "Use Friendly URLS"
+msgstr "Användarvänliga URLer"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:342
+msgid "Set to true if you want to use \"friendly\" URLs (requires mod_rewrite), false otherwise"
+msgstr "Slå på om du vill använda \"vänliga\" URLer (förutsätter mod_rewrite), i annat fall av"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:488
+msgid "URL Root"
+msgstr "URL-rot"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:354
+msgid ""
+"URL to use as the root for all navigational links.<br /><strong>NOTE:</strong>It is important that you specify something here, for example:<br />\n"
+"If friendly URLs is enabled use - /photos/<br /> \n"
+"If friendly URLs is disabled use - "
+msgstr ""
+"URL att använda som rot för navigationslänkarna.<br /><strong>OBS:</strong>Det är viktigt att du anger något här, som till exempel:<br />\n"
+"Om användarvänliga URLer är på använd - /photos/<br /> \n"
+"Om användarvänliga URLer är av använda - "
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:348
+msgid "If your"
+msgstr "Om din"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:348
+msgid "file was <a href=\"http://codex.wordpress.org/Make_a_Directory_Writable\">writable</a> we could do this automatically, but it isn't so these are the mod_rewrite rules you should have in your <code>.htaccess</code> file. Click in the field and press <kbd>CTRL + a</kbd> to select all."
+msgstr "fil skulle vara <a href=\"http://codex.wordpress.org/Make_a_Directory_Writable\">skrivbar</a> skulle vi göra det här automatiskt, men den är inte det så det här är de mod_rewrite-regler som du borde ha i din <code>.htaccess</code>-fil. Klicka i fältet och tryck <kbd>CTRL + a</kbd> för att välja hela texten."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:366
+msgid "Update Options"
+msgstr "Uppdatera inställningarna"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:110
+msgid "View all recent photos"
+msgstr "Visa alla senaste foton"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:111
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:284
+msgid "Recent Photos"
+msgstr "Senaste foton"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:286
+msgid "Tags"
+msgstr "Taggar"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:138
+msgid "See the most recent photos posted, regardless of which photo set they belong to."
+msgstr "Visa de senaste fotografierna, oberoende av vilket fotouppsättning de hör till."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:152
+msgid "View all pictures in #title#"
+msgstr "Visa alla bilder i #title#"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:151
+msgid "This photoset has #num_photots# pictures"
+msgstr "Den här fotouppsättningen innehåller #num_photots# bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:208
+msgid "View as a slide show"
+msgstr "Visa som diaserie"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+msgid "Photos"
+msgstr "Foton"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:541
+# date_taken - php date format sting
+msgid "M j, Y - g:i A"
+msgstr "M j, Y - g:i A"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:544
+msgid "Taken on: #date_taken#"
+msgstr "Tagen: #date_taken#"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:547
+msgid "Click to view next image"
+msgstr "Klicka för att se följande bild"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:549
+msgid "Click to return to album"
+msgstr "Klicka för att komma tillbaka till albumet"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:569
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:577
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:960
+msgid "Previous"
+msgstr "Föregående"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:569
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:577
+msgid "Previous Photo"
+msgstr "Föregående foto"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:571
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:579
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:584
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:591
+msgid "Album Index"
+msgstr "Albumindex"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:571
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:579
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:584
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:591
+msgid "Return to album index"
+msgstr "Tillbaka till albumindexet"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:573
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:586
+msgid "Next"
+msgstr "Följande"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:573
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:586
+msgid "Next Photo"
+msgstr "Följande foto"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:668
+msgid "Available Sizes"
+msgstr "Tillgängliga storlekar"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:671
+msgid "SQ"
+msgstr "SQ"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:674
+msgid "T"
+msgstr "T"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:677
+msgid "S"
+msgstr "S"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:680
+msgid "Medium"
+msgstr "Medium"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:680
+msgid "M"
+msgstr "M"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:683
+msgid "Large"
+msgstr "Stor"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:683
+msgid "L"
+msgstr "L"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:604
+msgid "Original"
+msgstr "Original"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:686
+msgid "O"
+msgstr "O"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:629
+msgid "See this photo on Flickr"
+msgstr "Se fotot på Flickr"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:637
+msgid "(#num_comments# comment)"
+msgstr "(#num_comments# kommentar)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:639
+msgid "(#num_comments# comments)"
+msgstr "(#num_comments# kommentarer)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+msgid "Show Exif Data"
+msgstr "Visa Exif-data"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+msgid "photos"
+msgstr "foton"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:840
+msgid ""
+"An error occurred.  Here is the response from Flickr:\\n"
+"\\n"
+"#error#\\n"
+"\\n"
+"And here is the response after passing through the parser:\\n"
+"\\n"
+"#response#"
+msgstr ""
+"Ett fel har uppstått. Flickr svarade såhär:\\n"
+"\\n"
+"#error#\\n"
+"\\n"
+"Och här är svaret efter att det passerat genom tolken:\\n"
+"\\n"
+"#response#"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:887
+msgid "Flickr server not responding"
+msgstr "Flickrs server svarar inte"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:891
+msgid "Unable to send request"
+msgstr "Kan inte skicka förfrågan"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:956
+msgid "Page:"
+msgstr "Sida:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:959
+msgid "Go to previous page (#page#)"
+msgstr "Gå till föregående sida (#page#)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:990
+msgid "Go to next page (#page#)"
+msgstr "Gå till följande sida (#page#)"
+

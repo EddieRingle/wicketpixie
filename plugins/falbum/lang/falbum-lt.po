@@ -1,0 +1,510 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FAlbum 0.6.0\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2006-01-16 21:36+0200\n"
+"Last-Translator: Simonas Kiela <skiela@lkb.lt>\n"
+"Language-Team:  <skiela @ lkb . lt>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ./wp\n"
+"X-Poedit-SearchPath-2: ./templates\n"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:111
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:284
+#: FAlbum.class.php:154
+#: FAlbum.class.php:340
+#: FAlbum.class.php:430
+#: FAlbum.class.php:1144
+msgid "Recent Photos"
+msgstr "Paskutinės nuotraukos"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:110
+#: FAlbum.class.php:155
+msgid "View all recent photos"
+msgstr "Peržiūrėti visas paskutines nuotraukas"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:286
+#: FAlbum.class.php:157
+#: FAlbum.class.php:158
+#: FAlbum.class.php:345
+#: FAlbum.class.php:434
+#: FAlbum.class.php:680
+#: FAlbum.class.php:811
+#: FAlbum.class.php:1141
+#: FAlbum.class.php:1149
+msgid "Tags"
+msgstr "Žymelės"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:138
+#: FAlbum.class.php:159
+msgid "See the most recent photos posted, regardless of which photo set they belong to."
+msgstr "Čia galite peržiūrėti visas naujas nuotraukas, nepriklausomai kuriam albumui jos priskirtos."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:152
+#: FAlbum.class.php:197
+msgid "View all pictures in #title#"
+msgstr "Peržiūrėti visas albumo #title# nuotraukas."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:151
+#: FAlbum.class.php:198
+msgid "This photoset has #num_photots# pictures"
+msgstr "Šiame albume yra #num_photots# nuotraukos (-a)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+#: FAlbum.class.php:291
+#: FAlbum.class.php:391
+#: FAlbum.class.php:667
+msgid "Photos"
+msgstr "Nuotraukos"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:208
+#: FAlbum.class.php:292
+msgid "View as a slide show"
+msgstr "Peržiūrėti nuotraukas prezentacijos (slide show) forma"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:671
+#: FAlbum.class.php:613
+msgid "SQ"
+msgstr "SQ"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:322
+#: FAlbum.class.php:614
+#: wordpress-falbum-plugin.php:435
+msgid "Square"
+msgstr "Square"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:674
+#: FAlbum.class.php:622
+msgid "T"
+msgstr "T"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:296
+#: FAlbum.class.php:623
+#: wordpress-falbum-plugin.php:436
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:677
+#: FAlbum.class.php:631
+msgid "S"
+msgstr "M"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: FAlbum.class.php:632
+#: wordpress-falbum-plugin.php:437
+msgid "Small"
+msgstr "Maža"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:680
+#: FAlbum.class.php:641
+msgid "M"
+msgstr "V"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:680
+#: FAlbum.class.php:642
+msgid "Medium"
+msgstr "Vidutinė"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:683
+#: FAlbum.class.php:650
+msgid "L"
+msgstr "D"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:683
+#: FAlbum.class.php:651
+msgid "Large"
+msgstr "Didelė"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:686
+#: FAlbum.class.php:659
+msgid "O"
+msgstr "O"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:604
+#: FAlbum.class.php:660
+msgid "Original"
+msgstr "Originalas"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:544
+#: FAlbum.class.php:673
+msgid "Taken on: #date_taken#"
+msgstr "Nuotrauka daryta: #date_taken#"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:547
+#: FAlbum.class.php:718
+msgid "Click to view next image"
+msgstr "Atversti kitą nuotrauką"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:549
+#: FAlbum.class.php:722
+msgid "Click to return to album"
+msgstr "Sugrįžti į albumą"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:569
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:577
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:960
+#: FAlbum.class.php:739
+#: FAlbum.class.php:1339
+msgid "Previous"
+msgstr "Atgal"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:569
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:577
+#: FAlbum.class.php:739
+msgid "Previous Photo"
+msgstr "Ankstesnė nuotrauka"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:573
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:586
+#: FAlbum.class.php:742
+#: FAlbum.class.php:1371
+msgid "Next"
+msgstr "Pirmyn"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:573
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:586
+#: FAlbum.class.php:742
+msgid "Next Photo"
+msgstr "Kita nuotrauka"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:571
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:579
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:584
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:591
+#: FAlbum.class.php:744
+msgid "Album Index"
+msgstr "Albumo indeksas"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:571
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:579
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:584
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:591
+#: FAlbum.class.php:744
+msgid "Return to album index"
+msgstr "Grįžti į albumo indeksą"
+
+#: FAlbum.class.php:748
+msgid "click here to add a description"
+msgstr "paspauskite, kad įrašytumėte aprašymą"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:668
+#: FAlbum.class.php:757
+msgid "Available Sizes"
+msgstr "Įvairūs dydžiai"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:629
+#: FAlbum.class.php:763
+msgid "See this photo on Flickr"
+msgstr "Peržiūrėti nuotrauką Flickryje"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:637
+#: FAlbum.class.php:765
+msgid "(#num_comments# comment)"
+msgstr "(#num_comments# komentarų)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:639
+#: FAlbum.class.php:767
+msgid "(#num_comments# comments)"
+msgstr "(#num_comments# komentarų)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: FAlbum.class.php:777
+msgid "Show Exif Data"
+msgstr "Peržiūrėti Exif informaciją"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+#: FAlbum.class.php:855
+msgid "photos"
+msgstr "nuotraukos"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:887
+#: FAlbum.class.php:1237
+msgid "fsockopen:Flickr server not responding"
+msgstr "fsockopen:Flickr serveris neatsiliepia"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:891
+#: FAlbum.class.php:1247
+#: FAlbum.class.php:1251
+msgid "fsockopen:Unable to send request"
+msgstr "fsockopen:Negaliu perduoti užklausos"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:956
+#: FAlbum.class.php:1335
+msgid "Page:"
+msgstr "Puslapio Nr.:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:959
+#: FAlbum.class.php:1338
+msgid "Go to previous page (#page#)"
+msgstr "Grįžkite į ankstesnį puslapį (#page#)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:990
+#: FAlbum.class.php:1370
+msgid "Go to next page (#page#)"
+msgstr "Į kitą puslapį (#page#)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:109
+#: wordpress-falbum-plugin.php:183
+msgid "Options saved"
+msgstr "Nustatymai išsaugoti"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:126
+#: wordpress-falbum-plugin.php:234
+msgid "Mod rewrite rules updated"
+msgstr "Mod rewrite rules atnaujintos"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:150
+#: wordpress-falbum-plugin.php:245
+#: wordpress-falbum-plugin.php:257
+msgid "Cache cleared"
+msgstr "Cache išvalytas"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:138
+#: wordpress-falbum-plugin.php:252
+msgid "Flickr authorization reset"
+msgstr "Prašyti Flickr autorizacijos"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:178
+#: wordpress-falbum-plugin.php:284
+msgid "Successfully set token"
+msgstr "Sėkmingai atpažintas (set token)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:280
+#: wordpress-falbum-plugin.php:286
+msgid "You have not Authorized Falbum. Please perform Step 1."
+msgstr "Jūs neautorizavote Falbum. Atlikite žingsnį Nr. 1."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:348
+msgid "FAlbum Options"
+msgstr "FAlbum nustatymai"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:229
+#: wordpress-falbum-plugin.php:355
+msgid "Initial Setup"
+msgstr "Pradinis diegimas"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:257
+#: wordpress-falbum-plugin.php:384
+msgid "Please complete the following step to allow FAlbum to access your Flickr photos."
+msgstr "Atlikite šią užduotį, kad leistumėte FAlbumui žiūrėti Flickr nuotraukas."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:261
+#: wordpress-falbum-plugin.php:388
+msgid "Step 1:"
+msgstr "Žingsnis Nr. 1:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:261
+#: wordpress-falbum-plugin.php:388
+msgid "Authorize FAlbum with access your Flickr account"
+msgstr "Leiskite FAlbumui pasiekti jūsų Flickr sąskaitą"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:266
+#: wordpress-falbum-plugin.php:393
+msgid "Step 2:"
+msgstr "Žingsnis Nr. 2:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:369
+#: wordpress-falbum-plugin.php:393
+msgid "Get Authentication Token"
+msgstr "Gaukite atpažinimo žymelę (authentication token)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:411
+msgid "FAlbum Admin"
+msgstr "FAlbum admin"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:382
+#: wordpress-falbum-plugin.php:414
+msgid "Clear Cache"
+msgstr "Išvalyti cache"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:138
+#: wordpress-falbum-plugin.php:418
+msgid "Reset Flickr Authorization"
+msgstr "Iš naujo nustatyti Flickr autorizaciją"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:427
+msgid "FAlbum Configuration"
+msgstr "FAlbum konfigūracija"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:296
+#: wordpress-falbum-plugin.php:431
+msgid "Thumbnail Size"
+msgstr "Thumbnail dydis"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:303
+#: wordpress-falbum-plugin.php:439
+msgid "Size of the thumbnail you want to appear in the album thumbnail page"
+msgstr "Thumbnail, kurį matysite albume, dydis"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:307
+#: wordpress-falbum-plugin.php:443
+msgid "Albums Per Page"
+msgstr "Albumų viename puslapyje"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:309
+#: wordpress-falbum-plugin.php:445
+msgid "How many albums to show on a page (0 for no paging)"
+msgstr "Kiek albumų rodyti viename puslapyje (0, jei nenorite išskirstyti)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:312
+#: wordpress-falbum-plugin.php:448
+msgid "Photos Per Page"
+msgstr "Nuotraukų viename puslapyje"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:314
+#: wordpress-falbum-plugin.php:450
+msgid "How many photos to show on a page (0 for no paging)"
+msgstr "Kiek nuotraukų rodyti viename puslapyje (0, jei nenorite išskirstyti)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:111
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:284
+#: wordpress-falbum-plugin.php:453
+msgid "Recent Images"
+msgstr "Paskutinės nuotraukos"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:440
+#: wordpress-falbum-plugin.php:455
+msgid "How many of the most recent photos to show (0 for no recent images / -1 to show all available images)"
+msgstr "Kiek paskutinių nuotraukų rodyti? (0, jei nenorite rodyti nei vienos / -1, jei norite rodyti visas)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:318
+#: wordpress-falbum-plugin.php:459
+msgid "Max Photo Width"
+msgstr "Maksimalus nuotraukos plotis"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:320
+#: wordpress-falbum-plugin.php:461
+msgid "Maximum photo width in pixels (0 for resizing).  The default size of the images returned from Flickr is 500 pixels."
+msgstr "Maksimalus nuotraukos plotis pikseliais (0, jei nenorite keisti dydžio).  Pagal nutylėjimą, Flickr rodo 500 pikselių pločio nuotraukas."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:402
+#: wordpress-falbum-plugin.php:465
+msgid "Display Drop Shadows"
+msgstr "Rodyti nuotraukų šešėlius"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:327
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:338
+#: wordpress-falbum-plugin.php:468
+#: wordpress-falbum-plugin.php:479
+#: wordpress-falbum-plugin.php:490
+#: wordpress-falbum-plugin.php:501
+msgid "true"
+msgstr "true"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:328
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:339
+#: wordpress-falbum-plugin.php:469
+#: wordpress-falbum-plugin.php:480
+#: wordpress-falbum-plugin.php:491
+#: wordpress-falbum-plugin.php:502
+#: wordpress-falbum-plugin.php:528
+msgid "false"
+msgstr "false"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:472
+msgid "Whether or not to show drop shadows under photos"
+msgstr "Rodyti, ar nerodyti šešėlių po nuotraukomis"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:402
+#: wordpress-falbum-plugin.php:476
+msgid "Display Photo Sizes"
+msgstr "Rodyti nuotraukų dydžius"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:483
+msgid "Whether or not to show photo sizes links"
+msgstr "Rodyti, ar nerodyti skirtingus nuotraukų dydžius"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:449
+#: wordpress-falbum-plugin.php:487
+msgid "Display EXIF Data"
+msgstr "Rodyti EXIF informaciją"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:494
+msgid "Whether or not to show EXIF link"
+msgstr "Rodyti, ar nerodyti EXIF informaciją"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: wordpress-falbum-plugin.php:498
+msgid "Show Private"
+msgstr "Rodyti Private"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:505
+msgid "Whether or not to show your \"private\" Flickr photos"
+msgstr "Rodyti, ar nerodyti \"private\" Flickr nuotraukas"
+
+#: wordpress-falbum-plugin.php:509
+msgid "View Private Level"
+msgstr "Lygis žiūrėti Private"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:497
+#: wordpress-falbum-plugin.php:512
+msgid "Set the Wordpress user level that is allowed to view \"private\" Flickr photos if \"Show Private\" is true. <br /> (0 to allow anonymous users)"
+msgstr "Nurodykite WordPress vartotojo lygį, kuris gali matyti \"private\" Flickr nuotraukas, jei \"Show Private\" yra true. <br /> (0, jei norite, kad matytų net ir svečias)"
+
+#: wordpress-falbum-plugin.php:516
+msgid "Can Edit Level"
+msgstr "Can Edit Level"
+
+#: wordpress-falbum-plugin.php:519
+msgid "Set the Wordpress user level that is allowed to edit album and photo meta data."
+msgstr "Nurodykite WordPress vartotojo lygį, kuris gali redaguoti albumų ir nuotraukų meta informaciją."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:335
+#: wordpress-falbum-plugin.php:523
+msgid "Use Friendly URLS"
+msgstr "Naudoti Friendly URLS"
+
+#: wordpress-falbum-plugin.php:526
+msgid "title"
+msgstr "title"
+
+#: wordpress-falbum-plugin.php:527
+msgid "numeric"
+msgstr "numeric"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:342
+#: wordpress-falbum-plugin.php:531
+msgid "Set to title or numeric if you want to use \"friendly\" URLs (requires mod_rewrite), false otherwise"
+msgstr "Nurodykite \"title\" ar \"numeric\", jei norite naudoti \"friendly\" URLs (reikia mod_rewrite). Kitu atveju, nurodykite \"false\"."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:488
+#: wordpress-falbum-plugin.php:534
+msgid "URL Root"
+msgstr "URL Root"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:354
+#: wordpress-falbum-plugin.php:539
+#, fuzzy
+msgid ""
+"URL to use as the root for all navigational links.<br /><strong>NOTE:</strong>It is important that you specify something here, for example:<br />\n"
+"If friendly URLs is <strong>enabled</strong> use - /photos/<br /> \n"
+"If friendly URLs is <strong>disabled</strong> use - "
+msgstr ""
+"URL, kurią naudosime kaip root visoms nuorodoms<br /><strong>PASTABA:</strong>Svarbu, kad ką nors čia nurodytumėte, pvz.:<br />\n"
+"Jei friendly URLs yra <strong>įjungtos</strong> naudokite - /photos/<br /> \n"
+"Jei \"friendly\" URLs <strong>išjungtos</strong>, įrašykite - "
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:348
+#: wordpress-falbum-plugin.php:554
+msgid "If your #htaccess# file was <a href=\"http://codex.wordpress.org/Make_a_Directory_Writable\">writable</a> we could do this automatically, but it isn't so these are the mod_rewrite rules you should have in your <code>.htaccess</code> file. Click in the field and press <kbd>CTRL + a</kbd> to select all."
+msgstr "Jei jūsų #htaccess# failą būtų leista <a href=\"http://codex.wordpress.org/Make_a_Directory_Writable\">redaguoti</a>, būtume galėję jį redaguoti automatiškai, bet jo redaguoti neleidžiama, todėl šias mod_rewrite rules įrašykite į <code>.htaccess</code> failo turinį <strong>aukščiau WordPress rules</strong>. Paspauskite langelyje ir paspauskite <kbd>CTRL + a</kbd>, kad pažymėtumėte viską."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:366
+#: wordpress-falbum-plugin.php:563
+msgid "Update Options"
+msgstr "Atnaujinti nustatymus"
+

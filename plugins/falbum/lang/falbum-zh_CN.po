@@ -1,0 +1,566 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FAlbum 0.6.5\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2006-06-03 04:34+0800\n"
+"Last-Translator: purelife <hutkyo@gmail.com>\n"
+"Language-Team:  <elijah . cornell @ gmail . com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: .\\wp\n"
+"X-Poedit-SearchPath-2: .\\styles\\default\n"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:111
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:284
+#: FAlbum.class.php:163
+#: FAlbum.class.php:349
+#: FAlbum.class.php:447
+#: FAlbum.class.php:1350
+msgid "Recent Photos"
+msgstr "最新上传"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:110
+#: FAlbum.class.php:164
+msgid "View all recent photos"
+msgstr "显示所有最新照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:286
+#: FAlbum.class.php:166
+#: FAlbum.class.php:167
+#: FAlbum.class.php:354
+#: FAlbum.class.php:451
+#: FAlbum.class.php:703
+#: FAlbum.class.php:877
+#: FAlbum.class.php:1347
+#: FAlbum.class.php:1355
+msgid "Tags"
+msgstr "标签Tags"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:138
+#: FAlbum.class.php:168
+msgid "See the most recent photos posted, regardless of which photo set they belong to."
+msgstr "查看更多最新上传照片，不管它属于哪个相册。"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:152
+#: FAlbum.class.php:206
+msgid "View all pictures in #title#"
+msgstr "显示 #title# 中的所有照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:151
+#: FAlbum.class.php:207
+msgid "This photoset has #num_photots# pictures"
+msgstr "这个相册有 #num_photots# 张照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+#: FAlbum.class.php:300
+#: FAlbum.class.php:408
+#: FAlbum.class.php:690
+msgid "Photos"
+msgstr "相册"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:208
+#: FAlbum.class.php:301
+msgid "View as a slide show"
+msgstr "以Flash相册方式浏览"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:671
+#: FAlbum.class.php:630
+msgid "SQ"
+msgstr "方"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:322
+#: FAlbum.class.php:631
+#: wordpress-falbum-plugin.php:499
+msgid "Square"
+msgstr "正方形缩图"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:674
+#: FAlbum.class.php:640
+msgid "T"
+msgstr "缩"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:296
+#: FAlbum.class.php:641
+#: wordpress-falbum-plugin.php:500
+msgid "Thumbnail"
+msgstr "缩略图"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:677
+#: FAlbum.class.php:650
+msgid "S"
+msgstr "小"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: FAlbum.class.php:651
+#: wordpress-falbum-plugin.php:501
+msgid "Small"
+msgstr "较小尺寸"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:680
+#: FAlbum.class.php:661
+msgid "M"
+msgstr "中"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:680
+#: FAlbum.class.php:662
+msgid "Medium"
+msgstr "中等尺寸"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:683
+#: FAlbum.class.php:671
+msgid "L"
+msgstr "大"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:683
+#: FAlbum.class.php:672
+msgid "Large"
+msgstr "较大尺寸"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:686
+#: FAlbum.class.php:681
+msgid "O"
+msgstr "原"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:604
+#: FAlbum.class.php:682
+msgid "Original"
+msgstr "原尺寸"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:544
+#: FAlbum.class.php:696
+msgid "Taken on: #date_taken#"
+msgstr "拍摄于: #date_taken#"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:547
+#: FAlbum.class.php:741
+msgid "Click to view next image"
+msgstr "点击查看下一张照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:549
+#: FAlbum.class.php:745
+msgid "Click to return to album"
+msgstr "点击返回到相册"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:569
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:577
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:960
+#: FAlbum.class.php:762
+#: FAlbum.class.php:1543
+msgid "Previous"
+msgstr "前一页"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:569
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:577
+#: FAlbum.class.php:762
+msgid "Previous Photo"
+msgstr "前一个照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:573
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:586
+#: FAlbum.class.php:765
+#: FAlbum.class.php:1575
+msgid "Next"
+msgstr "下一页"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:573
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:586
+#: FAlbum.class.php:765
+msgid "Next Photo"
+msgstr "下一个照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:571
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:579
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:584
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:591
+#: FAlbum.class.php:767
+msgid "Album Index"
+msgstr "相册首页"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:571
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:579
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:584
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:591
+#: FAlbum.class.php:767
+msgid "Return to album index"
+msgstr "返回到相册首页"
+
+#: FAlbum.class.php:772
+msgid "click here to add a description"
+msgstr "点击此处添加一段描述"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:668
+#: FAlbum.class.php:781
+msgid "Available Sizes"
+msgstr "可以选择的照片尺寸"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:629
+#: FAlbum.class.php:819
+msgid "See this photo on Flickr"
+msgstr "在Flickr上观看此照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: FAlbum.class.php:829
+msgid "Show Exif Data"
+msgstr "显示 EXIF 信息"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+#: FAlbum.class.php:921
+msgid "photos"
+msgstr "照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:887
+#: FAlbum.class.php:1443
+msgid "fsockopen:Flickr server not responding"
+msgstr "fsockopen:Flickr 服务器没有回应"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:891
+#: FAlbum.class.php:1453
+msgid "fsockopen:Unable to send request"
+msgstr "fsockopen:不能发送请求"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:956
+#: FAlbum.class.php:1539
+msgid "Page:"
+msgstr "页数:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:959
+#: FAlbum.class.php:1542
+msgid "Go to previous page (#page#)"
+msgstr "前一页 (#page#)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:990
+#: FAlbum.class.php:1574
+msgid "Go to next page (#page#)"
+msgstr "下一页 (#page#)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:109
+#: wordpress-falbum-plugin.php:200
+msgid "Options saved"
+msgstr "修改已保存"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:126
+#: wordpress-falbum-plugin.php:255
+msgid "Mod rewrite rules updated"
+msgstr "Mod rewrite 规则已设定"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:150
+#: wordpress-falbum-plugin.php:266
+#: wordpress-falbum-plugin.php:278
+msgid "Cache cleared"
+msgstr "缓存已清空"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:138
+#: wordpress-falbum-plugin.php:273
+msgid "Flickr authorization reset"
+msgstr "重新设置 Flick 认证"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:178
+#: wordpress-falbum-plugin.php:305
+msgid "Successfully set token"
+msgstr "成功设置标记"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:280
+#: wordpress-falbum-plugin.php:307
+msgid "You have not Authorized Falbum. Please perform Step 1."
+msgstr "您还没有被Falbum认证，请执行“第一步”。"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:375
+msgid "FAlbum Options"
+msgstr "FAlbum 设置"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:229
+#: wordpress-falbum-plugin.php:382
+msgid "Initial Setup"
+msgstr "初始设置"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:257
+#: wordpress-falbum-plugin.php:411
+msgid "Please complete the following step to allow FAlbum to access your Flickr photos."
+msgstr "请完成以下步骤以使Falbum能调用您的Flickr照片。"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:261
+#: wordpress-falbum-plugin.php:415
+msgid "Step 1:"
+msgstr "第一步:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:261
+#: wordpress-falbum-plugin.php:415
+msgid "Authorize FAlbum with access your Flickr account"
+msgstr "批准Falbum使用你的Flickr账号"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:266
+#: wordpress-falbum-plugin.php:420
+msgid "Step 2:"
+msgstr "第二步:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:369
+#: wordpress-falbum-plugin.php:420
+msgid "Get Authentication Token"
+msgstr "获得认证代号"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:438
+msgid "FAlbum Admin"
+msgstr "FAlbum 管理"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:382
+#: wordpress-falbum-plugin.php:441
+msgid "Clear Cache"
+msgstr "清空缓存"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:138
+#: wordpress-falbum-plugin.php:445
+msgid "Reset Flickr Authorization"
+msgstr "重新设置Flickr授权"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:454
+msgid "FAlbum Configuration"
+msgstr "FAlbum 配置"
+
+#: wordpress-falbum-plugin.php:458
+msgid "Enable globally"
+msgstr "使用全局应用"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:327
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:338
+#: wordpress-falbum-plugin.php:461
+#: wordpress-falbum-plugin.php:532
+#: wordpress-falbum-plugin.php:543
+#: wordpress-falbum-plugin.php:554
+#: wordpress-falbum-plugin.php:565
+msgid "true"
+msgstr "是"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:328
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:339
+#: wordpress-falbum-plugin.php:462
+#: wordpress-falbum-plugin.php:533
+#: wordpress-falbum-plugin.php:544
+#: wordpress-falbum-plugin.php:555
+#: wordpress-falbum-plugin.php:566
+#: wordpress-falbum-plugin.php:593
+msgid "false"
+msgstr "否"
+
+#: wordpress-falbum-plugin.php:465
+msgid "Enables FAlbum methods to be used in any WordPress page (ex. sidebar.php)."
+msgstr "使 Falbum 能被用于任何 WordPress 页面 (比如: sidebar.php)."
+
+#: wordpress-falbum-plugin.php:469
+msgid "Selected style"
+msgstr "选择样式"
+
+#: wordpress-falbum-plugin.php:491
+msgid "Select the current style."
+msgstr "选择当前的样式。"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:296
+#: wordpress-falbum-plugin.php:495
+msgid "Thumbnail Size"
+msgstr "缩略图尺寸"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:303
+#: wordpress-falbum-plugin.php:503
+msgid "Size of the thumbnail you want to appear in the album thumbnail page"
+msgstr "选择您想要发表在相册的缩略图尺寸"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:307
+#: wordpress-falbum-plugin.php:507
+msgid "Albums Per Page"
+msgstr "每页显示相册数"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:309
+#: wordpress-falbum-plugin.php:509
+msgid "How many albums to show on a page (0 for no paging)"
+msgstr "每页显示多少相册 (0 表示不分页)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:312
+#: wordpress-falbum-plugin.php:512
+msgid "Photos Per Page"
+msgstr "每页显示照片数"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:314
+#: wordpress-falbum-plugin.php:514
+msgid "How many photos to show on a page (0 for no paging)"
+msgstr "每页显示多少照片 (0 表示不分页)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:111
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:284
+#: wordpress-falbum-plugin.php:517
+msgid "Recent Images"
+msgstr "最新上传的图像"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:440
+#: wordpress-falbum-plugin.php:519
+msgid "How many of the most recent photos to show (0 for no recent images / -1 to show all available images)"
+msgstr "显示多少个最新上传照片 (0 表示不显示最新上传图像 / -1 表示显示所有可用的图像)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:318
+#: wordpress-falbum-plugin.php:523
+msgid "Max Photo Width"
+msgstr "最大照片宽度"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:320
+#: wordpress-falbum-plugin.php:525
+msgid "Maximum photo width in pixels (0 for no resizing).  The default size of the images returned from Flickr is 500 pixels."
+msgstr "照片最长边宽度(单位：像素)。 (0 表示不需要设定)   默认尺寸一般设置为500像素，从Flickr调用过来的照片尺寸就为500像素。"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:402
+#: wordpress-falbum-plugin.php:529
+msgid "Display Drop Shadows"
+msgstr "显示阴影"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:536
+msgid "Whether or not to show drop shadows under photos"
+msgstr "是否在照片下显示阴影"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:402
+#: wordpress-falbum-plugin.php:540
+msgid "Display Photo Sizes"
+msgstr "显示照片的尺寸"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:547
+msgid "Whether or not to show photo sizes links"
+msgstr "是否显示照片所有尺寸的链接"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:449
+#: wordpress-falbum-plugin.php:551
+msgid "Display EXIF Data"
+msgstr "显示 EXIF 信息"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:558
+msgid "Whether or not to show EXIF link"
+msgstr "是否显示 EXIF 链接"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: wordpress-falbum-plugin.php:562
+msgid "Show Private"
+msgstr "显示私有照片"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:569
+msgid "Whether or not to show your \"private\" Flickr photos"
+msgstr "是否显示你的 \"private\" Flickr 照片"
+
+#: wordpress-falbum-plugin.php:573
+msgid "View Private Level"
+msgstr "查看私有照片的级别"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:497
+#: wordpress-falbum-plugin.php:576
+msgid "Set the Wordpress user level that is allowed to view \"private\" Flickr photos if \"Show Private\" is true. <br /> (0 to allow anonymous users)"
+msgstr "设置能查看私有( \"private\")照片的 Wordpress 用户级别(如果“显示私有照片”选为“是”的话). <br /> (0 表示允许任何匿名用户)"
+
+#: wordpress-falbum-plugin.php:580
+msgid "Can Edit Level"
+msgstr "有编辑权限的级别"
+
+#: wordpress-falbum-plugin.php:583
+msgid "Set the Wordpress user level that is allowed to edit album and photo meta data."
+msgstr "设置Wordpress用户级别也就是说具有编辑相册和照片权限的级别。"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:335
+#: wordpress-falbum-plugin.php:588
+msgid "Use Friendly URLS"
+msgstr "使用友好 URLS"
+
+#: wordpress-falbum-plugin.php:591
+msgid "title"
+msgstr "名称"
+
+#: wordpress-falbum-plugin.php:592
+msgid "numeric"
+msgstr "数字"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:342
+#: wordpress-falbum-plugin.php:596
+msgid "Set to title or numeric if you want to use \"friendly\" URLs (requires mod_rewrite), false otherwise"
+msgstr "设置是使用 名称 还是使用 数字 来组建 友好URLS(需要mod_rewrite支持)，选择 否 的话将使用其他方式。"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:488
+#: wordpress-falbum-plugin.php:600
+msgid "URL Root"
+msgstr "相册访问的根目录"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:354
+#: wordpress-falbum-plugin.php:605
+msgid "URL to use as the root for all navigational links.<br /><strong>NOTE:</strong>It is important that you specify something here, for example:<br />If friendly URLs is <strong>enabled</strong> use - /photos/<br />If friendly URLs is <strong>disabled</strong> use - "
+msgstr "URL用来设置所有导航链接的根目录。<br /><strong>注意:</strong>这是非常重要的设置, 例如:<br />如果友好 URLs <strong>启用</strong> 将填入 - /photos/<br />如果友好 URLs <strong>停用</strong> 将使用 - "
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:348
+#: wordpress-falbum-plugin.php:615
+msgid "If your #htaccess# file was <a href=\"http://codex.wordpress.org/Make_a_Directory_Writable\">writable</a> we could do this automatically, but it isn't so these are the mod_rewrite rules you should have in your <code>.htaccess</code> file. Click in the field and press <kbd>CTRL + a</kbd> to select all."
+msgstr "如果你的 #htaccess# 文件是 <a href=\"http://codex.wordpress.org/Make_a_Directory_Writable\">可写</a> 我们将能自动配置好它,  可是假如未能成功的话，您可以试着手动修改位于Wordpress安装根目录下<code>.htaccess</code>文件里的 mod_rewrite 规则.点击以下区域并使用快捷键 <kbd>CTRL + a</kbd> 选择所有."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:366
+#: wordpress-falbum-plugin.php:624
+msgid "Update Options"
+msgstr "更新选项"
+
+#: styles/default/error.tpl.php:4
+#: .\styles\default/error.tpl.php:4
+msgid "FAlbum has encounted an error while processing your request."
+msgstr "FAlbum在处理您的请求的时候发现一个错误。"
+
+#: styles/default/photo.tpl.php:10
+#: .\styles\default/photo.tpl.php:10
+msgid "Size"
+msgstr "尺寸"
+
+#: styles/default/photo.tpl.php:15
+#: .\styles\default/photo.tpl.php:15
+msgid "Position"
+msgstr "位置"
+
+#: styles/default/photo.tpl.php:16
+#: .\styles\default/photo.tpl.php:16
+msgid "Float left"
+msgstr "左浮动"
+
+#: styles/default/photo.tpl.php:17
+#: .\styles\default/photo.tpl.php:17
+msgid "Float right"
+msgstr "右浮动"
+
+#: styles/default/photo.tpl.php:18
+#: .\styles\default/photo.tpl.php:18
+msgid "Center"
+msgstr "居中"
+
+#: styles/default/photo.tpl.php:20
+#: .\styles\default/photo.tpl.php:20
+msgid "Link to"
+msgstr "链接到"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+#: styles/default/photo.tpl.php:21
+#: .\styles\default/photo.tpl.php:21
+msgid "Photo"
+msgstr "照片页面"
+
+#: styles/default/photo.tpl.php:22
+#: .\styles\default/photo.tpl.php:22
+msgid "Index page"
+msgstr "像册首页"
+
+#: styles/default/photo.tpl.php:27
+#: .\styles\default/photo.tpl.php:27
+msgid "Copy and paste the following line into your post"
+msgstr "复制下面这行代码粘贴到您需要发表的文章里"
+
+#: styles/default/photo.tpl.php:101
+#: .\styles\default/photo.tpl.php:101
+msgid "Comments"
+msgstr "评论"
+

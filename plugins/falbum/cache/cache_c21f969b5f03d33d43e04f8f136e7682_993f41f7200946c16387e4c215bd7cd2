@@ -1,0 +1,100 @@
+                     -1192375558<!-- Start of FAlbum -->
+<div id='falbum' class='falbum'>
+
+	<div class='falbum-navigationBar' id='pages-top'>Page:&nbsp;<a class='curPageLink' href='/test/falbum/tests/standalone.php?page=1' id='curpage-top' title=''>1</a><a class='otherPageLink' href='/test/falbum/tests/standalone.php?page=2' id='page2-top' title=''>2</a><span id='space_pagenext_top' class='buttonspace'>&nbsp;</span><a class='buttonLink' href='/test/falbum/tests/standalone.php?page=2' id='pagenext-top' title='Go to next page (2)'>Next</a></div>
+
+
+	
+	<div class='falbum-album'>
+		<div class="falbum-tn-border-t">
+			<div class='falbum-thumbnail-ds'>
+				<a href='/test/falbum/tests/standalone.php?show=recent' title='Recent Photos'>
+					<img src='http://farm1.static.flickr.com/101/303303737_1e03472752_t.jpg' alt='' />
+				</a>
+			</div>
+		</div>	
+		<h3 class='falbum-title'>
+			<a href='/test/falbum/tests/standalone.php?show=recent' title='View all recent photos'>Recent Photos</a>
+							/&nbsp;<a href='/test/falbum/tests/standalone.php?show=tags' title='Tags'>Tags</a>
+					</h3>	
+		<div class='falbum-meta'>
+					</div>	
+		<div class='falbum-album-description'>
+			See the most recent photos posted, regardless of which photo set they belong to.		</div>	
+	</div>
+	
+	<div class='falbum-album'>
+		<div class="falbum-tn-border-t">
+			<div class='falbum-thumbnail-ds'>
+				<a href='/test/falbum/tests/standalone.php?album=72157594171336581' title='Gillette'>
+					<img src='http://farm1.static.flickr.com/63/157582747_dbaa23bd26_t.jpg' alt='' />
+				</a>
+			</div>
+		</div>	
+		<h3 class='falbum-title'>
+			<a href='/test/falbum/tests/standalone.php?album=72157594171336581' title='View all pictures in Gillette'>Gillette</a>
+					</h3>	
+		<div class='falbum-meta'>
+			This photoset has 5 pictures		</div>	
+		<div class='falbum-album-description'>
+					</div>	
+	</div>
+	
+	<div class='falbum-album'>
+		<div class="falbum-tn-border-t">
+			<div class='falbum-thumbnail-ds'>
+				<a href='/test/falbum/tests/standalone.php?album=1390875' title='IBM Tech Conf - Maimi, FL'>
+					<img src='http://farm1.static.flickr.com/24/64402164_e58e5f0a84_t.jpg' alt='' />
+				</a>
+			</div>
+		</div>	
+		<h3 class='falbum-title'>
+			<a href='/test/falbum/tests/standalone.php?album=1390875' title='View all pictures in IBM Tech Conf - Maimi, FL'>IBM Tech Conf - Maimi, FL</a>
+					</h3>	
+		<div class='falbum-meta'>
+			This photoset has 9 pictures		</div>	
+		<div class='falbum-album-description'>
+					</div>	
+	</div>
+	
+	<div class='falbum-album'>
+		<div class="falbum-tn-border-t">
+			<div class='falbum-thumbnail-ds'>
+				<a href='/test/falbum/tests/standalone.php?album=1057028' title='Pumpkin Patch 2005'>
+					<img src='http://farm1.static.flickr.com/27/48620965_7cff40f013_t.jpg' alt='' />
+				</a>
+			</div>
+		</div>	
+		<h3 class='falbum-title'>
+			<a href='/test/falbum/tests/standalone.php?album=1057028' title='View all pictures in Pumpkin Patch 2005'>Pumpkin Patch 2005</a>
+					</h3>	
+		<div class='falbum-meta'>
+			This photoset has 1 pictures		</div>	
+		<div class='falbum-album-description'>
+					</div>	
+	</div>
+	
+	<div class='falbum-album'>
+		<div class="falbum-tn-border-t">
+			<div class='falbum-thumbnail-ds'>
+				<a href='/test/falbum/tests/standalone.php?album=535315' title='JavaOne2005'>
+					<img src='http://farm1.static.flickr.com/18/23263228_ecec98dd0a_t.jpg' alt='' />
+				</a>
+			</div>
+		</div>	
+		<h3 class='falbum-title'>
+			<a href='/test/falbum/tests/standalone.php?album=535315' title='View all pictures in JavaOne2005'>JavaOne2005</a>
+					</h3>	
+		<div class='falbum-meta'>
+			This photoset has 23 pictures		</div>	
+		<div class='falbum-album-description'>
+					</div>	
+	</div>
+
+
+	<div class='falbum-navigationBar' id='pages-bottom'>Page:&nbsp;<a class='curPageLink' href='/test/falbum/tests/standalone.php?page=1' id='curpage-bottom' title=''>1</a><a class='otherPageLink' href='/test/falbum/tests/standalone.php?page=2' id='page2-bottom' title=''>2</a><span id='space_pagenext_bottom' class='buttonspace'>&nbsp;</span><a class='buttonLink' href='/test/falbum/tests/standalone.php?page=2' id='pagenext-bottom' title='Go to next page (2)'>Next</a></div>
+
+
+</div>
+<!-- End of Falbum -->
+

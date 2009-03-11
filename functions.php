@@ -249,6 +249,13 @@ $plugins = array(
         "status"    => 'checked',
         "type"  => 'checkbox'),
     array(
+        "name"  => "FAlbum",
+        "description"   => "Integrate Flickr albums into your blog.",
+        "id"    => $shortname."_plug_falbum",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"  => 'checkbox'),
+    array(
         "name"  => "All In One SEO Pack",
         "description"   => "It's filled with SEO goodies.",
         "id"    => $shortname."_plug_all_in_one_seo_pack",

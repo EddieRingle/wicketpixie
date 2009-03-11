@@ -1,0 +1,73 @@
+0.7.1 - Change - Updated database calls to work with WordPress 2.3+
+0.7.0 - New - Added the ability to use a custom style per WP theme
+        New - AJAX style
+        Fix - Changed to a new API key
+0.6.9 - Fix - Incorrect file_get_contents call in FAlbum.class.php file
+        Fix - Issue with image titles only displaying the first character
+0.6.8 - Fix - 'Available Sizes' link issues - Thanks littleram
+		Fix - Photo annotations mouse issue - Thanks littleram
+		Change - Updated German localization - Florian Kruse
+		Change - Removed dependancy of XPath.class.php file
+		Change - Switched to use Flickr's new serialized PHP response format
+		Change - Abstracted the last of the WordPress dependancies
+		         This allows FAlbum to be used without a WordPress install 			
+		New - Russian localization - andrey.grevtsov.ru
+		New - Japanese localization -	www.orioa.com	
+0.6.7 - Fix - Error: 97 - Missing Signature
+		Fix - Issue with not being able to select different styles from the WP admin page
+		Change - Switched to use JQuery instead of Prototype as JS lib
+		Change - Swtiched back to having the default falbum.css to not be a php file. 
+				 This should fix the issue some people were having with not being able to get the css file because of their hosts settings 
+0.6.6 - New - French language files - Thanks to MLL
+		New - Chinese language files - Thanks to Chaoyu	
+		Fix - Friendly URL "Photoset not found" issue when pageing is disabled
+		Fix - HTML code in comments not displaying correctly
+0.6.5 - Fix - Incorrect 404 header statuses from WordPress 2.0+ (Fixes IE 404 issues)
+		Fix - Cleaned up pages to validate against XHTML Strict 1.1
+		New - Flickr comments - added the ability to display Flickr comments on the photo page
+		New - FAlbum styles - added the ablility to select from multiple display styles and templates
+		New - Post helper / Inline post macro to dispaly and link to FAlbum photos - Initial work (still buggy)
+0.6.4 - Fixed missing include in album.php
+0.6.3 - Fixed tag wrapping issue
+		Fixed duplicate random photos
+		Added option to enable FAlbum globally
+0.6.2 - Private photos user level fix
+0.6.1 - Localization fix
+0.6.0 - Restructured code to abstract WordPress specific calls
+		Abstracted html into templates
+		WP2.0 support
+0.5.6 - Change Flickr urls to new struture
+      	Fixed issue where .htaccess not being updated every time
+0.5.5 - Fixed issue when album title contained non-ascii charactors
+		Fixed issue with viewing albums in non-friendly url mode
+		Fixed error when returning EXIF data
+		Fixed issue with slideshow not showing
+		Fixed issue where the same XPath object was being created twice per request
+0.5.4 - Code clean up / CSS clean up (K2 theme support)
+		Fixed a caching issue during authentication
+		Fixed a couple paging issues cause be new friendly urls
+		Lowered WP FAlbum Options page to level 8
+		Moved WP FAlbum Options page to WP Options tab
+		Cleaner error messages
+0.5.3 - Fix friendly url bug - if multiple album/photo names where the same
+		Fix added check to use curl if available
+		Revalidated to XHTML 1.0 Strict
+0.5.2 - Friendly url improvments
+		Private photos @ set WP user levels
+		Added option to disable or limit the number of recent photos
+		Fixed minor page nubering issue
+		Fixed issue on photo page when many tags were shown and not properly wrapping
+		Added fa_showRandom method
+0.5.1 - Fixed php tag issue on admin page (missing text on admin page)
+		Fix friendly url / .htaccess issue
+		Photoset/tag name now shows in breadcrum instead of "Index"
+0.5.0 - Added tag cloud / Dutch localization
+0.4.4 - Tag search fix / German localization
+0.4.3 - XML errors, html in titles, descriptions, and notes fixes
+0.4.2 -	Friendly URL fixes, XML error fixes
+0.4.1 -	Localization clean up, added option to disable dropshadows
+0.4 -	Localization, many bug fixes
+0.3 -	Switched to use Flickr new auth api
+0.2 -	Added Admin page
+		Switched caching to be stored in the database
+0.1 - 	Init Release

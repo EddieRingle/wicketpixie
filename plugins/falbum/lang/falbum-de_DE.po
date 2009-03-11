@@ -1,0 +1,516 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: FAlbum 0.6.0\n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2006-01-16 09:21+0100\n"
+"Last-Translator: Karsten <karsten @ bloq7.de>\n"
+"Language-Team: bloqseven <karsten @ bloq7.de>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: deutsch\n"
+"X-Poedit-Country: DEUTSCHLAND\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPath-1: ./wp\n"
+"X-Poedit-SearchPath-2: ./templates\n"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:111
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:284
+#: FAlbum.class.php:154
+#: FAlbum.class.php:340
+#: FAlbum.class.php:430
+#: FAlbum.class.php:1144
+msgid "Recent Photos"
+msgstr "Neuste Bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:110
+#: FAlbum.class.php:155
+msgid "View all recent photos"
+msgstr "Zeige die neusten Bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:286
+#: FAlbum.class.php:157
+#: FAlbum.class.php:158
+#: FAlbum.class.php:345
+#: FAlbum.class.php:434
+#: FAlbum.class.php:680
+#: FAlbum.class.php:811
+#: FAlbum.class.php:1141
+#: FAlbum.class.php:1149
+msgid "Tags"
+msgstr "Tags"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:138
+#: FAlbum.class.php:159
+msgid "See the most recent photos posted, regardless of which photo set they belong to."
+msgstr "Die neusten Fotos - unabhängig von den Sets denen sie zugeordnet wurden."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:152
+#: FAlbum.class.php:197
+msgid "View all pictures in #title#"
+msgstr "Zeige alle Bilde von #title#"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:151
+#: FAlbum.class.php:198
+msgid "This photoset has #num_photots# pictures"
+msgstr "Dieses Album hat #num_photots# Bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+#: FAlbum.class.php:291
+#: FAlbum.class.php:391
+#: FAlbum.class.php:667
+msgid "Photos"
+msgstr "Bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:208
+#: FAlbum.class.php:292
+msgid "View as a slide show"
+msgstr "Bilder in einer Slideshow ansehen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:671
+#: FAlbum.class.php:613
+msgid "SQ"
+msgstr "Q"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:322
+#: FAlbum.class.php:614
+#: wordpress-falbum-plugin.php:435
+msgid "Square"
+msgstr "Quadrat"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:674
+#: FAlbum.class.php:622
+msgid "T"
+msgstr "T"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:296
+#: FAlbum.class.php:623
+#: wordpress-falbum-plugin.php:436
+msgid "Thumbnail"
+msgstr "Thumbnail"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:677
+#: FAlbum.class.php:631
+msgid "S"
+msgstr "K"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: FAlbum.class.php:632
+#: wordpress-falbum-plugin.php:437
+msgid "Small"
+msgstr "Klein"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:680
+#: FAlbum.class.php:641
+msgid "M"
+msgstr "M"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:680
+#: FAlbum.class.php:642
+msgid "Medium"
+msgstr "Mittel"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:683
+#: FAlbum.class.php:650
+msgid "L"
+msgstr "G"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:683
+#: FAlbum.class.php:651
+msgid "Large"
+msgstr "Gross"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:686
+#: FAlbum.class.php:659
+msgid "O"
+msgstr "O"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:604
+#: FAlbum.class.php:660
+msgid "Original"
+msgstr "Original"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:544
+#: FAlbum.class.php:673
+msgid "Taken on: #date_taken#"
+msgstr "Geschossen am: #date_taken# Uhr"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:547
+#: FAlbum.class.php:718
+msgid "Click to view next image"
+msgstr "Klick Dich ins n&auml;chste Bild"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:549
+#: FAlbum.class.php:722
+msgid "Click to return to album"
+msgstr "Klick um zum Album zur&zuml;ck zu kehren "
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:569
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:577
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:960
+#: FAlbum.class.php:739
+#: FAlbum.class.php:1339
+msgid "Previous"
+msgstr "Vorherige"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:569
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:577
+#: FAlbum.class.php:739
+msgid "Previous Photo"
+msgstr "Vorheriges Bild"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:573
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:586
+#: FAlbum.class.php:742
+#: FAlbum.class.php:1371
+msgid "Next"
+msgstr "N&auml;chste"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:573
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:586
+#: FAlbum.class.php:742
+msgid "Next Photo"
+msgstr "N&auml;chstes Bild"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:571
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:579
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:584
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:591
+#: FAlbum.class.php:744
+msgid "Album Index"
+msgstr "Album-Index"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:571
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:579
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:584
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:591
+#: FAlbum.class.php:744
+msgid "Return to album index"
+msgstr "Zur&uuml;ck zum Album-Index"
+
+#: FAlbum.class.php:748
+msgid "click here to add a description"
+msgstr "klick hier um eine Beschreibung einzutragen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:668
+#: FAlbum.class.php:757
+msgid "Available Sizes"
+msgstr "Verfügbare Größen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:629
+#: FAlbum.class.php:763
+msgid "See this photo on Flickr"
+msgstr "Dieses Bild bei Flickr ansehen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:637
+#: FAlbum.class.php:765
+msgid "(#num_comments# comment)"
+msgstr "(#num_comments# Kommentar)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:639
+#: FAlbum.class.php:767
+msgid "(#num_comments# comments)"
+msgstr "(#num_comments# Kommentare)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: FAlbum.class.php:777
+msgid "Show Exif Data"
+msgstr "Zeige Exif Daten"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:803
+#: FAlbum.class.php:855
+msgid "photos"
+msgstr "Bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:887
+#: FAlbum.class.php:1237
+#, fuzzy
+msgid "fsockopen:Flickr server not responding"
+msgstr "Flickr Server antwortet nicht"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:891
+#: FAlbum.class.php:1247
+#: FAlbum.class.php:1251
+#, fuzzy
+msgid "fsockopen:Unable to send request"
+msgstr "Anfrage konnte nicht gesendet werden"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:956
+#: FAlbum.class.php:1335
+msgid "Page:"
+msgstr "Seite:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:959
+#: FAlbum.class.php:1338
+msgid "Go to previous page (#page#)"
+msgstr "Gehe zur vorherigen Seite (#page#)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:990
+#: FAlbum.class.php:1370
+msgid "Go to next page (#page#)"
+msgstr "Gehe zur n&auml;chsten Seite (#page#)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:109
+#: wordpress-falbum-plugin.php:183
+msgid "Options saved"
+msgstr "Optionen gespeichert"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:126
+#: wordpress-falbum-plugin.php:234
+msgid "Mod rewrite rules updated"
+msgstr "Mod rewrite Regeln wurden upgedated"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:150
+#: wordpress-falbum-plugin.php:245
+#: wordpress-falbum-plugin.php:257
+msgid "Cache cleared"
+msgstr "Cache wurde geleert"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:138
+#: wordpress-falbum-plugin.php:252
+msgid "Flickr authorization reset"
+msgstr "Flickr Autorisation zurücksetzen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:178
+#: wordpress-falbum-plugin.php:284
+msgid "Successfully set token"
+msgstr "Erfolgreich Token gesetzt"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:280
+#: wordpress-falbum-plugin.php:286
+msgid "You have not Authorized Falbum. Please perform Step 1."
+msgstr "You have not Authorized Falbum. Please perform Step 1."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:348
+msgid "FAlbum Options"
+msgstr "FAlbum Einstellungen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:229
+#: wordpress-falbum-plugin.php:355
+msgid "Initial Setup"
+msgstr "Erstes Setup"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:257
+#: wordpress-falbum-plugin.php:384
+msgid "Please complete the following step to allow FAlbum to access your Flickr photos."
+msgstr "Bitte, komplettiere den folgenen Schritt um FAlbum den Zugriff auf Deine Bilder zu erlauben"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:261
+#: wordpress-falbum-plugin.php:388
+msgid "Step 1:"
+msgstr "Schritt 1:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:261
+#: wordpress-falbum-plugin.php:388
+msgid "Authorize FAlbum with access your Flickr account"
+msgstr "Autorisiere FAlbum durch den Zugriff auf Deinen Flickr Account"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:266
+#: wordpress-falbum-plugin.php:393
+msgid "Step 2:"
+msgstr "Schritt 2:"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:369
+#: wordpress-falbum-plugin.php:393
+msgid "Get Authentication Token"
+msgstr "Erhalte Autorisation Token"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:411
+msgid "FAlbum Admin"
+msgstr "FAlbum Admin"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:382
+#: wordpress-falbum-plugin.php:414
+msgid "Clear Cache"
+msgstr "Cache leeren"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:138
+#: wordpress-falbum-plugin.php:418
+msgid "Reset Flickr Authorization"
+msgstr "setze Flickr Autorisation zürück"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:222
+#: wordpress-falbum-plugin.php:427
+#, fuzzy
+msgid "FAlbum Configuration"
+msgstr "FAlbum Einstellungen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:296
+#: wordpress-falbum-plugin.php:431
+msgid "Thumbnail Size"
+msgstr "Thumbnail Grösse"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:303
+#: wordpress-falbum-plugin.php:439
+msgid "Size of the thumbnail you want to appear in the album thumbnail page"
+msgstr "Größe des Thumbnails auf der Thumbnail Seite"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:307
+#: wordpress-falbum-plugin.php:443
+msgid "Albums Per Page"
+msgstr "Albumen pro Seite"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:309
+#: wordpress-falbum-plugin.php:445
+msgid "How many albums to show on a page (0 for no paging)"
+msgstr "Wie viele Alben sollen pro Seite angezeigt werden (0 um nicht auf Seiten zu verteilen)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:312
+#: wordpress-falbum-plugin.php:448
+msgid "Photos Per Page"
+msgstr "Bilder pro Seite"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:314
+#: wordpress-falbum-plugin.php:450
+msgid "How many photos to show on a page (0 for no paging)"
+msgstr "Wie viele Bilder sollen pro Seite angezeigt werden (0 um nicht auf Seiten zu verteilen)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:111
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum.php:284
+#: wordpress-falbum-plugin.php:453
+msgid "Recent Images"
+msgstr "Neuste Bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:440
+#: wordpress-falbum-plugin.php:455
+msgid "How many of the most recent photos to show (0 for no recent images / -1 to show all available images)"
+msgstr "Wie viele neuste Bilder sollen angezeigt werden  (0 für keine neusten Bilder / -1 um alle zu zeigen)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:318
+#: wordpress-falbum-plugin.php:459
+msgid "Max Photo Width"
+msgstr "Maximale Bildbreite"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:320
+#: wordpress-falbum-plugin.php:461
+msgid "Maximum photo width in pixels (0 for resizing).  The default size of the images returned from Flickr is 500 pixels."
+msgstr "Maximale Bildbreite in Pixel (0 um die Flickr Standardgrösse von 500px zu nehmen)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:402
+#: wordpress-falbum-plugin.php:465
+msgid "Display Drop Shadows"
+msgstr "Schatten anzeigen"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:327
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:338
+#: wordpress-falbum-plugin.php:468
+#: wordpress-falbum-plugin.php:479
+#: wordpress-falbum-plugin.php:490
+#: wordpress-falbum-plugin.php:501
+msgid "true"
+msgstr "ja"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:328
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:339
+#: wordpress-falbum-plugin.php:469
+#: wordpress-falbum-plugin.php:480
+#: wordpress-falbum-plugin.php:491
+#: wordpress-falbum-plugin.php:502
+#: wordpress-falbum-plugin.php:528
+msgid "false"
+msgstr "nein"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:472
+msgid "Whether or not to show drop shadows under photos"
+msgstr "Soll um die Bilder ein Schatten angezeigt werden?"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:402
+#: wordpress-falbum-plugin.php:476
+msgid "Display Photo Sizes"
+msgstr "Fotogrößen anzeigen?"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:483
+msgid "Whether or not to show photo sizes links"
+msgstr "Die unterschiedlichen verfügbaren Bildgrössen in der Einzelbildansicht anlinken."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:449
+#: wordpress-falbum-plugin.php:487
+msgid "Display EXIF Data"
+msgstr "EXIF Daten anzeigen?"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:494
+msgid "Whether or not to show EXIF link"
+msgstr "EXIF Link anzeigen?"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:324
+#: wordpress-falbum-plugin.php:498
+msgid "Show Private"
+msgstr "Private Bilder"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:331
+#: wordpress-falbum-plugin.php:505
+msgid "Whether or not to show your \"private\" Flickr photos"
+msgstr "Sollen als \"Privat\" markierte Flickr Bilder angezeigt werden?"
+
+#: wordpress-falbum-plugin.php:509
+msgid "View Private Level"
+msgstr "Zeige privates Level"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:497
+#: wordpress-falbum-plugin.php:512
+msgid "Set the Wordpress user level that is allowed to view \"private\" Flickr photos if \"Show Private\" is true. <br /> (0 to allow anonymous users)"
+msgstr "Ab welchen Wordpress- Userlevel dürfen private Fotos angezeigt werden (wenn die anzeige privater Fotos aktiviert sind) (0 um jeden die Bilder zu zeigen)"
+
+#: wordpress-falbum-plugin.php:516
+msgid "Can Edit Level"
+msgstr "Level kann editiert werden"
+
+#: wordpress-falbum-plugin.php:519
+msgid "Set the Wordpress user level that is allowed to edit album and photo meta data."
+msgstr "Das benoetigte Userlevel um Album etc zu editieren setzen."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:335
+#: wordpress-falbum-plugin.php:523
+msgid "Use Friendly URLS"
+msgstr "Schönere URLs"
+
+#: wordpress-falbum-plugin.php:526
+msgid "title"
+msgstr "Titel"
+
+#: wordpress-falbum-plugin.php:527
+#, fuzzy
+msgid "numeric"
+msgstr "Nummer"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:342
+#: wordpress-falbum-plugin.php:531
+#, fuzzy
+msgid "Set to title or numeric if you want to use \"friendly\" URLs (requires mod_rewrite), false otherwise"
+msgstr "Willst du permalinkmäßige URLs für Deine Galerie (erfordert mod_rewrite)"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:488
+#: wordpress-falbum-plugin.php:534
+msgid "URL Root"
+msgstr "URL Root"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:354
+#: wordpress-falbum-plugin.php:539
+#, fuzzy
+msgid ""
+"URL to use as the root for all navigational links.<br /><strong>NOTE:</strong>It is important that you specify something here, for example:<br />\n"
+"\tIf friendly URLs is <strong>enabled</strong> use - /photos/<br /> \n"
+"\t\t\t\t\tIf friendly URLs is <strong>disabled</strong> use - "
+msgstr ""
+"URL die als Basis für alle Navigationslinks genutzt wird<br />\n"
+"Schöne URLs aktiviert - nutze deinedomain.de/photos/<br /> \n"
+"Schöne URLs deaktiviert - nutze deinedomain.de"
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:348
+#: wordpress-falbum-plugin.php:554
+#, fuzzy
+msgid "If your #htaccess# file was <a href=\"http://codex.wordpress.org/Make_a_Directory_Writable\">writable</a> we could do this automatically, but it isn't so these are the mod_rewrite rules you should have in your <code>.htaccess</code> file. Click in the field and press <kbd>CTRL + a</kbd> to select all."
+msgstr "Datei <a href=\"http://codex.wordpress.org/Make_a_Directory_Writable\">beschreibbar</a> wär könnten wir das automatisch machen. Da dem so nicht ist, kopier bitte folgenden Code, und trag ihn in Deiner <code>.htaccess</code> ein."
+
+# C:\apachefriends\xampp\htdocs\wordpress\wp-content\plugins\falbum/falbum-plugin.php:366
+#: wordpress-falbum-plugin.php:563
+msgid "Update Options"
+msgstr "Optionen aktualisieren"
+
