@@ -23,7 +23,10 @@ if(wp_get_option("wp_plug_kontera") == "1") {
 if(wp_get_option("wp_plug_obfuscate-email") == "1") {
     include TEMPLATEPATH ."/plugins/obfuscate-email/obfuscate-email.php";
 }
-if(wp_get_option("wp_plug_nofollow_navigation") == "1") {
+if(wp_get_option("wp_plug_nofollow_navigation") == "1" || wp_get_option("wp_plug_nofollow_navigation") != "0") {
     include TEMPLATEPATH ."/plugins/nofollow-navi/nofollow-navi.php";
+}
+if(wp_get_option("wp_plug_all_in_one_seo_pack") == "1") {
+    include TEMPLATEPATH ."/plugins/all-in-one-seo-pack/all_in_one_seo_pack.php";
 }
 ?>

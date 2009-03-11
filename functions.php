@@ -249,6 +249,13 @@ $plugins = array(
         "status"    => 'checked',
         "type"  => 'checkbox'),
     array(
+        "name"  => "All In One SEO Pack",
+        "description"   => "It's filled with SEO goodies.",
+        "id"    => $shortname."_plug_all_in_one_seo_pack",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"  => 'checkbox'),
+    array(
         "name"  => "Obfuscate Email",
         "description"   => "Modifies email addresses to prevent email harvesting.",
         "id"    => $shortname."_plug_obfuscate-email",
@@ -379,22 +386,22 @@ function wicketpixie_add_admin() {
 					if( $value['type'] == 'checkbox' ) {
 						if( $value['status'] == 'checked' ) {
 						    if(wp_get_option($value['id'])) {
-							    wp_update_option( $value['id'], 1 );
+							    wp_update_option( $value['id'], '1' );
 							} else {
 							    if(wp_option_isempty($value['id']) == true) {
-							        wp_update_option($value['id'],1);
+							        wp_update_option($value['id'],'1');
 							    } else {
-							        wp_add_option($value['id'], 1);
+							        wp_add_option($value['id'], '1');
 							    }
 							}
 						} else {
 						    if(wp_get_option($value['id'])) {
-							    wp_update_option( $value['id'], 0 );
+							    wp_update_option( $value['id'], '0' );
 							} else {
 							    if(wp_option_isempty($value['id']) == true) {
-							        wp_update_option($value['id'],0);
+							        wp_update_option($value['id'],'0');
 							    } else {
-							        wp_add_option($value['id'], 0);
+							        wp_add_option($value['id'], '0');
 							    }
 							}
 						}
@@ -433,22 +440,22 @@ function wicketpixie_add_admin() {
                     if( $value['type'] == 'checkbox' ) {
                         if( $value['status'] == 'checked' ) {
                             if(wp_get_option($value['id'])) {
-				                wp_update_option( $value['id'], 1);
+				                wp_update_option( $value['id'], '1');
 				            } else {
 				                if(wp_option_isempty($value['id']) == true) {
-				                    wp_update_option($value['id'],1);
+				                    wp_update_option($value['id'],'1');
 				                } else {
-				                    wp_add_option($value['id'],1);
+				                    wp_add_option($value['id'],'1');
 				                }
 				            }
                         } else {
                             if(wp_get_option($value['id'])) {
-				                wp_update_option( $value['id'], 0);
+				                wp_update_option( $value['id'], '0');
 				            } else {
 				                if(wp_option_isempty($value['id']) == true) {
-				                    wp_update_option($value['id'],0);
+				                    wp_update_option($value['id'],'0');
 				                } else {
-				                    wp_add_option($value['id'],0);
+				                    wp_add_option($value['id'],'0');
 				                }
 				            }
                         }	
