@@ -1,0 +1,532 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: StatPress Reloaded\n"
+"Report-Msgid-Bugs-To: http://matrixagents.org/phpBB/\n"
+"POT-Creation-Date: 2008-12-17 17:56+0100\n"
+"PO-Revision-Date: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../statpress.php:39
+#: ../statpress.php:323
+msgid "Overview"
+msgstr ""
+
+#: ../statpress.php:40
+msgid "Details"
+msgstr ""
+
+#: ../statpress.php:41
+#: ../statpress.php:885
+msgid "Spy"
+msgstr ""
+
+#: ../statpress.php:42
+#: ../statpress.php:957
+#: ../statpress.php:1022
+#: ../statpress.php:1185
+#: ../statpress.php:1214
+msgid "Search"
+msgstr ""
+
+#: ../statpress.php:43
+#: ../statpress.php:279
+msgid "Export"
+msgstr ""
+
+#: ../statpress.php:44
+#: ../statpress.php:141
+msgid "Options"
+msgstr ""
+
+#: ../statpress.php:45
+msgid "User Agents"
+msgstr ""
+
+#: ../statpress.php:46
+msgid "StatPressUpdate"
+msgstr ""
+
+#: ../statpress.php:135
+msgid "Saved"
+msgstr ""
+
+#: ../statpress.php:145
+msgid "Collect data about logged users, too."
+msgstr ""
+
+#: ../statpress.php:146
+msgid "Do not collect spiders visits"
+msgstr ""
+
+#: ../statpress.php:149
+msgid "Automatically delete visits older than"
+msgstr ""
+
+#: ../statpress.php:156
+#: ../statpress.php:186
+msgid "Never delete!"
+msgstr ""
+
+#: ../statpress.php:162
+#: ../statpress.php:189
+msgid "month"
+msgstr ""
+
+#: ../statpress.php:168
+#: ../statpress.php:174
+msgid "months"
+msgstr ""
+
+#: ../statpress.php:180
+#: ../statpress.php:190
+msgid "year"
+msgstr ""
+
+#: ../statpress.php:184
+msgid "Automatically delete spider visits older than"
+msgstr ""
+
+#: ../statpress.php:187
+msgid "day"
+msgstr ""
+
+#: ../statpress.php:188
+msgid "week"
+msgstr ""
+
+#: ../statpress.php:194
+msgid "Days in Overview graph"
+msgstr ""
+
+#: ../statpress.php:220
+msgid "Minimum capability to view stats"
+msgstr ""
+
+#: ../statpress.php:228
+#: ../statpress.php:904
+msgid "more info"
+msgstr ""
+
+#: ../statpress.php:233
+msgid "Save options"
+msgstr ""
+
+#: ../statpress.php:266
+msgid "Export stats to text file"
+msgstr ""
+
+#: ../statpress.php:270
+msgid "From"
+msgstr ""
+
+#: ../statpress.php:273
+msgid "To"
+msgstr ""
+
+#: ../statpress.php:276
+msgid "Fields delimiter"
+msgstr ""
+
+#: ../statpress.php:326
+msgid "Total"
+msgstr ""
+
+#: ../statpress.php:327
+msgid "Last month"
+msgstr ""
+
+#: ../statpress.php:328
+#: ../statpress.php:329
+msgid "This month"
+msgstr ""
+
+#: ../statpress.php:329
+msgid "Target"
+msgstr ""
+
+#: ../statpress.php:330
+msgid "Yesterday"
+msgstr ""
+
+#: ../statpress.php:331
+msgid "Today"
+msgstr ""
+
+#: ../statpress.php:337
+msgid "Visitors"
+msgstr ""
+
+#: ../statpress.php:409
+msgid "Pageviews"
+msgstr ""
+
+#: ../statpress.php:481
+#: ../statpress.php:857
+msgid "Spiders"
+msgstr ""
+
+#: ../statpress.php:552
+#: ../statpress.php:842
+msgid "Feeds"
+msgstr ""
+
+#: ../statpress.php:699
+msgid "visitors"
+msgstr ""
+
+#: ../statpress.php:700
+msgid "pageviews"
+msgstr ""
+
+#: ../statpress.php:701
+msgid "spiders"
+msgstr ""
+
+#: ../statpress.php:702
+msgid "feeds"
+msgstr ""
+
+#: ../statpress.php:718
+msgid "Last hits"
+msgstr ""
+
+#: ../statpress.php:718
+#: ../statpress.php:755
+#: ../statpress.php:765
+#: ../statpress.php:775
+#: ../statpress.php:785
+#: ../statpress.php:797
+#: ../statpress.php:1556
+msgid "Date"
+msgstr ""
+
+#: ../statpress.php:718
+#: ../statpress.php:755
+#: ../statpress.php:765
+#: ../statpress.php:775
+#: ../statpress.php:785
+#: ../statpress.php:798
+msgid "Time"
+msgstr ""
+
+#: ../statpress.php:718
+#: ../statpress.php:954
+#: ../statpress.php:1558
+msgid "IP"
+msgstr ""
+
+#: ../statpress.php:718
+msgid "Threat"
+msgstr ""
+
+#: ../statpress.php:718
+msgid "Domain"
+msgstr ""
+
+#: ../statpress.php:718
+#: ../statpress.php:785
+#: ../statpress.php:800
+#: ../statpress.php:1173
+#: ../statpress.php:1195
+#: ../statpress.php:1202
+#: ../statpress.php:1224
+msgid "Page"
+msgstr ""
+
+#: ../statpress.php:718
+msgid "OS"
+msgstr ""
+
+#: ../statpress.php:718
+#: ../statpress.php:839
+#: ../statpress.php:952
+msgid "Browser"
+msgstr ""
+
+#: ../statpress.php:718
+msgid "Feed"
+msgstr ""
+
+#: ../statpress.php:755
+msgid "Last search terms"
+msgstr ""
+
+#: ../statpress.php:755
+msgid "Terms"
+msgstr ""
+
+#: ../statpress.php:755
+msgid "Engine"
+msgstr ""
+
+#: ../statpress.php:755
+#: ../statpress.php:765
+msgid "Result"
+msgstr ""
+
+#: ../statpress.php:760
+#: ../statpress.php:770
+msgid "page viewed"
+msgstr ""
+
+#: ../statpress.php:765
+msgid "Last referrers"
+msgstr ""
+
+#: ../statpress.php:765
+msgid "URL"
+msgstr ""
+
+#: ../statpress.php:775
+msgid "Last agents"
+msgstr ""
+
+#: ../statpress.php:775
+#: ../statpress.php:801
+#: ../statpress.php:947
+msgid "Agent"
+msgstr ""
+
+#: ../statpress.php:775
+#: ../statpress.php:785
+msgid "What"
+msgstr ""
+
+#: ../statpress.php:785
+msgid "Last pages"
+msgstr ""
+
+#: ../statpress.php:795
+msgid "Last spiders"
+msgstr ""
+
+#: ../statpress.php:799
+#: ../statpress.php:953
+msgid "Spider"
+msgstr ""
+
+#: ../statpress.php:816
+msgid "StatPress table size"
+msgstr ""
+
+#: ../statpress.php:817
+msgid "StatPress current time"
+msgstr ""
+
+#: ../statpress.php:818
+msgid "RSS2 url"
+msgstr ""
+
+#: ../statpress.php:819
+msgid "ATOM url"
+msgstr ""
+
+#: ../statpress.php:820
+msgid "RSS url"
+msgstr ""
+
+#: ../statpress.php:821
+msgid "COMMENT RSS2 url"
+msgstr ""
+
+#: ../statpress.php:822
+msgid "COMMENT ATOM url"
+msgstr ""
+
+#: ../statpress.php:833
+msgid "Top days"
+msgstr ""
+
+#: ../statpress.php:836
+msgid "O.S."
+msgstr ""
+
+#: ../statpress.php:845
+msgid "Search engines"
+msgstr ""
+
+#: ../statpress.php:848
+msgid "Top search terms"
+msgstr ""
+
+#: ../statpress.php:851
+msgid "Top referrer"
+msgstr ""
+
+#: ../statpress.php:854
+msgid "Countries (domains)"
+msgstr ""
+
+#: ../statpress.php:860
+msgid "Top pages"
+msgstr ""
+
+#: ../statpress.php:864
+msgid "Top Days - Unique visitors"
+msgstr ""
+
+#: ../statpress.php:868
+msgid "Top Days - Pageviews"
+msgstr ""
+
+#: ../statpress.php:872
+msgid "Top IPs - Pageviews"
+msgstr ""
+
+#: ../statpress.php:924
+#: ../statpress.php:928
+msgid "arrived from"
+msgstr ""
+
+#: ../statpress.php:924
+msgid "searching"
+msgstr ""
+
+#: ../statpress.php:946
+msgid "URL Requested"
+msgstr ""
+
+#: ../statpress.php:948
+msgid "Referrer"
+msgstr ""
+
+#: ../statpress.php:949
+msgid "Search terms"
+msgstr ""
+
+#: ../statpress.php:950
+msgid "Search engine"
+msgstr ""
+
+#: ../statpress.php:951
+msgid "Operative system"
+msgstr ""
+
+#: ../statpress.php:964
+msgid "Field"
+msgstr ""
+
+#: ../statpress.php:975
+msgid "Group by"
+msgstr ""
+
+#: ../statpress.php:976
+msgid "Sort by"
+msgstr ""
+
+#: ../statpress.php:977
+msgid "if contains"
+msgstr ""
+
+#: ../statpress.php:990
+msgid "sort by count if grouped"
+msgstr ""
+
+#: ../statpress.php:995
+msgid "include spiders/crawlers/bot"
+msgstr ""
+
+#: ../statpress.php:1000
+msgid "include feed"
+msgstr ""
+
+#: ../statpress.php:1009
+#: ../statpress.php:2017
+msgid "Limit results to"
+msgstr ""
+
+#: ../statpress.php:1101
+msgid "Results"
+msgstr ""
+
+#: ../statpress.php:1114
+#: ../statpress.php:1559
+msgid "Count"
+msgstr ""
+
+#: ../statpress.php:1177
+#: ../statpress.php:1206
+msgid "Category"
+msgstr ""
+
+#: ../statpress.php:1181
+msgid "Calendar"
+msgstr ""
+
+#: ../statpress.php:1296
+#: ../statpress.php:2018
+msgid "Visits"
+msgstr ""
+
+#: ../statpress.php:1554
+msgid "Unknown User Agents"
+msgstr ""
+
+#: ../statpress.php:1557
+msgid "Last Time"
+msgstr ""
+
+#: ../statpress.php:1560
+msgid "User Agent"
+msgstr ""
+
+#: ../statpress.php:1722
+#: ../statpress.php:1765
+#: ../statpress.php:1777
+#: ../statpress.php:1789
+#: ../statpress.php:1802
+#: ../statpress.php:1807
+#: ../statpress.php:1825
+msgid "done"
+msgstr ""
+
+#: ../statpress.php:1768
+msgid "Updating OS"
+msgstr ""
+
+#: ../statpress.php:1780
+msgid "Updating Browsers"
+msgstr ""
+
+#: ../statpress.php:1791
+msgid "Updating Spiders"
+msgstr ""
+
+#: ../statpress.php:1805
+msgid "Updating Feeds"
+msgstr ""
+
+#: ../statpress.php:1810
+msgid "Updating Search engines"
+msgstr ""
+
+#: ../statpress.php:1813
+msgid "null-ed"
+msgstr ""
+
+#: ../statpress.php:1815
+msgid "select-ed"
+msgstr ""
+
+#: ../statpress.php:1829
+msgid "Updated"
+msgstr ""
+
+#: ../statpress.php:1975
+msgid "Title:"
+msgstr ""
+
+#: ../statpress.php:1976
+msgid "Body:"
+msgstr ""
+
+#: ../statpress.php:2016
+msgid "Title"
+msgstr ""
+

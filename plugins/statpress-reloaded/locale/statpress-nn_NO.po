@@ -1,0 +1,535 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: StatPress Reloaded\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2008-12-17 17:51+0100\n"
+"PO-Revision-Date: 2008-12-17 17:55+0100\n"
+"Last-Translator: Simon Hansen <simonboba@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Norwegian Nynorsk\n"
+"X-Poedit-Country: NORWAY\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../statpress.php:39
+#: ../statpress.php:323
+msgid "Overview"
+msgstr "Oversyn"
+
+#: ../statpress.php:40
+msgid "Details"
+msgstr "Detaljar"
+
+#: ../statpress.php:41
+#: ../statpress.php:885
+msgid "Spy"
+msgstr "Spion"
+
+#: ../statpress.php:42
+#: ../statpress.php:957
+#: ../statpress.php:1022
+#: ../statpress.php:1185
+#: ../statpress.php:1214
+msgid "Search"
+msgstr "Søk"
+
+#: ../statpress.php:43
+#: ../statpress.php:279
+msgid "Export"
+msgstr "Eksporter"
+
+#: ../statpress.php:44
+#: ../statpress.php:141
+msgid "Options"
+msgstr "Val"
+
+#: ../statpress.php:45
+msgid "User Agents"
+msgstr "Brukaragentar"
+
+#: ../statpress.php:46
+msgid "StatPressUpdate"
+msgstr "Oppdatering av StatPress"
+
+#: ../statpress.php:135
+msgid "Saved"
+msgstr "Lagra"
+
+#: ../statpress.php:145
+msgid "Collect data about logged users, too."
+msgstr "Skaff data om pålogga brukarar òg"
+
+#: ../statpress.php:146
+msgid "Do not collect spiders visits"
+msgstr "Ikkje samla vitjingar frå robotar"
+
+#: ../statpress.php:149
+msgid "Automatically delete visits older than"
+msgstr "Slett vitjingar eldre enn"
+
+#: ../statpress.php:156
+#: ../statpress.php:186
+msgid "Never delete!"
+msgstr "Aldri slett!"
+
+#: ../statpress.php:162
+#: ../statpress.php:189
+msgid "month"
+msgstr "månad"
+
+#: ../statpress.php:168
+#: ../statpress.php:174
+msgid "months"
+msgstr "månader"
+
+#: ../statpress.php:180
+#: ../statpress.php:190
+msgid "year"
+msgstr "år"
+
+#: ../statpress.php:184
+msgid "Automatically delete spider visits older than"
+msgstr "Slett robot-vitjingar eldre enn"
+
+#: ../statpress.php:187
+msgid "day"
+msgstr "dag"
+
+#: ../statpress.php:188
+msgid "week"
+msgstr "veke"
+
+#: ../statpress.php:194
+msgid "Days in Overview graph"
+msgstr "Tal på dagar i oversynsgrafen"
+
+#: ../statpress.php:220
+msgid "Minimum capability to view stats"
+msgstr "Lågaste brukarløyve for å sjå statistikken"
+
+#: ../statpress.php:228
+#: ../statpress.php:904
+msgid "more info"
+msgstr "meir informasjon"
+
+#: ../statpress.php:233
+msgid "Save options"
+msgstr "Lagra vala"
+
+#: ../statpress.php:266
+msgid "Export stats to text file"
+msgstr "Eksportér data til tekstfil"
+
+#: ../statpress.php:270
+msgid "From"
+msgstr "Frå"
+
+#: ../statpress.php:273
+msgid "To"
+msgstr "Til"
+
+#: ../statpress.php:276
+msgid "Fields delimiter"
+msgstr "Skiljeteikn"
+
+#: ../statpress.php:326
+msgid "Total"
+msgstr "Totalt"
+
+#: ../statpress.php:327
+msgid "Last month"
+msgstr "Førre månaden"
+
+#: ../statpress.php:328
+#: ../statpress.php:329
+msgid "This month"
+msgstr "Denne månaden"
+
+#: ../statpress.php:329
+msgid "Target"
+msgstr "Mål"
+
+#: ../statpress.php:330
+msgid "Yesterday"
+msgstr "I går"
+
+#: ../statpress.php:331
+msgid "Today"
+msgstr "I dag"
+
+#: ../statpress.php:337
+msgid "Visitors"
+msgstr "Vitjingar"
+
+#: ../statpress.php:409
+msgid "Pageviews"
+msgstr "Sidevisningar"
+
+#: ../statpress.php:481
+#: ../statpress.php:857
+msgid "Spiders"
+msgstr "Robotar"
+
+#: ../statpress.php:552
+#: ../statpress.php:842
+msgid "Feeds"
+msgstr "Nyhendestraumar"
+
+#: ../statpress.php:699
+msgid "visitors"
+msgstr "vitjingar"
+
+#: ../statpress.php:700
+msgid "pageviews"
+msgstr "sidevisningar"
+
+#: ../statpress.php:701
+msgid "spiders"
+msgstr "robotar"
+
+#: ../statpress.php:702
+msgid "feeds"
+msgstr "nyhendestraumar"
+
+#: ../statpress.php:718
+msgid "Last hits"
+msgstr "Seinaste treff"
+
+#: ../statpress.php:718
+#: ../statpress.php:755
+#: ../statpress.php:765
+#: ../statpress.php:775
+#: ../statpress.php:785
+#: ../statpress.php:797
+#: ../statpress.php:1556
+msgid "Date"
+msgstr "Dato"
+
+#: ../statpress.php:718
+#: ../statpress.php:755
+#: ../statpress.php:765
+#: ../statpress.php:775
+#: ../statpress.php:785
+#: ../statpress.php:798
+msgid "Time"
+msgstr "Klokkeslett"
+
+#: ../statpress.php:718
+#: ../statpress.php:954
+#: ../statpress.php:1558
+msgid "IP"
+msgstr "IP"
+
+#: ../statpress.php:718
+msgid "Threat"
+msgstr "Trussel"
+
+#: ../statpress.php:718
+msgid "Domain"
+msgstr "Domene"
+
+#: ../statpress.php:718
+#: ../statpress.php:785
+#: ../statpress.php:800
+#: ../statpress.php:1173
+#: ../statpress.php:1195
+#: ../statpress.php:1202
+#: ../statpress.php:1224
+msgid "Page"
+msgstr "Side"
+
+#: ../statpress.php:718
+msgid "OS"
+msgstr "OS"
+
+#: ../statpress.php:718
+#: ../statpress.php:839
+#: ../statpress.php:952
+msgid "Browser"
+msgstr "Vevmysar"
+
+#: ../statpress.php:718
+msgid "Feed"
+msgstr "Nyhendestraumar"
+
+#: ../statpress.php:755
+msgid "Last search terms"
+msgstr "Seinaste søkjeord"
+
+#: ../statpress.php:755
+msgid "Terms"
+msgstr "Søkjeord"
+
+#: ../statpress.php:755
+msgid "Engine"
+msgstr "Søkjemotor"
+
+#: ../statpress.php:755
+#: ../statpress.php:765
+msgid "Result"
+msgstr "Resultat"
+
+#: ../statpress.php:760
+#: ../statpress.php:770
+msgid "page viewed"
+msgstr "side synt fram"
+
+#: ../statpress.php:765
+msgid "Last referrers"
+msgstr "Seinaste peikarar hit"
+
+#: ../statpress.php:765
+msgid "URL"
+msgstr "URL"
+
+#: ../statpress.php:775
+msgid "Last agents"
+msgstr "Seinaste brukaragent"
+
+#: ../statpress.php:775
+#: ../statpress.php:801
+#: ../statpress.php:947
+msgid "Agent"
+msgstr "Brukaragent"
+
+#: ../statpress.php:775
+#: ../statpress.php:785
+msgid "What"
+msgstr "Kva"
+
+#: ../statpress.php:785
+msgid "Last pages"
+msgstr "Seinaste sider"
+
+#: ../statpress.php:795
+msgid "Last spiders"
+msgstr "Seinaste robot"
+
+#: ../statpress.php:799
+#: ../statpress.php:953
+msgid "Spider"
+msgstr "Robot"
+
+#: ../statpress.php:816
+msgid "StatPress table size"
+msgstr "Tabellstorleik for StatPress"
+
+#: ../statpress.php:817
+msgid "StatPress current time"
+msgstr "StatPress-tid nett no"
+
+#: ../statpress.php:818
+msgid "RSS2 url"
+msgstr "RSS2-url"
+
+#: ../statpress.php:819
+msgid "ATOM url"
+msgstr "ATOM-url"
+
+#: ../statpress.php:820
+msgid "RSS url"
+msgstr "RSS-url"
+
+#: ../statpress.php:821
+msgid "COMMENT RSS2 url"
+msgstr "INNSPEL-RSS2-url"
+
+#: ../statpress.php:822
+msgid "COMMENT ATOM url"
+msgstr "INNSPEL-ATOM-url"
+
+#: ../statpress.php:833
+msgid "Top days"
+msgstr "Beste dagar"
+
+#: ../statpress.php:836
+msgid "O.S."
+msgstr "O.S."
+
+#: ../statpress.php:845
+msgid "Search engines"
+msgstr "Søkjemotor"
+
+#: ../statpress.php:848
+msgid "Top search terms"
+msgstr "Mest nytta søkjeord"
+
+#: ../statpress.php:851
+msgid "Top referrer"
+msgstr "Beste peikarar hit"
+
+#: ../statpress.php:854
+msgid "Countries (domains)"
+msgstr "Land (domene)"
+
+#: ../statpress.php:860
+msgid "Top pages"
+msgstr "Beste sider"
+
+#: ../statpress.php:864
+msgid "Top Days - Unique visitors"
+msgstr "Beste dagar - unike vitjarar"
+
+#: ../statpress.php:868
+msgid "Top Days - Pageviews"
+msgstr "Beste dagar - Sidevisningar"
+
+#: ../statpress.php:872
+msgid "Top IPs - Pageviews"
+msgstr "Mest nytta IP - Sidevisningar"
+
+#: ../statpress.php:924
+#: ../statpress.php:928
+msgid "arrived from"
+msgstr "kom frå"
+
+#: ../statpress.php:924
+msgid "searching"
+msgstr "søkjer"
+
+#: ../statpress.php:946
+msgid "URL Requested"
+msgstr "Etterlyst URL"
+
+#: ../statpress.php:948
+msgid "Referrer"
+msgstr "Peikarar hit"
+
+#: ../statpress.php:949
+msgid "Search terms"
+msgstr "Søkjerord"
+
+#: ../statpress.php:950
+msgid "Search engine"
+msgstr "Søkjemotor"
+
+#: ../statpress.php:951
+msgid "Operative system"
+msgstr "Operativsystem"
+
+#: ../statpress.php:964
+msgid "Field"
+msgstr "Felt"
+
+#: ../statpress.php:975
+msgid "Group by"
+msgstr "Grupper etter"
+
+#: ../statpress.php:976
+msgid "Sort by"
+msgstr "Sorter etter"
+
+#: ../statpress.php:977
+msgid "if contains"
+msgstr "med innhaldet"
+
+#: ../statpress.php:990
+msgid "sort by count if grouped"
+msgstr "sorter etter tal viss gruppert"
+
+#: ../statpress.php:995
+msgid "include spiders/crawlers/bot"
+msgstr "tel med robotar/kravlarar/innsamlarar"
+
+#: ../statpress.php:1000
+msgid "include feed"
+msgstr "inkluder nyhendestraum"
+
+#: ../statpress.php:1009
+#: ../statpress.php:2017
+msgid "Limit results to"
+msgstr "Avgrens resultata til"
+
+#: ../statpress.php:1101
+msgid "Results"
+msgstr "Resultat"
+
+#: ../statpress.php:1114
+#: ../statpress.php:1559
+msgid "Count"
+msgstr "Tal"
+
+#: ../statpress.php:1177
+#: ../statpress.php:1206
+msgid "Category"
+msgstr "Kategori"
+
+#: ../statpress.php:1181
+msgid "Calendar"
+msgstr "Kalender"
+
+#: ../statpress.php:1296
+#: ../statpress.php:2018
+msgid "Visits"
+msgstr "Vitjingar"
+
+#: ../statpress.php:1554
+msgid "Unknown User Agents"
+msgstr "Ukjend brukaragent"
+
+#: ../statpress.php:1557
+msgid "Last Time"
+msgstr "F&oslash;rre gong"
+
+#: ../statpress.php:1560
+msgid "User Agent"
+msgstr "Brukaragent"
+
+#: ../statpress.php:1722
+#: ../statpress.php:1765
+#: ../statpress.php:1777
+#: ../statpress.php:1789
+#: ../statpress.php:1802
+#: ../statpress.php:1807
+#: ../statpress.php:1825
+msgid "done"
+msgstr "ferdig"
+
+#: ../statpress.php:1768
+msgid "Updating OS"
+msgstr "Oppdaterer OS"
+
+#: ../statpress.php:1780
+msgid "Updating Browsers"
+msgstr "Oppdaterer vevmysarar"
+
+#: ../statpress.php:1791
+msgid "Updating Spiders"
+msgstr "Oppdaterer robotar"
+
+#: ../statpress.php:1805
+msgid "Updating Feeds"
+msgstr "Oppdaterer nyhendestraumar"
+
+#: ../statpress.php:1810
+msgid "Updating Search engines"
+msgstr "Oppdaterer søkjemotorar"
+
+#: ../statpress.php:1813
+msgid "null-ed"
+msgstr "nullstilt"
+
+#: ../statpress.php:1815
+msgid "select-ed"
+msgstr "vald"
+
+#: ../statpress.php:1829
+msgid "Updated"
+msgstr "Oppdatert"
+
+#: ../statpress.php:1975
+msgid "Title:"
+msgstr "Tittel:"
+
+#: ../statpress.php:1976
+msgid "Body:"
+msgstr "Kropp:"
+
+#: ../statpress.php:2016
+msgid "Title"
+msgstr "Tittel"
+

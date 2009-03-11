@@ -32,4 +32,7 @@ if(wp_get_option("wp_plug_all_in_one_seo_pack") == "1") {
 if(wp_get_option("wp_plug_falbum") == "1") {
     include TEMPLATEPATH ."/plugins/falbum/wordpress-falbum-plugin.php";
 }
+if(wp_get_option("wp_plug_statpress-reloaded") == "1") {
+    include TEMPLATEPATH ."/plugins/statpress-reloaded/statpress.php";
+}
 ?>
