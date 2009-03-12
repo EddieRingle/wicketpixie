@@ -1392,7 +1392,7 @@ document.getElementById(thediv).style.display="none"
       function iriGetOS($arg)
       {
           $arg = str_replace(" ", "", $arg);
-          $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/os.dat');
+          $lines = file(dirname(plugin_basename(__FILE__)) . '/def/os.dat');
           foreach ($lines as $line_num => $os)
           {
               list($nome_os, $id_os) = explode("|", $os);
@@ -1408,7 +1408,7 @@ document.getElementById(thediv).style.display="none"
       function iriGetBrowser($arg)
       {
           $arg = str_replace(" ", "", $arg);
-          $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/browser.dat');
+          $lines = file(dirname(plugin_basename(__FILE__)) . '/def/browser.dat');
           foreach ($lines as $line_num => $browser)
           {
               list($nome, $id) = explode("|", $browser);
@@ -1422,10 +1422,10 @@ document.getElementById(thediv).style.display="none"
       
 	  function iriCheckBanIP($arg)
       {
-          if (file_exists(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '-custom/banips.dat'))
-              $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '-custom/banips.dat');
+          if (file_exists(dirname(plugin_basename(__FILE__)) . '-custom/banips.dat'))
+              $lines = file(dirname(plugin_basename(__FILE__)) . '-custom/banips.dat');
           else
-              $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/banips.dat');
+              $lines = file(dirname(plugin_basename(__FILE__)) . '/def/banips.dat');
          
         if ($lines !== false)
         {
@@ -1443,7 +1443,7 @@ document.getElementById(thediv).style.display="none"
       function iriGetSE($referrer = null)
       {
           $key = null;
-          $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/searchengines.dat');
+          $lines = file(dirname(plugin_basename(__FILE__)) . '/def/searchengines.dat');
           foreach ($lines as $line_num => $se)
           {
               list($nome, $url, $key) = explode("|", $se);
@@ -1468,9 +1468,9 @@ document.getElementById(thediv).style.display="none"
       {
           $agent = str_replace(" ", "", $agent);
           $key = null;
-          $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/spider.dat');
-          if (file_exists(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'))
-              $lines = array_merge($lines, file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'));
+          $lines = file(dirname(plugin_basename(__FILE__)) . '/def/spider.dat');
+          if (file_exists(dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'))
+              $lines = array_merge($lines, file(dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'));
           foreach ($lines as $line_num => $spider)
           {
               list($nome, $key) = explode("|", $spider);
