@@ -1781,7 +1781,7 @@ function iri_StatPress_extractfeedreq($url)
           // Update OS
           print "" . __('Updating OS', 'statpress') . "... ";
           $wpdb->query("UPDATE $table_name SET os = '';");
-          $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/os.dat');
+          $lines = file(dirname(plugin_basename(__FILE__)) . '/def/os.dat');
           foreach ($lines as $line_num => $os)
           {
               list($nome_os, $id_os) = explode("|", $os);
@@ -1793,7 +1793,7 @@ function iri_StatPress_extractfeedreq($url)
           // Update Browser
           print "". __('Updating Browsers', 'statpress') ."... ";
           $wpdb->query("UPDATE $table_name SET browser = '';");
-          $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/browser.dat');
+          $lines = file(dirname(plugin_basename(__FILE__)) . '/def/browser.dat');
           foreach ($lines as $line_num => $browser)
           {
               list($nome, $id) = explode("|", $browser);
@@ -1804,9 +1804,9 @@ function iri_StatPress_extractfeedreq($url)
           
           print "" . __('Updating Spiders', 'statpress') . "... ";
           $wpdb->query("UPDATE $table_name SET spider = '';");
-          $lines = file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/spider.dat');
-          if (file_exists(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'))
-              $lines = array_merge($lines, file(ABSPATH . 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'));
+          $lines = file(dirname(plugin_basename(__FILE__)) . '/def/spider.dat');
+          if (file_exists(dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'))
+              $lines = array_merge($lines, file(dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'));
           foreach ($lines as $line_num => $spider)
           {
               list($nome, $id) = explode("|", $spider);
@@ -2062,7 +2062,7 @@ function iri_StatPress_extractfeedreq($url)
 		//check whether necessary core function exists
 		if ( function_exists('load_plugin_textdomain') ) {
 		//load the plugin textdomain
-		load_plugin_textdomain('statpress', 'wp-content/themes/'.get_template().'/plugins/' . dirname(plugin_basename(__FILE__)) . '/locale');
+		load_plugin_textdomain('statpress', dirname(plugin_basename(__FILE__)) . '/locale');
 		}
 		}
 		// call the custom function on the init hook
