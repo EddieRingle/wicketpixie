@@ -340,7 +340,8 @@ function dsq_add_pages() {
 		}
 	}
 
-	add_options_page('DISQUS', 'DISQUS', 8, 'disqus', dsq_manage);
+	//add_options_page('DISQUS', 'DISQUS', 8, 'disqus', dsq_manage);
+	add_submenu_page('wp_plugins.php', 'DISQUS', 'DISQUS', 8, 'disqus', dsq_manage);
 }
 
 function dsq_manage() {

@@ -128,7 +128,8 @@ class AutoHyperlinkURLs {
 
 	function admin_menu() {
 		if ($this->show_admin)
-			add_options_page('Auto-Hyperlink URLs', 'Autohyperlink', 9, basename(__FILE__), array(&$this, 'options_page'));
+			// add_options_page('Auto-Hyperlink URLs', 'Autohyperlink', 9, basename(__FILE__), array(&$this, 'options_page'));
+			add_submenu_page('wp_plugins.php', 'Auto-Hyperlink URLs', 'Autohyperlink', 9, basename(__FILE__), array($this, 'options_page'));
 	}
 
 	function get_options() {

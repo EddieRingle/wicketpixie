@@ -820,7 +820,7 @@ require( TEMPLATEPATH .'/wicketpixie-admin.php');
 add_action('admin_menu','wicketpixie_toplevel_admin');
 
 add_action('admin_menu', 'wicketpixie_add_admin');
-require( TEMPLATEPATH .'/plugins.php');
+require( TEMPLATEPATH .'/wp_plugins.php');
 
 require( TEMPLATEPATH .'/app/sourcemanager.php' );
 add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );

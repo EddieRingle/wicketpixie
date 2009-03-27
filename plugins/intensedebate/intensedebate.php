@@ -137,6 +137,15 @@ function id_debug_log($text)
 	function id_menu_items() {
 		if (current_user_can('manage_options')) {
 			if (id_is_active()) {
+			    add_submenu_page(
+			        'wp_plugins.php',
+			        __('IntenseDebate Comments', 'intensedebate'),
+			        __('Comments','intensedebate'),
+			        10,
+			        basename(__FILE__),
+			        'id_moderate_comments'
+			    );
+			    /*
 				add_options_page(
 					__('IntenseDebate Comments', 'intensedebate'),
 					__('Comments', 'intensedebate'),
@@ -144,7 +153,17 @@ function id_debug_log($text)
 					basename(__FILE__),
 					'id_moderate_comments'
 				);
+				*/
 			}
+			add_submenu_page(
+			    'wp_plugins.php',
+			    __('IntenseDebate Options', 'intensedebate'),
+			    __('IntenseDebate', 'intensedebate'),
+			    10,
+			    'id_settings',
+			    'id_settings_page'
+			);
+			/*
 			add_options_page(
 				__('IntenseDebate Options', 'intensedebate'), 
 				__('IntenseDebate', 'intensedebate'), 
@@ -152,6 +171,7 @@ function id_debug_log($text)
 				'id_settings',
 				'id_settings_page'
 			);
+			*/
 		}
 	}
 	

@@ -106,7 +106,8 @@ class ObfuscateEmail {
 
 	function admin_menu() {
 		if ($this->show_admin)
-			add_options_page('Obfuscate E-mail', 'Obfuscate E-mail', 9, basename(__FILE__), array(&$this, 'options_page'));
+			//add_options_page('Obfuscate E-mail', 'Obfuscate E-mail', 9, basename(__FILE__), array(&$this, 'options_page'));
+			add_submenu_page('wp_plugins.php', 'Obfuscate E-mail', 'Obfuscate E-mail', 9, basename(__FILE__), array($this, 'options_page'));
 	}
 
 	function get_options() {

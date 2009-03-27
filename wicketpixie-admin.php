@@ -40,38 +40,44 @@ function wicketpixie_admin_index() {
 ?>
 			<div class="wrap">
 				
-				<div id="admin-options">
+                <div id="admin-options">
 				
-					<h2>WicketPixie Setup</h2>
+                    <h2>WicketPixie Setup</h2>
                     <p>We will need a few things from you to enable some of WicketPixie's features.</p>
-				    <form action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wicketpixie-admin.php" method="post">
-                        <h3>IDs and Such</h3>
-                        <p id="flickrid_tip">You can obtain your Flickr ID by using <a href="http://idgettr.com">idGettr</a>.</p>
-                        <p id="ustreamchannel_tip">Your Ustream Channel is the name of the Ustream channel you'd like to stream from. For example, the channel 'Chris Pirillo Live' (url of which is http://ustream.tv/channel/chris-pirillo-live) would be entered as 'chris-pirillo-live'. (Like you'd see it in the Ustream URL.)</p>
-                        <?php
-                        foreach ( $services as $service ) {
-                        $id = $service['id'];
+				    
+                    <h3>IDs and Such</h3>
+                    <p id="flickrid_tip">You can obtain your Flickr ID by using <a href="http://idgettr.com">idGettr</a>.</p>
+                    <p id="ustreamchannel_tip">Your Ustream Channel is the name of the Ustream channel you'd like to stream from. For example, the channel 'Chris Pirillo Live' (url of which is http://ustream.tv/channel/chris-pirillo-live) would be entered as 'chris-pirillo-live'. (Like you'd see it in the Ustream URL.)</p>
+		            <form method="post" style="padding:20px 0 40px;" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wicketpixie-admin.php">
+		            <table class="form-table">
+			            <?php foreach( $services as $service ) {
+			            $id = $service['id'];
                         $name = $service['name'];
+                        $desc = $service['description'];
                         $optdata = wp_get_option("wp_$id");
                         if(!$optdata || $optdata == "") {
-                            $value = $name;
+                            $value = "";
                         } else {
                             $value = $optdata;
                         }
                         ?>
-                        <input type="text" name="<?php echo $id; ?>" value="<?php echo $value; ?>" onfocus="if(this.value=='<?php echo $value; ?>')value = '';document.getElementById('<?php echo $id; ?>_tip').style.font-weight = 'bold';" onblur="if(this.value=='')value='<?php echo $value; ?>';document.getElementById('<?php echo $id; ?>_tip').style.font-weight = 'normal';" onmouseover="document.getElementById('<?php echo $id; ?>_tip').style.font-weight = 'bold';" onmouseout="document.getElementById('<?php echo $id; ?>_tip').style.font-weight = 'normal';" /><br />
-                        <?php
-                        }
-                        ?>
-                        
+			            <tr valign="top"> 
+				            <th scope="row" style="font-size:12px;text-align:left;padding-right:10px;">
+					            <acronym title="<?php echo $desc; ?>"><?php echo $name; ?></acronym>
+				            </th>
+				            <td style="padding-right:10px;">
+					            <input name="<?php echo $id; ?>" id="<?php echo $id; ?>" type="text" value="<?php echo $value; ?>" />
+				            </td>
+                        </tr>
+                        <?php } ?>
+                    </table>
                         <p class="submit">
                             <input type="submit" name="submit" value="Save" />
                             <input type="hidden" name="idform" value="true" />
                         </p>
                     </form>
-				</div>
-
-				<?php include_once('app/advert.php'); ?>
+                </div>
+                <?php include_once('app/advert.php'); ?>
 <?php
 }
 ?>

@@ -190,7 +190,8 @@ function kontera_echo_javascript() {
  * Adds the Kontera Settings menu to the Options page
  */
 function kontera_menu() {
-	add_options_page('Kontera Settings', 'Kontera Settings', 8, basename(__FILE__), 'kontera_options_menu');
+	//add_options_page('Kontera Settings', 'Kontera Settings', 8, basename(__FILE__), 'kontera_options_menu');
+	add_submenu_page('wp_plugins.php', 'Kontera Settings', 'Kontera Settings', 8, basename(__FILE__), 'kontera_options_menu');
 }
 
 /**

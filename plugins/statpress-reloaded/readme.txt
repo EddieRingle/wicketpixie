@@ -3,8 +3,8 @@ Contributors: matrixagent
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=paypal%40matrixagents%2eorg&item_name=Dodge%20this%21%20StatPress%20Reloaded&no_shipping=1&no_note=1&tax=0&currency_code=EUR&lc=DE&bn=PP%2dDonationsBF&charset=UTF%2d8
 Tags: stats, statistics, widget, admin, sidebar, visits, visitors, pageview, referrer, spy
 Requires at least: 2.5
-Tested up to: 2.7
-Stable Tag: 1.5.13
+Tested up to: 2.7.1
+Stable Tag: 1.5.14
 
 This plugin shows you real time statistics about your blog. It collects information about visitors, spiders, search keywords, feeds, browsers, OS etc.
 
@@ -408,3 +408,9 @@ Please visit the <a href="http://matrixagents.org/phpBB/">discussion board<a/>.
 * Added %pagesyesterday% to the placeholders
 * Updated Definitions
 
+*Version 1.5.14 (12.03.2009)*
+
+
+* Finally thought of 2.7.1 compatibility
+* Bulgarian translation
+* Updated Definitions

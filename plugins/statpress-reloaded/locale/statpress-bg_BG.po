@@ -1,0 +1,543 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: StatPress Reloaded\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-03-02 22:36+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Mr. Serios <office@weblab-bg.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: Bulgarian\n"
+"X-Poedit-Country: BULGARIA\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../statpress.php:39
+msgid "Details"
+msgstr "Детайли"
+
+#: ../statpress.php:40
+#: ../statpress.php:884
+msgid "Spy"
+msgstr "Шпионирай"
+
+#: ../statpress.php:41
+#: ../statpress.php:956
+#: ../statpress.php:1026
+#: ../statpress.php:1194
+#: ../statpress.php:1223
+msgid "Search"
+msgstr "Търсене"
+
+#: ../statpress.php:42
+#: ../statpress.php:278
+msgid "Export"
+msgstr "Експорт"
+
+#: ../statpress.php:43
+#: ../statpress.php:140
+msgid "Options"
+msgstr "Настройки"
+
+#: ../statpress.php:44
+msgid "User Agents"
+msgstr "Браузери"
+
+#: ../statpress.php:45
+msgid "StatPressUpdate"
+msgstr "Обновяване"
+
+#: ../statpress.php:134
+msgid "Saved"
+msgstr "Запазени"
+
+#: ../statpress.php:144
+msgid "Collect data about logged users, too."
+msgstr "Събирай данни и за регистрираните потребители"
+
+#: ../statpress.php:145
+msgid "Do not collect spiders visits"
+msgstr "Не събирай данни за търсещи роботи"
+
+#: ../statpress.php:148
+msgid "Automatically delete visits older than"
+msgstr "Автоматично изтриване на посещенията по стари от"
+
+#: ../statpress.php:155
+#: ../statpress.php:185
+msgid "Never delete!"
+msgstr "Не изтривай"
+
+#: ../statpress.php:161
+#: ../statpress.php:188
+msgid "month"
+msgstr "месец"
+
+#: ../statpress.php:167
+#: ../statpress.php:173
+msgid "months"
+msgstr "месеца"
+
+#: ../statpress.php:179
+#: ../statpress.php:189
+msgid "year"
+msgstr "година"
+
+#: ../statpress.php:183
+msgid "Automatically delete spider visits older than"
+msgstr "Автоматично изтриване посещенията на роботи по стари от"
+
+#: ../statpress.php:186
+msgid "day"
+msgstr "ден"
+
+#: ../statpress.php:187
+msgid "week"
+msgstr "седмица"
+
+#: ../statpress.php:193
+msgid "Days in Overview graph"
+msgstr "Брой дни в графата Статистика"
+
+#: ../statpress.php:219
+msgid "Minimum capability to view stats"
+msgstr "Възможност за разглеждане на статистиката от"
+
+#: ../statpress.php:227
+#: ../statpress.php:903
+msgid "more info"
+msgstr "повече инф."
+
+#: ../statpress.php:232
+msgid "Save options"
+msgstr "Запази"
+
+#: ../statpress.php:265
+msgid "Export stats to text file"
+msgstr "Експортиране на статистиките в текстов файл"
+
+#: ../statpress.php:269
+msgid "From"
+msgstr "От"
+
+#: ../statpress.php:272
+msgid "To"
+msgstr "До"
+
+#: ../statpress.php:275
+msgid "Fields delimiter"
+msgstr "Разделител на поле"
+
+#: ../statpress.php:322
+msgid "Overview"
+msgstr "Статистика"
+
+#: ../statpress.php:325
+msgid "Total"
+msgstr "Общо"
+
+#: ../statpress.php:326
+msgid "Last month"
+msgstr "Миналият месец"
+
+#: ../statpress.php:327
+#: ../statpress.php:328
+msgid "This month"
+msgstr "Този месец"
+
+#: ../statpress.php:328
+msgid "Target"
+msgstr "Цел"
+
+#: ../statpress.php:329
+msgid "Yesterday"
+msgstr "Вчера"
+
+#: ../statpress.php:330
+msgid "Today"
+msgstr "Днес"
+
+#: ../statpress.php:336
+msgid "Visitors"
+msgstr "Посетители"
+
+#: ../statpress.php:408
+msgid "Pageviews"
+msgstr "Прегледи"
+
+#: ../statpress.php:480
+#: ../statpress.php:856
+msgid "Spiders"
+msgstr "Роботи"
+
+#: ../statpress.php:551
+#: ../statpress.php:841
+msgid "Feeds"
+msgstr "Хранилки"
+
+#: ../statpress.php:698
+msgid "visitors"
+msgstr "посетители"
+
+#: ../statpress.php:699
+msgid "pageviews"
+msgstr "прегледи"
+
+#: ../statpress.php:700
+msgid "spiders"
+msgstr "робота"
+
+#: ../statpress.php:701
+msgid "feeds"
+msgstr "хранилки"
+
+#: ../statpress.php:717
+msgid "Last hits"
+msgstr "Последни посещения"
+
+#: ../statpress.php:717
+#: ../statpress.php:754
+#: ../statpress.php:764
+#: ../statpress.php:774
+#: ../statpress.php:784
+#: ../statpress.php:796
+#: ../statpress.php:1569
+msgid "Date"
+msgstr "Дата"
+
+#: ../statpress.php:717
+#: ../statpress.php:754
+#: ../statpress.php:764
+#: ../statpress.php:774
+#: ../statpress.php:784
+#: ../statpress.php:797
+msgid "Time"
+msgstr "Час"
+
+#: ../statpress.php:717
+#: ../statpress.php:953
+#: ../statpress.php:1571
+msgid "IP"
+msgstr "IP"
+
+#: ../statpress.php:717
+msgid "Threat"
+msgstr "Тема"
+
+#: ../statpress.php:717
+msgid "Domain"
+msgstr "Домейн"
+
+#: ../statpress.php:717
+#: ../statpress.php:784
+#: ../statpress.php:799
+#: ../statpress.php:1182
+#: ../statpress.php:1204
+#: ../statpress.php:1211
+#: ../statpress.php:1233
+msgid "Page"
+msgstr "Станица"
+
+#: ../statpress.php:717
+msgid "OS"
+msgstr "ОС"
+
+#: ../statpress.php:717
+#: ../statpress.php:838
+#: ../statpress.php:951
+msgid "Browser"
+msgstr "Браузер"
+
+#: ../statpress.php:717
+msgid "Feed"
+msgstr "Хранилка"
+
+#: ../statpress.php:754
+msgid "Last search terms"
+msgstr "Последни търсения"
+
+#: ../statpress.php:754
+msgid "Terms"
+msgstr "Ключови думи"
+
+#: ../statpress.php:754
+msgid "Engine"
+msgstr "Търсачка"
+
+#: ../statpress.php:754
+#: ../statpress.php:764
+msgid "Result"
+msgstr "Резултати"
+
+#: ../statpress.php:759
+#: ../statpress.php:769
+msgid "page viewed"
+msgstr "Посетил"
+
+#: ../statpress.php:764
+msgid "Last referrers"
+msgstr "Последни референции"
+
+#: ../statpress.php:764
+msgid "URL"
+msgstr "URL"
+
+#: ../statpress.php:774
+msgid "Last agents"
+msgstr "Последни браузери"
+
+#: ../statpress.php:774
+#: ../statpress.php:800
+#: ../statpress.php:946
+msgid "Agent"
+msgstr "Агент"
+
+#: ../statpress.php:774
+#: ../statpress.php:784
+msgid "What"
+msgstr "Какво"
+
+#: ../statpress.php:784
+msgid "Last pages"
+msgstr "Последно посетени страници"
+
+#: ../statpress.php:794
+msgid "Last spiders"
+msgstr "Последни посещения от роботи"
+
+#: ../statpress.php:798
+#: ../statpress.php:952
+msgid "Spider"
+msgstr "Робот"
+
+#: ../statpress.php:815
+msgid "StatPress table size"
+msgstr "StatPress Размер на таблицата"
+
+#: ../statpress.php:816
+msgid "StatPress current time"
+msgstr "StatPress време"
+
+#: ../statpress.php:817
+msgid "RSS2 url"
+msgstr "RSS2 url"
+
+#: ../statpress.php:818
+msgid "ATOM url"
+msgstr "ATOM url"
+
+#: ../statpress.php:819
+msgid "RSS url"
+msgstr "RSS url"
+
+#: ../statpress.php:820
+msgid "COMMENT RSS2 url"
+msgstr "Коментари RSS2 url"
+
+#: ../statpress.php:821
+msgid "COMMENT ATOM url"
+msgstr "Коментари ATOM url"
+
+#: ../statpress.php:832
+msgid "Top days"
+msgstr "Топ дни"
+
+#: ../statpress.php:835
+msgid "O.S."
+msgstr "О. С."
+
+#: ../statpress.php:844
+msgid "Search engines"
+msgstr "Търсачки"
+
+#: ../statpress.php:847
+msgid "Top search terms"
+msgstr "Топ ключови думи"
+
+#: ../statpress.php:850
+msgid "Top referrer"
+msgstr "Топ рефери"
+
+#: ../statpress.php:853
+msgid "Countries (domains)"
+msgstr "Страни (домейни)"
+
+#: ../statpress.php:859
+msgid "Top pages"
+msgstr "Топ страници"
+
+#: ../statpress.php:863
+msgid "Top Days - Unique visitors"
+msgstr "Топ дни - Уникални посетители"
+
+#: ../statpress.php:867
+msgid "Top Days - Pageviews"
+msgstr "Топ дни - Преглеждания"
+
+#: ../statpress.php:871
+msgid "Top IPs - Pageviews"
+msgstr "Топ IP-та - Преглеждания"
+
+#: ../statpress.php:923
+#: ../statpress.php:927
+msgid "arrived from"
+msgstr "дошъл от"
+
+#: ../statpress.php:923
+msgid "searching"
+msgstr "търсейки"
+
+#: ../statpress.php:945
+msgid "URL Requested"
+msgstr "Зареден URL"
+
+#: ../statpress.php:947
+msgid "Referrer"
+msgstr "Рефер"
+
+#: ../statpress.php:948
+msgid "Search terms"
+msgstr "Ключови думи"
+
+#: ../statpress.php:949
+msgid "Search engine"
+msgstr "Търсеща машина"
+
+#: ../statpress.php:950
+msgid "Operative system"
+msgstr "Операционна система"
+
+#: ../statpress.php:963
+msgid "Field"
+msgstr "Поле"
+
+#: ../statpress.php:974
+msgid "Group by"
+msgstr "Гропирай по"
+
+#: ../statpress.php:975
+msgid "Sort by"
+msgstr "Сортирай по"
+
+#: ../statpress.php:976
+msgid "if contains"
+msgstr "ако съдържа"
+
+#: ../statpress.php:989
+msgid "sort by count if grouped"
+msgstr "сортирай по брой ако са групирани"
+
+#: ../statpress.php:994
+msgid "include spiders/crawlers/bot"
+msgstr "включи и роботи/паяци/ботове"
+
+#: ../statpress.php:999
+msgid "include feed"
+msgstr "включи и хранилките"
+
+#: ../statpress.php:1004
+msgid "SELECT DISTINCT"
+msgstr "SELECT DISTINCT"
+
+#: ../statpress.php:1013
+#: ../statpress.php:2030
+msgid "Limit results to"
+msgstr "Лимитирай резултати до"
+
+#: ../statpress.php:1110
+msgid "Results"
+msgstr "Резултати"
+
+#: ../statpress.php:1123
+#: ../statpress.php:1572
+msgid "Count"
+msgstr "Брой"
+
+#: ../statpress.php:1186
+#: ../statpress.php:1215
+msgid "Category"
+msgstr "Категория"
+
+#: ../statpress.php:1190
+msgid "Calendar"
+msgstr "Календар"
+
+#: ../statpress.php:1305
+#: ../statpress.php:2031
+msgid "Visits"
+msgstr "Посещения"
+
+#: ../statpress.php:1567
+msgid "Unknown User Agents"
+msgstr "Неразпознати"
+
+#: ../statpress.php:1570
+msgid "Last Time"
+msgstr "Последно"
+
+#: ../statpress.php:1573
+msgid "User Agent"
+msgstr "Браузър"
+
+#: ../statpress.php:1733
+msgid "Updating table struct"
+msgstr "Обновяване на структората на таблицата"
+
+#: ../statpress.php:1735
+#: ../statpress.php:1778
+#: ../statpress.php:1790
+#: ../statpress.php:1802
+#: ../statpress.php:1815
+#: ../statpress.php:1820
+#: ../statpress.php:1838
+msgid "done"
+msgstr "готово"
+
+#: ../statpress.php:1738
+#: ../statpress.php:1818
+msgid "Updating Feeds"
+msgstr "Обновяване на Хранилки"
+
+#: ../statpress.php:1781
+msgid "Updating OS"
+msgstr "Обновяване на ОС"
+
+#: ../statpress.php:1793
+msgid "Updating Browsers"
+msgstr "Обновяване на Браузери"
+
+#: ../statpress.php:1804
+msgid "Updating Spiders"
+msgstr "Обновяване на Роботи"
+
+#: ../statpress.php:1823
+msgid "Updating Search engines"
+msgstr "Обновяване на Търсачки"
+
+#: ../statpress.php:1826
+msgid "null-ed"
+msgstr "празните"
+
+#: ../statpress.php:1828
+msgid "select-ed"
+msgstr "избраните"
+
+#: ../statpress.php:1842
+msgid "Updated"
+msgstr "Обновени"
+
+#: ../statpress.php:1988
+msgid "Title:"
+msgstr "Заглавие:"
+
+#: ../statpress.php:1989
+msgid "Body:"
+msgstr "Тяло:"
+
+#: ../statpress.php:2029
+msgid "Title"
+msgstr "Заглави"
+

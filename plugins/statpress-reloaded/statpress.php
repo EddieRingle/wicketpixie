@@ -3,12 +3,12 @@
    Plugin Name: StatPress Reloaded
    Plugin URI: http://blog.matrixagents.org/wp-plugins/
    Description: Improved real time stats for your blog
-   Version: 1.5.13
+   Version: 1.5.14
    Author: Manuel Grabowski
    Author URI: http://blog.matrixagents.org/
    */
   
-  $_STATPRESS['version'] = '1.5.13';
+  $_STATPRESS['version'] = '1.5.14';
   $_STATPRESS['feedtype'] = '';
   
   
@@ -1667,7 +1667,7 @@ function iri_StatPress_extractfeedreq($url)
           {
               return '';
           }
-          if (stristr($urlRequested, "/wp-content/plugins") != false)
+          if (stristr($urlRequested, "/wp-content/themes/wicketpixie/plugins") != false)
           {
               return '';
           }
@@ -2062,7 +2062,7 @@ function iri_StatPress_extractfeedreq($url)
 		//check whether necessary core function exists
 		if ( function_exists('load_plugin_textdomain') ) {
 		//load the plugin textdomain
-		load_plugin_textdomain('statpress', dirname(plugin_basename(__FILE__)) . '/locale');
+		load_plugin_textdomain('statpress',dirname(plugin_basename(__FILE__)) . '/locale');
 		}
 		}
 		// call the custom function on the init hook

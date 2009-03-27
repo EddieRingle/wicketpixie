@@ -1,4 +1,7 @@
 <?php
+
+add_action('admin_menu','wp_plugins_toplevel_admin');
+
 /* List of the plugins included in WicketPixie which should be activated.
 Make sure you add an option in functions.php as well, in the $plugins array.
 Example:
@@ -34,5 +37,21 @@ if(wp_get_option("wp_plug_falbum") == "1") {
 }
 if(wp_get_option("wp_plug_statpress-reloaded") == "1") {
     include TEMPLATEPATH ."/plugins/statpress-reloaded/statpress.php";
+}
+
+function wp_plugins_toplevel_admin() {
+add_menu_page('WiPi Plugins', 'WiPi Plugins', 'edit_themes', 'wp_plugins.php', 'wp_plugins_admin_index',get_template_directory_uri() .'/images/wicketsmall.png');
+}
+
+function wp_plugins_admin_index() {
+?>
+			<div class="wrap">
+				
+                <div id="admin-options">
+				    <h2>WicketPixie Plugins</h2>
+				    <p>We'll allow the user to enable plugins here instead of on the WicketPixie Options page.</p>
+                </div>
+                <?php include_once('app/advert.php'); ?>
+<?php
 }
 ?>
