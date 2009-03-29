@@ -120,9 +120,7 @@
 			<!-- content -->
 
 			<!-- sidebar -->
-			<div id="sidebar">
-				<?php get_sidebar(); ?>
-			</div>
+			<?php get_sidebar(); ?>
 			<!-- sidebar -->
 			
 <?php get_footer(); ?>

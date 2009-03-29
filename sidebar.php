@@ -1,4 +1,5 @@
 <!-- google_ad_section_start(weight=ignore) -->
+<div id="sidebar">
 <!-- sidebar1 -->
 <div id="sidebar1">
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar1') ) : ?><?php endif; ?>
@@ -47,5 +48,6 @@
 </div>
 <!-- /sidebar6 -->
 
+</div>
 <div class="clearer"></div>
 <!-- google_ad_section_end -->

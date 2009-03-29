@@ -78,11 +78,7 @@ if ( is_user_logged_in() ) {
 			<!-- content -->
 
 			<!-- sidebar -->
-			<div id="sidebar">
-
-				<?php get_sidebar(); ?>
-
-			</div>
+			<?php get_sidebar(); ?>
 			<!-- sidebar -->
 <script type="text/javascript">
 	$(document).ready(

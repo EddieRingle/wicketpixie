@@ -9,7 +9,7 @@
 	<!-- footer -->
 	<div id="footer">
 		<p id="footer-credits" class="left">&copy; 2008 <?php bloginfo('name'); ?>, All Rights Reserved</p>		
-		<p id="footer-meta" class="right">Powered by the <a href="http://chris.pirillo.com/social-me/">Social Media WordPress Theme</a> from <a href="http://chris.pirillo.com">Chris</a></p>		
+		<p id="footer-meta" class="right"><a href="http://code.idlesoft.net/projects/wicketpixie/issues">Find a bug or have a suggestion?</a> - Powered by the <a href="http://chris.pirillo.com/social-me/">Social Media WordPress Theme</a> from <a href="http://chris.pirillo.com">Chris</a></p>		
 		<div class="clearer"></div>		
 	</div>
 	<!-- footer -->
