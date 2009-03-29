@@ -17,14 +17,14 @@
 
 .falbum {
 	padding: 0px;
-	margin: 0px;
-	clear: both;	
-	width: 99%;
+	margin: 15px;
 	min-width: none;	
+	font-size: 8pt;
 }
 
 .falbum p {
   	margin: 8px 0 8px 0;
+  	font-size: 8pt;
 }
 
 .falbum img {
@@ -36,15 +36,18 @@
 	clear: both;
 }
 
+.falbum-date-taken {
+     padding-bottom: 15px;
+}
+
 .falbum-title {	
 	color: #260;
-	border-bottom: 1px dashed #CCC;
-	margin: 10px 0px 0px 0px;
-	padding: 0px 0px 0px 0px;
+	margin: 0px;
 }
 
 .falbum-meta {
 	margin: 0px 0px 5px 0px;
+	font-size: 8pt;
 }
 
 .falbum-navigationBar {
@@ -57,11 +60,14 @@
 /* ----------- Album Page -------------*/
 
 .falbum-album-description {
-	font-size: 11px;
 	margin-top: 10px;
 	margin-bottom: 10px;
+	display: none;
 }
 
+.falbum-slideshowlink {
+     padding-bottom: 15px;
+}
 
 /* ----------- Thumbnails -------------*/
   
@@ -125,12 +131,14 @@
 }
 
 .falbum-tags-label {
-	float: left;
-	display: block;
+	/* float: left;
+	display: block; */
+	display: none;
 }
 
 .falbum-tags {
 	float: left;
+	padding-bottom: 15px;
 }
 
 /* -- Image ---------------*/
@@ -185,8 +193,12 @@
 
 .falbum-description {
 	clear: both;
-	font-size: 11px;
 	margin: 5px 0 5px 0 ;
+}
+
+.falbum-photo-desc {
+	clear: both;
+	margin: 5px 0 5px 0;
 }
 
 /* -- Photo Sizes ---------------*/
@@ -197,11 +209,11 @@
 
 a.falbum-photoSizes
 {
-	background-color: #E4E0D2;
+	background-color: #eee;
 	padding: 2px;
 	margin: 1px 3px 1px 3px;
 	color: black;
-	border:	1px solid #D4D0C2;
+	border:	1px solid #c0c0c0;
 	text-align: center;
 }
 
@@ -254,7 +266,7 @@ a.annotation:hover {
 }
 
 #overDiv {
-  font-size: 1em;
+ /* font-size: 1em; */
 }
 
 /* ----------- Tag Cloud Page -------------*/
@@ -324,9 +336,9 @@ a.falbum-tag7 {
 
 
 /* ----------- Annotations -------------*/
-.annotation-fontClass {font-family: 'Comic Sans MS'; font-size: 1.3em; text-align: left;}
-.annotation-capfontClass {font-family: Arial, sans-serif; font-size: 1.3em; font-weight: bold; color: #ffffff; text-align: left;}
-.annotation-capfontClass A {color: #ffffff; font-size: 1.3em;}
+.annotation-fontClass {font-family: 'Lucida Grande'; text-align: left;}
+.annotation-capfontClass {font-family: 'Lucida Grande', Arial, sans-serif; font-weight: bold; color: #ffffff; text-align: left;}
+.annotation-capfontClass A {color: #ffffff; }
 .annotation-fgClass {background-color: #FFFFCC;}
 .annotation-bgClass {background-color: #FFFF66;}
 
@@ -336,13 +348,13 @@ a.falbum-tag7 {
 	color: Gray;
 	text-align:center;
 	padding: 2px 15px 2px 15px;
-	background-color:	#E4E0D2;
+	background-color:	#c0c0c0;
 }
 
 a.buttonLink {
 	padding: 2px 15px 2px 15px;
 	border:	1px solid #D4D0C2;
-	background-color:	#E4E0D2;
+	background-color:	#eee;
 	text-align:center;
 	white-space: nowrap;
 	color: black;
@@ -353,8 +365,8 @@ a.buttonLink:visited {
 }
 
 a.buttonLink:active {
-	border:	1px solid #3169C6;
-	background-color:	#3169C6;
+	border:	1px solid #000;
+	background-color:	#c0c0c0;
 	color: white;
 }
 
@@ -374,18 +386,18 @@ a.otherPageLink , a.otherPageLink:visited,a.otherPageLink:link {
 }
 
 a.curPageLink , a.curPageLink:visited,a.curPageLink:link {
-	border: 3px double #3169C6;
 	font-weight: bold;
+	text-decoration: none;
 }
 
 a.otherPageLink:hover,a.curPageLink:hover {
-	text-decoration: underline;
+	text-decoration: none;
 }
 
 /* ----------- Error Page -------------*/
 
 .falbum-error {
-	font-size:1.2em;
+	/* font-size:1.2em; */
 }
 .falbum-error pre{
 	width: 99%;
@@ -428,7 +440,7 @@ a.otherPageLink:hover,a.curPageLink:hover {
 }
 
 .falbum-comment-title {
-	font-weight: bold;
+     display: none;
 }
 
 .falbum-comment-author {

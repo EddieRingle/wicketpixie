@@ -26,7 +26,7 @@ $falbum_options = null;
 // plugin menu
 function falbum_add_pages() {
 	if (function_exists('add_options_page')) {
-		add_submenu_page('options-general.php', 'FAlbum', 'FAlbum', 8, basename(__FILE__), 'falbum_options_page');
+		add_submenu_page('wp_plugins.php', 'FAlbum', 'FAlbum', 8, basename(__FILE__), 'falbum_options_page');
 	}
 }
 
@@ -99,7 +99,7 @@ function falbum_options_page() {
 		$writable = false;
 	}
 
-	$rewriteRule = "<IfModule mod_rewrite.c>\n"."RewriteEngine On\n"."RewriteRule ^".$furl."?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?$ ".$path."/wp-content/themes/".get_template()."/plugins/falbum/wp/album.php?$1=$2&$3=$4&$5=$6&$7=$8 [QSA,L]\n"."</IfModule>";
+	$rewriteRule = "<IfModule mod_rewrite.c>\n"."RewriteEngine On\n"."RewriteRule ^".$furl."?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?$ ".$path."/wp-content/themes/wicketpixie/plugins/falbum/wp/album.php?$1=$2&$3=$4&$5=$6&$7=$8 [QSA,L]\n"."</IfModule>";
 
 	//echo '<pre>$path-'.$path.'/'.'</pre>';
 	//echo '<pre>$furl-'.'/'.$furl.'</pre>';
@@ -192,7 +192,7 @@ function falbum_options_page() {
 					$furl = substr($furl, 1);
 				}
 
-				$rewriteRule = "<IfModule mod_rewrite.c>\n"."RewriteEngine On\n"."RewriteRule ^".$furl."?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?$ ".$path."/wp-content/themes/".get_template()."/plugins/falbum/wp/album.php?$1=$2&$3=$4&$5=$6&$7=$8 [QSA,L]\n"."</IfModule>";
+				$rewriteRule = "<IfModule mod_rewrite.c>\n"."RewriteEngine On\n"."RewriteRule ^".$furl."?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?([^/]*)?/?$ ".$path."/wp-content/themes/wicketpixie/plugins/falbum/wp/album.php?$1=$2&$3=$4&$5=$6&$7=$8 [QSA,L]\n"."</IfModule>";
 
 				//echo '<pre>'.$rewriteRule.'</pre>';
 
@@ -261,7 +261,7 @@ function falbum_options_page() {
 		$options['friendly_urls'] = "false";
 	}
 	if (!isset ($options['url_root']) || $options['url_root'] == "") {
-		$options['url_root'] = $path."/wp-content/themes/".get_template()."/plugins/falbum/wp/album.php";
+		$options['url_root'] = $path."/wp-content/themes/wicketpixie/plugins/falbum/wp/album.php";
 	}
 	if (!isset ($options['albums_per_page']) || $options['albums_per_page'] == "") {
 		$options['albums_per_page'] = "5";
@@ -297,7 +297,7 @@ function falbum_options_page() {
 		$options['style'] = "default";
 	}
 	if (!isset ($options['url_falbum_dir']) || $options['style'] == "") {
-		$options['url_falbum_dir'] = $path."/wp-content/themes/".get_template()."/plugins/falbum";
+		$options['url_falbum_dir'] = $path."/wp-content/themes/wicketpixie/plugins/falbum";
 	}
 	
 	
@@ -539,7 +539,7 @@ function falbum_options_page() {
 
 
 	fa_e('URL to use as the root for all navigational links.<br /><strong>NOTE:</strong>It is important that you specify something here, for example:<br />If friendly URLs is <strong>enabled</strong> use - /photos/<br />If friendly URLs is <strong>disabled</strong> use - ');
-	echo $path."/wp-content/themes/".get_template()."/plugins/falbum/wp/album.php";
+	echo $path."/wp-content/themes/wicketpixie/plugins/falbum/wp/album.php";
 ?>
 				   </td>
                 </tr>
@@ -551,7 +551,7 @@ function falbum_options_page() {
 
 
 	fa_e('URL of the falbum directory<br />Example: ');
-	echo $path."/wp-content/themes/".get_template()."/plugins/falbum";
+	echo $path."/wp-content/themes/wicketpixie/plugins/falbum";
 ?>
 				   </td>
                 </tr>
@@ -605,7 +605,7 @@ function falbum_header() {
 			if (file_exists($tdir_uri."/falbum/falbum.css")) {
 				$cssUrl = $tdir_uri."/falbum/falbum.css";
 			} else {
-				$cssUrl = get_settings('siteurl')."/wp-content/themes/".get_template()."/plugins/falbum/styles/default/falbum.css";
+				$cssUrl = get_settings('siteurl')."/wp-content/themes/wicketpixie/plugins/falbum/styles/default/falbum.css";
 			}		  
 		
 		} else {
@@ -613,7 +613,7 @@ function falbum_header() {
 	      	if (file_exists($tdir."/falbum.css")) {
 	  			$cssUrl = $tdir_uri."/falbum.css";
 	  		} else {
-	  			$cssUrl = get_settings('siteurl')."/wp-content/themes/".get_template()."/plugins/falbum/styles/".$style."/falbum.css";
+	  			$cssUrl = get_settings('siteurl')."/wp-content/themes/wicketpixie/plugins/falbum/styles/".$style."/falbum.css";
 	  		}
 	    
 	    }

@@ -1,5 +1,5 @@
-<div id='falbum' class='falbum'>
 <!-- Start of FAlbum -->
+<div id='falbum' class='falbum'>
 
 <?php if ($can_edit == true): ?>
 	<div id='falbum-post-helper-switch'><img src="<?php echo get_settings('siteurl'); ?>/wp-content/plugins/falbum/styles/default/images/wrench.png" alt="Post Helper" title="Post Helper" width="16" height="16" /></div>
@@ -29,9 +29,9 @@
 	</div> 
 <?php endif; ?>	
 
-<h3 class='falbum-title'>
+<h1 class='falbum-title'>
 	<a href='<?php echo $home_url; ?>'><?php echo $home_label; ?></a>&nbsp;&raquo;&nbsp;<a href='<?php echo $title_url; ?>'><?php echo $title_label; ?></a>&nbsp;&raquo;&nbsp;<span id="falbum-photo-title"><?php echo $title; ?></span>
-</h3>
+</h1>
 
 <div class='falbum-date-taken'><?php echo $date_taken; ?></div>
 
@@ -49,6 +49,28 @@
 	<?php endforeach; ?>
 </map>
 <?php endif; ?>
+
+					<!-- post-ad -->
+					<div id="post-ad">
+				      <script type="text/javascript"><!--
+                              google_ad_client = "pub-7561297527511227";
+                              google_ad_width = 120;
+                              google_ad_height = 240;
+                              google_ad_format = "120x240_as";
+                              google_ad_type = "text_image";
+                              google_color_border = "FFFFFF";
+                              google_alternate_color = "ffffff";
+                              google_color_bg = "FFFFFF";
+                              google_color_link = "0000FF";
+                              google_color_text = "000000";
+                              google_color_url = "0000FF";
+                              google_alternate_ad_url = 'http://chris.pirillo.com/wp-content/adsense_blocks/adsense_alt_120x240.php';
+                         //--></script>
+                              <script type="text/javascript"
+                                src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                         </script>
+					</div>
+					<!-- /post-ad -->
 
 <div class='falbum-photo-block'>
 
@@ -143,6 +165,24 @@
 //-->
 </script>
 
+					<div style="padding-top: 30px" align="center">
+						<script type="text/javascript"><!--
+                                   google_ad_client = "pub-7561297527511227";
+                                   google_ad_width = 300;
+                                   google_ad_height = 250;
+                                   google_ad_format = "300x250_as";
+                                   google_ad_type = "text_image";
+                                   google_color_border = "ffffff";
+                                   google_color_bg = "ffffff";
+                                   google_color_link = "0000FF";
+                                   google_color_url = "0000FF";
+                                   google_color_text = "000000";
+                                   google_alternate_ad_url = 'http://chris.pirillo.com/wp-content/adsense_blocks/adsense_alt_300x250.php';
+                              //--></script>
+                                   <script type="text/javascript"
+                                     src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                                   </script>
+					</div>
 
 <!-- End of Falbum -->
 </div>

@@ -16,13 +16,13 @@ get_header();
 
 <script
 	type="text/javascript"
-	src="<?php echo get_settings('siteurl'); ?>/wp-content/themes/<?php echo get_template(); ?>/plugins/falbum/res/overlib.js"></script>
+	src="<?php echo get_settings('siteurl'); ?>/wp-content/themes/wicketpixie/plugins/falbum/res/overlib.js"></script>
 <script
 	type="text/javascript"
-	src="<?php echo get_settings('siteurl'); ?>/wp-content/themes/<?php echo get_template(); ?>/plugins/falbum/res/jquery-c.js"></script>
+	src="<?php echo get_settings('siteurl'); ?>/wp-content/themes/wicketpixie/plugins/falbum/res/jquery-c.js"></script>
 <script
 	type="text/javascript"
-	src="<?php echo get_settings('siteurl'); ?>/wp-content/themes/<?php echo get_template(); ?>/plugins/falbum/res/falbum-c.js"></script>
+	src="<?php echo get_settings('siteurl'); ?>/wp-content/themes/wicketpixie/plugins/falbum/res/falbum-c.js"></script>
 
 <div id="overDiv" style="position:absolute; visibility:hidden; z-index:1000;"></div>
 
