@@ -1,10 +1,16 @@
 WICKETPIXIE CHANGELOG
 
 WORKING - TBA, 2009
- * FEATURE: The Custom Header feature allows you to add custom code to
- header.php without modifying it yourself. The code is included within the
- <head></head> tags.
+ * FEATURE: The Custom Code feature allows you to add custom code to
+ header.php and footer.php without modifying the template yourself.
+ * FEATURE: Adsense Integration allows you insert Adsense ads in the
+ recommended areas without touching the templates.
+ * PLUGIN: Numerous plugins have been added:
+ All-in-one SEO pack, Auto-hyperlink URLs, DISQUS, FAlbum, Kontera,
+ Obfuscate Email, and StatPress Reloaded
+ * PLUGIN: Updated Related Posts plugin to version 1.0.
  * ADDED: WicketPixie has it's own top-level menu in WordPress' admin area.
+ There is also a top-level menu for the plugins bundled with WicketPixie.
  * PERFORMANCE: We are using Google to serve jQuery and favicons, so page load
  times will have decreased.
  * PERFORMANCE: Status update caching caches the latest feed item from the
@@ -12,10 +18,13 @@ WORKING - TBA, 2009
  a new cache is built.
  * UPDATED: Twitter post will show "from WicketPixie" now after you publish
  a blog post and have Twitter set to be notified by WicketPixie.
- * UPDATED: @<username here> in status updates will now link to that user's
+ * UPDATED: @{username here} in status updates will now link to that user's
  Twitter profile, if Twitter is set to provide the updates of course.
  * UPDATED: Made the search highlight plugin optional.
  * FIXED: Checkboxes in WicketPixie Options will remember their settings.
+ * FIXED: Nofollow has been added to header and navigational links for better
+ SEO.
+ * FIXED: Appended UNIX timestamp to the end of CSS files to prevent caching.
 
 v1.0.4 - January 19, 2009 by Eddie Ringle
  * FEATURE: Plain-text URLs in the Status Updates box are now hyperlinked,
