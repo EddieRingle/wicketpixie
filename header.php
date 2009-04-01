@@ -34,21 +34,7 @@ $adsense = new AdsenseAdmin;
 	
 	<?php
     include_once (TEMPLATEPATH . '/plugins/random-posts.php');
-    if(wp_get_option('wp_plug_related-posts')) {
-        if(wp_get_option('wp_plug_related-posts') != "0") {
-	        include_once (TEMPLATEPATH . '/plugins/related-posts.php');
-	    }
-	} else {
-	    include_once(TEMPLATEPATH .'/plugins/related-posts.php');
-	}
 	include_once (TEMPLATEPATH . '/plugins/search-excerpt.php');
-	if(wp_get_option('wp_plug_search_highlight')) {
-	    if(wp_get_option('wp_plug_search_highlight') != "0") {
-	        include_once (TEMPLATEPATH . '/plugins/search-highlight.php');
-	    }
-	} else {
-	    include_once(TEMPLATEPATH .'/plugins/search-highlight.php');
-	}
     include_once (TEMPLATEPATH . '/app/gapikey.php');
     
     clearstatcache();

@@ -34,6 +34,9 @@ if(wp_get_option("wp_plug_nofollow_navigation") != "0") {
 if(wp_get_option("wp_plug_obfuscate-email") != "0") {
     include TEMPLATEPATH ."/plugins/obfuscate-email/obfuscate-email.php";
 }
+if(wp_get_option('wp_plug_related-posts') != "0") {
+    include_once (TEMPLATEPATH . '/plugins/related-posts.php');
+}
 if(wp_get_option("wp_plug_statpress-reloaded") != "0") {
     include TEMPLATEPATH ."/plugins/statpress-reloaded/statpress.php";
 }
@@ -93,13 +96,6 @@ $plugins = array(
         "name"  => "Obfuscate Email",
         "description"   => "Modifies email addresses to prevent email harvesting.",
         "id"    => $shortname."_plug_obfuscate-email",
-        "std"   => 1,
-        "status"    => 'checked',
-        "type"  => 'checkbox'),
-    array(
-        "name"  => "Search Highlight",
-        "description"   => "Highlights the keywords you searched for in the search results.",
-        "id"    => $shortname."_plug_search_highlight",
         "std"   => 1,
         "status"    => 'checked',
         "type"  => 'checkbox'),

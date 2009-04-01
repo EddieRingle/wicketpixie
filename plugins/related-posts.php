@@ -241,7 +241,7 @@ add_action('admin_menu', 'wp_add_related_posts_options_page');
 
 function wp_add_related_posts_options_page() {
 	if (function_exists('add_options_page')) {
-		add_options_page( __('WordPress Related Posts','wp_related_posts'), __('WordPress Related Posts','wp_related_posts'), 8, basename(__FILE__), 'wp_related_posts_options_subpanel');
+		add_submenu_page( 'wp_plugins.php', __('WordPress Related Posts','wp_related_posts'), __('WordPress Related Posts','wp_related_posts'), 8, basename(__FILE__), 'wp_related_posts_options_subpanel');
 	}
 }
 
