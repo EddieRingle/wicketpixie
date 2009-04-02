@@ -181,6 +181,7 @@ class AdsenseAdmin
     google_ad_slot = '$ad_id';
     google_ad_width = $width;
     google_ad_height = $height;
+    google_color_border = 'FFFFFF';
     //-->
     </script>
     <script type='text/javascript'
@@ -214,6 +215,7 @@ class AdsenseAdmin
     google_ad_slot = '$ad_id';
     google_ad_width = $width;
     google_ad_height = $height;
+    google_color_border = 'FFFFFF';
     //-->
     </script>
     <script type='text/javascript'
