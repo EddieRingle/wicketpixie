@@ -121,7 +121,11 @@
 
 			<!-- sidebar -->
 			<div id="sidebar">
-				
+				<?php
+				if(wp_get_option('wp_sidebar_buttons') != "0") {
+				    include TEMPLATEPATH .'/widgets/sidebar-buttons.php';
+				}
+				?>
 				<!-- youtube
 					width = 340, height = 293 -->
 				<div id="home-youtube">

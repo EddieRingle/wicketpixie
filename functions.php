@@ -71,6 +71,7 @@ if ( function_exists('register_sidebar') )
 if( function_exists( 'register_sidebar_widget' ) ) {
 	register_sidebar_widget('WicketPixie: Recent Posts','wicketpixie_recent_posts');
 	register_sidebar_widget('WicketPixie: My Profiles','wicketpixie_my_profiles');
+	register_sidebar_widget('WicketPixie: Social Buttons','wicketpixie_social_buttons');
 	foreach( collect() as $widget ) {
 		$cleaned= strtolower( $widget->title );
 		$cleaned= preg_replace( '/\W/', ' ', $cleaned );
@@ -79,12 +80,16 @@ if( function_exists( 'register_sidebar_widget' ) ) {
 	}
 }
 
+function wicketpixie_my_profiles() {
+	include( TEMPLATEPATH . '/widgets/my-profiles.php'); 
+}
+
 function wicketpixie_recent_posts() {	
 	include( TEMPLATEPATH . '/widgets/recent-posts.php'); 
 }
 
-function wicketpixie_my_profiles() {
-	include( TEMPLATEPATH . '/widgets/my-profiles.php'); 
+function wicketpixie_social_buttons() {
+    include(TEMPLATEPATH .'/widgets/sidebar-buttons.php');
 }
 
 $themename = "WicketPixie";
@@ -188,13 +193,6 @@ $options = array (
 );
 
 $settings= array(
-		
-	array(
-	    "name" => "Blog Feed URL",
-	    "description" => "The Feed URI used in the Subscribe menu and metadata.",
-	    "id" => $shortname."_blog_feed_url",
-	    "std" => "http://feeds.pirillo.com/ChrisPirillo",
-	    "type" => "text"	),	
 	array(
 		"name"	=>	"Show author on posts",
 		"description"	=>	"Whether or not to show who wrote a particular post.",
