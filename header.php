@@ -87,6 +87,9 @@ $adsense = new AdsenseAdmin;
     $metadesc = strip_tags($metadesc);
     ?>
     <meta name="description" value="<?php echo $metadesc; ?>" />
+    <?php
+        flush();
+    ?>
 </head>
 
 <body>

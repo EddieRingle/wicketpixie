@@ -377,7 +377,7 @@ body {
 #mid {
 	float: left;
 	width: 100%;
-	background: #FFFFFF url("../images/mid-bg.jpg") no-repeat 0 0;
+	background: url("../images/mid-bg.jpg") no-repeat 0 0;
 }
 
 #mid-inner {
@@ -515,7 +515,7 @@ body {
 }
 
 .content h2 {
-	margin-bottom: 2em 0 1em 0;
+	margin: 2em 0 1em 0;
 	font-size: 1.5em;
 	line-height: 1.2em;
 }
@@ -1255,13 +1255,12 @@ body {
 
 #sidebar1 {
 	width: 100%;
-     margin-bottom: 28px;
-	background: url("../images/sidebar-box-bottom.gif") no-repeat 0 100%;
+    margin-bottom: 28px;
 }
 
 #sidebar1 .widget {
 	padding: 20px 20px 6px;
-	background: #FFFFFF url("../images/sidebar-box-top.gif") no-repeat 0 0;
+	margin: 0 auto;
 }
 
 #sidebar1 .widget img {
@@ -1645,33 +1644,34 @@ table, td, tr, th {
 }
 
 div.KonaBody {
-     margin-top: 15px
+     margin-top: 15px;
+     font-size: 9px;
 }     
 
 /* Skiddily Doo */
-.TweetWrapper {
+.TweetWrapper, #TweetWrapper {
     clear: left;
-    padding: 5px 0 0 20px;
+    padding: 5px 0 60px 20px;
 }
 
 .TweetBody {
     clear: left;
 }
 
-.TweetAvatar {
-    border: 0;
+.TweetAvatar, #TweetAvatar, #profile_image_url {
+    border: 0 0 0 0;
     float: left;
     padding: 4px 15px 25px 0;
     width: 40px;
     height: 40px;
 }
 
-.TweetStatus {
+.TweetStatus, .TweetStatus_text, #TweetStatus_text {
     font-size: 8pt;
     line-height: 12pt;
 }
 
-.TweetDate, .TweetPermadate, .TweetPermalink {
+.TweetDate, .TweetPermadate, .TweetPermalink, .msgstatus {
     float: left;
 }
 /* @end */
