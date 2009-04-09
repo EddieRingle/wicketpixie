@@ -1,10 +1,10 @@
 <!-- social-buttons -->
 <div style="margin:0 auto;width:100%">
     <?php
-    $blogfeed = wp_get_option("wp_blog_feed_url");
-    $podcastfeed = wp_get_option("wp_podcastfeed");
-    $twitter = wp_get_option("wp_twitterid");
-    $youtube = wp_get_option("wp_youtubeid");
+    $blogfeed = wp_get_option("blog_feed_url");
+    $podcastfeed = wp_get_option("podcastfeed");
+    $twitter = wp_get_option("twitterid");
+    $youtube = wp_get_option("youtubeid");
     if($blogfeed != false && $blogfeed != "") {
         echo "<a href='$blogfeed' target='_blank'><img src='".get_template_directory_uri()."/images/button-feed.png' style='float:left;padding:10px 10px 20px 14px' height='60' width='60' border='0' alt='Subscribe'/></a>";
     }

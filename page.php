@@ -5,7 +5,7 @@
 				
 				<?php if (have_posts()) : ?>	
 				<?php while (have_posts()) : the_post(); ?>
-				<?php  $postid =  $post->ID; ?>
+				<?php $postid =  $post->ID; ?>
 				<!-- page -->
 				<div class="page">					
 					<h1><?php the_title(); ?></h1>

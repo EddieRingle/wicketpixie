@@ -135,7 +135,7 @@ class NotifyAdmin
 	*/
 	 function notifyMenu() {
 		$notify= new NotifyAdmin;
-        $wp_notify = wp_get_option('wp_notify');
+        $wp_notify = wp_get_option('notify');
 		if ( $_GET['page'] == basename(__FILE__) ) {
 	        if ( 'add' == $_REQUEST['action'] ) {
 				$notify->add( $_REQUEST );
@@ -214,7 +214,7 @@ class NotifyAdmin
 * A variable that is checked when we want to know if WicketPixie Notifications
 * are enabled or not.
 **/
-$wp_notify = wp_get_option('wp_notify');
+$wp_notify = wp_get_option('notify');
 
 /**
 * This is called when a post is published and

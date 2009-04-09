@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= wp_get_option( 'wp_auth_credit' ); ?>
+<?php $wp_auth_credit= wp_get_option( 'auth_credit' ); ?>
 
 			<!-- content -->
 			<div id="content">
@@ -12,27 +12,29 @@
 				<!-- post -->
 				<div class="post">
 					
-					<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
+					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
 
                 
 					<div class="post-comments">
 						<ul>
 						<?php
-						if(wp_get_option('wp_plug_disqus')) {
-						    if(wp_get_option('wp_plug_disqus') == 1) {
-						        $disqus = 1;
+						if(wp_get_option('plug_disqus')) {
+						    if(wp_get_option('plug_disqus') == "1") {
+						        $countlink="#disqus_thread";
+						        $addlink="#disqus_thread";
 						    } else {
-						        $disqus = 0;
+						        $countlink="#comments";
+						        $addlink="#respond";
 						    }
 						} else {
-						    $disqus = 0;
+						    $countlink="#comments";
+						    $addlink="#respond";
 						}
 						?>
-							<li class="post-comments-count"><a href="<?php if ($disqus == 1) ? echo '#disqus_thread' : echo '#comments'; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
-							<li class="post-comments-add"><a href="<?php the_permalink(); if ($disqus == 1) ? echo '#disqus_thread' : echo '#respond'; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
+							<li class="post-comments-count"><a href="<?php the_permalink(); echo $countlink; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
+							<li class="post-comments-add"><a href="<?php the_permalink(); echo $addlink; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
 						</ul>
 					</div>
-					
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
@@ -66,41 +68,97 @@
 					</div>
 				</div>
 				<!-- /post -->
-				
 				<!-- google_ad_section_end -->
 				<?php endwhile; ?>
 				<?php endif; ?>
 				
-				
-				<?php
-				if(is_enabled_adsense() == true) {
-			    ?>
-			        <!-- don't ask why we're using the youtube CSS id for this. -->
-			        <div id="home-youtube-full">
-			        <?php
-			            $adsense->wp_adsense('blog_post_bottom');
-			        ?>
-			        </div>
-			    <?php
-				} elseif(is_enabled_adsense() == false) {
-				?>
-				    <!-- Enable Adsense on the WicketPixie Adsense admin page. -->
-				<?php
-				}
-				?>
+				<!-- post-meta -->
+				<div class="post-meta">
+					
+					<!-- related-posts -->
+					<div id="related-posts">
+						<h3>Further Reading</h3>
+						<ul>
+						 <?php wp_related_posts(); ?>
+						</ul>						
+					</div>
+					<!-- /related-posts -->
+					
+					<!-- post-meta-right -->
+					<div class="post-meta-right">
+						
+						<!-- post-meta-tags -->
+						<div class="post-meta-tags">
+							<h6>Tags</h6>
+							<?php the_tags('<ul><li>','</li><li>','</li></ul>'); ?>
+						</div>
+						<!-- /post-meta-tags -->
+
+						<!-- post-meta-categories -->
+						<div class="post-meta-categories">
+							<h6>Categories</h6>
+							<p><?php the_category(); ?></p>
+						</div>
+						<!-- /post-meta-categories -->
+						
+						<!-- post-bigbox -->
+						<div class="post-bigbox">
+						<?php
+				        if(is_enabled_adsense() == true) {
+			                $adsense->wp_adsense('blog_post_bottom');
+				        } elseif(is_enabled_adsense() == false) {
+				        ?>
+				            <!-- Enable Adsense on the WicketPixie Adsense admin page. -->
+				        <?php
+				        }
+				        ?>
+						</div>
+						<!-- /post-bigbox -->
+						
+					</div>
+					<!-- /post-meta-right -->
+					
+					<div class="clearer"></div>
+					
+				</div>
+				<!-- /post-meta -->
 				
 				<div id="home-categories">
-				    <h2>My Videos</h2>
-					<object width="500" height="285"><param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" type="application/x-shockwave-flash" wmode="transparent" width="500" height="285"></embed></object>
+				<?php
+				if(wp_get_option('home_video') != "0") {
+				    if(wp_get_option('home_show_vid_heading') != "0") {
+				        echo "<h2>My Videos</h2>";
+				    }
+				    if(wp_get_option('home_video_code') != false && wp_get_option('home_video_code') != "") {
+        	    	            echo stripslashes(wp_get_option('home_video_code'));
+				    } else {
+				    ?>
+				    <object width="500" height="285"><param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" type="application/x-shockwave-flash" wmode="transparent" width="500" height="285"></embed></object>
+				    <?php
+				    }
+				}
+				?>
 			    </div>
 			    
 				<div class="clearer"></div>
 				
-				<!-- home-photos
-					Replace the user= value with your own Flickr ID. It can be obtained from http://idgettr.com -->
+				<!-- home-photos -->
 				<div id="home-photos">
-					<h2>Recent Photos</h2>
-					<script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=49503157467@N01"></script>
+				<?php
+				if(wp_get_option('flickrid') != false && wp_get_option('flickrid') != "") {
+				    $flickrid = wp_get_option('flickrid');
+				} else {
+				    $flickrid = '49503157467@N01';
+				}
+				if(wp_get_option('home_flickr') != "0") {
+				    if(wp_get_option('home_show_photo_heading') != "0") {
+				        echo "<h2>Recent Photos</h2>";
+				    }
+				?>
+				    <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=<?php echo $flickrid; ?>"></script>
+				<?php
+				}
+				?>
 				</div>
 				<!-- /home-photos -->
 				
@@ -122,12 +180,11 @@
 			<!-- sidebar -->
 			<div id="sidebar">
 				<?php
-				if(wp_get_option('wp_sidebar_buttons') != "0") {
+				if(wp_get_option('sidebar_buttons') != "0") {
 				    include TEMPLATEPATH .'/widgets/sidebar-buttons.php';
 				}
 				?>
-				<!-- youtube
-					width = 340, height = 293 -->
+				<!-- width = 340, height = 293 -->
 				<div id="home-youtube">
 					<h3>My Live Video</h3>
 					<embed src="http://www.ustream.tv/flash/live/553" width="340" height="293" wmode="transparent" flashvars="autoplay=false&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />
@@ -138,17 +195,6 @@
 				<!-- recent-posts -->
 				<div id="sidebar1">					
 					<div id="recent-posts" class="widget">
-						<h3>Subscribe to Chris Pirillo's Newsletter!</h3>
-                        <form action="http://whatcounts.com/bin/listctrl" method="post">
-                            <input type=hidden name="slid" value="4EB045FEF6973258752D42129F9F915C" />
-                            <input type=hidden name="cmd" value="subscribe" />
-                            <input type=hidden name="goto" value="http://chris.pirillo.com/" />
-                            <input type=hidden name="key" value="slid" />
-                            E-Mail: <input type=text name=email size=13 />
-                            <input type=hidden name="format" value="plain" />
-                            <input type=submit value="Subscribe" />
-                        </form>
-
 						<h3>Recent Posts</h3>
 						<?php query_posts('showposts=5&offset=1'); ?>
 						<?php while (have_posts()) : the_post(); ?>
@@ -156,8 +202,6 @@
 						<div class="post">								
 							<h5><a href="<?php the_permalink() ?>" rel="bookmark" title="Continue reading <?php the_title(); ?>"><?php the_title(); ?></a></h5>
 							<p><?php the_time('l, F jS') ?> | <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></p>
-							<?php the_excerpt(); ?>
-							<p><a href="<?php the_permalink() ?>" rel="bookmark" title="Continue reading <?php the_title(); ?>">Continue reading &raquo;</a></p>
 						</div>
 						<!-- /post -->						
 						<?php endwhile; ?>
@@ -176,7 +220,6 @@
 				<!-- home-mybloglog
 					width = 340 -->
 				<div id="home-mybloglog">
-
 				</div>
 				<!-- /home-mybloglog -->
 

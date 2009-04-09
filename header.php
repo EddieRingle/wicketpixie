@@ -1,7 +1,7 @@
 <?php
 /* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
-if(wp_get_option('wp_blog_feed_url') != false) {
-    $blogfeed = wp_get_option('wp_blog_feed_url');
+if(wp_get_option('blog_feed_url') != false) {
+    $blogfeed = wp_get_option('blog_feed_url');
 } else {
     $blogfeed = 'http://feeds.pirillo.com/ChrisPirillo';
 }
@@ -95,8 +95,7 @@ $adsense = new AdsenseAdmin;
 <body>
 <!-- google_ad_section_start(weight=ignore) -->
     <?php
-    if(wp_get_option('wp_topbar')) {
-        if(wp_get_option('wp_topbar') == "1") {
+    if(wp_get_option('wp_topbar') != "0") {
     ?>
 	<!-- topbar -->
 	<div id="topbar">
@@ -138,55 +137,13 @@ $adsense = new AdsenseAdmin;
 	</div>
 	<!-- /share -->
     <?php
-        } else {
+    } else {
     ?>
     <!-- If you'd like, turn the topbar on in WicketPixie's settings -->
     <?php
-        }
-    } else {
-    ?>
-    <!-- topbar -->
-	<div id="topbar">
-		
-		<!-- topbar-inner -->
-		<div id="topbar-inner">			
-			<ul>
-				<li id="topbar-subscribe"><a href="#" rel="nofollow">Subscribe</a></li>
-				<li id="topbar-share"><a href="#" rel="nofollow">Bookmark/Share</a></li>
-				<?php if (is_user_logged_in()) { ?><li id="topbar-admin"><a href="<?php bloginfo('wpurl'); ?>/wp-admin" rel="nofollow">Admin</a></li><?php } ?>
-			</ul>		
-            <?php include (TEMPLATEPATH . '/searchform.php'); ?>
-		</div>
-		<!-- /topbar-inner -->
-		
-	</div>
-	<!-- /topbar -->
-	
-	<!-- subscribe -->
-	<div id="subscribe">			
-		<ul>				
-			<li><a href="<?php echo $blogfeed; ?>" title="Subscribe to my feed" class="feed" rel="nofollow">RSS Feed</a></li>
-			<li><a href="http://www.bloglines.com/sub/<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Bloglines</a></li>
-			<li><a href="http://fusion.google.com/add?feedurl=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Google Reader</a></li>			
-			<li><a href="http://feeds.my.aol.com/add.jsp?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">My AOL</a></li>
-			<li><a href="http://my.msn.com/addtomymsn.armx?id=rss&ut=<?php echo $blogfeed; ?>&ru=<?php echo get_settings('home'); ?>" class="feed" rel="nofollow">My MSN</a></li>
-			<li><a href="http://add.my.yahoo.com/rss?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">My Yahoo!</a></li>
-			<li><a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">NewsGator</a></li>			
-			<li><a href="http://www.pageflakes.com/subscribe.aspx?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Pageflakes</a></li>
-			<li><a href="http://technorati.com/faves?add=<?php echo get_settings('home'); ?>" class="feed"v\ rel="nofollow">Technorati</a></li>
-			<li><a href="http://www.live.com/?add=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Windows Live</a></li>
-		</ul>		
-	</div>
-	<!-- /subscribe -->
-	
-	<!-- share -->
-	<div id="share">
-		
-	</div>
-	<!-- /share -->
-    <?php
     }
     ?>
+    
 	<!-- header -->
 	<div id="header">
 		
@@ -195,8 +152,8 @@ $adsense = new AdsenseAdmin;
 			
 			<div id="logo">
                 <?php
-                if(wp_get_option('wp_headersize')) {
-                    $fontsize = wp_get_option('wp_headersize');
+                if(wp_get_option('headersize')) {
+                    $fontsize = wp_get_option('headersize');
                     echo "<font style='font-size: ".$fontsize."px;'>";
                     ?>
                         <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>

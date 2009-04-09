@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= wp_get_option( 'wp_auth_credit' ); ?>
+<?php $wp_auth_credit= wp_get_option( 'auth_credit' ); ?>
 			
 			<!-- content -->
 			<div id="content">
@@ -14,21 +14,26 @@
 					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>					
 
                     <div class="post-comments">
+						<div class="post-comments">
 						<ul>
 						<?php
-						if(wp_get_option('wp_plug_disqus')) {
-						    if(wp_get_option('wp_plug_disqus') == 1) {
-						        $disqus = 1;
+						if(wp_get_option('plug_disqus')) {
+						    if(wp_get_option('plug_disqus') == "1") {
+						        $countlink="#disqus_thread";
+						        $addlink="#disqus_thread";
 						    } else {
-						        $disqus = 0;
+						        $countlink="#comments";
+						        $addlink="#respond";
 						    }
 						} else {
-						    $disqus = 0;
+						    $countlink="#comments";
+						    $addlink="#respond";
 						}
 						?>
-							<li class="post-comments-count"><a href="<?php echo(($disqus == 1)?'#disqus_thread':'#comments'); ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0','1','%'); ?></a></li>
-							<li class="post-comments-add"><a href="<?php the_permalink(); echo(($disqus == 1)?'#disqus_thread':'#respond'); ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
+							<li class="post-comments-count"><a href="<?php the_permalink(); echo $countlink; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
+							<li class="post-comments-add"><a href="<?php the_permalink(); echo $addlink; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
 						</ul>
+						</div>
 					</div>
 
 					<div class="post-author">

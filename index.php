@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= wp_get_option( 'wp_auth_credit' ); ?>
+<?php $wp_auth_credit= wp_get_option( 'auth_credit' ); ?>
 
             <!-- google_ad_section_start -->
 			<!-- content -->
@@ -13,6 +13,26 @@
 					
 					<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
+					<div class="post-comments">
+						<ul>
+						<?php
+						if(wp_get_option('plug_disqus')) {
+						    if(wp_get_option('plug_disqus') == "1") {
+						        $countlink="#disqus_thread";
+						        $addlink="#disqus_thread";
+						    } else {
+						        $countlink="#comments";
+						        $addlink="#respond";
+						    }
+						} else {
+						    $countlink="#comments";
+						    $addlink="#respond";
+						}
+						?>
+							<li class="post-comments-count"><a href="<?php the_permalink(); echo $countlink; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
+							<li class="post-comments-add"><a href="<?php the_permalink(); echo $addlink; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
+						</ul>
+					</div>
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
@@ -22,12 +42,6 @@
 						<p><strong><?php the_time('l, F jS, Y') ?></strong><br/>
 							at <?php the_time('g:ia') ?><?php edit_post_link('Edit', ' - ', ''); ?></p>
 						<?php } ?>
-					</div>
-					<div class="post-comments">
-						<ul>
-							<li class="post-comments-count"><?php comments_popup_link('0', '1', '%'); ?></li>
-							<li class="post-comments-add"><a href="<?php the_permalink() ?>#respond" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
-						</ul>
 					</div>
 					<div class="clearer"></div>
 
