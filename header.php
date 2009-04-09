@@ -95,7 +95,7 @@ $adsense = new AdsenseAdmin;
 <body>
 <!-- google_ad_section_start(weight=ignore) -->
     <?php
-    if(wp_get_option('wp_topbar') != "0") {
+    if(wp_get_option('show_topbar') != "0") {
     ?>
 	<!-- topbar -->
 	<div id="topbar">
