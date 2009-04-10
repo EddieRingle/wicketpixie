@@ -77,10 +77,12 @@
 					
 					<!-- related-posts -->
 					<div id="related-posts">
+					    <?php if (wp_get_option( 'plug_related-posts' )):?>
 						<h3>Further Reading</h3>
 						<ul>
 						 <?php wp_related_posts(); ?>
 						</ul>						
+						<?php endif;?>
 					</div>
 					<!-- /related-posts -->
 					
