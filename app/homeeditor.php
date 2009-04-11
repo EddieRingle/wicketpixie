@@ -22,6 +22,12 @@ $homeoptions = array(
     "status" => "checked",
     "type" => "checkbox"),
     array(
+    "name" => "Video Embed Code",
+    "description" => "Enter code for a video object. For example, a YouTube custom player.",
+    "id" => "home_video_code",
+    "std" => "No video embed code yet...",
+    "type" => "textarea"),
+    array(
     "name" => "Show 'My Videos' heading",
     "description" => "Show the 'My Videos' heading above the video embed.",
     "id" => "home_show_vid_heading",
@@ -74,12 +80,6 @@ $homeoptions = array(
     "id" => "home_ustream_width",
     "std" => "240",
     "type" => "textbox"),
-    array(
-    "name" => "Video Embed Code",
-    "description" => "Enter code for a video object. For example, a YouTube custom player.",
-    "id" => "home_video_code",
-    "std" => "No video embed code yet...",
-    "type" => "textarea"),
     array(
     "name" => "Custom Code",
     "description" => "Content that is displayed after the post but before the Flickr Widget, Embedded Video, etc.",
@@ -174,12 +174,25 @@ class HomeAdmin {
 
 			    <?php foreach ($homeoptions as $value) {
         
-			    if ($value['type'] == "textarea") { ?>
-            
+			    if ($value['type'] == "textarea") {
+                    if ($value['id'] == "home_video" || $value['id'] == "home_custom") {
+                        if (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') {
+                            $content = stripslashes(wp_get_option($value['id']));
+                        } else {
+                            $content = $value['std'];
+                        }
+                    } else {
+                        if (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') {
+                            $content = wp_get_option($value['id']);
+                        } else {
+                            $value['std'];
+                        }
+                    }
+                ?>
 			    <tr valign="top"> 
 			        <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
 			        <td style="padding-bottom:10px;">
-			            <textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php if ( wp_get_option( $value['id'] ) != false && wp_get_option($value['id']) != '') { echo wp_get_option( $value['id'] ); } else { echo $value['std']; } ?>"><?php if ($value['id'] == "home_video" || $value['id'] == "home_custom") { (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') ? stripslashes(wp_get_option($value['id'])) : $value['std']; } else { (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') ? wp_get_option($value['id']) : $value['std']; } ?></textarea>
+			            <textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php stripslashes($content); ?>"><?php echo stripslashes($content); ?></textarea>
 			        </td>
 			    </tr>
 
