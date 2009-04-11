@@ -213,7 +213,6 @@
                         echo $out;
                     ?>
                 </div>
-</div>
 				<!-- /youtube -->
 				
 				<!-- recent-posts -->
