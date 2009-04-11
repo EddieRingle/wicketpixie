@@ -16,6 +16,7 @@
 
                 
 					<div class="post-comments">
+						<div class="post-comments">
 						<ul>
 						<?php
 						if(wp_get_option('plug_disqus')) {
@@ -34,7 +35,9 @@
 							<li class="post-comments-count"><a href="<?php the_permalink(); echo $countlink; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
 							<li class="post-comments-add"><a href="<?php the_permalink(); echo $addlink; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
 						</ul>
+						</div>
 					</div>
+					
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
@@ -182,7 +185,7 @@
 			<!-- sidebar -->
 			<div id="sidebar">
 				<?php
-				if(wp_get_option('sidebar_buttons') != "0") {
+				if(wp_get_option('home_sidebar_buttons') != "0") {
 				    include TEMPLATEPATH .'/widgets/sidebar-buttons.php';
 				}
 				?>

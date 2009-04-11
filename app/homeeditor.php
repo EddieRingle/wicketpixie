@@ -36,8 +36,15 @@ $homeoptions = array(
     "status" => "checked",
     "type" => "checkbox"),
     array(
-    "name" => "Ustream Sidebar Widget",
-    "description" => "Check to enable the Ustream embed in the sidebar.",
+    "name" => "Enable Social Buttons Widget",
+    "description" => "Show the Social Buttons Widget in the homepage sidebar.",
+    "id" => "home_sidebar_buttons",
+    "std" => 1,
+    "status" => "checked",
+    "type" => "checkbox"),
+    array(
+    "name" => "Ustream Widget",
+    "description" => "Check to enable the Ustream embed on the homepage sidebar.",
     "id" => "home_ustream",
     "std" => 1,
     "status" => "checked",
@@ -49,6 +56,12 @@ $homeoptions = array(
     "std" => 1,
     "status" => "checked",
     "type" => "checkbox"),
+    array(
+    "name" => "Ustream Object Heading",
+    "description" => "The heading that will appear above the Ustream Object.",
+    "id" => "home_ustream_heading",
+    "std" => "Live Video",
+    "type" => "textbox"),
     array(
     "name" => "Ustream Object Height",
     "description" => "Enter code for a video object. For example, a YouTube custom player.",
@@ -166,7 +179,7 @@ class HomeAdmin {
 			    <tr valign="top"> 
 			        <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
 			        <td style="padding-bottom:10px;">
-			            <textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php if ( wp_get_option( $value['id'] ) != false && wp_get_option($value['id']) != '') { echo wp_get_option( $value['id'] ); } else { echo $value['std']; } ?>"><?php if ($value['id'] == "home_video_code" || $value['id'] == "home_custom") { (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') ? stripslashes(wp_get_option($value['id'])) : $value['std']; } else { (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') ? wp_get_option($value['id']) : $value['std']; } ?></textarea>
+			            <textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php if ( wp_get_option( $value['id'] ) != false && wp_get_option($value['id']) != '') { echo wp_get_option( $value['id'] ); } else { echo $value['std']; } ?>"><?php if ($value['id'] == "home_video" || $value['id'] == "home_custom") { (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') ? stripslashes(wp_get_option($value['id'])) : $value['std']; } else { (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') ? wp_get_option($value['id']) : $value['std']; } ?></textarea>
 			        </td>
 			    </tr>
 
