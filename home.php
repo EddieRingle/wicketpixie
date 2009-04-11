@@ -189,12 +189,31 @@
 				    include TEMPLATEPATH .'/widgets/sidebar-buttons.php';
 				}
 				?>
-				<!-- width = 340, height = 293 -->
+				<!-- width = 340, height = 240 -->
 				<div id="home-youtube">
-					<h3>My Live Video</h3>
-					<embed src="http://www.ustream.tv/flash/live/553" width="340" height="293" wmode="transparent" flashvars="autoplay=false&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />
-                         <p align="center"><a href="http://live.pirillo.com/">Join the Live Chat Room</a></p>
-				</div>
+					<?php echo "<h3>".wp_get_option('home_ustream_heading')."</h3>"; ?>
+					<?php $key = "uzhqbxc7pqzqyvqze84swcer"; ?>
+                    <?php
+                        if (wp_get_option('ustreamchannel') != false && wp_get_option('ustreamchannel') != "") { $chan = wp_get_option('ustreamchannel'); } else { $trip = true; }
+                        if (wp_get_option('home_ustream_height') != false && wp_get_option('home_ustream_height') != "") { $height = wp_get_option('home_ustream_height'); } else { $trip = true; }
+                        if (wp_get_option('home_ustream_width') != false && wp_get_option('home_ustream_width') != "") { $width = wp_get_option('home_ustream_width'); } else { $trip = true; }
+                        if (wp_get_option('home_ustream_autoplay') == "1") { $autoplay = true; } else { $autoplay = false; }
+                        if ($trip == true) {
+                            $out = "<!-- Please go back to the Home Editor and set the settings for this widget. -->";
+                        } else {
+                            $url = "http://api.ustream.tv/php/channel/$chan/getCustomEmbedTag?key=$key&amp;params=autoplay:$autoplay;width:$width;height:$height;";
+                            $cl = curl_init($url);
+                            curl_setopt($cl,CURLOPT_HEADER,false);
+                            curl_setopt($cl,CURLOPT_RETURNTRANSFER,true);
+                            $resp = curl_exec($cl);
+                            curl_close($cl);
+                            $resultsArray = unserialize($resp);
+                            $out = $resultsArray['results'];
+                        }
+                        echo $out;
+                    ?>
+                </div>
+</div>
 				<!-- /youtube -->
 				
 				<!-- recent-posts -->
