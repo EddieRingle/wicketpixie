@@ -4,10 +4,12 @@ Plugin Name: DISQUS Comment System
 Plugin URI: http://disqus.com/
 Description: The DISQUS comment system replaces your WordPress comment system with your comments hosted and powered by DISQUS. Head over to the Comments admin page to set up your DISQUS Comment System.
 Author: DISQUS.com <team@disqus.com>
-Version: 2.04-3996
+Version: 2.11.4349
 Author URI: http://disqus.com/
 
 */
+
+require_once('lib/api.php');
 
 define('DISQUS_URL',			'http://disqus.com');
 define('DISQUS_API_URL',		DISQUS_URL);
@@ -16,7 +18,30 @@ define('DISQUS_IMPORTER_URL',	'http://import.disqus.net');
 define('DISQUS_MEDIA_URL',		'http://media.disqus.com');
 define('DISQUS_RSS_PATH',		'/latest.rss');
 
-require_once('lib/api.php');
+function dsq_plugin_basename($file) {
+	$file = dirname($file);
+
+	// From WP2.5 wp-includes/plugin.php:plugin_basename()
+	$file = str_replace('\\','/',$file); // sanitize for Win32 installs
+	$file = preg_replace('|/+|','/', $file); // remove any duplicate slash
+	$file = preg_replace('|^.*/' . PLUGINDIR . '/|','',$file); // get relative path from plugins dir
+
+	if ( strstr($file, '/') === false ) {
+		return $file;
+	}
+
+	$pieces = explode('/', $file);
+	return !empty($pieces[count($pieces)-1]) ? $pieces[count($pieces)-1] : $pieces[count($pieces)-2];
+}
+
+if ( !defined('WP_CONTENT_URL') ) {
+	define('WP_CONTENT_URL', get_option('siteurl') . '/wp-content');
+}
+if ( !defined('PLUGINDIR') ) {
+	define('PLUGINDIR', 'wp-content/themes/wicketpixie/plugins'); // Relative to ABSPATH.  For back compat.
+}
+
+define('DSQ_PLUGIN_URL', WP_CONTENT_URL . '/themes/wicketpixie/plugins/' . dsq_plugin_basename(__FILE__));
 
 /**
  * DISQUS WordPress plugin version.
@@ -24,7 +49,7 @@ require_once('lib/api.php');
  * @global	string	$dsq_version
  * @since	1.0
  */
-$dsq_version = '2.04';
+$dsq_version = '2.11';
 /**
  * Response from DISQUS get_thread API call for comments template.
  *
@@ -53,11 +78,6 @@ $dsq_cc_script_embedded = false;
  * @since	1.0
  */
 $dsq_api = new DisqusAPI(get_option('disqus_forum_url'), get_option('disqus_api_key'));
-
-/**
- * Template tags
- */
-// TODO: Add widget template tags.
 
 
 /**
@@ -192,7 +212,7 @@ function dsq_sync_comments($post, $comments) {
  */
 
 function dsq_get_style() {
-	echo "<link rel=\"stylesheet\" href=\"" . DISQUS_API_URL ."/stylesheets/" .  strtolower(get_option('disqus_forum_url')) . "/disqus.css\" type=\"text/css\" media=\"screen\" />";
+	echo "<link rel=\"stylesheet\" href=\"" . DISQUS_API_URL ."/stylesheets/" .  strtolower(get_option('disqus_forum_url')) . "/disqus.css?v=2.0\" type=\"text/css\" media=\"screen\" />";
 }
 
 add_action('wp_head','dsq_get_style');
@@ -259,14 +279,14 @@ function dsq_comment_count() {
 	// <![CDATA[
 		(function() {
 			var links = document.getElementsByTagName('a');
-			var query = '?';
+			var query = '&';
 			for(var i = 0; i < links.length; i++) {
 				if(links[i].href.indexOf('#disqus_thread') >= 0) {
 					links[i].innerHTML = 'View Comments';
-					query += 'url' + i + '=' + encodeURIComponent(links[i].href) + '&';
+					query += 'wpid' + i + '=' + encodeURIComponent(links[i].getAttribute('wpid')) + '&';
 				}
 			}
-			document.write('<script charset="utf-8" type="text/javascript" src="<?php echo DISQUS_URL ?>/forums/<?php echo strtolower(get_option('disqus_forum_url')); ?>/get_num_replies.js' + query + '"><' + '/script>');
+			document.write('<script charset="utf-8" type="text/javascript" src="<?php echo DISQUS_URL ?>/forums/<?php echo strtolower(get_option('disqus_forum_url')); ?>/get_num_replies_from_wpid.js?v=2.0' + query + '"><' + '/script>');
 		})();
 	//]]>
 	</script>
@@ -276,30 +296,17 @@ function dsq_comment_count() {
 	$dsq_cc_script_embedded = true;
 }
 
-function dsq_get_comments_number($num_comments) {
-	$replace = get_option('disqus_replace');
-
-	// HACK: Don't allow $num_comments to be 0.  If we're only replacing
-	// closed comments, we don't care about the value. For
-	// comments_popup_link();
-	if ( $replace != 'closed' && 0 == $num_comments ) {
-		return -1;
-	} else {
-		return $num_comments;
-	}
-}
-
 // Mark entries in index to replace comments link.
 function dsq_comments_number($comment_text) {
+	global $post;
+
 	if ( dsq_can_replace() ) {
 		ob_start();
 		the_permalink();
 		$the_permalink = ob_get_contents();
 		ob_end_clean();
 
-        $num_comments = "?";
-		/*return '</a><noscript><a href="http://' . strtolower(get_option('disqus_forum_url')) . '.' . DISQUS_DOMAIN . '/?url=' . $the_permalink .'">View comments</a></noscript><a class="dsq-comment-count" href="' . $the_permalink . '#disqus_thread">Comments</a>';*/
-		return "<a href='#comments' title='View all $num_comments Comments'>$num_comments</a>";
+		return '</a><noscript><a href="http://' . strtolower(get_option('disqus_forum_url')) . '.' . DISQUS_DOMAIN . '/?url=' . $the_permalink .'">View comments</a></noscript><a class="dsq-comment-count" href="' . $the_permalink . '#disqus_thread" wpid="' . $post->ID . '">Comments</a>';
 	} else {
 		return $comment_text;
 	}
@@ -340,8 +347,7 @@ function dsq_add_pages() {
 		}
 	}
 
-	//add_options_page('DISQUS', 'DISQUS', 8, 'disqus', dsq_manage);
-	add_submenu_page('wp_plugins.php', 'DISQUS', 'DISQUS', 8, 'disqus', dsq_manage);
+    add_submenu_page('wp_plugins.php','DISQUS','DISQUS',8,'disqus', dsq_manage);
 }
 
 function dsq_manage() {
@@ -378,8 +384,7 @@ add_action('admin_notices', 'dsq_check_version');
 
 // Only replace comments if the disqus_forum_url option is set.
 add_filter('comments_template', 'dsq_comments_template');
-// add_filter('comments_number', 'dsq_comments_number');
-// add_filter('get_comments_number', 'dsq_get_comments_number');
+//add_filter('comments_number', 'dsq_comments_number');
 add_filter('bloginfo_url', 'dsq_bloginfo_url');
 add_action('loop_start', 'dsq_loop_start');
 

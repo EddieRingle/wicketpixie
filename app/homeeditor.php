@@ -96,7 +96,6 @@ class HomeAdmin {
 	{
 	    global $homeoptions;
         if ( 'save' == $_POST['action'] ) {
-            check_admin_referer('wicketpixie-settings');
             foreach ( $homeoptions as $value ) {
 	            if(wp_get_option($value['id'])) {
 				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
@@ -169,7 +168,6 @@ class HomeAdmin {
 		    <h2>Home Editor</h2>
             
 		    <form method="post" style="padding:20px 0 10px;" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=homeeditor.php&amp;saved=true">
-                <?php wp_nonce_field('wicketpixie-settings'); ?>
 			    <table class="form-table">
 
 			    <?php foreach ($homeoptions as $value) {

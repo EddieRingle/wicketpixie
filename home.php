@@ -10,11 +10,10 @@
 				<?php while (have_posts()) : the_post(); ?>
 				
 				<!-- post -->
-				<div class="post">
+				<div class="post" style="border-bottom:0;">
 					
-					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>
 
-                
 					<div class="post-comments">
 						<div class="post-comments">
 						<ul>
@@ -37,7 +36,7 @@
 						</ul>
 						</div>
 					</div>
-					
+
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>

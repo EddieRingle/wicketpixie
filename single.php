@@ -11,7 +11,7 @@
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
 					
-					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>					
+					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>
 
                     <div class="post-comments">
 						<div class="post-comments">
