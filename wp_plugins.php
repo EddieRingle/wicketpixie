@@ -44,7 +44,7 @@ if(wp_get_option("plug_statpress-reloaded") != "0") {
 // Added for new pagination plugin
 // DBates - dave@batez-consulting.com 
 if (wp_get_option("wp_plug_pagenavi") != 0) {
-    include(TEMPLATEPATH . "/plugins/pagenavi/wp-pagenavi.php");
+    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
 }
 
 $shortname = "wp";
