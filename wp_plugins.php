@@ -43,9 +43,11 @@ if(wp_get_option("plug_statpress-reloaded") != "0") {
 
 // Added for new pagination plugin
 // DBates - dave@batez-consulting.com 
-if (wp_get_option("wp_plug_pagenavi") != 0) {
-    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
-}
+// -- Removed until the plugin works correctly, will probably write my own
+
+//if (wp_get_option("wp_plug_pagenavi") != 0) {
+//    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
+//}
 
 $shortname = "wp";
 $plugins = array(
@@ -118,7 +120,9 @@ $plugins = array(
         "id"    => "plug_related-posts",
         "std"   => 1,
         "status"    => 'checked',
-        "type"  => 'checkbox'),
+        "type"  => 'checkbox')
+        
+        /*,  -- Removed until the plugin works correctly
     //Added by DBAtes - Feature Request # 4    
     array(
         "name"  => "WP PageNavi",
@@ -126,7 +130,7 @@ $plugins = array(
         "id"    => $shortname . "_plug_pagenavi",
         "std"   => 1,
         "status"    => 'checked',
-        "type"   => 'checkbox')
+        "type"   => 'checkbox')*/
 );
 
 function wp_plugins_toplevel_admin() {
