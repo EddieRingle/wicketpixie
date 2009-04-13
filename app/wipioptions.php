@@ -72,6 +72,10 @@ function wp_add_option($option,$value) {
 * Updates the contents of an existing option file
 **/
 function wp_update_option($option,$newvalue) {
+    $fh = fopen (WIPIOPTSPATH . "/daves-log.txt", "w+");
+    fwrite($fh, "Option: $option - Value: $newvalue\n");
+    fclose($fh);
+    
     $dirchk = checkdir();
     
     if($dirchk == true && is_file(WIPIOPTSPATH ."/$option.wp")) {
