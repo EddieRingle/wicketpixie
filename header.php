@@ -55,7 +55,12 @@ $adsense = new AdsenseAdmin;
     <script type="text/javascript">
     google.load("jquery", "1.3.2", {uncompressed:true});
     </script>
-		
+
+    <!-- TEST for Disqus -->
+    <?php if (wp_get_option('plug_disqus')):?>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
+    <?php endif;?>
+    		
 <?php wp_head(); ?>
 <style type="text/css">
 #disqus_thread #dsq-content {

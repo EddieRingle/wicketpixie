@@ -41,6 +41,12 @@ if(wp_get_option("plug_statpress-reloaded") != "0") {
     include TEMPLATEPATH ."/plugins/statpress-reloaded/statpress.php";
 }
 
+// Added for new pagination plugin
+// DBates - dave@batez-consulting.com 
+if (wp_get_option("wp_plug_pagenavi") != 0) {
+    include(TEMPLATEPATH . "/plugins/pagenavi/wp-pagenavi.php");
+}
+
 $shortname = "wp";
 $plugins = array(
     array(
@@ -112,7 +118,15 @@ $plugins = array(
         "id"    => "plug_related-posts",
         "std"   => 1,
         "status"    => 'checked',
-        "type"  => 'checkbox')
+        "type"  => 'checkbox'),
+    //Added by DBAtes - Feature Request # 4    
+    array(
+        "name"  => "WP PageNavi",
+        "description"   => "Adds a more advanced paging navigation to your WordPress blog.",
+        "id"    => $shortname . "_plug_pagenavi",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"   => 'checkbox')
 );
 
 function wp_plugins_toplevel_admin() {
