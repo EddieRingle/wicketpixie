@@ -150,19 +150,13 @@ $plugins = array(
 function wp_plugins_toplevel_admin() {
 global $plugins;
         if ( 'save_plugins' == $_POST['action'] ) {
-            $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-            fwrite($fh, "Check saved options...\n");
-            fwrite($fh, print_r($_POST,true) . "\n");
-            check_admin_referer('wicketpixie-settings');
             
             //Special considerations for the Google 404
             $aa404 = false;
-             fwrite($fh, "aa404=" . $aa404 . "\n");
             
             foreach ( $plugins as $value ) {
                 if (!empty($_POST[$value['id']])) {
                      if (strpos($_POST[$value['id']], "aagoog404") !== false) $aa404 = true;
-                     fwrite($fh, $value['id'] . " : " . $_POST[$value['id']] . " : POS=" . (strpos($_POST[$value['id']], "aagoog404")) . " : aa404=" . $aa404 . "\n");
                 }
                 if(wp_get_option($value['id'])) {
 				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
