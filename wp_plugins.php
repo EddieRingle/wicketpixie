@@ -44,9 +44,9 @@ if(wp_get_option("plug_statpress-reloaded") != "0") {
 // DBates - dave@batez-consulting.com 
 // -- Removed until the plugin works correctly, will probably write my own
 
-//if (wp_get_option("wp_plug_pagenavi") != 0) {
-//    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
-//}
+if (wp_get_option("wp_plug_pagenavi")) {
+    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
+}
 
 // New Google 404 Plugin
 if (wp_get_option("wp_plug_aagoog404") != 0) {
@@ -126,15 +126,15 @@ $plugins = array(
         "status"    => 'checked',
         "type"  => 'checkbox')
         
-        /*,  -- Removed until the plugin works correctly
+        
     //Added by DBAtes - Feature Request # 4    
-    array(
+    ,array(
         "name"  => "WP PageNavi",
         "description"   => "Adds a more advanced paging navigation to your WordPress blog.",
         "id"    => $shortname . "_plug_pagenavi",
         "std"   => 1,
         "status"    => 'checked',
-        "type"   => 'checkbox')*/
+        "type"   => 'checkbox')
         
     ,array(
         "name" => "AskApache Google 404",
