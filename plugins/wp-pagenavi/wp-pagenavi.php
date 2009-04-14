@@ -26,10 +26,6 @@ Author URI: http://lesterchan.net
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-$fh = fopen(TEMPLATEPATH . "/daveslog.txt", "w");
-fwrite($fh, date("M-d-Y g:i:s", mktime()) . ": PageNav Started\n" );
-fclose($fh);
-
 
 ### Create Text Domain For Translations
 add_action('init', 'pagenavi_textdomain');
@@ -46,13 +42,8 @@ function pagenavi_menu() {
 //	}
 	
     if (function_exists('add_submenu_page')) {
-        $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-        fwrite($fh, date("M-d-Y g:i:s", mktime()) . ": PageNav Before AddSubmenu\n" );
-
 //        add_submenu_page('wp_plugins.php', 'PaveNavi Options', 'PageNavi Options', 8, 'wp-pagenavi/pagenavi-options.php', 'manage_options');
         add_submenu_page('wp_plugins.php', __('PageNavi'), __('PageNavi'), 'manage_options', __FILE__, manageoptions);
-        fwrite($fh, date("M-d-Y g:i:s", mktime()) . ": PageNav AFTER AddSubmenu\n" );
-        fclose($fh);
     }
 }
 
@@ -186,11 +177,7 @@ function wp_pagenavi_dropdown() {
 //add_action('activate_pagenavi/wp-pagenavi.php', 'pagenavi_init');
 add_action('init', 'pagenavi_init');
 function pagenavi_init() {
-    $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-    fwrite($fh, date("M-d-Y g:i:s", mktime()) . ": PageNav INIT\n" );
-    
 	pagenavi_textdomain();
-    fwrite($fh, date("M-d-Y g:i:s", mktime()) . ": PageNav After TextDomain\n" );
 	// Add Options
 	$pagenavi_options = array();
 	$pagenavi_options['pages_text'] = __('Page %CURRENT_PAGE% of %TOTAL_PAGES%','wp-pagenavi');
@@ -207,9 +194,5 @@ function pagenavi_init() {
 	$pagenavi_options['always_show'] = 0;
 	add_option('pagenavi_options', $pagenavi_options, 'PageNavi Options');
 }
-
-$fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-fwrite($fh, date("M-d-Y g:i:s", mktime()) . ": PageNav Ended\n" );
-fclose($fh);
 
 ?>
