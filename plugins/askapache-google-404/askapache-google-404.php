@@ -87,9 +87,6 @@ class AskApacheGoogle404
 
 	function init()
 	{
-	    $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-	    fwrite($fh, "Started the init .. \n");
-	    
 		$this->LoadOptions();
 		//error_log(__FUNCTION__.':'.__LINE__);
 		add_action( 'admin_menu', array(&$this, 'admin_menu') );
@@ -100,8 +97,6 @@ class AskApacheGoogle404
 		add_action( 'load-' . $this->plugin['hook'], array(&$this, 'load') );
 		add_action( 'admin_init', array(&$this, 'admin_init') );
 		add_filter( 'plugin_action_links_' . $this->plugin['pb'], array(&$this, 'plugin_action_links') );
-		
-		fclose($fh);
 	}
 	
 
@@ -114,10 +109,6 @@ class AskApacheGoogle404
 	{
 		//error_log(__FUNCTION__.':'.__LINE__);
 		global $wpdb;
-
-	    $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-	    fwrite($fh, "ACTIVATE!!! .. \n");
-        fclose($fh);
 
 		$sql = "ALTER TABLE $wpdb->posts DROP INDEX `post_related` , ADD FULLTEXT `post_related` ( `post_name` , `post_content` ) ";
 		$results = $wpdb->query( $wpdb->prepare($sql) );
@@ -134,10 +125,6 @@ class AskApacheGoogle404
 	 */
 	function deactivate()
 	{
-	    $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-	    fwrite($fh, "deaectivate... .. \n");
-        fclose($fh);
-
 		//error_log(__FUNCTION__.':'.__LINE__);
 		foreach ( array('options', 'code', 'run_data', 'plugin') as $pn ) delete_option( "askapache_google_404_{$pn}" );
 	}
@@ -168,8 +155,6 @@ class AskApacheGoogle404
 	function InitOptions()
 	{
 		//error_log(__FUNCTION__.':'.__LINE__);
-        $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-        fwrite($fh, "InitOptions Started\n");
 		$this->options = array( 'rel' => '1', 'rec' => '1', 'google_404' => '1', 'google_ajax' => '1', 'rel_num' => 10, 'rel_len' => 240, 'rec_num' => 6 );
 $this->code=array( 'html' =>
 '<div id="content">
@@ -319,9 +304,6 @@ cse.prototype.onClear = function(form) { this.gCT.clearAllResults(); this.lCT.cl
 		update_option( 'askapache_google_404_options', $this->options );
 		update_option( 'askapache_google_404_plugin', $this->plugin );
 		update_option( 'askapache_google_404_code', $this->code );
-
-        fwrite($fh, "InitOptions Ended\n");
-        fclose($fh);
 	}
 
 
@@ -688,10 +670,6 @@ p.c4r label {display:block;float:left;width:20em;line-height:20px;}.wrap .update
 	 */
 	function options_page()
 	{
-	    $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-        fwrite($fh, 'In the Options pane\n');
-        fclose($fh);
-        
 		//error_log(__FUNCTION__.':'.__LINE__);
 		?>
 		<div class="wrap" style="max-width:1400px;">
@@ -1213,20 +1191,13 @@ class AAGoogle404Handler
 }
 endif;
 
-
-$fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-fwrite($fh, "--- STARTING G404 ---\n");
-
 $AskApacheGoogle404 = new AskApacheGoogle404();
 add_action('init',array(&$AskApacheGoogle404, 'init'));
 
 function options_page() {
 	global $AskApacheGoogle404;
 	
-	$fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-	fwrite($fh, "In Options Page...\n");
 	$AskApacheGoogle404->options_page();
-    fwrite($fh, "Conitnuing Options Page...\n");
 }
 
 if ( !function_exists('aa_google_404') ):
@@ -1243,8 +1214,5 @@ if ( !function_exists('aa_google_404') ):
 		$AAGoogle404Handler->handle_it();
 	}
 endif;
-
-fwrite($fh, "--- END G404 ---\n");
-fclose($fh);
 
 ?>
