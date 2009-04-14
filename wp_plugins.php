@@ -150,10 +150,12 @@ $plugins = array(
 function wp_plugins_toplevel_admin() {
 global $plugins;
         if ( 'save_plugins' == $_POST['action'] ) {
+
+            check_admin_referer('wicketpixie-settings');
             
             //Special considerations for the Google 404
             $aa404 = false;
-            
+
             foreach ( $plugins as $value ) {
                 if (!empty($_POST[$value['id']])) {
                      if (strpos($_POST[$value['id']], "aagoog404") !== false) $aa404 = true;
