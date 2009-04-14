@@ -698,14 +698,17 @@ p.c4r label {display:block;float:left;width:20em;line-height:20px;}.wrap .update
 		<h3>AskApache Google 404 Options - <a style="font-size:12px;" href="http://feeds.askapache.com/apache/htaccess">News/Updates</a></h3>
 		
 		<?php		
-		$four_file = TEMPLATEPATH . '/404.php';
+		/*
+		 * Removed - there is an if in the 404 now
+		 */
+/*		$four_file = TEMPLATEPATH . '/404.php';
 		$four_exists = ( ((file_exists($four_file)) === false && (@realpath($four_file)) === false) || (@stat($four_file)) === false ) ? false : true;
 		if ( $four_exists ) {
 			echo '<p><strong>Found 404.php</strong> template file at '. str_replace(WP_CONTENT_DIR,'',$four_file);
 			echo ' - add the following in that file where you want this plugins output to go.  <a href="http://www.askapache.com/search/404-errordocuments">Learn more...</a><br />
 			<code style="background-color:transparent;">&lt;?php if(function_exists("aa_google_404"))aa_google_404();&gt;</code></p>';
 		}
-		else echo '<p><strong>No <a href="http://www.askapache.com/search/404.php">404.php</a> file found</strong>, so this plugin will be the 404.php, which is a good thing..  Note that for more customization use a 404.php template file.</p>';
+		else echo '<p><strong>No <a href="http://www.askapache.com/search/404.php">404.php</a> file found</strong>, so this plugin will be the 404.php, which is a good thing..  Note that for more customization use a 404.php template file.</p>';*/
 
 		$htaccess_file = ABSPATH . '.htaccess';
 		$htaccess_exists = ( ((file_exists($htaccess_file)) === false && (@realpath($htaccess_file)) === false) || (@stat($htaccess_file)) === false ) ? false : true;
@@ -783,10 +786,7 @@ p.c4r label {display:block;float:left;width:20em;line-height:20px;}.wrap .update
 
 		<h4 class="cl5">Google Options - <a id="aa404_hide_1" href="#">S/H</a></h4>
 		<div id="aa404_opt1"><?php
-			if(strlen($this->options['api_key']<5)) {?>
-			<p><a href="http://code.google.com/apis/ajaxsearch/signup.html" onclick="javascript:window.open('http://code.google.com/apis/ajaxsearch/signup.html','_blank','width=800,height=600,scrollbars=yes');return false">Get a Google API Key!</a></p>
-			<?php }
-			$this->form_field( 2, 'This Sites Google API Key', 'api_key', 'This identifies your blog to Google.' );
+		      // API Key stuff was here
 			$this->form_field( 1, 'Show Google AJAX Search', 'google_ajax', 'Displays Google AJAX Search Results' );
 			$this->form_field( 1, 'Show Google 404 Helper', 'google_404', 'Displays Google New 404 Helper' );
 		?></div>
@@ -907,7 +907,7 @@ p.c4r label {display:block;float:left;width:20em;line-height:20px;}.wrap .update
 		$plugin['Author'] = '<a href="' . $plugin['Author URI'] . '" title="' . __( 'Visit author homepage' ) . '">' . $plugin['Author'] . '</a>';
 		$plugin['page'] = basename( __FILE__ );
 		$plugin['hook'] = 'tools_page_' . rtrim( $plugin['page'], '.php' );
-		$plugin['action'] = 'tools.php?page=' . $plugin['page'];
+		$plugin['action'] = 'admin.php?page=' . $plugin['page'];
 
 		return $plugin;
 	}
@@ -1220,6 +1220,14 @@ fwrite($fh, "--- STARTING G404 ---\n");
 $AskApacheGoogle404 = new AskApacheGoogle404();
 add_action('init',array(&$AskApacheGoogle404, 'init'));
 
+function options_page() {
+	global $AskApacheGoogle404;
+	
+	$fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
+	fwrite($fh, "In Options Page...\n");
+	$AskApacheGoogle404->options_page();
+    fwrite($fh, "Conitnuing Options Page...\n");
+}
 
 if ( !function_exists('aa_google_404') ):
 	/**
