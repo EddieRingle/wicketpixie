@@ -49,6 +49,11 @@ if(wp_get_option("plug_statpress-reloaded") != "0") {
 //    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
 //}
 
+// New Google 404 Plugin
+if (wp_get_option("wp_plug_aagoog404") != 0) {
+    include(TEMPLATEPATH . "/plugins/askapache-google-404/askapache-google-404.php");
+}
+
 $shortname = "wp";
 $plugins = array(
     array(
@@ -131,13 +136,34 @@ $plugins = array(
         "std"   => 1,
         "status"    => 'checked',
         "type"   => 'checkbox')*/
+        
+    ,array(
+        "name" => "AskApache Google 404",
+        "description" => "Displays unbeatable information to site visitors arriving at a non-existant page (from a bad link).  Major SEO with Google AJAX, Google 404 Helper, Related Posts, Recent Posts, etc..",
+        "id"    => $shortname . "_plug_aagoog404",
+        "std"    => 1,
+        "status"    => 'checked',
+        "type"    => "checkbox"
+    )
 );
 
 function wp_plugins_toplevel_admin() {
 global $plugins;
         if ( 'save_plugins' == $_POST['action'] ) {
+            $fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
+            fwrite($fh, "Check saved options...\n");
+            fwrite($fh, print_r($_POST,true) . "\n");
             check_admin_referer('wicketpixie-settings');
+            
+            //Special considerations for the Google 404
+            $aa404 = false;
+             fwrite($fh, "aa404=" . $aa404 . "\n");
+            
             foreach ( $plugins as $value ) {
+                if (!empty($_POST[$value['id']])) {
+                     if (strpos($_POST[$value['id']], "aagoog404") !== false) $aa404 = true;
+                     fwrite($fh, $value['id'] . " : " . $_POST[$value['id']] . " : POS=" . (strpos($_POST[$value['id']], "aagoog404")) . " : aa404=" . $aa404 . "\n");
+                }
                 if(wp_get_option($value['id'])) {
 				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
 				} else {
@@ -148,6 +174,22 @@ global $plugins;
 				    }
 				}
             }
+            
+            
+            if ($aa404) {
+                if (!class_exists('AskApacheGoogle404')) {
+                    include(TEMPLATEPATH . "/plugins/askapache-google-404/askapache-google-404.php");
+                }
+                $tmp = new AskApacheGoogle404();
+                $tmp->activate();
+            } else {
+                if (!class_exists('AskApacheGoogle404')) {
+                    include(TEMPLATEPATH . "/plugins/askapache-google-404/askapache-google-404.php");
+                }
+                $tmp = new AskApacheGoogle404();
+                $tmp->deactivate();
+            }
+
             foreach ( $plugins as $value ) {
                 if( isset( $_POST[ $value['id'] ] ) ) { 
                     if( $value['type'] == 'checkbox' ) {
@@ -195,6 +237,7 @@ global $plugins;
                     }
                 }
             }
+            
             wp_redirect($_SERVER['PHP_SELF'] ."?page=wp_plugins.php&saved=true");
             die;
         }
