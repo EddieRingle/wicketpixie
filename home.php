@@ -10,12 +10,12 @@
 				<?php while (have_posts()) : the_post(); ?>
 				
 				<!-- post -->
-				<div class="post">
+				<div class="post" style="border-bottom:0;">
 					
-					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>"><?php the_title(); ?></a></h1>
+					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>
 
-                
 					<div class="post-comments">
+						<div class="post-comments">
 						<ul>
 						<?php
 						if(wp_get_option('plug_disqus')) {
@@ -34,7 +34,9 @@
 							<li class="post-comments-count"><a href="<?php the_permalink(); echo $countlink; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
 							<li class="post-comments-add"><a href="<?php the_permalink(); echo $addlink; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
 						</ul>
+						</div>
 					</div>
+
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
@@ -182,16 +184,34 @@
 			<!-- sidebar -->
 			<div id="sidebar">
 				<?php
-				if(wp_get_option('sidebar_buttons') != "0") {
+				if(wp_get_option('home_sidebar_buttons') != "0") {
 				    include TEMPLATEPATH .'/widgets/sidebar-buttons.php';
 				}
 				?>
-				<!-- width = 340, height = 293 -->
+				<!-- width = 340, height = 240 -->
 				<div id="home-youtube">
-					<h3>My Live Video</h3>
-					<embed src="http://www.ustream.tv/flash/live/553" width="340" height="293" wmode="transparent" flashvars="autoplay=false&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />
-                         <p align="center"><a href="http://live.pirillo.com/">Join the Live Chat Room</a></p>
-				</div>
+					<?php echo "<h3>".wp_get_option('home_ustream_heading')."</h3>"; ?>
+					<?php $key = "uzhqbxc7pqzqyvqze84swcer"; ?>
+                    <?php
+                        if (wp_get_option('ustreamchannel') != false && wp_get_option('ustreamchannel') != "") { $chan = wp_get_option('ustreamchannel'); } else { $trip = true; }
+                        if (wp_get_option('home_ustream_height') != false && wp_get_option('home_ustream_height') != "") { $height = wp_get_option('home_ustream_height'); } else { $trip = true; }
+                        if (wp_get_option('home_ustream_width') != false && wp_get_option('home_ustream_width') != "") { $width = wp_get_option('home_ustream_width'); } else { $trip = true; }
+                        if (wp_get_option('home_ustream_autoplay') == "1") { $autoplay = true; } else { $autoplay = false; }
+                        if ($trip == true) {
+                            $out = "<!-- Please go back to the Home Editor and set the settings for this widget. -->";
+                        } else {
+                            $url = "http://api.ustream.tv/php/channel/$chan/getCustomEmbedTag?key=$key&amp;params=autoplay:$autoplay;width:$width;height:$height;";
+                            $cl = curl_init($url);
+                            curl_setopt($cl,CURLOPT_HEADER,false);
+                            curl_setopt($cl,CURLOPT_RETURNTRANSFER,true);
+                            $resp = curl_exec($cl);
+                            curl_close($cl);
+                            $resultsArray = unserialize($resp);
+                            $out = $resultsArray['results'];
+                        }
+                        echo $out;
+                    ?>
+                </div>
 				<!-- /youtube -->
 				
 				<!-- recent-posts -->
@@ -229,3 +249,4 @@
 			<!-- sidebar -->
 			
 <?php get_footer(); ?>
+

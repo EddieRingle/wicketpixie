@@ -15,7 +15,7 @@ ul#dsq-tabs li {
 }
 
 ul#dsq-tabs {
-	display: inline;
+	display: block;
 	height: 45px;
 	list-style: none;
 	margin: 15px 0;

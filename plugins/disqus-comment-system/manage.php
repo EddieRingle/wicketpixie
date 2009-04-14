@@ -1,29 +1,4 @@
 <?php
-if ( !defined('WP_CONTENT_URL') ) {
-	define('WP_CONTENT_URL', TEMPLATEPATH);
-}
-if ( !defined('PLUGINDIR') ) {
-	define( 'PLUGINDIR', TEMPLATEPATH .'/plugins' ); // Relative to ABSPATH.  For back compat.
-}
-
-function dsq_plugin_basename($file) {
-	$file = dirname($file);
-
-	// From WP2.5 wp-includes/plugin.php:plugin_basename()
-	$file = str_replace('\\','/',$file); // sanitize for Win32 installs
-	$file = preg_replace('|/+|','/', $file); // remove any duplicate slash
-	$file = preg_replace('|^.*/' . PLUGINDIR . '/|','',$file); // get relative path from plugins dir
-
-	if ( strstr($file, '/') === false ) {
-		return $file;
-	}
-
-	$pieces = explode('/', $file);
-	return !empty($pieces[count($pieces)-1]) ? $pieces[count($pieces)-1] : $pieces[count($pieces)-2];
-}
-
-define('DSQ_PLUGIN_URL', TEMPLATEPATH. '/plugins/' . dsq_plugin_basename(__FILE__));
-
 global $wp_version;
 global $dsq_version;
 global $dsq_api;
@@ -125,20 +100,11 @@ if ( $wp_version < 2.5 ) {
 	<img src="<?php echo DSQ_PLUGIN_URL; ?>/images/logo.png">
 
 	<ul id="dsq-tabs">
-	<?php /*
-		<li class="selected" id="dsq-tab-main"><a href=""><?php echo (dsq_is_installed() ? 'Manage' : 'Install'); ?></a></li>
-		<li id="dsq-tab-advanced"><a href="">Advanced Options</a></li>
-		*/
-    ?>
-    <form action="<?php $_SERVER['PHP_SELF']; ?>" method="get">
-    <button type="submit" name="sub" value="manage">Manage</button>
-    <button type="submit" name="sub" value="advopts">Advanced Options</button>
-    <input type="hidden" name="page" value="disqus" />
-    </form>
+		<li class="selected" id="dsq-tab-main"><?php echo (dsq_is_installed() ? 'Manage' : 'Install'); ?></li>
+		<li id="dsq-tab-advanced">Advanced Options</li>
 	</ul>
 <!-- /Header -->
 
-    <?php if($_GET['sub'] == 'manage' || $_GET['sub'] != 'advopts') { ?>
 	<div id="dsq-main" class="dsq-content">
 <?php
 switch ( $step ) {
@@ -230,11 +196,9 @@ case 0:
 		$dsq_last_import_id = get_option('disqus_last_import_id');
 		$dsq_import_status = $dsq_api->get_import_status($dsq_last_import_id);
 	}
-	}
 ?>
-    <?php if($_GET['sub'] == 'advopts') { ?>
 	<!-- Advanced options -->
-	<div id="dsq-advanced" class="dsq-content">
+	<div id="dsq-advanced" class="dsq-content" style="display:none;">
 		<h2>Advanced Options</h2>
 		Version: <?php echo $dsq_version; ?>
 <?php
@@ -335,5 +299,4 @@ if(function_exists('curl_init')) {
 			</tr>
 		</table>
 	</div>
-	<?php } ?>
 </div>

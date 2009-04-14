@@ -72,6 +72,8 @@ if( function_exists( 'register_sidebar_widget' ) ) {
 	register_sidebar_widget('WicketPixie: Recent Posts','wicketpixie_recent_posts');
 	register_sidebar_widget('WicketPixie: My Profiles','wicketpixie_my_profiles');
 	register_sidebar_widget('WicketPixie: Social Buttons','wicketpixie_social_buttons');
+	register_sidebar_widget('WicketPixie: Ustream','wicketpixie_ustream_widget');
+	register_widget_control('WicketPixie: Ustream','wicketpixie_ustream_widget_control');
 	foreach( collect() as $widget ) {
 		$cleaned= strtolower( $widget->title );
 		$cleaned= preg_replace( '/\W/', ' ', $cleaned );
@@ -80,16 +82,101 @@ if( function_exists( 'register_sidebar_widget' ) ) {
 	}
 }
 
-function wicketpixie_my_profiles() {
+function wicketpixie_my_profiles()
+{
 	include( TEMPLATEPATH . '/widgets/my-profiles.php'); 
 }
 
-function wicketpixie_recent_posts() {	
+function wicketpixie_recent_posts()
+{	
 	include( TEMPLATEPATH . '/widgets/recent-posts.php'); 
 }
 
-function wicketpixie_social_buttons() {
+function wicketpixie_social_buttons()
+{
     include(TEMPLATEPATH .'/widgets/sidebar-buttons.php');
+}
+
+function wicketpixie_ustream_widget()
+{
+    include(TEMPLATEPATH .'/widgets/ustream-widget.php');
+}
+
+function wicketpixie_ustream_widget_control()
+{
+    if(wp_get_option('sidebar_ustream_heading') != false) {
+        $heading = wp_get_option('sidebar_ustream_heading');
+    }
+    if(wp_get_option('sidebar_ustreamchannel') != false) {
+        $channelname = wp_get_option('sidebar_ustreamchannel');
+    } elseif(wp_get_option('ustreamchannel') != false) {
+        $channelname = wp_get_option('ustreamchannel');
+    }
+    if(wp_get_option('sidebar_ustream_autoplay') != false) {
+        $autoplay = wp_get_option('sidebar_ustream_autoplay');
+    } elseif(wp_get_option('home_ustream_autoplay') != false) {
+        $autoplay = wp_get_option('home_ustream_autoplay');
+    }
+    if(wp_get_option('sidebar_ustream_height') != false) {
+        $height = wp_get_option('sidebar_ustream_height');
+    } elseif(wp_get_option('home_ustream_height') != false) {
+        $height = wp_get_option('home_ustream_height');
+    }
+    if(wp_get_option('sidebar_ustream_width') != false) {
+        $width = wp_get_option('sidebar_ustream_width');
+    } elseif(wp_get_option('home_ustream_width') != false) {
+        $width = wp_get_option('home_ustream_width');
+    }
+    if($_POST['ustreamWidget-Submit']) {
+        if(wp_get_option('sidebar_ustream_heading') != false) {
+            wp_update_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading']);
+        } else {
+            wp_add_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading']);
+        }
+        if(wp_get_option('sidebar_ustreamchannel') != false) {
+            wp_update_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName']);
+        } else {
+            wp_add_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName']);
+        }
+        if(wp_get_option('sidebar_ustream_autoplay') != false) {
+            if($_POST['ustreamWidget-Autoplay'] != false) {
+                wp_update_option('sidebar_ustream_autoplay','1');
+            } else {
+                wp_update_option('sidebar_ustream_autoplay','1');
+            }
+        } else {
+            if(!$_POST['ustreamWidget-Autoplay']) {
+                wp_update_option('sidebar_ustream_autoplay','0');
+            } else {
+                wp_update_option('sidebar_ustream_autoplay','0');
+            }
+        }
+        if(wp_get_option('sidebar_ustream_height') != false) {
+            wp_update_option('sidebar_ustream_height',$_POST['ustreamWidget-Height']);
+        } else {
+            wp_add_option('sidebar_ustream_height',$_POST['ustreamWidget-Height']);
+        }
+        if(wp_get_option('sidebar_ustream_width') != false) {
+            wp_update_option('sidebar_ustream_width',$_POST['ustreamWidget-Width']);
+        } else {
+            wp_add_option('sidebar_ustream_width',$_POST['ustreamWidget-Width']);
+        }
+    }
+    ?>
+    <p>
+    <label for="ustreamWidget-heading">Title: </label>
+    <input type="text" id="ustreamWidget-heading" name="ustreamWidget-heading" value="<?php echo $heading; ?>" /><br/>
+    <label for="ustreamWidget-ChannelName">Channel: </label>
+    <input type="text" id="ustreamWidget-ChannelName" name="ustreamWidget-ChannelName" value="<?php echo $channelname; ?>" /><br/>
+    <label for="ustreamWidget-Height">Height: </label>
+    <input size="5" type="text" id="ustreamWidget-Height" name="ustreamWidget-Height" value="<?php echo $height; ?>" />px<br/>
+    <label for="ustreamWidget-Width">Width: </label>
+    <input size="5" type="text" id="ustreamWidget-Width" name="ustreamWidget-Width" value="<?php echo $width; ?>" />px<br/>
+    <label for="ustreamWidget-Autoplay">Autoplay: </label>
+    <input type="checkbox" id="ustreamWidget-Autoplay" name="ustreamWidget-Autoplay" <?php if ($autoplay === '1') { echo "checked='checked'"; } ?> />
+    <input type="hidden" id="ustreamWidget-Submit" name="ustreamWidget-Submit" value="1" />    
+    </p>
+    <?php
 }
 
 $themename = "WicketPixie";
