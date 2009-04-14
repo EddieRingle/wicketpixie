@@ -1,7 +1,6 @@
 <?php
 
 add_action('admin_menu','wp_plugins_toplevel_admin');
-
 /* List of the plugins included in WicketPixie which should be activated.
 Make sure you add an option in functions.php as well, in the $plugins array.
 Example:
