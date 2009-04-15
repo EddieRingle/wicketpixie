@@ -194,6 +194,7 @@
 				}
 				?>
 				<!-- width = 340, height = 240 -->
+				<?php if (wp_get_option('home_ustream')):?>
 				<div id="home-youtube">
 					<?php echo "<h3>".wp_get_option('home_ustream_heading')."</h3>"; ?>
 					<?php $key = "uzhqbxc7pqzqyvqze84swcer"; ?>
@@ -217,6 +218,7 @@
                         echo $out;
                     ?>
                 </div>
+				<?php endif; ?>
 				<!-- /youtube -->
 				
 				<!-- recent-posts -->
