@@ -18,17 +18,15 @@
 						<div class="post-comments">
 						<ul>
 						<?php
+                        $addlink="#respond";
 						if(wp_get_option('plug_disqus')) {
 						    if(wp_get_option('plug_disqus') == "1") {
 						        $countlink="#disqus_thread";
-						        $addlink="#disqus_thread";
 						    } else {
 						        $countlink="#comments";
-						        $addlink="#respond";
 						    }
 						} else {
 						    $countlink="#comments";
-						    $addlink="#respond";
 						}
 						?>
 							<li class="post-comments-count"><a href="<?php the_permalink(); echo $countlink; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
