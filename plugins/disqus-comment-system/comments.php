@@ -2,6 +2,7 @@
 	global $dsq_response, $dsq_version;
 ?>
 <a name="respond"/>
+<a name="comments"/>
 <div id="disqus_thread">
 	<div id="dsq-content">
 		<ul id="dsq-comments">
