@@ -1267,6 +1267,11 @@ body {
 	margin-bottom: 1.4em;
 }
 
+/* Fixed the Sidebar Profile images */
+#myprofiles li img {
+	margin-bottom: 0 !important;
+}
+
 #sidebar2, #sidebar5 {
 	float: left;
 	width: 160px;
