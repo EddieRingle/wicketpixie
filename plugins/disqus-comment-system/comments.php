@@ -1,7 +1,7 @@
 <?php
 	global $dsq_response, $dsq_version;
 ?>
-
+<a name="respond"/>
 <div id="disqus_thread">
 	<div id="dsq-content">
 		<ul id="dsq-comments">
