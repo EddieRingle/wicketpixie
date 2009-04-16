@@ -121,6 +121,12 @@ function wicketpixie_toplevel_admin() {
     if($_POST['action'] == 'save_settings') {
         save($_POST,$settings);
     }
+    if ( 'ccode' == $_REQUEST['action'] ) {
+        if('global_announcement' == $_POST['file']) {
+            require(TEMPLATEPATH .'/app/customcode.php');
+            writeto($_POST['code'],"global_announcement.php");
+        }
+    }
 add_menu_page('WicketPixie Admin', 'WicketPixie', 'edit_themes', 'wicketpixie-admin.php', 'wicketpixie_admin_index',get_template_directory_uri() .'/images/wicketsmall.png');
 }
 
@@ -163,6 +169,17 @@ function wicketpixie_admin_index() {
 			<input type="hidden" name="action" value="save_settings" />
 			</p>
 		</form>
+		
+		<h3>Global Announcement</h3>
+                <p>The text you enter here will appear on the home page and all your posts as a global announcement. HTML is allowed.</p>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wicketpixie-admin.php&amp;ccode=true" class="form-table">
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("footer.php"); ?></textarea></p>
+                    <p class="submit">
+                        <input name="save" type="submit" value="Save Custom Footer" /> 
+                        <input type="hidden" name="action" value="ccode" />
+                        <input type="hidden" name="file" value="global_announcement" />
+                    </p>
+                </form>
                 </div>
                 <?php include_once('app/advert.php'); ?>
 <?php

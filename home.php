@@ -12,9 +12,14 @@
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
 				
-				    <?php if(wp_get_option('global_announcement') != false && wp_get_option('global_announcement') != ""): ?>
+				    <?php
+				    require(TEMPLATEPATH .'/app/customcode.php');
+				    $glob = fetchcustomcode('global_announcement.php');
+				    if($glob != ""): ?>
 				    <div class="highlight">
-				        <?php echo wp_get_option('global_announcement'); ?>
+				    <?php
+				        echo $glob;
+				    ?>
 				    </div>
 				    <?php endif; ?>
 					
