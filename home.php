@@ -75,7 +75,7 @@
 				<!-- post-meta -->
 				
 				<!-- Page Navigation -->
-                <?php if (wp_get_option('wp_plug_pagenavi')):?>
+                <?php if (wp_get_option('plug_pagenavi')):?>
                 <!--<div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>-->
                 <?php endif;?>
         
