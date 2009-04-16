@@ -5,7 +5,7 @@
 					
 				<!-- page -->
 				<div class="page">
-					<?php if (wp_get_option('wp_plug_aagoog404') && function_exists("aa_google_404")):?>
+					<?php if (wp_get_option('plug_aagoog404') && function_exists("aa_google_404")):?>
 					<?php aa_google_404(); ?>
                     <?php else: ?>
 					<h1>Not Found (Error 404)</h1>

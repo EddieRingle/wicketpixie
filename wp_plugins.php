@@ -11,7 +11,7 @@ Example:
 if(wp_get_option("plug_all_in_one_seo_pack") != "0") {
     include TEMPLATEPATH ."/plugins/all-in-one-seo-pack/all_in_one_seo_pack.php";
 }
-if (wp_get_option("wp_plug_aagoog404") != "0") {
+if (wp_get_option("plug_aagoog404") != "0") {
     include(TEMPLATEPATH . "/plugins/askapache-google-404/askapache-google-404.php");
 }
 if(wp_get_option("plug_autohyperlink-urls") != "0") {
@@ -35,7 +35,7 @@ if(wp_get_option("plug_nofollow_navigation") != "0") {
 if(wp_get_option("plug_obfuscate-email") != "0") {
     include TEMPLATEPATH ."/plugins/obfuscate-email/obfuscate-email.php";
 }
-if (wp_get_option("wp_plug_pagenavi") != "0") {
+if (wp_get_option("plug_pagenavi") != "0") {
     include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
 }
 if(wp_get_option('plug_related-posts') != "0") {
