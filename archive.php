@@ -18,6 +18,27 @@
 					
 					<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
+					<div class="post-comments">
+						<div class="post-comments">
+						<ul>
+						<?php
+                        $addlink="#respond";
+						if(wp_get_option('plug_disqus')) {
+						    if(wp_get_option('plug_disqus') == "1") {
+						        $countlink="#disqus_thread";
+						    } else {
+						        $countlink="#comments";
+						    }
+						} else {
+						    $countlink="#comments";
+						}
+						?>
+							<li class="post-comments-count"><a href="<?php the_permalink(); echo $countlink; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
+							<li class="post-comments-add"><a href="<?php the_permalink(); echo $addlink; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
+						</ul>
+						</div>
+					</div>
+
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 1 ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
@@ -28,12 +49,12 @@
 							at <?php the_time('g:ia') ?><?php edit_post_link('Edit', ' - ', ''); ?></p>
 						<?php } ?>
 					</div>
-					<div class="post-comments">
+					<!--<div class="post-comments">
 						<ul>
 							<li class="post-comments-count"><?php comments_popup_link('0', '1', '%'); ?></li>
 							<li class="post-comments-add"><a href="<?php the_permalink() ?>#respond" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
 						</ul>
-					</div>
+					</div>-->
 					<div class="clearer"></div>
 
 					<div class=KonaBody><?php the_excerpt(); ?></div>
@@ -49,15 +70,18 @@
 			<?php $adsense_counter++; ?>
 			
 				<?php endwhile; ?>
-
+				<!-- Page Navigation -->
+                <?php if (wp_get_option('wp_plug_pagenavi')):?>
+                <div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>
+				
+                <?php else: ?>
 				<div class="navigation">
 					<div class="left"><?php next_posts_link('<span>&nbsp;</span>Older Posts'); ?> </div>
 					<div class="right"><?php previous_posts_link('<span>&nbsp;</span>Newer Posts') ?></div>
 				</div>
+                <?php endif;?>
 
 				<?php endif; ?>
-
-                    <p style="margin-left: 100px"><?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } ?></p>
 
 			</div>
 			<!-- content -->
