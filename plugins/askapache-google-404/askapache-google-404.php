@@ -162,7 +162,7 @@ $this->code=array( 'html' =>
 
 <!-- GoogleAjaxSearchResults-->
 <div style="width:100%;overflow:hidden;margin-left:0;">
-<div id="sDiv"></div><div id="gDiv"></div><div id="lDiv" style="float:right"></div><div id="rDiv"></div>
+<div id="sDiv"></div><div id="gDiv"></div><div id="lDiv" style="float:right"></div><div id="rDiv" style="float: left;"></div>
 <br style="clear:both;" />
 </div>
 <!-- GoogleAjaxSearchResults-->
@@ -183,7 +183,7 @@ $this->code=array( 'html' =>
 'css' =>
 '#lDiv {width:140px;}
 #lDiv .gsc-control .gsc-ad-box {padding-top:100px;}
-#rDiv {width:500px; min-height:400px;}
+#rDiv {width:400px; min-height:400px;}
 #rDiv .gsc-control .gsc-ad-box,#gDiv {height:120px; margin-bottom:20px; padding:1em; width:99%; background-color:#EAF9EA;overflow:hidden;}
 #gDiv .gsc-control .gsc-ad-box {width:50%;}
 #gDiv .gsc-control .gsc-resultsHeader {border-bottom-width:0;color:#2B2D2B;font-weight:bold;}
