@@ -73,6 +73,7 @@
 				<!-- post-meta -->
 				<div class="post-meta">
 					
+					<?php if(wp_get_option('plug_related-posts') == "1"):?>
 					<!-- related-posts -->
 					<div id="related-posts">
 						<h3>You might also be interested in...</h3>
@@ -81,6 +82,7 @@
 						</ul>						
 					</div>
 					<!-- /related-posts -->
+					<?php endif;?>
 					
 					<!-- post-meta-right -->
 					<div class="post-meta-right">
