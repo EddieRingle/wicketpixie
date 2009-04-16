@@ -162,7 +162,7 @@ $this->code=array( 'html' =>
 
 <!-- GoogleAjaxSearchResults-->
 <div style="width:100%;overflow:hidden;margin-left:0;">
-<div id="sDiv"></div><div id="gDiv"></div><div id="lDiv" style="float:right"></div><div id="rDiv" style="float: left;"></div>
+<div id="sDiv"></div><div id="gDiv"></div><div id="lDiv" style="float:right"></div><div id="rDiv"></div>
 <br style="clear:both;" />
 </div>
 <!-- GoogleAjaxSearchResults-->
