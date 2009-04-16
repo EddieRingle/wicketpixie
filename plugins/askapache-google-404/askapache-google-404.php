@@ -89,7 +89,7 @@ class AskApacheGoogle404
 	{
 		$this->LoadOptions();
 		//error_log(__FUNCTION__.':'.__LINE__);
-		add_action( 'admin_menu', array(&$this, 'admin_menu') );
+//		add_action( 'admin_menu', array(&$this, 'admin_menu') );
 		add_action( 'admin_notices', array(&$this, 'admin_notices') );
 		add_action( 'admin_print_styles-' . $this->plugin['hook'], array(&$this, 'admin_print_styles') );
 		add_action( 'admin_head-' . $this->plugin['hook'], array(&$this, 'admin_print_scripts') );
@@ -1192,7 +1192,9 @@ class AAGoogle404Handler
 endif;
 
 $AskApacheGoogle404 = new AskApacheGoogle404();
+
 add_action('init',array(&$AskApacheGoogle404, 'init'));
+add_action( 'admin_menu', array(&$AskApacheGoogle404, 'admin_menu') );
 
 function options_page() {
 	global $AskApacheGoogle404;
