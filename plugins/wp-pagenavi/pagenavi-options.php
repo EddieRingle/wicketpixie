@@ -16,10 +16,6 @@
 +----------------------------------------------------------------+
 */
 
-$fh = fopen(TEMPLATEPATH . "/daveslog.txt", "a+");
-fwrite($fh, date("M-d-Y g:i:s", mktime()) . ": In PageNavi Options Page\n" );
-fclose($fh);
-
 ### Variables Variables Variables
 $base_name = plugin_basename('wp-pagenavi/pagenavi-options.php');
 $base_page = 'admin.php?page='.$base_name;
