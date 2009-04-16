@@ -1,5 +1,4 @@
 <?php
-
 add_action('admin_menu','wp_plugins_toplevel_admin');
 /* List of the plugins included in WicketPixie which should be activated.
 Make sure you add an option in functions.php as well, in the $plugins array.
@@ -9,16 +8,12 @@ Example:
     }
 "pluginname" is the name of the plugin.
 */
-
-// New Google 404 Plugin
 if(wp_get_option("plug_all_in_one_seo_pack") != "0") {
     include TEMPLATEPATH ."/plugins/all-in-one-seo-pack/all_in_one_seo_pack.php";
 }
-
-if (wp_get_option("wp_plug_aagoog404") != 0) {
+if (wp_get_option("wp_plug_aagoog404") != "0") {
     include(TEMPLATEPATH . "/plugins/askapache-google-404/askapache-google-404.php");
 }
-
 if(wp_get_option("plug_autohyperlink-urls") != "0") {
     include TEMPLATEPATH ."/plugins/autohyperlink-urls/autohyperlink-urls.php";
 }
@@ -40,6 +35,9 @@ if(wp_get_option("plug_nofollow_navigation") != "0") {
 if(wp_get_option("plug_obfuscate-email") != "0") {
     include TEMPLATEPATH ."/plugins/obfuscate-email/obfuscate-email.php";
 }
+if (wp_get_option("wp_plug_pagenavi") != "0") {
+    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
+}
 if(wp_get_option('plug_related-posts') != "0") {
     include_once (TEMPLATEPATH . '/plugins/related-posts.php');
 }
@@ -47,16 +45,6 @@ if(wp_get_option("plug_statpress-reloaded") != "0") {
     include TEMPLATEPATH ."/plugins/statpress-reloaded/statpress.php";
 }
 
-// Added for new pagination plugin
-// DBates - dave@batez-consulting.com 
-// -- Removed until the plugin works correctly, will probably write my own
-
-if (wp_get_option("wp_plug_pagenavi")) {
-    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
-}
-
-
-$shortname = "wp";
 $plugins = array(
     array(
         "name"  => "All In One SEO Pack",
@@ -68,12 +56,10 @@ $plugins = array(
     array(
         "name" => "AskApache Google 404",
         "description" => "Displays unbeatable information to site visitors arriving at a non-existant page (from a bad link).  Major SEO with Google AJAX, Google 404 Helper, Related Posts, Recent Posts, etc..",
-        "id"    => $shortname . "_plug_aagoog404",
+        "id"    => "plug_aagoog404",
         "std"    => 1,
         "status"    => 'checked',
-        "type"    => "checkbox"
-    ),
-
+        "type"    => "checkbox"),
     array(
         "name"  => "Automatically Hyperlink URLs",
         "description"   => "Automatically hyperlinks URLs in post contents.",
@@ -124,6 +110,13 @@ $plugins = array(
         "status"    => 'checked',
         "type"  => 'checkbox'),
     array(
+        "name"  => "WP PageNavi",
+        "description"   => "Adds a more advanced paging navigation to your WordPress blog.",
+        "id"    => "plug_pagenavi",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"   => 'checkbox'),
+    array(
         "name"  => "StatPress Reloaded",
         "description"   => "A really nifty stats plugin.",
         "id"    => "plug_statpress-reloaded",
@@ -136,18 +129,7 @@ $plugins = array(
         "id"    => "plug_related-posts",
         "std"   => 1,
         "status"    => 'checked',
-        "type"  => 'checkbox')
-        
-        
-    //Added by DBAtes - Feature Request # 4    
-    ,array(
-        "name"  => "WP PageNavi",
-        "description"   => "Adds a more advanced paging navigation to your WordPress blog.",
-        "id"    => $shortname . "_plug_pagenavi",
-        "std"   => 1,
-        "status"    => 'checked',
-        "type"   => 'checkbox')
-        
+        "type"  => 'checkbox')        
 );
 
 function wp_plugins_toplevel_admin() {
