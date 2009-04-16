@@ -10,6 +10,12 @@
 				
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
+				
+				    <?php if(wp_get_option('global_announcement') != false && wp_get_option('global_announcement') != ""): ?>
+				    <div class="highlight">
+				        <?php echo wp_get_option('global_announcement'); ?>
+				    </div>
+				    <?php endif; ?>
 					
 					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>
 

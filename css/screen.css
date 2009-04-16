@@ -1651,7 +1651,15 @@ table, td, tr, th {
 div.KonaBody {
      margin-top: 15px;
      font-size: 9px;
-}     
+}
+
+.highlight {
+    padding: 10px;
+    background-color: #ffffe0;
+    border: 1px solid #ccc;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
 
 /* Skiddily Doo */
 .TweetWrapper, #TweetWrapper {
