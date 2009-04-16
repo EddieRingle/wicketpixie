@@ -346,7 +346,7 @@ cse.prototype.onClear = function(form) { this.gCT.clearAllResults(); this.lCT.cl
 		//error_log(__FUNCTION__.':'.__LINE__);
 //		add_management_page( $this->plugin['Plugin Name'], $this->plugin['Short Name'], 'level_8', $this->plugin['page'], array(&$this, 'options_page') );
 
-        add_submenu_page('wp_plugins.php', __("AA Google 404"), __("AA Google 404"), 'manage_options', basename(__FILE__), options_page);
+        add_submenu_page('wp_plugins.php', __("AskApache Google 404"), __("AskApache Google 404"), 'manage_options', basename(__FILE__), options_page);
 	}
 
 
