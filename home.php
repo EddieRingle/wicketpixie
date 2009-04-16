@@ -75,26 +75,27 @@
 				<!-- post-meta -->
 				
 				<!-- Page Navigation -->
-                <?php if (wp_get_option('plug_pagenavi')):?>
+                <?php /* if (wp_get_option('plug_pagenavi')):?>
                 <!--<div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>-->
-                <?php endif;?>
+                <?php endif; */?>
         
 				
 				<div class="post-meta">
 					
+					<?php if(wp_get_option('plug_related-posts')):?>
 					<!-- related-posts -->
 					<div id="related-posts">
-					    <?php if (wp_get_option( 'plug_related-posts' )):?>
 						<h3>Further Reading</h3>
 						<ul>
 						 <?php wp_related_posts(); ?>
-						</ul>						
-						<?php endif;?>
+						</ul>
 					</div>
 					<!-- /related-posts -->
+					<?php endif;?>
 					
 					<!-- post-meta-right -->
 					<div class="post-meta-right">
+						
 						
 						<!-- post-meta-tags -->
 						<div class="post-meta-tags">

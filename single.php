@@ -62,8 +62,9 @@
 					}
 					?>
 					<!-- /post-ad -->
-
-					<?php the_content(); ?>					
+                    <div id="KonaBody">
+					<?php the_content(); ?>
+					</div>					
 					
 				</div>
 				<!-- /post -->
