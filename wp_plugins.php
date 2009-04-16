@@ -1,60 +1,14 @@
 <?php
-
 add_action('admin_menu','wp_plugins_toplevel_admin');
-/* List of the plugins included in WicketPixie which should be activated.
-Make sure you add an option in functions.php as well, in the $plugins array.
-Example:
-    if(wp_get_option("plug_pluginname")) {
-        include "plugins/pluginname.php";
-    }
-"pluginname" is the name of the plugin.
-*/
-if(wp_get_option("plug_all_in_one_seo_pack") != "0") {
-    include TEMPLATEPATH ."/plugins/all-in-one-seo-pack/all_in_one_seo_pack.php";
-}
-if(wp_get_option("plug_autohyperlink-urls") != "0") {
-    include TEMPLATEPATH ."/plugins/autohyperlink-urls/autohyperlink-urls.php";
-}
-if(wp_get_option("plug_chitika") != "0") {
-    include TEMPLATEPATH ."/plugins/chitika-premium/premium.php";
-}
-if(wp_get_option("plug_disqus") != "0") {
-    include TEMPLATEPATH ."/plugins/disqus-comment-system/disqus.php";
-}
-if(wp_get_option("plug_falbum") != "0") {
-    include TEMPLATEPATH ."/plugins/falbum/wordpress-falbum-plugin.php";
-}
-if(wp_get_option("plug_kontera") != "0") {
-    include TEMPLATEPATH ."/plugins/kontera/kontera.php";
-}
-if(wp_get_option("plug_nofollow_navigation") != "0") {
-    include TEMPLATEPATH ."/plugins/nofollow-navi/nofollow-navi.php";
-}
-if(wp_get_option("plug_obfuscate-email") != "0") {
-    include TEMPLATEPATH ."/plugins/obfuscate-email/obfuscate-email.php";
-}
-if(wp_get_option('plug_related-posts') != "0") {
-    include_once (TEMPLATEPATH . '/plugins/related-posts.php');
-}
-if(wp_get_option("plug_statpress-reloaded") != "0") {
-    include TEMPLATEPATH ."/plugins/statpress-reloaded/statpress.php";
-}
 
-// Added for new pagination plugin
-// DBates - dave@batez-consulting.com 
-// -- Removed until the plugin works correctly, will probably write my own
-
-if (wp_get_option("wp_plug_pagenavi")) {
-    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
-}
-
-// New Google 404 Plugin
-if (wp_get_option("wp_plug_aagoog404") != 0) {
-    include(TEMPLATEPATH . "/plugins/askapache-google-404/askapache-google-404.php");
-}
-
-$shortname = "wp";
 $plugins = array(
+    array(
+        "name" => "AskApache Google 404",
+        "description" => "Displays unbeatable information to site visitors arriving at a non-existant page (from a bad link).  Major SEO with Google AJAX, Google 404 Helper, Related Posts, Recent Posts, etc..",
+        "id"    => "plug_aagoog404",
+        "std"    => 1,
+        "status"    => 'checked',
+        "type"    => "checkbox"),
     array(
         "name"  => "All In One SEO Pack",
         "description"   => "It's filled with SEO goodies.",
@@ -112,6 +66,13 @@ $plugins = array(
         "status"    => 'checked',
         "type"  => 'checkbox'),
     array(
+        "name"  => "PageNavi",
+        "description"   => "Adds a more advanced paging navigation to your WordPress blog.",
+        "id"    => "plug_pagenavi",
+        "std"   => 1,
+        "status"    => 'checked',
+        "type"   => 'checkbox'),
+    array(
         "name"  => "StatPress Reloaded",
         "description"   => "A really nifty stats plugin.",
         "id"    => "plug_statpress-reloaded",
@@ -125,25 +86,6 @@ $plugins = array(
         "std"   => 1,
         "status"    => 'checked',
         "type"  => 'checkbox')
-        
-        
-    //Added by DBAtes - Feature Request # 4    
-    ,array(
-        "name"  => "WP PageNavi",
-        "description"   => "Adds a more advanced paging navigation to your WordPress blog.",
-        "id"    => $shortname . "_plug_pagenavi",
-        "std"   => 1,
-        "status"    => 'checked',
-        "type"   => 'checkbox')
-        
-    ,array(
-        "name" => "AskApache Google 404",
-        "description" => "Displays unbeatable information to site visitors arriving at a non-existant page (from a bad link).  Major SEO with Google AJAX, Google 404 Helper, Related Posts, Recent Posts, etc..",
-        "id"    => $shortname . "_plug_aagoog404",
-        "std"    => 1,
-        "status"    => 'checked',
-        "type"    => "checkbox"
-    )
 );
 
 function wp_plugins_toplevel_admin() {
@@ -278,5 +220,62 @@ global $plugins;
                 </div>
                 <?php include_once('app/advert.php'); ?>
 <?php
+}
+
+/* List of the plugins included in WicketPixie which should be activated.
+Make sure you add an option in functions.php as well, in the $plugins array.
+Example:
+    if(wp_get_option("plug_pluginname")) {
+        include "plugins/pluginname.php";
+    }
+"pluginname" is the name of the plugin.
+*/
+// AskApache 404
+if (wp_get_option("plug_aagoog404") != "0") {
+    include(TEMPLATEPATH . "/plugins/askapache-google-404/askapache-google-404.php");
+}
+// All-in-One SEO Pack
+if(wp_get_option("plug_all_in_one_seo_pack") != "0") {
+    include TEMPLATEPATH ."/plugins/all-in-one-seo-pack/all_in_one_seo_pack.php";
+}
+// Auto-hyperlink URLs
+if(wp_get_option("plug_autohyperlink-urls") != "0") {
+    include TEMPLATEPATH ."/plugins/autohyperlink-urls/autohyperlink-urls.php";
+}
+// Chitika for WordPress
+if(wp_get_option("plug_chitika") != "0") {
+    include TEMPLATEPATH ."/plugins/chitika-premium/premium.php";
+}
+// DISQUS for WordPress
+if(wp_get_option("plug_disqus") != "0") {
+    include TEMPLATEPATH ."/plugins/disqus-comment-system/disqus.php";
+}
+// FAlbum
+if(wp_get_option("plug_falbum") != "0") {
+    include TEMPLATEPATH ."/plugins/falbum/wordpress-falbum-plugin.php";
+}
+// Kontera WordPress plugin
+if(wp_get_option("plug_kontera") != "0") {
+    include TEMPLATEPATH ."/plugins/kontera/kontera.php";
+}
+// NoFollow-Navigation
+if(wp_get_option("plug_nofollow_navigation") != "0") {
+    include TEMPLATEPATH ."/plugins/nofollow-navi/nofollow-navi.php";
+}
+// Obfuscate Email
+if(wp_get_option("plug_obfuscate-email") != "0") {
+    include TEMPLATEPATH ."/plugins/obfuscate-email/obfuscate-email.php";
+}
+// Pagination plugin
+if (wp_get_option("plug_pagenavi") != "0") {
+    include(TEMPLATEPATH . "/plugins/wp-pagenavi/wp-pagenavi.php");
+}
+// WordPress Related Posts
+if(wp_get_option('plug_related-posts') != "0") {
+    include_once (TEMPLATEPATH . '/plugins/related-posts.php');
+}
+// StatPress Reloaded
+if(wp_get_option("plug_statpress-reloaded") != "0") {
+    include TEMPLATEPATH ."/plugins/statpress-reloaded/statpress.php";
 }
 ?>
