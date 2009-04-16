@@ -1679,4 +1679,13 @@ div.KonaBody {
 .TweetDate, .TweetPermadate, .TweetPermalink, .msgstatus {
     float: left;
 }
+
+#paginator {
+	text-align: center;
+}
+
+#wp-pagenavi {
+	margin-left: auto;
+	margin-right: auto;
+}
 /* @end */

@@ -54,11 +54,16 @@
                 <!-- google_ad_section_end -->
 				<?php endwhile; ?>
 
+				<!-- Page Navigation -->
+                <?php if (wp_get_option('wp_plug_pagenavi')):?>
+                <div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>
+                <?php else: ?>
 				<div class="navigation">
 					<div class="left"><?php next_posts_link('<span>&nbsp;</span>Older Posts'); ?> </div>
 					<div class="right"><?php previous_posts_link('<span>&nbsp;</span>Newer Posts') ?></div>
 				</div>
-
+                <?php endif; /* End of PageNavi */ ?>
+                
 				<?php endif; ?>
 
 			</div>
