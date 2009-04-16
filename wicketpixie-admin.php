@@ -49,14 +49,7 @@ $settings = array(
 		"id"    =>  "notify",
         "std"   =>  1,
         	"status" => 'checked',
-        "type"  => 'checkbox'),
-    array(
-        "name"  =>  "Display topbar",
-        "description"   => "Check this if you want the hovering black bar to appear on the top of your blog.",
-        "id"    => "show_topbar",
-        "std"   => 1,
-        "status" => 'checked',
-        "type"  =>  'checkbox')
+        "type"  => 'checkbox')
 );
 
 function save($data,$array) {
