@@ -1249,18 +1249,19 @@ body {
 	color: #333;
 }
 
-#sidebar1, #sidebar2, #sidebar3, #sidebar4, #sidebar5, #sidebar6 {
+#sidebar_top, #sidebar1, #sidebar2, #sidebar3, #sidebar4, #sidebar5, #sidebar6 {
 	overflow: hidden;
 }
 
 #sidebar1 {
 	width: 100%;
     margin-bottom: 28px;
+    background: url("../images/sidebar-box-bottom.gif") no-repeat 0 100%;
 }
 
 #sidebar1 .widget {
 	padding: 20px 20px 6px;
-	margin: 0 auto;
+	background: url("../images/sidebar-box-top.gif") no-repeat 0 0;
 }
 
 #sidebar1 .widget img {

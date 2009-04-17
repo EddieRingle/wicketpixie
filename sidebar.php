@@ -1,5 +1,12 @@
 <!-- google_ad_section_start(weight=ignore) -->
 <div id="sidebar">
+
+<!-- sidebar_top -->
+<div id="sidebar_top">
+    <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar_top') ) : ?><?php endif;?>
+</div>
+<!-- /sidebar_top -->
+
 <!-- sidebar1 -->
 <div id="sidebar1">
 	<?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar1') ) : ?><?php endif; ?>

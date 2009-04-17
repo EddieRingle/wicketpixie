@@ -218,7 +218,7 @@
                         if ($trip == true) {
                             $out = "<!-- Please go back to the Home Editor and set the settings for this widget. -->";
                         } else {
-                            $url = "http://api.ustream.tv/php/channel/$chan/getCustomEmbedTag?key=$key&amp;params=autoplay:$autoplay;width:$width;height:$height;";
+                            $url = "http://api.ustream.tv/php/channel/$chan/getInfo?key=$key";
                             $cl = curl_init($url);
                             curl_setopt($cl,CURLOPT_HEADER,false);
                             curl_setopt($cl,CURLOPT_RETURNTRANSFER,true);
@@ -227,7 +227,7 @@
                             $resultsArray = unserialize($resp);
                             $out = $resultsArray['results'];
                         }
-                        echo $out;
+                        echo '<embed src="http://www.ustream.tv/flash/live/'.$out['id'].'" width="'.$width.'" height="'.$height.'" flashvars="autoplay='.$autoplay.'&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />';
                     ?>
                 </div>
 				<?php endif; ?>
@@ -236,7 +236,7 @@
 				<!-- recent-posts -->
 				<div id="sidebar1">					
 					<div id="recent-posts" class="widget">
-						<h3>Recent Posts</h3>
+						<h3>What else is new?</h3>
 						<?php query_posts('showposts=5&offset=1'); ?>
 						<?php while (have_posts()) : the_post(); ?>
 						<!-- post -->
@@ -253,7 +253,6 @@
 						<h5><a href="<?php the_permalink() ?>" rel="bookmark" title="Continue reading <?php the_title(); ?>"><?php the_title(); ?></a></h5>
 						<p><?php the_time('l, F jS') ?> | <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></p>						
 						<?php endwhile; ?>
-						
 					</div>					
 				</div>
 				<!-- /recent-posts -->
