@@ -17,7 +17,7 @@ include_once( TEMPLATEPATH . '/widgets/sources.php' );
 * b = beta (testing, works but may have bugs)
 * rc = release candidate (stable testing, minor issues are left)
 */
-define('WIK_VERSION','1.1b1');
+define('WIK_VERSION','1.1');
 
 function collect() {
 	global $wpdb;

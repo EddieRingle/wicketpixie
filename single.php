@@ -85,7 +85,7 @@
 				<!-- post-meta -->
 				<div class="post-meta">
 					
-					<?php if(wp_get_option('plug_related-posts') == "1"):?>
+					<?php if(wp_get_option('plug_related-posts') && function_exists(wp_related_posts)):?>
 					<!-- related-posts -->
 					<div id="related-posts">
 						<h3>You might also be interested in...</h3>
