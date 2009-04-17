@@ -13,7 +13,7 @@
 				<div class="post" style="border-bottom:0;">
 				
 				    <?php
-				    require(TEMPLATEPATH .'/app/customcode.php');
+				    require_once(TEMPLATEPATH .'/app/customcode.php');
 				    $glob = fetchcustomcode('global_announcement.php');
 				    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
 				    <div class="highlight">
