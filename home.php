@@ -236,7 +236,7 @@
 				<!-- recent-posts -->
 				<div id="sidebar1">					
 					<div id="recent-posts" class="widget">
-						<h3>Recent Posts</h3>
+						<h3>What else is new?</h3>
 						<?php query_posts('showposts=5&offset=1'); ?>
 						<?php while (have_posts()) : the_post(); ?>
 						<!-- post -->
@@ -253,7 +253,6 @@
 						<h5><a href="<?php the_permalink() ?>" rel="bookmark" title="Continue reading <?php the_title(); ?>"><?php the_title(); ?></a></h5>
 						<p><?php the_time('l, F jS') ?> | <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></p>						
 						<?php endwhile; ?>
-						
 					</div>					
 				</div>
 				<!-- /recent-posts -->
