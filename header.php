@@ -106,7 +106,7 @@ $adsense = new AdsenseAdmin;
 		<div id="topbar-inner">			
 			<ul>
 				<li id="topbar-subscribe"><a href="#">Subscribe</a></li>
-				<li id="topbar-share"><a href="#">Bookmark/Share</a></li>
+				<!--<li id="topbar-share"><a href="#">Bookmark/Share</a></li>-->
 				<?php if (is_user_logged_in()) { ?><li id="topbar-admin"><a href="<?php bloginfo('wpurl'); ?>/wp-admin" rel="nofollow">Admin</a></li><?php } ?>
 			</ul>		
             <?php include (TEMPLATEPATH . '/searchform.php'); ?>
@@ -133,7 +133,7 @@ $adsense = new AdsenseAdmin;
 	</div>
 	<!-- /subscribe -->
 	
-	<!-- share
+	<!-- share -->
 	<div id="share">
 		
 	</div>
