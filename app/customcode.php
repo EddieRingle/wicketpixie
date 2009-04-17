@@ -60,12 +60,16 @@ function writeto($code,$file,$magick = false)
 /**
 * This returns the custom code if any. If not, returns an HTML comment.
 **/
-function fetchcustomcode($file)
+function fetchcustomcode($file,$raw = false)
 {
     if(file_exists(CUSTOMPATH) && file_exists(CUSTOMPATH ."/$file")) {
-        return file_get_contents(CUSTOMPATH ."/$file");
+        if(!$raw) {
+            include(CUSTOMPATH ."/$file");
+        } else {
+            echo file_get_contents(CUSTOMPATH ."/$file");
+        }
     } else {
-        return "<!-- No custom code found, add code on the WicketPixie Custom Code admin page. -->";
+        echo "<!-- No custom code found, add code on the WicketPixie Custom Code admin page. -->";
     }
 }
     
@@ -113,7 +117,7 @@ function customcode_admin()
                 <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the &lt;head&gt; and &lt;/head&gt; tags of your site.</p>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=customcode.php&amp;add=true" class="form-table">
                     <h4>Edit Custom Header file</h4>
-                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("header.php"); ?></textarea></p>
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("header.php",true); ?></textarea></p>
                     <p class="submit">
                         <input name="save" type="submit" value="Save Custom Header" /> 
                         <input type="hidden" name="action" value="add" />
@@ -133,7 +137,7 @@ function customcode_admin()
                 <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear just before the &lt;/bodygt; tag of your site.</p>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=customcode.php&amp;add=true" class="form-table">
                     <h4>Edit Custom Footer file</h4>
-                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("footer.php"); ?></textarea></p>
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("footer.php",true); ?></textarea></p>
                     <p class="submit">
                         <input name="save" type="submit" value="Save Custom Footer" /> 
                         <input type="hidden" name="action" value="add" />
@@ -153,7 +157,7 @@ function customcode_admin()
                 <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the post content and post meta-data on your homepage.</p>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=customcode.php&amp;add=true" class="form-table">
                     <h4>Edit After-Home-Post code</h4>
-                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("afterhomepost.php"); ?></textarea></p>
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("afterhomepost.php",true); ?></textarea></p>
                     <p class="submit">
                         <input name="save" type="submit" value="Save After-Home-Post code" /> 
                         <input type="hidden" name="action" value="add" />
@@ -173,7 +177,7 @@ function customcode_admin()
                 <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the post content and post meta-data on individual posts.</p>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=customcode.php&amp;add=true" class="form-table">
                     <h4>Edit After-Posts code</h4>
-                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("afterposts.php"); ?></textarea></p>
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("afterposts.php",true); ?></textarea></p>
                     <p class="submit">
                         <input name="save" type="submit" value="Save After-Posts code" /> 
                         <input type="hidden" name="action" value="add" />
@@ -199,28 +203,28 @@ function customcode_admin()
 **/
 function wp_customheader()
 {
-    echo fetchcustomcode("header.php");
+    return fetchcustomcode("header.php");
 }
 /**
 * This is called in footer.php and displays the custom footer code.
 **/
 function wp_customfooter()
 {
-    echo fetchcustomcode("footer.php");
+    return fetchcustomcode("footer.php");
 }
 /**
 * This is called in home.php (and maybe index.php) and displays after-home-post code.
 **/
 function wp_after_home_post_code()
 {
-    echo fetchcustomcode("afterhomepost.php");
+    return fetchcustomcode("afterhomepost.php");
 }
 /**
 * This is called in single.php and displays after-posts code.
 **/
 function wp_after_posts_code()
 {
-    echo fetchcustomcode("afterposts.php");
+    return fetchcustomcode("afterposts.php");
 }
 
 add_action('admin_menu', 'customcode_add_admin');

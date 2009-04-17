@@ -264,18 +264,15 @@
 						<h5><a href="<?php the_permalink() ?>" rel="bookmark" title="Continue reading <?php the_title(); ?>"><?php the_title(); ?></a></h5>
 						<p><?php the_time('l, F jS') ?> | <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></p>						
 						<?php endwhile; ?>
-					</div>					
+					</div>
+					<!-- Custom Sidebar Code -->
+				    <?php
+				    require_once(TEMPLATEPATH .'/app/customcode.php');
+				    fetchcustomcode('homesidebar.php');
+				    ?>
+				    <!-- /Custom Sidebar Code -->			
 				</div>
 				<!-- /recent-posts -->
-				
-				<!-- Custom Sidebar Code -->
-				<?php
-				if(!function_exists(fetchcustomcode(null))) {
-				    require_once(TEMPLATEPATH .'/app/customcode.php');
-				}
-				echo fetchcustomcode('homesidebar.php');
-				?>
-				<!-- /Custom Sidebar Code -->
 
 			</div>
 			<!-- sidebar -->

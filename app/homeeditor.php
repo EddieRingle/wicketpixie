@@ -262,7 +262,7 @@ class HomeAdmin {
                 <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the after the Recent Posts section of the homepage sidebar.</p>
                 <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=homeeditor.php&amp;ccode=true" class="form-table">
                     <h4>Edit Custom Sidebar code</h4>
-                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("homesidebar.php"); ?></textarea></p>
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("homesidebar.php",true); ?></textarea></p>
                     <p class="submit">
                         <input name="save" type="submit" value="Save Custom Sidebar code" /> 
                         <input type="hidden" name="ccode" value="true" />
