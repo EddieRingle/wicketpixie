@@ -270,7 +270,7 @@
 				
 				<!-- Custom Sidebar Code -->
 				<?php
-				if(!function_exists(fetchcustomcode())) {
+				if(!function_exists(fetchcustomcode(null))) {
 				    require_once(TEMPLATEPATH .'/app/customcode.php');
 				}
 				echo fetchcustomcode('homesidebar.php');

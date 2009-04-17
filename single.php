@@ -87,7 +87,7 @@
 					}
 					?>
 					<!-- /post-ad -->
-                    <div id="KonaBody">
+                    <div class="KonaBody">
 					<?php the_content(); ?>
 					</div>					
 					
