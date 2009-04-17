@@ -64,11 +64,22 @@
 					?>
 					    <div id="post-ad">
 						    <?php $adsense->wp_adsense('blog_post_side'); ?>
+						    <ul style="margin: 15px 0 0 5px">
+						        <p align="center">
+						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
+						        </p>
+						        <?php wp_related_posts(5); ?>
+						    </ul>
 					    </div>
 					<?php
 					} else {
 					?>
+					    <div id="post-ad">
 					    <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
+					        <ul style="margin: 15px 0 0 5px">
+					            <?php wp_related_posts(5); ?>
+					        </ul>
+					    </div>
 					<?php
 					}
 					?>
