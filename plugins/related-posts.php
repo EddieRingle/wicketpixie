@@ -35,12 +35,12 @@ function init_textdomain(){
   load_plugin_textdomain('wp_related_posts',PLUGINDIR . '/' . dirname(plugin_basename (__FILE__)) . '/lang');
 }
 
-function wp_get_related_posts() {
+function wp_get_related_posts($arg_limit = null) {
 	global $wpdb, $post,$table_prefix;
 	$wp_rp = get_option("wp_rp");
 	
 	$exclude = explode(",",$wp_rp["wp_rp_exclude"]);
-	$limit = $wp_rp["wp_rp_limit"];
+	$limit = ($arg_limit != null) ? $arg_limit : $wp_rp["wp_rp_limit"];
 	$wp_rp_title = $wp_rp["wp_rp_title"];
 	$wp_no_rp = $wp_rp["wp_no_rp"];
 	$wp_no_rp_text = $wp_rp["wp_no_rp_text"];
@@ -77,7 +77,7 @@ function wp_get_related_posts() {
 	if ($limit) {
 		$limitclause = "LIMIT $limit";
 	}	else {
-		$limitclause = "LIMIT 10";
+		$limitclause = "LIMIT 3";
 	}
 	
 	$q = "SELECT p.ID, p.post_title, p.post_date, p.comment_count, count(t_r.object_id) as cnt FROM $wpdb->term_taxonomy t_t, $wpdb->term_relationships t_r, $wpdb->posts p WHERE t_t.taxonomy ='post_tag' AND t_t.term_taxonomy_id = t_r.term_taxonomy_id AND t_r.object_id  = p.ID AND (t_t.term_id IN ($taglist)) AND p.ID != $post->ID AND p.post_status = 'publish' AND p.post_date_gmt < '$now' GROUP BY t_r.object_id ORDER BY cnt DESC, p.post_date_gmt DESC $limitclause;";
@@ -135,9 +135,9 @@ function wp_get_related_posts() {
 	return $output;
 }
 
-function wp_related_posts(){
+function wp_related_posts($limit = null){
 		
-	$output = wp_get_related_posts() ;
+	$output = wp_get_related_posts($limit = null) ;
 
 	echo $output;
 }
@@ -179,7 +179,7 @@ function wp_get_random_posts ($limitclause="") {
     return $wpdb->get_results($q);
 }
 
-function wp_random_posts ($number = 10){
+function wp_random_posts ($number = 3){
 	$limitclause="LIMIT " . $number;
 	$random_posts = wp_get_random_posts ($limitclause);
 	
@@ -222,7 +222,7 @@ function wp_get_most_popular_posts ($limitclause="") {
     return $wpdb->get_results($q);
 }
 
-function wp_most_popular_posts ($number = 10){
+function wp_most_popular_posts ($number = 3){
 	$limitclause="LIMIT " . $number;
 	$most_popular_posts = wp_get_most_popular_posts ($limitclause);
 	
