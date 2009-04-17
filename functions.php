@@ -175,9 +175,9 @@ function wicketpixie_ustream_widget_control()
     <label for="ustreamWidget-ChannelName">Channel: </label>
     <input type="text" id="ustreamWidget-ChannelName" name="ustreamWidget-ChannelName" value="<?php echo $channelname; ?>" /><br/>
     <label for="ustreamWidget-Height">Height: </label>
-    <input size="5" type="text" id="ustreamWidget-Height" name="ustreamWidget-Height" value="<?php echo $height; ?>" />px<br/>
+    <input size="5" type="text" id="ustreamWidget-Height" name="ustreamWidget-Height" value="<?php echo $height; ?>" />px (240 recommended)<br/>
     <label for="ustreamWidget-Width">Width: </label>
-    <input size="5" type="text" id="ustreamWidget-Width" name="ustreamWidget-Width" value="<?php echo $width; ?>" />px<br/>
+    <input size="5" type="text" id="ustreamWidget-Width" name="ustreamWidget-Width" value="<?php echo $width; ?>" />px (300 recommended)<br/>
     <label for="ustreamWidget-Autoplay">Autoplay: </label>
     <input type="checkbox" id="ustreamWidget-Autoplay" name="ustreamWidget-Autoplay" <?php if ($autoplay === '1') { echo "checked='checked'"; } ?> />
     <input type="hidden" id="ustreamWidget-Submit" name="ustreamWidget-Submit" value="1" />    
