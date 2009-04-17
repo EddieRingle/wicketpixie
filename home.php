@@ -81,17 +81,8 @@
 				</div>
 				<!-- /post -->
 				<!-- google_ad_section_end -->
-				<?php endwhile; ?>
-				<?php endif; ?>
 				
 				<!-- post-meta -->
-				
-				<!-- Page Navigation -->
-                <?php /* if (wp_get_option('plug_pagenavi')):?>
-                <!--<div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>-->
-                <?php endif; */?>
-        
-				
 				<div class="post-meta">
 					
 					<?php if(wp_get_option('plug_related-posts') && function_exists(wp_related_posts)):?>
@@ -161,6 +152,8 @@
 				}
 				?>
 			    </div>
+                <?php endwhile; ?>
+                <?php endif; ?>
 			    
 				<div class="clearer"></div>
 				
