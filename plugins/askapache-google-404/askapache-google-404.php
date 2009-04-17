@@ -91,10 +91,13 @@ class AskApacheGoogle404
 		//error_log(__FUNCTION__.':'.__LINE__);
 //		add_action( 'admin_menu', array(&$this, 'admin_menu') );
 		add_action( 'admin_notices', array(&$this, 'admin_notices') );
-		add_action( 'admin_print_styles-' . $this->plugin['hook'], array(&$this, 'admin_print_styles') );
-		add_action( 'admin_head-' . $this->plugin['hook'], array(&$this, 'admin_print_scripts') );
+//		add_action( 'admin_print_styles-' . $this->plugin['hook'], array(&$this, 'admin_print_styles') );
+//		add_action( 'admin_head-' . $this->plugin['hook'], array(&$this, 'admin_print_scripts') );
+		add_action( 'admin_print_styles', array(&$this, 'admin_print_styles') );
+		add_action( 'admin_head', array(&$this, 'admin_print_scripts') );
 		add_action( 'wp_ajax_get_aa404_data', array(&$this, 'get_aa404_data') );
-		add_action( 'load-' . $this->plugin['hook'], array(&$this, 'load') );
+//		add_action( 'load-' . $this->plugin['hook'], array(&$this, 'load') );
+		add_action( 'load', array(&$this, 'load') );
 		add_action( 'admin_init', array(&$this, 'admin_init') );
 		add_filter( 'plugin_action_links_' . $this->plugin['pb'], array(&$this, 'plugin_action_links') );
 	}
@@ -155,28 +158,20 @@ class AskApacheGoogle404
 	function InitOptions()
 	{
 		//error_log(__FUNCTION__.':'.__LINE__);
-		$this->options = array( 'rel' => '1', 'rec' => '1', 'google_404' => '1', 'google_ajax' => '1', 'rel_num' => 10, 'rel_len' => 240, 'rec_num' => 6 );
+		$this->options = array( 'rel' => '1', 'rec' => '1', 'google_404' => '1', 'google_ajax' => '1', 'rel_num' => 20, 'rel_len' => 240, 'rec_num' => 10 );
 $this->code=array( 'html' =>
-'<div id="content">
-<h2>%error_title%</h2>
+'<h1>%error_title%</h1>
 
-<!-- GoogleAjaxSearchResults-->
-<div style="width:100%;overflow:hidden;margin-left:0;">
-<div id="sDiv"></div><div id="gDiv"></div><div id="lDiv" style="float:right"></div><div id="rDiv"></div>
-<br style="clear:both;" />
-</div>
-<!-- GoogleAjaxSearchResults-->
-
-<h2>Related Posts</h2>
+<h3>Were You Looking for One of These Posts?</h3>
 %related_posts%
 
-<h2>Recent Posts</h2>
+<h3>Recent Posts</h3>
 %recent_posts%
 
 <!-- Google404Helper-->
 %google_helper%
 <!-- Google404Helper-->
-</div>',
+',
 
 
 
