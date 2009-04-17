@@ -3,21 +3,21 @@
 
 			<!-- content -->
 			<div id="content">
-				
-				<div class="page">
-					<h1 style="border-bottom:1px solid #ddd; padding-bottom:5px;"><?php wp_title('',true,''); ?></h1>
-				</div>
-
+			
 			    <?php
 			    require_once(TEMPLATEPATH .'/app/customcode.php');
 			    $glob = fetchcustomcode('global_announcement.php');
 			    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
-			    <div class="highlight">
+			    <div class="highlight" style="margin-left: 20px;margin-right: 20px">
 			    <?php
 			        echo $glob;
 			    ?>
 			    </div>
 			    <?php endif; ?>
+				
+				<div class="page">
+					<h1 style="border-bottom:1px solid #ddd; padding-bottom:5px;"><?php wp_title('',true,''); ?></h1>
+				</div>
 				
 				<?php if (have_posts()) : ?>	
 				<?php $adsense_counter = 0; ?>
