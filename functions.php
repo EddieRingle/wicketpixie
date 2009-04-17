@@ -31,6 +31,12 @@ function collect() {
 }
 
 if ( function_exists('register_sidebar') )
+    register_sidebar(array('name'=>'sidebar_top',
+        'before_widget' => '<div id="%1$s" class="widget %2$s">',
+        'after_widget' => '</div>',
+		'before_title' => '<h3>',
+		'after_title' => '</h3>',
+    ));
 	register_sidebar(array('name'=>'sidebar1',
 		'before_widget' => '<div id="%1$s" class="widget %2$s">',
 		'after_widget' => '</div>',

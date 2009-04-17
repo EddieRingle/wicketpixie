@@ -218,7 +218,7 @@
                         if ($trip == true) {
                             $out = "<!-- Please go back to the Home Editor and set the settings for this widget. -->";
                         } else {
-                            $url = "http://api.ustream.tv/php/channel/$chan/getCustomEmbedTag?key=$key&amp;params=autoplay:$autoplay;width:$width;height:$height;";
+                            $url = "http://api.ustream.tv/php/channel/$chan/getInfo?key=$key";
                             $cl = curl_init($url);
                             curl_setopt($cl,CURLOPT_HEADER,false);
                             curl_setopt($cl,CURLOPT_RETURNTRANSFER,true);
@@ -227,7 +227,7 @@
                             $resultsArray = unserialize($resp);
                             $out = $resultsArray['results'];
                         }
-                        echo $out;
+                        echo '<embed src="http://www.ustream.tv/flash/live/'.$out['id'].'" width="'.$width.'" height="'.$height.'" flashvars="autoplay='.$autoplay.'&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />';
                     ?>
                 </div>
 				<?php endif; ?>
