@@ -258,5 +258,5 @@
 				<!-- /home-mybloglog -->
 
 			</div>
-			<!-- sidebar -->\
+			<!-- sidebar -->
 <?php get_footer(); ?>
