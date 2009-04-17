@@ -77,6 +77,7 @@
 					<div class="KonaBody">
 					<?php the_content('Continue reading &raquo;'); ?>
 					</div>
+					<?php wp_after_home_post_code(); ?>
 				</div>
 				<!-- /post -->
 				<!-- google_ad_section_end -->
@@ -264,7 +265,5 @@
 				<!-- /home-mybloglog -->
 
 			</div>
-			<!-- sidebar -->
-			
+			<!-- sidebar -->\
 <?php get_footer(); ?>
-

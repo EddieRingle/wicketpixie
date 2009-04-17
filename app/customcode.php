@@ -80,6 +80,10 @@ function customcode_admin()
                 writeto($_POST['code'],"header.php");
             } elseif('footer' == $_POST['file']) {
                 writeto($_POST['code'],"footer.php");
+            } elseif('afterhomepost' == $_POST['file']) {
+                writeto($_POST['code'],"afterhomepost.php");
+            } elseif('afterposts' == $_POST['file']) {
+                writeto($_POST['code'],"afterposts.php");
             }
         }			
         elseif ( 'clear' == $_REQUEST['action'] ) {
@@ -87,12 +91,18 @@ function customcode_admin()
                 unlink(CUSTOMPATH .'/header.php');
             } elseif('footer' == $_POST['file']) {
                 unlink(CUSTOMPATH .'/footer.php');
+            } elseif('afterhomepost' == $_POST['file']) {
+                unlink(CUSTOMPATH .'/afterhomepost.php');
+            } elseif('afterposts' == $_POST['file']) {
+                unlink(CUSTOMPATH .'/afterposts.php');
             }
         }
     }
     ?>
     <?php if ( isset( $_REQUEST['add'] ) ) { ?>
     <div id="message" class="updated fade"><p><strong><?php echo __('Custom Code saved.'); ?></strong></p></div>
+    <?php } elseif(isset($_REQUEST['clear'])) { ?>
+    <div id="message" class="updated fade"><p><strong><?php echo __('Custom Code cleared.'); ?></strong></p></div>
     <?php } ?>
         <div class="wrap">
         
@@ -139,6 +149,46 @@ function customcode_admin()
                         <input type="hidden" name="file" value="footer" />
                     </p>
                 </form>
+                <h3>After-Home-Post</h3>
+                <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the post content and post meta-data on your homepage.</p>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=customcode.php&amp;add=true" class="form-table">
+                    <h4>Edit After-Home-Post code</h4>
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("afterhomepost.php"); ?></textarea></p>
+                    <p class="submit">
+                        <input name="save" type="submit" value="Save After-Home-Post code" /> 
+                        <input type="hidden" name="action" value="add" />
+                        <input type="hidden" name="file" value="afterhomepost" />
+                    </p>
+                </form>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=customcode.php&amp;clear=true" class="form-table">
+                    <h4>Clear After-Home-Post code</h4>
+                    <p>WARNING: This will delete all custom code you have entered to appear after posts on the homepage, if you want to continue, click 'Clear After-Home-Post code'</p>
+                    <p class="submit">
+                        <input name="clear" type="submit" value="Clear After-Home-Post code" />
+                        <input type="hidden" name="action" value="clear" />
+                        <input type="hidden" name="file" value="afterhomepost" />
+                    </p>
+                </form>
+                <h3>After-Posts</h3>
+                <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the post content and post meta-data on individual posts.</p>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=customcode.php&amp;add=true" class="form-table">
+                    <h4>Edit After-Posts code</h4>
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("afterposts.php"); ?></textarea></p>
+                    <p class="submit">
+                        <input name="save" type="submit" value="Save After-Posts code" /> 
+                        <input type="hidden" name="action" value="add" />
+                        <input type="hidden" name="file" value="afterposts" />
+                    </p>
+                </form>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=customcode.php&amp;clear=true" class="form-table">
+                    <h4>Clear After-Posts code</h4>
+                    <p>WARNING: This will delete all custom code you have entered to appear after individual posts, if you want to continue, click 'Clear After-Posts code'</p>
+                    <p class="submit">
+                        <input name="clear" type="submit" value="Clear After-Posts code" />
+                        <input type="hidden" name="action" value="clear" />
+                        <input type="hidden" name="file" value="afterposts" />
+                    </p>
+                </form>
             </div>
             <?php include_once('advert.php'); ?>
 <?php
@@ -157,6 +207,20 @@ function wp_customheader()
 function wp_customfooter()
 {
     echo fetchcustomcode("footer.php");
+}
+/**
+* This is called in home.php (and maybe index.php) and displays after-home-post code.
+**/
+function wp_after_home_post_code()
+{
+    echo fetchcustomcode("afterhomepost.php");
+}
+/**
+* This is called in single.php and displays after-posts code.
+**/
+function wp_after_posts_code()
+{
+    echo fetchcustomcode("afterposts.php");
 }
 
 add_action('admin_menu', 'customcode_add_admin');

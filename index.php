@@ -57,8 +57,10 @@
 					</div>
 					<div class="clearer"></div>
 
+					<div class="KonaBody">
 					<?php the_content('Continue reading &raquo;'); ?>
-					
+					</div>
+					<?php wp_after_posts_code(); ?>
 				</div>
 				<!-- /post -->
 				

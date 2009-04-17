@@ -72,13 +72,13 @@ $homeoptions = array(
     "name" => "Ustream Object Height",
     "description" => "Enter code for a video object. For example, a YouTube custom player.",
     "id" => "home_ustream_height",
-    "std" => "320",
+    "std" => "293",
     "type" => "textbox"),
     array(
     "name" => "Ustream Object Width",
     "description" => "Enter code for a video object. For example, a YouTube custom player.",
     "id" => "home_ustream_width",
-    "std" => "240",
+    "std" => "340",
     "type" => "textbox"),
     array(
     "name" => "Custom Code",
