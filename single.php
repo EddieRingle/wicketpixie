@@ -14,7 +14,7 @@
 				    <?php
 				    require(TEMPLATEPATH .'/app/customcode.php');
 				    $glob = fetchcustomcode('global_announcement.php');
-				    if($glob != ""): ?>
+				    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
 				    <div class="highlight">
 				    <?php
 				        echo $glob;

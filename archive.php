@@ -15,6 +15,17 @@
 				
 				<!-- post -->
 				<div class="post">
+				    
+				    <?php
+				    require(TEMPLATEPATH .'/app/customcode.php');
+				    $glob = fetchcustomcode('global_announcement.php');
+				    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
+				    <div class="highlight">
+				    <?php
+				        echo $glob;
+				    ?>
+				    </div>
+				    <?php endif; ?>
 					
 					<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 
