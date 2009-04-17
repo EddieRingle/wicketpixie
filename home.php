@@ -90,7 +90,7 @@
 					<div id="related-posts">
 						<h3>You might also be interested in...</h3>
 						<ul>
-						 <?php wp_related_posts(); ?>
+						 <?php wp_related_posts(5); ?>
 						</ul>
 					</div>
 					<!-- /related-posts -->
@@ -135,6 +135,14 @@
 					
 				</div>
 				<!-- /post-meta -->
+				
+				<!-- Custom Code Area -->
+				<?php
+				if(wp_get_option('home_custom') != false && wp_get_option('home_custom') != "") {
+				    echo stripslashes(wp_get_option('home_custom'));
+				}
+				?>
+				<!-- /Custom Code Area -->
 				
 				<div id="home-categories">
 				<?php
@@ -249,11 +257,14 @@
 				</div>
 				<!-- /recent-posts -->
 				
-				<!-- home-mybloglog
-					width = 340 -->
-				<div id="home-mybloglog">
-				</div>
-				<!-- /home-mybloglog -->
+				<!-- Custom Sidebar Code -->
+				<?php
+				if(!function_exists(fetchcustomcode())) {
+				    require_once(TEMPLATEPATH .'/app/customcode.php');
+				}
+				echo fetchcustomcode('homesidebar.php');
+				?>
+				<!-- /Custom Sidebar Code -->
 
 			</div>
 			<!-- sidebar -->

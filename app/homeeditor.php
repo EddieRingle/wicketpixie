@@ -82,7 +82,7 @@ $homeoptions = array(
     "type" => "textbox"),
     array(
     "name" => "Custom Code",
-    "description" => "Content that is displayed after the post but before the Flickr Widget, Embedded Video, etc.",
+    "description" => "Content that is displayed after the post meta data but before the Flickr Widget, Embedded Video, etc.",
     "id" => "home_custom",
     "std" => "No custom code yet...",
     "type" => "textarea")
@@ -158,6 +158,13 @@ class HomeAdmin {
     function homeMenu()
     {
         global $homeoptions;
+
+        require_once(TEMPLATEPATH .'/app/customcode.php');
+        if (isset($_POST['ccode'])) {
+            writeto($_POST['code'],'homesidebar.php');
+        } elseif (isset($_POST['clearcc'])) {
+            unlink(CUSTOMPATH .'/homesidebar.php');
+        }
         
         if ( isset( $_REQUEST['saved'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.__('Options saved.').'</strong></p></div>';
     ?>
@@ -248,6 +255,29 @@ class HomeAdmin {
 			    </p>
 
 		    </form>
+		    <?php
+		    require_once(TEMPLATEPATH .'/app/customcode.php');
+		    ?>
+		    <h3>Custom Sidebar Code</h3>
+                <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the after the Recent Posts section of the homepage sidebar.</p>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=homeeditor.php&amp;ccode=true" class="form-table">
+                    <h4>Edit Custom Sidebar code</h4>
+                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("homesidebar.php"); ?></textarea></p>
+                    <p class="submit">
+                        <input name="save" type="submit" value="Save Custom Sidebar code" /> 
+                        <input type="hidden" name="ccode" value="true" />
+                        <input type="hidden" name="file" value="homesidebar" />
+                    </p>
+                </form>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=homeeditor.php&amp;clearcc=true" class="form-table">
+                    <h4>Clear Custom Sidebar code</h4>
+                    <p>WARNING: This will delete all custom code you have entered to appear after the Recent Posts section of the homepage sidebar, if you want to continue, click 'Clear Custom Sidebar code'</p>
+                    <p class="submit">
+                        <input name="clear" type="submit" value="Clear Custom Sidebar code" />
+                        <input type="hidden" name="clearcc" value="true" />
+                        <input type="hidden" name="file" value="homesidebar" />
+                    </p>
+                </form>
 	    </div>
 	    <?php include_once('advert.php'); ?>
     <?php
