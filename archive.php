@@ -7,6 +7,17 @@
 				<div class="page">
 					<h1 style="border-bottom:1px solid #ddd; padding-bottom:5px;"><?php wp_title('',true,''); ?></h1>
 				</div>
+
+			    <?php
+			    require_once(TEMPLATEPATH .'/app/customcode.php');
+			    $glob = fetchcustomcode('global_announcement.php');
+			    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
+			    <div class="highlight">
+			    <?php
+			        echo $glob;
+			    ?>
+			    </div>
+			    <?php endif; ?>
 				
 				<?php if (have_posts()) : ?>	
 				<?php $adsense_counter = 0; ?>
@@ -16,16 +27,6 @@
 				<!-- post -->
 				<div class="post">
 				    
-				    <?php
-				    require_once(TEMPLATEPATH .'/app/customcode.php');
-				    $glob = fetchcustomcode('global_announcement.php');
-				    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
-				    <div class="highlight">
-				    <?php
-				        echo $glob;
-				    ?>
-				    </div>
-				    <?php endif; ?>
 					
 					<h2><a href="<?php the_permalink() ?>" rel="bookmark" title="<?php the_title_attribute(); ?>"><?php the_title(); ?></a></h2>
 

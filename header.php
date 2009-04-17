@@ -60,6 +60,7 @@ $adsense = new AdsenseAdmin;
 	<!-- Removes "Comments" from teh disqus plugin tags -->
     <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-disqus.js"></script>
     <?php endif;?>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
     		
 <?php wp_head(); ?>
 <style type="text/css">

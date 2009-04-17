@@ -377,7 +377,8 @@ body {
 #mid {
 	float: left;
 	width: 100%;
-	background: url("../images/mid-bg.jpg") no-repeat 0 0;
+	//background: url("../images/mid-bg.jpg") no-repeat 0 0;
+	background: #FFF;
 }
 
 #mid-inner {
