@@ -99,9 +99,6 @@ $adsense = new AdsenseAdmin;
 
 <body>
 <!-- google_ad_section_start(weight=ignore) -->
-    <?php
-    if(wp_get_option('show_topbar') != "0") {
-    ?>
 	<!-- topbar -->
 	<div id="topbar">
 		
@@ -136,18 +133,11 @@ $adsense = new AdsenseAdmin;
 	</div>
 	<!-- /subscribe -->
 	
-	<!-- share -->
+	<!-- share
 	<div id="share">
 		
 	</div>
 	<!-- /share -->
-    <?php
-    } else {
-    ?>
-    <!-- If you'd like, turn the topbar on in WicketPixie's settings -->
-    <?php
-    }
-    ?>
     
 	<!-- header -->
 	<div id="header">

@@ -11,6 +11,17 @@
 				
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
+				
+				    <?php
+				    require(TEMPLATEPATH .'/app/customcode.php');
+				    $glob = fetchcustomcode('global_announcement.php');
+				    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
+				    <div class="highlight">
+				    <?php
+				        echo $glob;
+				    ?>
+				    </div>
+				    <?php endif; ?>
 					
 					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>
 
@@ -75,26 +86,27 @@
 				<!-- post-meta -->
 				
 				<!-- Page Navigation -->
-                <?php if (wp_get_option('plug_pagenavi')):?>
+                <?php /* if (wp_get_option('plug_pagenavi')):?>
                 <!--<div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>-->
-                <?php endif;?>
+                <?php endif; */?>
         
 				
 				<div class="post-meta">
 					
+					<?php if(wp_get_option('plug_related-posts')):?>
 					<!-- related-posts -->
 					<div id="related-posts">
-					    <?php if (wp_get_option( 'plug_related-posts' )):?>
 						<h3>Further Reading</h3>
 						<ul>
 						 <?php wp_related_posts(); ?>
-						</ul>						
-						<?php endif;?>
+						</ul>
 					</div>
 					<!-- /related-posts -->
+					<?php endif;?>
 					
 					<!-- post-meta-right -->
 					<div class="post-meta-right">
+						
 						
 						<!-- post-meta-tags -->
 						<div class="post-meta-tags">

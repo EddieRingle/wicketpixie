@@ -10,6 +10,17 @@
 				
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
+				
+				    <?php
+				    require(TEMPLATEPATH .'/app/customcode.php');
+				    $glob = fetchcustomcode('global_announcement.php');
+				    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
+				    <div class="highlight">
+				    <?php
+				        echo $glob;
+				    ?>
+				    </div>
+				    <?php endif; ?>
 					
 					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>
 
@@ -62,8 +73,9 @@
 					}
 					?>
 					<!-- /post-ad -->
-
-					<?php the_content(); ?>					
+                    <div id="KonaBody">
+					<?php the_content(); ?>
+					</div>					
 					
 				</div>
 				<!-- /post -->
@@ -73,6 +85,7 @@
 				<!-- post-meta -->
 				<div class="post-meta">
 					
+					<?php if(wp_get_option('plug_related-posts') == "1"):?>
 					<!-- related-posts -->
 					<div id="related-posts">
 						<h3>You might also be interested in...</h3>
@@ -81,6 +94,7 @@
 						</ul>						
 					</div>
 					<!-- /related-posts -->
+					<?php endif;?>
 					
 					<!-- post-meta-right -->
 					<div class="post-meta-right">

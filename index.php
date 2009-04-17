@@ -10,6 +10,17 @@
 				
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
+				
+				    <?php
+				    require(TEMPLATEPATH .'/app/customcode.php');
+				    $glob = fetchcustomcode('global_announcement.php');
+				    if($glob != "" && $glob != fetchcustomcode('idontexist.no')): ?>
+				    <div class="highlight">
+				    <?php
+				        echo $glob;
+				    ?>
+				    </div>
+				    <?php endif; ?>
 					
 					<h1><a href="<?php the_permalink() ?>" rel="bookmark" title="Permanent Link to <?php the_title_attribute(); ?>" style="text-decoration:none;"><?php the_title(); ?></a></h1>
 
