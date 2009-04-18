@@ -1,8 +1,6 @@
 $(document).ready(function () {
     //Add all your global onReady Functions here
-    
-    safeLoading();
-    
+    //safeLoading();
 });
 
 function safeLoading() {
