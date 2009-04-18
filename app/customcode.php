@@ -66,7 +66,7 @@ function fetchcustomcode($file,$raw = false)
         if(!$raw) {
             include(CUSTOMPATH ."/$file");
         } else {
-            echo file_get_contents(CUSTOMPATH ."/$file");
+            return file_get_contents(CUSTOMPATH ."/$file");
         }
     } else {
         echo "<!-- No custom code found, add code on the WicketPixie Custom Code admin page. -->";
