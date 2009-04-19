@@ -249,6 +249,14 @@ body {
 	background: url("../images/nav-bg.png") no-repeat 50% 0;
 }
 
+#nav .navLoader {
+	width: 940px;
+	height: 40px;
+	background: #000;
+	margin: 0 auto;
+	text-align: left;
+}
+
 #nav ul {
 	width: 940px;
 	margin: 0 auto;

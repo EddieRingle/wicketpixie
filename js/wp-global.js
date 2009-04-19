@@ -8,4 +8,6 @@ function safeLoading() {
 //        .css("background-image","url(../images/mid-bg.jpg)")
 //        .css("background-repeat", "no-repeat")
 //        .css("background-position", "0 0");
+    $("#navLoading").css("background-color", "transparent")
+        .css("display", "none");
 }
