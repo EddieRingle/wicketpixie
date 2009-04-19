@@ -55,19 +55,9 @@ $adsense = new AdsenseAdmin;
     <script type="text/javascript">
     google.load("jquery", "1.3.2", {uncompressed:true});
     </script>
-
-    <?php if (wp_get_option('plug_disqus')):?>
-	<!-- Removes "Comments" from teh disqus plugin tags -->
-    <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-disqus.js"></script>
-    <?php endif;?>
     <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
     		
 <?php wp_head(); ?>
-<style type="text/css">
-#disqus_thread #dsq-content {
-    padding: 0 20px !important;
-}
-</style>
 <?php
     echo "\n";
     wp_customheader();
