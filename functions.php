@@ -2,9 +2,10 @@
 /*
 WicketPixie - A Social Media WordPress Theme
 Licensed under the New BSD License.
-Copyright (c) 2006-2008 Chris Pirillo <chris@pirillo.com>,
+Copyright (c) 2006-2009 Chris Pirillo <chris@pirillo.com>,
                         Eddie Ringle <eddie@eringle.net>,
-                        Chris J. Davis <cjdavis@viewzi.com>.
+                        Chris J. Davis <cjdavis@viewzi.com>,
+                        Dave Bates <me@dave-bates.net>.
 All rights reserved.
 */
 
@@ -17,7 +18,7 @@ include_once( TEMPLATEPATH . '/widgets/sources.php' );
 * b = beta (testing, works but may have bugs)
 * rc = release candidate (stable testing, minor issues are left)
 */
-define('WIK_VERSION','1.1');
+define('WIK_VERSION',"1.1");
 
 function collect() {
 	global $wpdb;

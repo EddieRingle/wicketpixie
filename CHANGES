@@ -1,16 +1,24 @@
 WICKETPIXIE CHANGELOG
 
-WORKING - TBA, 2009
+v1.1 - April 18, 2009
+ * FEATURE: Global Announcements allow you to set a message that is displayed
+ globally across your site.
+ * FEATURE: The Home Editor lets you modify important parts of your homepage
+ without ever touching the template itself.
+ * FEATURE: Those nifty social buttons? Yeah, we threw those in too. ;-)
  * FEATURE: The Custom Code feature allows you to add custom code to
- header.php and footer.php without modifying the template yourself.
+ header.php, footer.php, and after post content without modifying the template
+ yourself.
  * FEATURE: Adsense Integration allows you insert Adsense ads in the
  recommended areas without touching the templates.
  * PLUGIN: Numerous plugins have been added:
- All-in-one SEO pack, Auto-hyperlink URLs, DISQUS, FAlbum, Kontera,
- Obfuscate Email, PageNavi, and StatPress Reloaded
+ All-in-one SEO pack, AskApache 404, Auto-hyperlink URLs, Chitika Premium,
+ FAlbum, Kontera, Obfuscate Email, PageNavi, and StatPress Reloaded
  * PLUGIN: Updated Related Posts plugin to version 1.0.
  * ADDED: WicketPixie has it's own top-level menu in WordPress' admin area.
  There is also a top-level menu for the plugins bundled with WicketPixie.
+ * ADDED: On the homepage and on single posts, a new ReTweet widget is shown
+ along with the number of Tweets linking to that post and a retweet button.
  * PERFORMANCE: We are using Google to serve jQuery and favicons, so page load
  times will have decreased.
  * PERFORMANCE: Status update caching caches the latest feed item from the
@@ -25,6 +33,7 @@ WORKING - TBA, 2009
  * FIXED: Nofollow has been added to header and navigational links for better
  SEO.
  * FIXED: Appended UNIX timestamp to the end of CSS files to prevent caching.
+ * FIXED: Many other bugs :P
 
 v1.0.4 - January 19, 2009 by Eddie Ringle
  * FEATURE: Plain-text URLs in the Status Updates box are now hyperlinked,
