@@ -20,9 +20,6 @@ if(wp_get_option("plug_autohyperlink-urls") != "0") {
 if(wp_get_option("plug_chitika") != "0") {
     include TEMPLATEPATH ."/plugins/chitika-premium/premium.php";
 }
-if(wp_get_option("plug_disqus") != "0") {
-    include TEMPLATEPATH ."/plugins/disqus-comment-system/disqus.php";
-}
 if(wp_get_option("plug_falbum") != "0") {
     include TEMPLATEPATH ."/plugins/falbum/wordpress-falbum-plugin.php";
 }
