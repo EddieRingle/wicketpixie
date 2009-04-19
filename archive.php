@@ -35,15 +35,7 @@
 						<ul>
 						<?php
                         $addlink="#respond";
-						if(wp_get_option('plug_disqus')) {
-						    if(wp_get_option('plug_disqus') == "1") {
-						        $countlink="#disqus_thread";
-						    } else {
-						        $countlink="#comments";
-						    }
-						} else {
-						    $countlink="#comments";
-						}
+                        $countlink="#comments";
 						?>
 							<li class="post-comments-count"><a href="<?php the_permalink(); echo $countlink; ?>" title="View all <?php comments_number('0', '1', '%'); ?> Comments"><?php comments_number('0', '1', '%'); ?></a></li>
 							<li class="post-comments-add"><a href="<?php the_permalink(); echo $addlink; ?>" title="Add a Comment"><span>&nbsp;</span>Add a Comment</a></li>
