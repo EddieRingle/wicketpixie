@@ -68,7 +68,9 @@
 						        <p align="center">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
+						        <?php if (wp_get_option('plug_related-posts')):?>
 						        <?php wp_related_posts(5); ?>
+						        <?php endif;?>
 						    </ul>
 					    </div>
 					<?php
@@ -80,7 +82,9 @@
 					            <p align="center">
 					                <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 					            </p>
-					            <?php wp_related_posts(5); ?>
+						        <?php if (wp_get_option('plug_related-posts')):?>
+						        <?php wp_related_posts(5); ?>
+						        <?php endif;?>
 					        </ul>
 					    </div>
 					<?php
