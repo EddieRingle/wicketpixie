@@ -174,7 +174,7 @@ function wicketpixie_admin_index() {
 		    <?php
 		    require_once(TEMPLATEPATH .'/app/customcode.php');
 		    if(function_exists(fetchcustomcode)) {
-		        $glob = fetchcustomcode('global_announcement.php');
+		        $glob = fetchcustomcode('global_announcement.php',true);
 		        if($glob == fetchcustomcode('idontexist.no')) {
 		            $glob = "";
 		        }
