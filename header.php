@@ -48,12 +48,12 @@ $adsense = new AdsenseAdmin;
     if(!is_dir(TEMPLATEPATH . '/app/cache')) {
         mkdir(TEMPLATEPATH . '/app/cache',0777);
     }
-    
+    /*
     if(is_user_logged_in()) { ?>
     <script src="http://wicketpixie.uservoice.com/pages/general/widgets/tab.js?alignment=right&amp;color=000000" type="text/javascript"></script>
-    <?php } ?>
+    <?php } */ ?>
     <script type="text/javascript">
-    google.load("jquery", "1.3.2", {uncompressed:true});
+    google.load("jquery", "1.3.2");
     </script>
     <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
     		
