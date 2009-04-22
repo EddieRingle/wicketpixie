@@ -56,6 +56,13 @@ $adsense = new AdsenseAdmin;
     google.load("jquery", "1.3.2");
     </script>
     <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
+    <script type="text/javascript" src="http://plugins.jquery.com/files/jquery.cacheimages.js.txt"></script>
+    <?php
+    $imgdir = get_template_directory_uri().'/images';
+    echo "<script type=\"text/javascript\">".
+    "$.cacheImage(['$imgdir/wrapper-bg.png','$imgdir/nav-bg.png','$imgdir/mid-bg.jpg','$imgdir/footer-bg.png']);".
+    "</script>";
+    ?>
     		
 <?php wp_head(); ?>
 <?php
@@ -85,6 +92,7 @@ $adsense = new AdsenseAdmin;
     <meta name="description" value="<?php echo $metadesc; ?>" />
     <?php
         flush();
+        sleep(1);
     ?>
 </head>
 

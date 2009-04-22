@@ -7,6 +7,9 @@ Author: Chris Pirillo
 Author URL: http://chris.pirillo.com
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
 
+html {
+    overflow-y: scroll;
+}
 body {
 	font-size: 62.5%;
 	color: #000;
@@ -17,9 +20,9 @@ body {
 	clear: both;
 	width: 920px;
 	margin: 0 auto;
-	padding: 0 20px;
+	padding: 0 10px;
 	text-align: left;
-	background: url("../images/wrapper-bg.png") repeat-y 0 0;
+	background: #000 url("../images/wrapper-bg.png") repeat-y 0 0;
 }
 
 /* @group topbar */
@@ -385,7 +388,7 @@ body {
 #mid {
 	float: left;
 	width: 100%;
-	background: #FFF url("../images/mid-bg.jpg") no-repeat 0 0;
+	background: /*#FFF*/ url("../images/mid-bg.jpg") no-repeat 0 0;
 }
 
 #mid-inner {
@@ -1255,6 +1258,8 @@ body {
 	margin-right: 20px;
 	padding-top: 20px;
 	color: #333;
+	background-color: #FFF;
+	padding-left: 10px;
 }
 
 #sidebar_top, #sidebar1, #sidebar2, #sidebar3, #sidebar4, #sidebar5, #sidebar6 {
