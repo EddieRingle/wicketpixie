@@ -20,9 +20,9 @@ body {
 	clear: both;
 	width: 920px;
 	margin: 0 auto;
-	padding: 0 10px;
+	padding: 0 /*10*/20px;
 	text-align: left;
-	background: #000 url("../images/wrapper-bg.png") repeat-y 0 0;
+	background: /*#000*/ url("../images/wrapper-bg.png") repeat-y 0 0;
 }
 
 /* @group topbar */
@@ -251,7 +251,7 @@ body {
 	padding-top: 9px;
 	background: url("../images/nav-bg.png") no-repeat 50% 0;
 }
-
+/*
 #nav .navLoader {
 	width: 940px;
 	height: 40px;
@@ -259,7 +259,7 @@ body {
 	margin: 0 auto;
 	text-align: left;
 }
-
+*/
 #nav ul {
 	width: 940px;
 	margin: 0 auto;
@@ -1258,7 +1258,7 @@ body {
 	margin-right: 20px;
 	padding-top: 20px;
 	color: #333;
-	background-color: #FFF;
+	/*background-color: #FFF;*/
 	padding-left: 10px;
 }
 
