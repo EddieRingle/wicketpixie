@@ -35,7 +35,7 @@ function wp_option_isempty($option) {
 }
 
 /**
-* Returns the contents of an option file
+* Returns the contents of an option file or true if the option exists but is empty
 **/
 function wp_get_option($option) {
     $dirchk = checkdir();
@@ -46,7 +46,7 @@ function wp_get_option($option) {
             if(!wp_option_isempty($option)) {
                 return file_get_contents(WIPIOPTSPATH ."/$option.wp");
             } else {
-                return false;
+                return true;
             }
         } else {
             return false;
