@@ -179,7 +179,11 @@ $adsense = new AdsenseAdmin;
 			</div>
 			<!-- /status -->
 			<?php } else { ?>
-			<p id="description"><?php bloginfo('description'); ?></p>
+			<div id="status">
+			    <?php echo get_avatar('1', $size = '36', $default = 'images/avatar.jpg'); ?>
+			    <p id="description"><?php bloginfo('description'); ?></p>
+			    <div id="status-bottom">&nbsp;</div>
+			</div>
 			<?php } ?>
 			<!-- google_ad_section_start(weight=ignore) -->
 			
