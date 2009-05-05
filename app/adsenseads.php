@@ -87,11 +87,13 @@ class AdsenseAdmin
 	}
 	
 	// Sets the user's pub-id
-	function pub_id($pubid) {	    
+	function pub_id($_REQUEST) {
+	    $args = $_REQUEST;
+	    
 	    if(wp_get_option('adsense_pubid')) {
-	        wp_update_option('adsense_pubid',$pubid);
+	        wp_update_option('adsense_pubid',$args['pubid']);
 	    } else {
-	        wp_add_option('adsense_pubid',$pubid);
+	        wp_add_option('adsense_pubid',$args['pubid']);
 	    }
 	}
 	
@@ -153,7 +155,7 @@ class AdsenseAdmin
 	    global $wpdb;
 	    $table = $wpdb->prefix . 'wik_adsense';
 	    $ad_id = $wpdb->get_var("SELECT ad_id FROM $table WHERE placement= '$placement' LIMIT 1");
-	    $pubid = (wp_get_option('adsense_pubid') != "") ? wp_get_option('adsense_pubid') : $chrisadsense['pubid'];
+	    $pubid = wp_get_option('adsense_pubid');
 	    
 	    if($ad_id != "") {
 	        if($placement == 'blog_header') {
@@ -209,7 +211,7 @@ class AdsenseAdmin
 	            $height = "";
 	        }
 	        $codeblock = "<script type='text/javascript'><!--
-    google_ad_client = '".$pubid."';
+    google_ad_client = '".$chrisadsense['pubid']."';
     google_ad_slot = '$ad_id';
     google_ad_width = $width;
     google_ad_height = $height;
@@ -240,8 +242,8 @@ class AdsenseAdmin
 			elseif ( 'toggle' == $_REQUEST['action'] ) {
 			    $adsense->toggle();
 			}
-			elseif ( 'pubid' == $_POST['action'] ) {
-			    $adsense->pub_id( $_POST['pubid'] );
+			elseif ( 'pubid' == $_REQUEST['action'] ) {
+			    $adsense->pub_id( $_REQUEST );
 			}			
 			elseif ( 'delete' == $_REQUEST['action'] ) {
 				$adsense->burninate( $_REQUEST['id'] );
@@ -379,6 +381,7 @@ function is_enabled_adsense() {
     }
 }
 
-add_action ('admin_menu', array( 'AdsenseAdmin', 'addAdsenseMenu' ) );
+add_action ('admin_menu', array( 'AdsenseAdmin', 'addAdsenseMenu' ) );
+
 AdsenseAdmin::install();
 ?>
