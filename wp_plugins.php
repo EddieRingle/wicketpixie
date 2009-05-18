@@ -72,13 +72,6 @@ $plugins = array(
         "status" => 'checked',
         "type" => 'checkbox'),
     array(
-        "name" => "DISQUS Comment System",
-        "description" => "Use DISQUS for comments.",
-        "id"    => "plug_disqus",
-        "std"   => 1,
-        "status"    => 'checked',
-        "type"  => 'checkbox'),
-    array(
         "name"  => "FAlbum",
         "description"   => "Integrate Flickr albums into your blog.",
         "id"    => "plug_falbum",
