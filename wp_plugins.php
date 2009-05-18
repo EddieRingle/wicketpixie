@@ -164,7 +164,7 @@ global $plugins;
             foreach ( $plugins as $value ) {
                 //if( isset( $_POST[ $value['id'] ] ) ) { 
                     if( $value['type'] == 'checkbox' ) {
-                        if( $value['status'] == 'checked' ) {
+                        if( $value['status'] == 'checked' && isset($_POST[$value['id']])) {
                             if(wp_get_option($value['id'])) {
 				                wp_update_option( $value['id'], '1');
 				            } else {
