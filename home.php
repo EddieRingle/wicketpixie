@@ -151,9 +151,13 @@
 				?>
 				<!-- /Custom Code Area -->
 				
-				<div id="home-categories">
+                <?php endwhile; ?>
+                <?php endif; ?>
+                
+                <?php
+				if(wp_get_option('home_video') != "0") { ?>
+                <div id="home-categories">
 				<?php
-				if(wp_get_option('home_video') != "0") {
 				    if(wp_get_option('home_show_vid_heading') != "0") {
 				        echo "<h2>My Videos</h2>";
 				    }
@@ -164,14 +168,14 @@
 				    <object width="500" height="285"><param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" type="application/x-shockwave-flash" wmode="transparent" width="500" height="285"></embed></object>
 				    <?php
 				    }
-				}
-				?>
+				    ?>
 			    </div>
-                <?php endwhile; ?>
-                <?php endif; ?>
 			    
 				<div class="clearer"></div>
+				<?php } ?>
 				
+				<?php
+				if(wp_get_option('home_flickr') != "0") { ?>
 				<!-- home-photos -->
 				<div id="home-photos">
 				<?php
@@ -180,19 +184,18 @@
 				} else {
 				    $flickrid = '49503157467@N01';
 				}
-				if(wp_get_option('home_flickr') != "0") {
-				    if(wp_get_option('home_show_photo_heading') != "0") {
-				        echo "<h2>Recent Photos</h2>";
-				    }
+			    if(wp_get_option('home_show_photo_heading') != "0") {
+			        echo "<h2>Recent Photos</h2>";
+			    }
 				?>
 				    <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=<?php echo $flickrid; ?>"></script>
-				<?php
-				}
-				?>
 				</div>
 				<!-- /home-photos -->
 				
 				<div class="clearer"></div>
+				<?php
+				}
+				?>
 				
 				<!-- home-tags -->
 				<div id="home-tags">					
