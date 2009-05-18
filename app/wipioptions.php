@@ -24,7 +24,7 @@ function wp_option_isempty($option) {
     $dirchk = checkdir();
     
     if(file_exists(WIPIOPTSPATH ."/$option.wp")) {
-        if(file_get_contents(WIPIOPTSPATH ."/$option.wp") == "") {
+        if(filesize(WIPIOPTSPATH ."/$option.wp") == (int)0) {
             return true;
         } else {
             return false;
@@ -42,11 +42,11 @@ function wp_get_option($option) {
     if($dirchk == false) {
         return false;
     } elseif ($dirchk == true) {
-        if(is_file(WIPIOPTSPATH ."/$option.wp")) {
+        if(file_exists(WIPIOPTSPATH ."/$option.wp")) {
             if(!wp_option_isempty($option)) {
                 return file_get_contents(WIPIOPTSPATH ."/$option.wp");
             } else {
-                return false;
+                return true;
             }
         } else {
             return false;

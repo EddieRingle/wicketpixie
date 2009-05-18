@@ -381,6 +381,7 @@ function is_enabled_adsense() {
     }
 }
 
-add_action ('admin_menu', array( 'AdsenseAdmin', 'addAdsenseMenu' ) );
+add_action ('admin_menu', array( 'AdsenseAdmin', 'addAdsenseMenu' ) );
+
 AdsenseAdmin::install();
 ?>
