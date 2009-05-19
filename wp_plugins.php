@@ -189,10 +189,11 @@ global $plugins;
                         if(wp_get_option($value['id'])) {
 				            wp_update_option( $value['id'], $_POST[ $value['id'] ] );
 				        } else {
-				        if(wp_option_isempty($value['id']) == true) {
-				            wp_update_option($value['id'],$_POST[$value['id']]);
-				        } else {
-				            wp_add_option($value['id'],$_POST[$value['id']]);
+				            if(wp_option_isempty($value['id']) == true) {
+				                wp_update_option($value['id'],$_POST[$value['id']]);
+				            } else {
+				                wp_add_option($value['id'],$_POST[$value['id']]);
+				            }
 				        }
                     } else {
                         if(wp_get_option($value['id'])) {
