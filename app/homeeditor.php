@@ -84,7 +84,7 @@ $homeoptions = array(
     "name" => "Custom Code",
     "description" => "Content that is displayed after the post meta data but before the Flickr Widget, Embedded Video, etc.",
     "id" => "home_custom",
-    "std" => "No custom code yet...",
+    "std" => "<!-- No custom code yet... -->",
     "type" => "textarea")
 );
 class HomeAdmin {
