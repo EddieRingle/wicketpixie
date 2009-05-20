@@ -6,7 +6,8 @@ html {
 	height: 100%;
 }
 #loadingFrame {
-	display: block;
+/*	display: block;*/ /* Change this to use the loader!! */
+	display: none;
 	position: absolute;
 	left: 0px;
 	width: 100%;
