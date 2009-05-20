@@ -161,52 +161,50 @@ global $plugins;
                 $tmp->deactivate();
             }
 
-            foreach ( $plugins as $value ) {
-                //if( isset( $_POST[ $value['id'] ] ) ) { 
-                    if( $value['type'] == 'checkbox' ) {
-                        if(isset($_POST[$value['id']])) {
-                            if(wp_get_option($value['id'])) {
-				                wp_update_option( $value['id'], '1');
-				            } else {
-				                if(wp_option_isempty($value['id']) == true) {
-				                    wp_update_option($value['id'],'1');
-				                } else {
-				                    wp_add_option($value['id'],'1');
-				                }
-				            }
-                        } else {
-                            if(wp_get_option($value['id'])) {
-				                wp_update_option( $value['id'], '0');
-				            } else {
-				                if(wp_option_isempty($value['id']) == true) {
-				                    wp_update_option($value['id'],'0');
-				                } else {
-				                    wp_add_option($value['id'],'0');
-				                }
-				            }
-                        }	
-                    } elseif( $value['type'] != 'checkbox' ) {
+            foreach ( $plugins as $value ) { 
+                if( $value['type'] == 'checkbox' ) {
+                    if(isset($_POST[$value['id']])) {
                         if(wp_get_option($value['id'])) {
-				            wp_update_option( $value['id'], $_POST[ $value['id'] ] );
-				        } else {
-				            if(wp_option_isempty($value['id']) == true) {
-				                wp_update_option($value['id'],$_POST[$value['id']]);
-				            } else {
-				                wp_add_option($value['id'],$_POST[$value['id']]);
-				            }
-				        }
+			                wp_update_option( $value['id'], '1');
+			            } else {
+			                if(wp_option_isempty($value['id']) == true) {
+			                    wp_update_option($value['id'],'1');
+			                } else {
+			                    wp_add_option($value['id'],'1');
+			                }
+			            }
                     } else {
                         if(wp_get_option($value['id'])) {
-				            wp_update_option( $value['id'], $_POST[ $value['id'] ] );
-				        } else {
-				            if(wp_option_isempty($value['id']) == true) {
-				                wp_update_option($value['id'],$_POST[$value['id']]);
-				            } else {
-				                wp_add_option($value['id'],$_POST[$value['id']]);
-				            }
-				        }
-                    }
-                //}
+			                wp_update_option( $value['id'], '0');
+			            } else {
+			                if(wp_option_isempty($value['id']) == true) {
+			                    wp_update_option($value['id'],'0');
+			                } else {
+			                    wp_add_option($value['id'],'0');
+			                }
+			            }
+                    }	
+                } elseif( $value['type'] != 'checkbox' ) {
+                    if(wp_get_option($value['id'])) {
+			            wp_update_option( $value['id'], $_POST[ $value['id'] ] );
+			        } else {
+			            if(wp_option_isempty($value['id']) == true) {
+			                wp_update_option($value['id'],$_POST[$value['id']]);
+			            } else {
+			                wp_add_option($value['id'],$_POST[$value['id']]);
+			            }
+			        }
+                } else {
+                    if(wp_get_option($value['id'])) {
+			            wp_update_option( $value['id'], $_POST[ $value['id'] ] );
+			        } else {
+			            if(wp_option_isempty($value['id']) == true) {
+			                wp_update_option($value['id'],$_POST[$value['id']]);
+			            } else {
+			                wp_add_option($value['id'],$_POST[$value['id']]);
+			            }
+			        }
+                }
             }
             
             wp_redirect($_SERVER['PHP_SELF'] ."?page=wp_plugins.php&saved=true");
