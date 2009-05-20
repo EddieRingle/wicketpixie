@@ -72,13 +72,6 @@ $plugins = array(
         "status" => 'checked',
         "type" => 'checkbox'),
     array(
-        "name" => "DISQUS Comment System",
-        "description" => "Use DISQUS for comments.",
-        "id"    => "plug_disqus",
-        "std"   => 1,
-        "status"    => 'checked',
-        "type"  => 'checkbox'),
-    array(
         "name"  => "FAlbum",
         "description"   => "Integrate Flickr albums into your blog.",
         "id"    => "plug_falbum",
@@ -169,9 +162,9 @@ global $plugins;
             }
 
             foreach ( $plugins as $value ) {
-                if( isset( $_POST[ $value['id'] ] ) ) { 
+                //if( isset( $_POST[ $value['id'] ] ) ) { 
                     if( $value['type'] == 'checkbox' ) {
-                        if( $value['status'] == 'checked' ) {
+                        if( $value['status'] == 'checked' && isset($_POST[$value['id']])) {
                             if(wp_get_option($value['id'])) {
 				                wp_update_option( $value['id'], '1');
 				            } else {
@@ -196,12 +189,12 @@ global $plugins;
                         if(wp_get_option($value['id'])) {
 				            wp_update_option( $value['id'], $_POST[ $value['id'] ] );
 				        } else {
-				        if(wp_option_isempty($value['id']) == true) {
-				            wp_update_option($value['id'],$_POST[$value['id']]);
-				        } else {
-				            wp_add_option($value['id'],$_POST[$value['id']]);
+				            if(wp_option_isempty($value['id']) == true) {
+				                wp_update_option($value['id'],$_POST[$value['id']]);
+				            } else {
+				                wp_add_option($value['id'],$_POST[$value['id']]);
+				            }
 				        }
-				    }
                     } else {
                         if(wp_get_option($value['id'])) {
 				            wp_update_option( $value['id'], $_POST[ $value['id'] ] );
@@ -213,7 +206,7 @@ global $plugins;
 				            }
 				        }
                     }
-                }
+                //}
             }
             
             wp_redirect($_SERVER['PHP_SELF'] ."?page=wp_plugins.php&saved=true");
