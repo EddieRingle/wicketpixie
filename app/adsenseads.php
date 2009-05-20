@@ -207,7 +207,7 @@ class AdsenseAdmin
 	            $height = "";
 	        }
 	        $codeblock = "<script type='text/javascript'><!--
-    google_ad_client = '".$pubid."';
+    google_ad_client = '".$chrisads['pubid']."';
     google_ad_slot = '$ad_id';
     google_ad_width = $width;
     google_ad_height = $height;
