@@ -18,7 +18,7 @@ include_once( TEMPLATEPATH . '/widgets/sources.php' );
 * b = beta (testing, works but may have bugs)
 * rc = release candidate (stable testing, minor issues are left)
 */
-define('WIK_VERSION',"1.1");
+define('WIK_VERSION',"1.1.2");
 
 function collect() {
 	global $wpdb;
@@ -135,38 +135,26 @@ function wicketpixie_ustream_widget_control()
         $width = wp_get_option('home_ustream_width');
     }
     if($_POST['ustreamWidget-Submit']) {
-        if(wp_get_option('sidebar_ustream_heading') != false) {
+        if(!wp_add_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading'])) {
             wp_update_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading']);
-        } else {
-            wp_add_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading']);
         }
-        if(wp_get_option('sidebar_ustreamchannel') != false) {
+        if(!wp_add_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName'])) {
             wp_update_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName']);
-        } else {
-            wp_add_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName']);
         }
-        if(wp_get_option('sidebar_ustream_autoplay') != false) {
-            if($_POST['ustreamWidget-Autoplay'] != false) {
-                wp_update_option('sidebar_ustream_autoplay','1');
-            } else {
+        if(isset($_POST['ustreamWidget-Autoplay'])) {
+            if(!wp_add_option('sidebar_ustream_autoplay','1')) {
                 wp_update_option('sidebar_ustream_autoplay','1');
             }
         } else {
-            if(!$_POST['ustreamWidget-Autoplay']) {
-                wp_update_option('sidebar_ustream_autoplay','0');
-            } else {
+            if(!wp_add_option('sidebar_ustream_autoplay','0')) {
                 wp_update_option('sidebar_ustream_autoplay','0');
             }
         }
-        if(wp_get_option('sidebar_ustream_height') != false) {
+        if(!wp_add_option('sidebar_ustream_height',$_POST['ustreamWidget-Height'])) {
             wp_update_option('sidebar_ustream_height',$_POST['ustreamWidget-Height']);
-        } else {
-            wp_add_option('sidebar_ustream_height',$_POST['ustreamWidget-Height']);
         }
-        if(wp_get_option('sidebar_ustream_width') != false) {
+        if(!wp_add_option('sidebar_ustream_width',$_POST['ustreamWidget-Width'])) {
             wp_update_option('sidebar_ustream_width',$_POST['ustreamWidget-Width']);
-        } else {
-            wp_add_option('sidebar_ustream_width',$_POST['ustreamWidget-Width']);
         }
     }
     ?>
@@ -294,28 +282,16 @@ function wicketpixie_add_admin() {
         if ( 'save' == $_POST['action'] ) {
             check_admin_referer('wicketpixie-settings');
             foreach ( $options as $value ) {
-                if(wp_get_option($value['id'])) {
-				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
-				} else {
-				    if(wp_option_isempty($value['id']) == true) {
-				        wp_update_option($value['id'],$_POST[$value['id']]);
-				    } else {
-				        wp_add_option($value['id'],$_POST[$value['id']]);
-				    }
-				}
+                if(!wp_add_option($value['id'],$_POST[$value['id']])) {
+                    wp_update_option($value['id'],$_POST[$value['id']]);
+                }
 			}
 
             foreach ( $options as $value ) {
 				if( isset( $_POST[ $value['id'] ] ) ) {
-				    if(wp_get_option($value['id'])) {
-					    wp_update_option( $value['id'], $_POST[ $value['id'] ]  );
-					} else {
-					    if(wp_option_isempty($value['id']) == true) {
-					        wp_update_option($value['id'], $_POST[$value['id']]);
-					    } else {
-					        wp_add_option($value['id'],$_POST[$value['id']]);
-					    }
-					}
+				    if(!wp_add_option($value['id'],$_POST[$value['id']])) {
+                        wp_update_option($value['id'],$_POST[$value['id']]);
+                    }
 				} else {
 				    if(wp_get_option($value['id'])) {
 					    wp_delete_option( $value['id'] );
@@ -324,45 +300,27 @@ function wicketpixie_add_admin() {
 			}
 			
 			if( $_POST['no_image'] ) {
-			    if(wp_get_option('body_bg_image')) {
-				    wp_update_option('body_bg_image', '0' );
-				} else {
-				    if(wp_option_isempty('body_bg_image') == true) {
-				        wp_update_option('body_bg_image', '0');
-				    } else {
-				        wp_add_option('body_bg_image','0');
-				    }
-				}
+			    if(!wp_add_option('body_bg_image','0')) {
+			        wp_update_option('body_bg_image','0');
+			    }
 			}
 			
 			if ( $_POST['completed'] == 1 && $_FILES['body_bg_image']['tmp_name'] != '' ) {
 				$new_name= $_FILES['body_bg_image']['name'];
 				$new_home= TEMPLATEPATH . '/images/backgrounds/' . $new_name;
 				if( move_uploaded_file( $_FILES['body_bg_image']['tmp_name'], $new_home ) ) {
-					if ( wp_get_option( 'body_bg_image' ) ) {
-						wp_update_option( 'body_bg_image', $new_name );
-					} else {
-					    if(wp_option_isempty('body_bg_image') == true) {
-					        wp_update_option('body_bg_image');
-					    } else {
-						    wp_add_option( 'body_bg_image', $new_name);
-						}
-					}
+				    if(!wp_add_option('body_bg_image',$new_name)) {
+			            wp_update_option('body_bg_image',$new_name);
+			        }
 				} else {
 					error_log( 'No joy, no uploaded file' );
 				}
 			}
 			
 			if( $_POST['saved_images'] != '' ) {
-			    if(wp_get_option('body_bg_image') != false) {
-				    wp_update_option( 'body_bg_image', $_POST['saved_images'] );
-				} else {
-				    if(wp_option_isempty('body_bg_image') == true) {
-				        wp_update_option('body_bg_image', $_POST['saved_images']);
-				    } else {
-				        wp_add_option('body_bg_image', $_POST['saved_images']);
-				    }
-				}
+			    if(!wp_add_option('body_bg_image',$_POST['saved_images'])) {
+			        wp_update_option('body_bg_image',$_POST['saved_images']);
+			    }
 			}
 			
 			wp_redirect($_SERVER['PHP_SELF'] ."?page=functions.php&saved=true");

@@ -15,10 +15,9 @@ $adsense = new AdsenseAdmin;
 <html xmlns="http://www.w3.org/1999/xhtml" <?php language_attributes(); ?>>
 
 <head profile="http://gmpg.org/xfn/11">
-	
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
     
-    <title><?php if (is_home()) { ?><?php bloginfo('name'); ?><?php } else { ?><?php wp_title('',true,''); ?> &raquo; <?php bloginfo('name'); ?><?php } ?></title>	
+    <title><?php if (is_home()) { ?><?php bloginfo('name'); ?><?php } else { ?><?php wp_title('',true,''); ?> &raquo; <?php bloginfo('name'); ?><?php } ?></title>
 
 	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); echo '?'.time(); ?>" type="text/css" media="screen" />
 	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css?<?php echo time(); ?>" type="text/css" media="screen, projection" />	
@@ -31,6 +30,8 @@ $adsense = new AdsenseAdmin;
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php echo $blogfeed; ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="shortcut icon" type="image/ico" href="<?php bloginfo('home'); ?>/favicon.ico" />	
+
+    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/loader.css?<?php echo time(); ?>" type="text/css" media="all" />
 	
 	<?php
     include_once (TEMPLATEPATH . '/plugins/random-posts.php');
@@ -55,14 +56,7 @@ $adsense = new AdsenseAdmin;
     <script type="text/javascript">
     google.load("jquery", "1.3.2");
     </script>
-    <!--script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script-->
-    <script type="text/javascript" src="http://plugins.jquery.com/files/jquery.cacheimages.js.txt"></script>
-    <?php
-    $imgdir = get_template_directory_uri().'/images';
-    echo "<script type=\"text/javascript\">".
-    "$.cacheImage(['$imgdir/wrapper-bg.png','$imgdir/nav-bg.png','$imgdir/mid-bg.jpg','$imgdir/footer-bg.png']);".
-    "</script>";
-    ?>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
     		
 <?php wp_head(); ?>
 <?php
@@ -97,6 +91,10 @@ $adsense = new AdsenseAdmin;
 </head>
 
 <body>
+	<!-- DIV Loader -->
+	<div id="loadingFrame">
+		<div id="loading"><img src="<?php echo get_template_directory_uri(); ?>/images/loading.gif"><br /><b>Loading....</b></div>
+	</div>
 <!-- google_ad_section_start(weight=ignore) -->
 	<!-- topbar -->
 	<div id="topbar">

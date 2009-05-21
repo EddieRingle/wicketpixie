@@ -84,7 +84,7 @@ $homeoptions = array(
     "name" => "Custom Code",
     "description" => "Content that is displayed after the post meta data but before the Flickr Widget, Embedded Video, etc.",
     "id" => "home_custom",
-    "std" => "No custom code yet...",
+    "std" => "<!-- No custom code yet... -->",
     "type" => "textarea")
 );
 class HomeAdmin {
@@ -97,55 +97,31 @@ class HomeAdmin {
 	    global $homeoptions;
         if ( 'save' == $_POST['action'] ) {
             foreach ( $homeoptions as $value ) {
-	            if(wp_get_option($value['id'])) {
-				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
-				} else {
-				    if(wp_option_isempty($value['id']) == true) {
-				        wp_update_option($value['id'],$_POST[$value['id']]);
-				    } else {
-				        wp_add_option($value['id'],$_POST[$value['id']]);
-				    }
-				}
+	            if(!wp_add_option($value['id'],$_POST[$value['id']])) {
+                    wp_update_option($value['id'],$_POST[$value['id']]);
+                }
 			}
-            foreach ( $homeoptions as $value ) {
-				if( isset( $_POST[ $value['id'] ] ) ) { 
-					if( $value['type'] == 'checkbox' ) {
-						if( $value['status'] == 'checked' ) {
-						    if(wp_get_option($value['id'])) {
-							    wp_update_option( $value['id'], '1' );
-							} else {
-							    if(wp_option_isempty($value['id']) == true) {
-							        wp_update_option($value['id'],'1');
-							    } else {
-							        wp_add_option($value['id'], '1');
-							    }
-							}
-						} else {
-						    if(wp_get_option($value['id'])) {
-							    wp_update_option( $value['id'], '0' );
-							} else {
-							    if(wp_option_isempty($value['id']) == true) {
-							        wp_update_option($value['id'],'0');
-							    } else {
-							        wp_add_option($value['id'], '0');
-							    }
-							}
-						}
-					} elseif( $value['type'] != 'checkbox' ) {
-					    if(wp_get_option($value['id'])) {
-						    wp_update_option( $value['id'], $_POST[ $value['id'] ]  );
-						} else {
-						    wp_add_option($value['id'],$_POST[$value['id']]);
-						}
-					} else {
-						if(wp_get_option($value['id'])) {
-						    wp_update_option( $value['id'], $_POST[ $value['id'] ]  );
-						} else {
-						    wp_add_option($value['id'],$_POST[$value['id']]);
-						}
-					}
-				}
-			}
+            foreach ( $homeoptions as $value ) { 
+                if( $value['type'] == 'checkbox' ) {
+                    if(isset($_POST[$value['id']])) {
+                        if(!wp_add_option($value['id'],'1')) {
+                            wp_update_option($value['id'],'1');
+                        }
+                    } else {
+                        if(!wp_add_option($value['id'],'0')) {
+                            wp_update_option($value['id'],'0');
+                        }
+                    }	
+                } elseif( $value['type'] != 'checkbox' ) {
+                    if(!wp_add_option($value['id'],$_POST[$value['id']])) {
+                        wp_update_option($value['id'],$_POST[$value['id']]);
+                    }
+                } else {
+                    if(!wp_add_option($value['id'],$_POST[$value['id']])) {
+                        wp_update_option($value['id'],$_POST[$value['id']]);
+                    }
+                }
+            }
             wp_redirect($_SERVER['PHP_SELF'] ."?page=homeeditor.php&saved=true");
             die;
 	    }

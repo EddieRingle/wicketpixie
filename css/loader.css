@@ -1,0 +1,22 @@
+/* try to fix some stuff */
+body {
+	height: 100%;
+}
+html {
+	height: 100%;
+}
+#loadingFrame {
+	display: block;
+	position: absolute;
+	left: 0px;
+	width: 100%;
+	height: 100%;
+	background: #FFF;
+	z-index: 999;
+}
+
+#loading img {
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 300px;
+}
