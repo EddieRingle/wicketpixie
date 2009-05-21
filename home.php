@@ -239,7 +239,7 @@
                             $resultsArray = unserialize($resp);
                             $out = $resultsArray['results'];
                         }
-                        echo '<embed src="http://www.ustream.tv/flash/live/'.$out['id'].'" width="'.$width.'" height="'.$height.'" flashvars="autoplay='.$autoplay.'&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />';
+                        echo '<object id="utv_o_'.$out['id'].'" height="'.$height.'" width="'.$width.'" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param value="http://www.ustream.tv/flash/live/'.$out['id'].'" name="movie" /><param value="true" name="allowFullScreen" /><param value="always" name="allowScriptAccess" /><param value="transparent" name="wmode" /><param value="viewcount=true&amp;autoplay='.$autoplay.'" name="flashvars" /><embed name="utv_e_'.$out['id'].'" id="utv_e_'.$out['id'].'" flashvars="viewcount=true&amp;autoplay='.$autoplay.'" height="'.$height.'" width="'.$width.'" allowfullscreen="true" allowscriptaccess="always" wmode="transparent" src="http://www.ustream.tv/flash/live/'.$out['id'].'" type="application/x-shockwave-flash" /></object>';
                     ?>
                 </div>
 				<?php endif; ?>
