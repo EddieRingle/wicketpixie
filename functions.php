@@ -18,7 +18,7 @@ include_once( TEMPLATEPATH . '/widgets/sources.php' );
 * b = beta (testing, works but may have bugs)
 * rc = release candidate (stable testing, minor issues are left)
 */
-define('WIK_VERSION',"1.1");
+define('WIK_VERSION',"1.1.2");
 
 function collect() {
 	global $wpdb;
@@ -135,38 +135,26 @@ function wicketpixie_ustream_widget_control()
         $width = wp_get_option('home_ustream_width');
     }
     if($_POST['ustreamWidget-Submit']) {
-        if(wp_get_option('sidebar_ustream_heading') != false) {
+        if(!wp_add_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading'])) {
             wp_update_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading']);
-        } else {
-            wp_add_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading']);
         }
-        if(wp_get_option('sidebar_ustreamchannel') != false) {
+        if(!wp_add_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName'])) {
             wp_update_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName']);
-        } else {
-            wp_add_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName']);
         }
-        if(wp_get_option('sidebar_ustream_autoplay') != false) {
-            if($_POST['ustreamWidget-Autoplay'] != false) {
-                wp_update_option('sidebar_ustream_autoplay','1');
-            } else {
+        if(isset($_POST['ustreamWidget-Autoplay'])) {
+            if(!wp_add_option('sidebar_ustream_autoplay','1')) {
                 wp_update_option('sidebar_ustream_autoplay','1');
             }
         } else {
-            if(!$_POST['ustreamWidget-Autoplay']) {
-                wp_update_option('sidebar_ustream_autoplay','0');
-            } else {
+            if(!wp_add_option('sidebar_ustream_autoplay','0')) {
                 wp_update_option('sidebar_ustream_autoplay','0');
             }
         }
-        if(wp_get_option('sidebar_ustream_height') != false) {
+        if(!wp_add_option('sidebar_ustream_height',$_POST['ustreamWidget-Height'])) {
             wp_update_option('sidebar_ustream_height',$_POST['ustreamWidget-Height']);
-        } else {
-            wp_add_option('sidebar_ustream_height',$_POST['ustreamWidget-Height']);
         }
-        if(wp_get_option('sidebar_ustream_width') != false) {
+        if(!wp_add_option('sidebar_ustream_width',$_POST['ustreamWidget-Width'])) {
             wp_update_option('sidebar_ustream_width',$_POST['ustreamWidget-Width']);
-        } else {
-            wp_add_option('sidebar_ustream_width',$_POST['ustreamWidget-Width']);
         }
     }
     ?>
