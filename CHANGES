@@ -1,5 +1,13 @@
 WICKETPIXIE CHANGELOG
 
+v1.1.2 - May 21, 2009
+ * ADDED: AJAX loader to keep users from looking at a half-loaded page.
+ * FIXED: Some bugs in the Adsense code.
+ * FIXED: Broken admin pages made it impossible to save any settings.
+
+v1.1.1 - April 19, 2009
+ * FIXED: Temporary beautification of the theme during page loads.
+ 
 v1.1 - April 18, 2009
  * FEATURE: Global Announcements allow you to set a message that is displayed
  globally across your site.
