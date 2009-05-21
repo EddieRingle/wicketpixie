@@ -294,28 +294,16 @@ function wicketpixie_add_admin() {
         if ( 'save' == $_POST['action'] ) {
             check_admin_referer('wicketpixie-settings');
             foreach ( $options as $value ) {
-                if(wp_get_option($value['id'])) {
-				    wp_update_option( $value['id'], $_POST[ $value['id'] ] );
-				} else {
-				    if(wp_option_isempty($value['id']) == true) {
-				        wp_update_option($value['id'],$_POST[$value['id']]);
-				    } else {
-				        wp_add_option($value['id'],$_POST[$value['id']]);
-				    }
-				}
+                if(!wp_add_option($value['id'],$_POST[$value['id']])) {
+                    wp_update_option($value['id'],$_POST[$value['id']]);
+                }
 			}
 
             foreach ( $options as $value ) {
 				if( isset( $_POST[ $value['id'] ] ) ) {
-				    if(wp_get_option($value['id'])) {
-					    wp_update_option( $value['id'], $_POST[ $value['id'] ]  );
-					} else {
-					    if(wp_option_isempty($value['id']) == true) {
-					        wp_update_option($value['id'], $_POST[$value['id']]);
-					    } else {
-					        wp_add_option($value['id'],$_POST[$value['id']]);
-					    }
-					}
+				    if(!wp_add_option($value['id'],$_POST[$value['id']])) {
+                        wp_update_option($value['id'],$_POST[$value['id']]);
+                    }
 				} else {
 				    if(wp_get_option($value['id'])) {
 					    wp_delete_option( $value['id'] );
@@ -324,45 +312,27 @@ function wicketpixie_add_admin() {
 			}
 			
 			if( $_POST['no_image'] ) {
-			    if(wp_get_option('body_bg_image')) {
-				    wp_update_option('body_bg_image', '0' );
-				} else {
-				    if(wp_option_isempty('body_bg_image') == true) {
-				        wp_update_option('body_bg_image', '0');
-				    } else {
-				        wp_add_option('body_bg_image','0');
-				    }
-				}
+			    if(!wp_add_option('body_bg_image','0')) {
+			        wp_update_option('body_bg_image','0');
+			    }
 			}
 			
 			if ( $_POST['completed'] == 1 && $_FILES['body_bg_image']['tmp_name'] != '' ) {
 				$new_name= $_FILES['body_bg_image']['name'];
 				$new_home= TEMPLATEPATH . '/images/backgrounds/' . $new_name;
 				if( move_uploaded_file( $_FILES['body_bg_image']['tmp_name'], $new_home ) ) {
-					if ( wp_get_option( 'body_bg_image' ) ) {
-						wp_update_option( 'body_bg_image', $new_name );
-					} else {
-					    if(wp_option_isempty('body_bg_image') == true) {
-					        wp_update_option('body_bg_image');
-					    } else {
-						    wp_add_option( 'body_bg_image', $new_name);
-						}
-					}
+				    if(!wp_add_option('body_bg_image',$new_name)) {
+			            wp_update_option('body_bg_image',$new_name);
+			        }
 				} else {
 					error_log( 'No joy, no uploaded file' );
 				}
 			}
 			
 			if( $_POST['saved_images'] != '' ) {
-			    if(wp_get_option('body_bg_image') != false) {
-				    wp_update_option( 'body_bg_image', $_POST['saved_images'] );
-				} else {
-				    if(wp_option_isempty('body_bg_image') == true) {
-				        wp_update_option('body_bg_image', $_POST['saved_images']);
-				    } else {
-				        wp_add_option('body_bg_image', $_POST['saved_images']);
-				    }
-				}
+			    if(!wp_add_option('body_bg_image',$_POST['saved_images'])) {
+			        wp_update_option('body_bg_image',$_POST['saved_images']);
+			    }
 			}
 			
 			wp_redirect($_SERVER['PHP_SELF'] ."?page=functions.php&saved=true");

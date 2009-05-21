@@ -1,17 +1,13 @@
 <?php
+$chrisads = array(
+    "pubid" => "pub-7561297527511227",
+    "120x240"   => "3837687211",
+    "250x300"   => "0722333443",
+    "728x90"    => "5760307022",
+    "120x600"   => "7794173943"
+);
 class AdsenseAdmin
 {
-
-    function __construct() {
-        // Chris' Adsense Defaults
-        $chrisadsense = array(
-            "pubid" => "pub-7561297527511227",
-            "120x240"   => "3837687211",
-            "250x300"   => "0722333443",
-            "728x90"    => "5760307022",
-            "120x600"   => "7794173943"
-        );
-    }
         
 	/**
 	* Here we install the tables and initial data needed to
@@ -152,12 +148,12 @@ class AdsenseAdmin
 	}
 	
 	function wp_adsense($placement) {
-	    global $wpdb;
+	    global $wpdb,$chrisads;
 	    $table = $wpdb->prefix . 'wik_adsense';
 	    $ad_id = $wpdb->get_var("SELECT ad_id FROM $table WHERE placement= '$placement' LIMIT 1");
 	    $pubid = wp_get_option('adsense_pubid');
 	    
-	    if($ad_id != "") {
+	    if($ad_id != "" && $pubid != "") {
 	        if($placement == 'blog_header') {
 	            $width = "728";
 	            $height = "90";
@@ -193,25 +189,25 @@ class AdsenseAdmin
             if($placement == 'blog_header') {
 	            $width = "728";
 	            $height = "90";
-	            $ad_id = $chrisadsense['728x90'];
+	            $ad_id = $chrisads['728x90'];
 	        } elseif($placement == 'blog_post_side') {
 	            $width = "120";
 	            $height = "240";
-	            $ad_id = $chrisadsense['120x240'];
+	            $ad_id = $chrisads['120x240'];
 	        } elseif($placement == 'blog_post_bottom') {
 	            $width = "300";
 	            $height = "250";
-	            $ad_id = $chrisadsense['300x250'];
+	            $ad_id = $chrisads['300x250'];
 	        } elseif($placement == 'blog_sidebar') {
 	            $width = "120";
 	            $height = "600";
-	            $ad_id = $chrisadsense['120x600'];
+	            $ad_id = $chrisads['120x600'];
 	        } else {
 	            $width = "";
 	            $height = "";
 	        }
 	        $codeblock = "<script type='text/javascript'><!--
-    google_ad_client = '".$chrisadsense['pubid']."';
+    google_ad_client = '".$chrisads['pubid']."';
     google_ad_slot = '$ad_id';
     google_ad_width = $width;
     google_ad_height = $height;
