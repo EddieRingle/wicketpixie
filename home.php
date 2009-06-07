@@ -197,7 +197,7 @@
 				}
 				?>
 				
-				<!-- home-tags -->
+				<!-- home-tags
 				<div id="home-tags">					
 					<h2>Popular Tags</h2>
 					<ul>
@@ -205,7 +205,7 @@
 					</ul>
 					<div class="clearer"></div>					
 				</div>
-				<!-- /home-tags -->				
+				/home-tags -->				
 
 			</div>
 			<!-- content -->
