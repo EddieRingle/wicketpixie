@@ -256,6 +256,8 @@
 							<p><?php the_time('l, F jS') ?> | <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></p>
 						<!-- /post -->						
 						<?php endwhile; ?>
+                                        </div>
+                                        <div id="recent-posts" class="widget">
 						
 						<h3>Random Posts From the Archive</h3>
 						<?php query_posts('showposts=5&random=true'); ?>
@@ -264,6 +266,12 @@
 						<p><?php the_time('l, F jS') ?> | <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></p>						
 						<?php endwhile; ?>
 					</div>
+                                        <div id="recent-posts" class="widget">
+                                        <h2>Popular Tags</h2>
+					<ul>
+						<?php wp_tag_cloud('orderby=count&order=DESC&unit=px&smallest=11&largest=11&format=list'); ?>
+					</ul>
+                                        </div>
 					<!-- Custom Sidebar Code -->
 				    <?php
 				    require_once(TEMPLATEPATH .'/app/customcode.php');
