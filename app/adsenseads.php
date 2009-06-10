@@ -332,7 +332,7 @@ class AdsenseAdmin
                                                       } else {
                                                           echo "N/A";
                                                       }
-                                                <?php>
+                            ?>
 					        </p>
 					        <?php
 					            if(wp_get_option('adsense_pubid')) {
