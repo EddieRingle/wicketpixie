@@ -1,5 +1,9 @@
 WICKETPIXIE CHANGELOG
 
+WORKING
+ * FIXED: Added wmode attribute to Ustream widget to make it look nice
+ during page loads.
+
 v1.1.2 - May 21, 2009
  * ADDED: AJAX loader to keep users from looking at a half-loaded page.
  * FIXED: Some bugs in the Adsense code.
@@ -68,7 +72,8 @@ v1.0.2 - January 4, 2009 by Eddie Ringle
  so the buttons to flush them have been removed.
  * UPDATED: Updated Source Manager and Faves Manager for Wordpress 2.7+
  as well as leaving it backwards compatible with Wordpress 2.5+
- * FIXED: Fixed the activity stream, it now shows your activity stream!
+ * FIXED: Fixed the activity stream, it now shows your activity stream!
+
 v1.0.1 - June 8, 2008
  * UPDATED: Updated documentation
  * FIXED: Eliminated activity.php error 

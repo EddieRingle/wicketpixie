@@ -197,7 +197,7 @@
 				}
 				?>
 				
-				<!-- home-tags -->
+				<!-- home-tags
 				<div id="home-tags">					
 					<h2>Popular Tags</h2>
 					<ul>
@@ -205,7 +205,7 @@
 					</ul>
 					<div class="clearer"></div>					
 				</div>
-				<!-- /home-tags -->				
+				/home-tags -->				
 
 			</div>
 			<!-- content -->
@@ -239,7 +239,7 @@
                             $resultsArray = unserialize($resp);
                             $out = $resultsArray['results'];
                         }
-                        echo '<embed src="http://www.ustream.tv/flash/live/'.$out['id'].'" width="'.$width.'" height="'.$height.'" flashvars="autoplay='.$autoplay.'&amp;brand=embed" type="application/x-shockwave-flash" allowfullscreen="true" bgcolor="#000000" />';
+                        echo '<object id="utv_o_'.$out['id'].'" height="'.$height.'" width="'.$width.'" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param value="http://www.ustream.tv/flash/live/'.$out['id'].'" name="movie" /><param value="true" name="allowFullScreen" /><param value="always" name="allowScriptAccess" /><param value="transparent" name="wmode" /><param value="viewcount=true&amp;autoplay='.$autoplay.'" name="flashvars" /><embed name="utv_e_'.$out['id'].'" id="utv_e_'.$out['id'].'" flashvars="viewcount=true&amp;autoplay='.$autoplay.'" height="'.$height.'" width="'.$width.'" allowfullscreen="true" allowscriptaccess="always" wmode="transparent" src="http://www.ustream.tv/flash/live/'.$out['id'].'" type="application/x-shockwave-flash" /></object>';
                     ?>
                 </div>
 				<?php endif; ?>
@@ -256,6 +256,8 @@
 							<p><?php the_time('l, F jS') ?> | <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></p>
 						<!-- /post -->						
 						<?php endwhile; ?>
+                                        </div>
+                                        <div id="recent-posts" class="widget">
 						
 						<h3>Random Posts From the Archive</h3>
 						<?php query_posts('showposts=5&random=true'); ?>
@@ -264,6 +266,12 @@
 						<p><?php the_time('l, F jS') ?> | <?php comments_popup_link('No Comments', '1 Comment', '% Comments'); ?></p>						
 						<?php endwhile; ?>
 					</div>
+                                        <div id="recent-posts" class="widget">
+                                        <h2>Popular Tags</h2>
+					<ul>
+						<?php wp_tag_cloud('orderby=count&order=DESC&unit=px&smallest=11&largest=11&format=list'); ?>
+					</ul>
+                                        </div>
 					<!-- Custom Sidebar Code -->
 				    <?php
 				    require_once(TEMPLATEPATH .'/app/customcode.php');

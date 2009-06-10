@@ -92,7 +92,7 @@ function wp_get_related_posts($arg_limit = null) {
 		if(!$wp_no_rp || ($wp_no_rp == "popularity" && !function_exists('akpc_most_popular'))) $wp_no_rp = "text";
 		
 		if($wp_no_rp == "text"){
-			if(!$wp_no_rp_text) $wp_no_rp_text= __("No Related Post",'wp_related_posts');
+			if(!$wp_no_rp_text) $wp_no_rp_text= __("",'wp_related_posts');
 			$output  .= '<li>'.$wp_no_rp_text .'</li>';
 		}	else{
 			if($wp_no_rp == "random"){
@@ -301,7 +301,7 @@ function wp_related_posts_options_subpanel() {
             </td>
           </tr>
           <tr>
-            <th><?php _e("When No Related Posts, Dispaly:",'wp_related_posts'); ?></th>
+            <th><?php _e("When No Related Posts, Display:",'wp_related_posts'); ?></th>
             <td>
               <?php $wp_no_rp = $wp_rp["wp_no_rp"]; ?>
               <select name="wp_no_rp_option" >
