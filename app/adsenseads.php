@@ -69,7 +69,7 @@ class AdsenseAdmin
 		}
 	}
 	
-	// Turns WicketPixie's Adsense features on and off
+	// Turns WicketPixie's AdSense features on and off
 	function toggle() {
 	    if(wp_get_option('enable_adsense')) {
 	        if(wp_get_option('enable_adsense') == 'true') {
@@ -223,11 +223,11 @@ class AdsenseAdmin
 	}
 	
 	 function addAdsenseMenu() {
-		add_submenu_page( 'wicketpixie-admin.php', __('WicketPixie Adsense Settings'), __('Adsense Settings'), 9, basename(__FILE__), array( 'AdsenseAdmin', 'adsenseMenu' ) );
+		add_submenu_page( 'wicketpixie-admin.php', __('WicketPixie AdSense Settings'), __('AdSense Settings'), 9, basename(__FILE__), array( 'AdsenseAdmin', 'adsenseMenu' ) );
 	}
 	
 	/**
-	* The admin menu for our adsense system
+	* The admin menu for our AdSense system
 	*/
 	 function adsenseMenu() {
 		$adsense = new AdsenseAdmin;
@@ -252,20 +252,20 @@ class AdsenseAdmin
 			<div class="wrap">
 			
 				<div id="admin-options">
-					<h2><?php _e('Adsense Settings'); ?></h2>
-                    <p>Here you can add in your Adsense information and ad slot info so it can be displayed
+					<h2><?php _e('AdSense Settings'); ?></h2>
+                    <p>Here you can add in your AdSense information and ad slot info so it can be displayed
                     on your blog. Need more help? <a href="#explain" title="Click for more info" id="explaintext">It's only a click away</a>.</p>
 					<div id="explain">
                         <h3>For those that need help, here's a rundown:</h3>
                             <ol>
-                                <li>Create an ad slot after logging into Google Adsense.</li>
+                                <li>Create an ad slot after logging into Google AdSense.</li>
                                 <li>On this page, enter your pub-id and add enter ad details.</li>
                                 <li>Enjoy. :-)</li>
                             </ol>
 					</div>
 					<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&toggle=true" class="form-table">
-					<h2>Toggle Adsense Ads</h2>
-					<p>One click button to disable the showing of Adsense ads.</p>
+					<h2>Toggle AdSense Ads</h2>
+					<p>One click button to disable the showing of AdSense ads.</p>
 					<?php
 					if(wp_get_option('enable_adsense')) {
 					    if(wp_get_option('enable_adsense') == "true") {
@@ -274,15 +274,15 @@ class AdsenseAdmin
 					        $val = "on";
 					    }
 					} else {
-					    $val = "on";
+					    $val = "off";
 					}
 					?>
 					<p class="submit">
-					<input type="submit" name="toggle" value="Turn <?php echo $val; ?> Adsense Ads" />
+					<input type="submit" name="toggle" value="Turn <?php echo $val; ?> AdSense Ads" />
 					<input type="hidden" name="action" value="toggle" />
 					</p>
 					</form>
-					<p>To find an ad's ID number, first log in to Google Adsense. Next, click 'Adsense Setup' and then 'Manage Ads'.
+					<p>To find an ad's ID number, first log in to Google AdSense. Next, click 'AdSense Setup' and then 'Manage Ads'.
 					In the 'Name (#ID)' column find the ad you've created. The ad's ID will be underneath the ad's name in gray font.</p>
 					<?php if( $adsense->check() != 'false' && $adsense->count() != '' ) { ?>
 					<table class="form-table" style="margin-bottom:30px;">
@@ -324,10 +324,15 @@ class AdsenseAdmin
 						<p>You haven't added any ad slots, add them here.</p>
 					<?php } ?>
 					    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&amp;pubid=true" class="form-table">
-					        <h2>Google Adsense Publisher ID</h2>
-					        <p>Please enter your Adsense Publisher ID here.</p>
+					        <h2>Google AdSense Publisher ID</h2>
+					        <p>Please enter your AdSense Publisher ID here.</p>
 					        <p style="font-style:italic;">The Publisher ID currently in use is:<br />
-					        <?php echo wp_get_option('adsense_pubid'); ?>
+					        <?php if(wp_get_option('adsense_pubid') != false && wp_option_isempty('adsense_pubid') == false) {
+                                                          echo wp_get_option('adsense_pubid');
+                                                      } else {
+                                                          echo "N/A";
+                                                      }
+                            ?>
 					        </p>
 					        <?php
 					            if(wp_get_option('adsense_pubid')) {
@@ -364,7 +369,7 @@ class AdsenseAdmin
 	}
 }
 
-// This checks to see if WicketPixie's Adsense features are enabled
+// This checks to see if WicketPixie's AdSense features are enabled
 function is_enabled_adsense() {
     if(wp_get_option('enable_adsense')) {
         if(wp_get_option('enable_adsense') == 'true') {
