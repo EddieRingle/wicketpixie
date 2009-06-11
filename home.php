@@ -269,7 +269,7 @@
                                         <div id="recent-posts" class="widget">
                                         <h2>Popular Tags</h2>
 					<ul>
-						<?php wp_tag_cloud('orderby=count&order=DESC&unit=px&smallest=11&largest=11&format=list'); ?>
+						<?php wp_tag_cloud('orderby=count&order=DESC&unit=px&smallest=8&largest=16&format=flat'); ?>
 					</ul>
                                         </div>
 					<!-- Custom Sidebar Code -->
