@@ -56,25 +56,28 @@
                     ?>
                         <div id="post-ad">
                             <?php $adsense->wp_adsense('blog_post_side'); ?>
-                            <ul style="margin: 15px 0 0 5px">
-                                <p align="center">
-                                    <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-                                </p>
-                                <?php if (wp_get_option('plug_related-posts')):?>
-                                <?php wp_related_posts(5); ?>
-                                <?php endif;?>
-                            </ul>
+                            <div style="margin: 15px 0 0 5px">
+						        <p style="margin: 0px auto;width: inherit;">
+						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
+						        </p>
+						        <?php if (wp_get_option('plug_related-posts')):?>
+						        <?php wp_related_posts(5); ?>
+						        <?php endif;?>
+						    </div>
                         </div>
                     <?php
                     } else {
                     ?>
                         <div id="post-ad">
                         <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
-                            <ul style="margin: 15px 0 0 5px">
-                                <?php if (wp_get_option('plug_related-posts')):?>
-                                <?php wp_related_posts(5); ?>
-                                <?php endif;?>
-                            </ul>
+                            <div style="margin: 15px 0 0 5px">
+						        <p style="margin: 0px auto;width: inherit;">
+						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
+						        </p>
+						        <?php if (wp_get_option('plug_related-posts')):?>
+						        <?php wp_related_posts(5); ?>
+						        <?php endif;?>
+						    </div>
                         </div>
                     <?php
                     }
@@ -117,7 +120,7 @@
                         <!-- post-meta-categories -->
                         <div class="post-meta-categories">
                             <h6>Categories</h6>
-                            <p><?php the_category(); ?></p>
+                            <?php the_category(); ?>
                         </div>
                         <!-- /post-meta-categories -->
                         
@@ -165,7 +168,10 @@
                                 echo stripslashes(wp_get_option('home_video_code'));
                     } else {
                     ?>
-                    <object width="500" height="285"><param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="></param><param name="wmode" value="transparent"></param><embed src="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" type="application/x-shockwave-flash" wmode="transparent" width="500" height="285"></embed></object>
+                    <object type="application/x-shockwave-flash" width="500" height="285">
+                        <param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="/>
+                        <param name="wmode" value="transparent"/>
+                    </object>
                     <?php
                     }
                     ?>
@@ -239,7 +245,13 @@
                             $resultsArray = unserialize($resp);
                             $out = $resultsArray['results'];
                         }
-                        echo '<object id="utv_o_'.$out['id'].'" height="'.$height.'" width="'.$width.'" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param value="http://www.ustream.tv/flash/live/'.$out['id'].'" name="movie" /><param value="true" name="allowFullScreen" /><param value="always" name="allowScriptAccess" /><param value="transparent" name="wmode" /><param value="viewcount=true&amp;autoplay='.$autoplay.'" name="flashvars" /><embed name="utv_e_'.$out['id'].'" id="utv_e_'.$out['id'].'" flashvars="viewcount=true&amp;autoplay='.$autoplay.'" height="'.$height.'" width="'.$width.'" allowfullscreen="true" allowscriptaccess="always" wmode="transparent" src="http://www.ustream.tv/flash/live/'.$out['id'].'" type="application/x-shockwave-flash" /></object>';
+                        echo '<object id="utv_o_',$out['id'],'" height="',$height,'" width="',$width,'" type="application/x-shockwave-flash">
+                            <param value="http://www.ustream.tv/flash/live/',$out['id'],'" name="movie" />
+                            <param value="true" name="allowFullScreen" />
+                            <param value="always" name="allowScriptAccess" />
+                            <param value="transparent" name="wmode" />
+                            <param value="viewcount=true&amp;autoplay=',$autoplay,'" name="flashvars" />
+                        </object>';
                     ?>
                 </div>
                 <?php endif; ?>
