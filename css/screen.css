@@ -1687,7 +1687,7 @@ div.KonaBody {
 }
 
 .TweetAvatar, #TweetAvatar, #profile_image_url {
-    border: 0 0 0 0;
+    border: 0px;
     float: left;
     padding: 4px 15px 25px 0;
     width: 40px;
