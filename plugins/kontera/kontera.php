@@ -180,7 +180,7 @@ function kontera_echo_javascript() {
 	var dc_open_new_win = 'yes';
 	var dc_adprod='ADL';
     </script>
-    <script type="text/javascript" SRC="http://kona.kontera.com/javascript/lib/KonaLibInline.js"></script>
+    <script type="text/javascript" src="http://kona.kontera.com/javascript/lib/KonaLibInline.js"></script>
     <!-- Kontera ContentLink -->
     <?php
 	}

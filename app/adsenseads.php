@@ -274,7 +274,7 @@ class AdsenseAdmin
 					        $val = "on";
 					    }
 					} else {
-					    $val = "off";
+					    $val = "on";
 					}
 					?>
 					<p class="submit">
@@ -378,7 +378,7 @@ function is_enabled_adsense() {
             return false;
         }
     } else {
-        return true;
+        return false;
     }
 }
 

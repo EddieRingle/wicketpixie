@@ -17,8 +17,7 @@
 
 .falbum {
 	padding: 0px;
-	margin: 15px;
-	min-width: none;	
+	margin: 15px;	
 	font-size: 8pt;
 }
 
@@ -43,6 +42,7 @@
 .falbum-title {	
 	color: #260;
 	margin: 0px;
+	background-color: inherit;
 }
 
 .falbum-meta {
@@ -90,6 +90,7 @@
 }
 
 .falbum-thumbnail {
+    color: inherit;
 	float: left;
 	background-color: #fff;
 	border: 1px solid #a9a9a9;
@@ -104,20 +105,22 @@
 }
  
 .falbum-thumbnail-ds img {
-	 background-color: #fff;
-	 border: 1px solid #a9a9a9;
-	 display: block;
-	 margin: -5px 5px 5px -5px;
-	 padding: 4px;
-	 position: relative;
+    color: inherit;
+    background-color: #fff;
+    border: 1px solid #a9a9a9;
+    display: block;
+    margin: -5px 5px 5px -5px;
+    padding: 4px;
+    position: relative;
 }
 
 .falbum-thumbnail img:hover {
+    color: inherit;
 	background-color: #ccd;
 }
 
 .falbum-editable{
-     color: #000;
+     color: #000000;
      background-color: #ffffd3;
 }
 
@@ -154,25 +157,27 @@
 
 .falbum-photo-ds {
 	background: url('images/shadow.gif') no-repeat bottom right;
+    color: inherit;
 	float: left;
 }
 
 .falbum-photo img, .falbum-photo-ds img {
-	 background-color: #fff;
-	 border: 1px solid #a9a9a9;
-	 display: block;
-	 margin: -5px 5px 5px -5px;
-	 padding: 4px;
-	 position: relative;
+    background-color: #fff;
+    border: 1px solid #a9a9a9;
+    display: block;
+    margin: -5px 5px 5px -5px;
+    padding: 4px;
+    position: relative;
+    color: inherit;
 }
 
 .falbum-photo2 {
 	padding-right: 20px;
 	background-color: #fff;
 	border: 1px solid #a9a9a9;
-	margin: 2px 2px 2px 2px;
+	margin: 10px 2px 2px 2px;
 	padding: 4px;
-	margin-top:10px;
+    color: inherit;
 }
 
 /* -- Navigation ---------------*/
@@ -257,8 +262,6 @@ a.annotation span {
 	height: 100%;
 	background: white;
 	opacity: 0.2;
-	-moz-opacity: 0.2;
-	filter:alpha(opacity=20);
 }
  
 a.annotation:hover {
@@ -273,7 +276,7 @@ a.annotation:hover {
 
 .falbum-cloud {	
 	padding: 10px;	
-	line-height:auto;
+	line-height:normal;
 	text-align:center;
 	font-family: 'Lucida Grande', Verdana, Arial, Sans-Serif;
 }

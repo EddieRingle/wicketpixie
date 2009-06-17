@@ -56,28 +56,28 @@
 					?>
 					    <div id="post-ad">
 						    <?php $adsense->wp_adsense('blog_post_side'); ?>
-						    <ul style="margin: 15px 0 0 5px">
-						        <p align="center">
+						    <div style="margin: 15px 0 0 5px">
+						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
 						        <?php if (wp_get_option('plug_related-posts')):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
-						    </ul>
+						    </div>
 					    </div>
 					<?php
 					} else {
 					?>
 					    <div id="post-ad">
 					    <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
-					        <ul style="margin: 15px 0 0 5px">
-					            <p align="center">
-					                <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-					            </p>
+					        <div style="margin: 15px 0 0 5px">
+						        <p style="margin: 0px auto;width: inherit;">
+						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
+						        </p>
 						        <?php if (wp_get_option('plug_related-posts')):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
-					        </ul>
+						    </div>
 					    </div>
 					<?php
 					}
@@ -119,7 +119,7 @@
 						<!-- post-meta-categories -->
 						<div class="post-meta-categories">
 							<h6>Categories</h6>
-							<p> <?php the_category(); ?></p>
+							<?php the_category(); ?>
 						</div>
 						<!-- /post-meta-categories -->
 						

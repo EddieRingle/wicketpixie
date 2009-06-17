@@ -83,7 +83,7 @@ $adsense = new AdsenseAdmin;
     
     $metadesc = strip_tags($metadesc);
     ?>
-    <meta name="description" value="<?php echo $metadesc; ?>" />
+    <meta name="description" content="<?php echo $metadesc; ?>" />
     <?php
         flush();
         sleep(1);
@@ -93,7 +93,10 @@ $adsense = new AdsenseAdmin;
 <body>
 	<!-- DIV Loader -->
 	<div id="loadingFrame">
-		<div id="loading"><img src="<?php echo get_template_directory_uri(); ?>/images/loading.gif"><br /><b>Loading....</b></div>
+		<div id="loading">
+		    <img src="<?php echo get_template_directory_uri(); ?>/images/loading.gif" alt="Loading"/><br />
+		    <b>Loading....</b>
+        </div>
 	</div>
 <!-- google_ad_section_start(weight=ignore) -->
 	<!-- topbar -->
@@ -120,7 +123,7 @@ $adsense = new AdsenseAdmin;
 			<li><a href="http://www.bloglines.com/sub/<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Bloglines</a></li>
 			<li><a href="http://fusion.google.com/add?feedurl=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Google Reader</a></li>			
 			<li><a href="http://feeds.my.aol.com/add.jsp?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">My AOL</a></li>
-			<li><a href="http://my.msn.com/addtomymsn.armx?id=rss&ut=<?php echo $blogfeed; ?>&ru=<?php echo get_settings('home'); ?>" class="feed" rel="nofollow">My MSN</a></li>
+			<li><a href="http://my.msn.com/addtomymsn.armx?id=rss&amp;ut=<?php echo $blogfeed; ?>&amp;ru=<?php echo get_settings('home'); ?>" class="feed" rel="nofollow">My MSN</a></li>
 			<li><a href="http://add.my.yahoo.com/rss?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">My Yahoo!</a></li>
 			<li><a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">NewsGator</a></li>			
 			<li><a href="http://www.pageflakes.com/subscribe.aspx?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Pageflakes</a></li>
@@ -146,11 +149,11 @@ $adsense = new AdsenseAdmin;
                 <?php
                 if(wp_get_option('headersize')) {
                     $fontsize = wp_get_option('headersize');
-                    echo "<font style='font-size: ".$fontsize."px;'>";
+                    echo "<span style=\"font-size: ",$fontsize,"px;\">";
                     ?>
-                        <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>
+                            <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>
                     <?php
-                    echo "</font>";
+                    echo "</span>";
                 } else {
                 ?>
                 <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>
