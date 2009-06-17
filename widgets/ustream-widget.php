@@ -20,13 +20,19 @@
                 $resultsArray = unserialize($resp);
                 $out = $resultsArray['results'];
             }
-            echo '<object id="utv_o_',$out['id'],'" height="',$height,'" width="',$width,'" type="application/x-shockwave-flash">
-                            <param value="http://www.ustream.tv/flash/live/',$out['id'],'" name="movie" />
-                            <param value="true" name="allowFullScreen" />
-                            <param value="always" name="allowScriptAccess" />
-                            <param value="transparent" name="wmode" />
-                            <param value="viewcount=true&amp;autoplay=',$autoplay,'" name="flashvars" />
-                </object>';
+            echo '<!--[if !IE]> -->
+  <object type="application/x-shockwave-flash" data="http://www.ustream.tv/flash/live/',$out['id'],'" width="',$width,'" height="',$height,'">
+<!-- <![endif]-->
+<!--[if IE]>
+  <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="',$width'" height="',$height,'">
+    <param name="movie" value="http://www.ustream.tv/flash/live/',$out['id'],'" />
+<!--><!-- http://Validifier.com -->
+    <param name="allowFullScreen" "value="true"/>
+    <param value="always" name="allowScriptAccess" />
+    <param value="transparent" name="wmode" />
+    <param value="viewcount=true&amp;autoplay=',$autoplay,'" name="flashvars" />
+  </object>
+<!-- <![endif]-->';
         ?>
     </div>
 </div>
