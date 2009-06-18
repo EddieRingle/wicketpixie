@@ -1,8 +1,17 @@
 WICKETPIXIE CHANGELOG
 
-WORKING
+v1.1.3 - June 18, 2009
+ * ADDED: Added the option to toggle the AJAX loader on and off.
+ * ADDED: Recent comments and tag cloud are in the home page sidebar now.
+ * ADDED: Added ability to set maximum image width in post contents via the
+ Theme Options page.
  * FIXED: Added wmode attribute to Ustream widget to make it look nice
  during page loads.
+ * FIXED: Fixed JavaScript bug in IE.
+ * FIXED: WicketPixie is now much more XHTML 1.0 Strict compliant AND
+ CSS 3.0 compliant.
+ * FIXED: AdSense is now off by default.
+ * FIXED: Updated Ustream widgets to use latest code from Ustream.
 
 v1.1.2 - May 21, 2009
  * ADDED: AJAX loader to keep users from looking at a half-loaded page.
