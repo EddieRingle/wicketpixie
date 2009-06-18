@@ -2,6 +2,12 @@
 
 $settings = array(
     array(
+        "name" => "Enable AJAX Loader",
+        "description" => "Show loading screen while page content loads.",
+        "id" => "enable_ajaxloader",
+        "std" => 1,
+        "type" => "checkbox"),
+    array(
         "name" => "Blog Feed URL",
         "description" => "RSS feed URL of your blog.",
         "id" => "blog_feed_url",

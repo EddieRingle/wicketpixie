@@ -31,7 +31,9 @@ $adsense = new AdsenseAdmin;
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="shortcut icon" type="image/ico" href="<?php bloginfo('home'); ?>/favicon.ico" />	
 
+    <?php if(wp_get_option('enable_ajaxloader') != "0") { ?>
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/loader.css?<?php echo time(); ?>" type="text/css" media="all" />
+    <?php } ?>
     <style type="text/css">
         .recentcomments a {
             display: inline !important;
@@ -97,6 +99,8 @@ $adsense = new AdsenseAdmin;
 </head>
 
 <body>
+    <?php
+    if(wp_get_option('enable_ajaxloader') != "0") { ?>
 	<!-- DIV Loader -->
 	<div id="loadingFrame">
 		<div id="loading">
@@ -104,6 +108,9 @@ $adsense = new AdsenseAdmin;
 		    <b>Loading....</b>
         </div>
 	</div>
+	<?php } else { ?>
+	<!-- AJAX loader disabled, enable it in WicketPixie Settings -->
+	<?php } ?>
 <!-- google_ad_section_start(weight=ignore) -->
 	<!-- topbar -->
 	<div id="topbar">
