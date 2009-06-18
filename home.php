@@ -302,7 +302,9 @@
                         <div style="padding-bottom:15px"></div>
 
                         <h3>Popular Tags</h3>
-                        <?php wp_tag_cloud('orderby=count&order=DESC&unit=px&smallest=8&largest=16&format=flat'); ?>
+                        <span style="line-height:1.3em;">
+                        <?php wp_tag_cloud('orderby=count&order=DESC&unit=px&smallest=10&largest=16&format=flat'); ?>
+                        </span>
                         <div style="padding-bottom:15px"></div>
 
                         <!-- Custom Sidebar Code -->
