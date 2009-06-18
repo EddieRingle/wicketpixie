@@ -99,9 +99,7 @@
                     <!-- related-posts -->
                     <div id="related-posts">
                         <h3>You might also be interested in...</h3>
-                        <ul>
                          <?php wp_related_posts(5); ?>
-                        </ul>
                     </div>
                     <!-- /related-posts -->
                     <?php endif;?>
@@ -282,13 +280,6 @@
                         <div style="padding-bottom:15px"></div>
 
                         <h3>Recent Comments</h3>
-                        <style type="text/css">
-                            .recentcomments a {
-                                display: inline !important;
-                                padding: 0 !important;
-                                margin: 0 !important;
-                            }
-                        </style>
                         <ul class="recentcomments">
                         <?php
                         if(!$comments = wp_cache_get('recent_comments','widget')) {

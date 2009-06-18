@@ -32,6 +32,13 @@ $adsense = new AdsenseAdmin;
 	<link rel="shortcut icon" type="image/ico" href="<?php bloginfo('home'); ?>/favicon.ico" />	
 
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/loader.css?<?php echo time(); ?>" type="text/css" media="all" />
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
 	
 	<?php
     include_once (TEMPLATEPATH . '/plugins/random-posts.php');
@@ -86,7 +93,6 @@ $adsense = new AdsenseAdmin;
     <meta name="description" content="<?php echo $metadesc; ?>" />
     <?php
         flush();
-        sleep(1);
     ?>
 </head>
 

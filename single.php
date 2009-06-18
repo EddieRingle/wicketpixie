@@ -99,9 +99,7 @@
 					<!-- related-posts -->
 					<div id="related-posts">
 						<h3>You might also be interested in...</h3>
-						<ul>
 							<?php wp_related_posts(); ?>
-						</ul>						
 					</div>
 					<!-- /related-posts -->
 					<?php endif;?>
