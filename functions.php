@@ -277,7 +277,6 @@ $options = array (
 	    "id" => "post_max_image_width",
 	    "std" => "340",
 	    "type" => "text")
-	)
 );
 
 function wicketpixie_add_admin_footer() {
