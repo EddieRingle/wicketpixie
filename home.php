@@ -168,10 +168,15 @@
                                 echo stripslashes(wp_get_option('home_video_code'));
                     } else {
                     ?>
-                    <object type="application/x-shockwave-flash" width="500" height="285">
-                        <param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI="/>
-                        <param name="wmode" value="transparent"/>
-                    </object>
+                    <!--[if !IE]> -->
+                      <object type="application/x-shockwave-flash" data="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" width="500" height="285">
+                    <!-- <![endif]-->
+                    <!--[if IE]>
+                      <object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0" width="500" height="285">
+                        <param name="movie" value="http://www.youtube.com/cp/vjVQa1PpcFOi2GvexXT8XYrvBOsPoeQUt32UxT-AJgI=" />
+                    <!--><!-- http://Validifier.com -->
+                      </object>
+                    <!-- <![endif]-->
                     <?php
                     }
                     ?>
