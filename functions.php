@@ -272,7 +272,7 @@ $options = array (
 		"std" => "#333",
 		"type" => "text"),
 	array(
-	    "name" => "Max Image Width in Posts"
+	    "name" => "Max Image Width in Posts",
 	    "description" => "Set the maximum width (in pixels) of images in post contents.",
 	    "id" => "post_max_image_width",
 	    "std" => "340",
