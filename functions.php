@@ -270,7 +270,14 @@ $options = array (
 		"description" => "The color of links in the sidebar.",
 		"id" => "color_links_sidebar",
 		"std" => "#333",
-		"type" => "text")
+		"type" => "text"),
+	array(
+	    "name" => "Max Image Width in Posts"
+	    "description" => "Set the maximum width (in pixels) of images in post contents.",
+	    "id" => "post_max_image_width",
+	    "std" => "340",
+	    "type" => "text")
+	)
 );
 
 function wicketpixie_add_admin_footer() {
@@ -484,7 +491,7 @@ function wicketpixie_wp_head() { ?>
 	}
 	
 	?>
-	
+
 	<style type="text/css">
 		body { font-family: <?php echo $body_font; ?>; background: <?php echo $body_bg_color; ?> <?php if( wp_get_option('body_bg_image') != 'false' ) { ?>url("<?php bloginfo('template_directory'); ?>/images/backgrounds/<?php echo $body_bg_image; ?>") <?php echo $body_bg_position; ?> <?php echo $body_bg_repeat; ?> 50% 0<?php } ?>; }
 		#logo { font-family: <?php echo $headings_font; ?>; color: <?php echo $color_logo; ?>; }
@@ -499,6 +506,7 @@ function wicketpixie_wp_head() { ?>
 		#content .comment h3 a:link, #content .comment h3 a:active, #content .comment h3 a:visited { color: <?php echo $color_links_content; ?>; }
 		#content .comment h3 a:hover { color: #000; border-bottom: 1px solid <?php echo $color_links; ?>; }
 		#content .comment h5 { font-family: <?php echo $body_font; ?>; }
+        #content img { max-width: <?php echo $post_max_image_width; ?>; }
 		#comment-form input, #comment-form textarea { font-family: <?php echo $body_font; ?>; }
 		#sidebar a:link, #sidebar a:visited, #sidebar a:active { color: <?php echo $color_links_sidebar; ?>; }
 		#sidebar a:hover { color: #000; }
