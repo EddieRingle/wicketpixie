@@ -219,7 +219,7 @@ $adsense = new AdsenseAdmin;
 	<!-- nav -->
 	<div id="nav">
 		<ul>
-			<?php if (is_home()) { echo ''; } else { ?><li><a href="<?php bloginfo('home'); ?>/">Home</a><?php } ?>				
+			<?php if (!is_home()) { ?><li><a href="<?php bloginfo('home'); ?>/">Home</a></li><?php } ?>				
 			<?php wp_list_pages("depth=1&sort_column=menu_order&title_li="); ?>
 		</ul>
 	    <div id="navLoading" class="navLoader"></div>
