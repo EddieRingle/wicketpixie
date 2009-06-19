@@ -519,6 +519,8 @@ function wicketpixie_admin_head() {
 	echo '<script type="text/javascript" src="' . $path . '/js/colorpicker.js"></script>';
 	echo '<link rel="stylesheet" href="' . $path . '/css/admin.css" type="text/css" media="screen, projection" />';
 ?>
+    <script src="<?php echo get_bloginfo('template_directory'), '/contrib/iphone-style-checkboxes/iphone-style-checkboxes.js'; ?>" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'), '/contrib/iphone-style-checkboxes/style.css'; ?>" type="text/css" media="screen" charset="utf-8">
 	<script type="text/javascript">
 		jQuery(function($) {
             $("#color_logo").attachColorPicker();
@@ -536,6 +538,9 @@ function wicketpixie_admin_head() {
 			$('#explain').toggle();
 			return false;
 		});
+		$(document).ready(function() {
+		    $('#admin-options :checkbox').iphoneStyle();
+		})
 	});
 	</script>
 	<style type="text/css">
