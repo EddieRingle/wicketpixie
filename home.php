@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= wp_get_option( 'auth_credit' ); ?>
+<?php $wp_auth_credit= get_option($optpre.'auth_credit'); ?>
 
             <!-- content -->
             <div id="content">
@@ -60,7 +60,7 @@
 						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
-						        <?php if (wp_get_option('plug_related-posts')):?>
+						        <?php if (get_option($optpre.'plug_related-posts')):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
 						    </div>
@@ -74,7 +74,7 @@
 						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
-						        <?php if (wp_get_option('plug_related-posts')):?>
+						        <?php if (get_option($optpre.'plug_related-posts')):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
 						    </div>
@@ -95,7 +95,7 @@
                 <!-- post-meta -->
                 <div class="post-meta">
                     
-                    <?php if(wp_get_option('plug_related-posts') && function_exists(wp_related_posts)):?>
+                    <?php if(get_option($optpre.'plug_related-posts') && function_exists(wp_related_posts)):?>
                     <!-- related-posts -->
                     <div id="related-posts">
                         <h3>You might also be interested in...</h3>
@@ -146,8 +146,8 @@
                 
                 <!-- Custom Code Area -->
                 <?php
-                if(wp_get_option('home_custom') != false && wp_get_option('home_custom') != "") {
-                    echo stripslashes(wp_get_option('home_custom'));
+                if(get_option($optpre.'home_custom') != false && get_option($optpre.'home_custom') != "") {
+                    echo stripslashes(get_option($optpre.'home_custom'));
                 }
                 ?>
                 <!-- /Custom Code Area -->
@@ -156,14 +156,14 @@
                 <?php endif; ?>
                 
                 <?php
-                if(wp_get_option('home_video') != "0") { ?>
+                if(get_option($optpre.'home_video') != "0") { ?>
                 <div id="home-categories">
                 <?php
-                    if(wp_get_option('home_show_vid_heading') != "0") {
+                    if(get_option($optpre.'home_show_vid_heading') != "0") {
                         echo "<h2>My Videos</h2>";
                     }
-                    if(wp_get_option('home_video_code') != false && wp_get_option('home_video_code') != "") {
-                                echo stripslashes(wp_get_option('home_video_code'));
+                    if(get_option($optpre.'home_video_code') != false && get_option($optpre.'home_video_code') != "") {
+                                echo stripslashes(get_option($optpre.'home_video_code'));
                     } else {
                     ?>
                     <!--[if !IE]> -->
@@ -184,16 +184,16 @@
                 <?php } ?>
                 
                 <?php
-                if(wp_get_option('home_flickr') != "0") { ?>
+                if(get_option($optpre.'home_flickr') != "0") { ?>
                 <!-- home-photos -->
                 <div id="home-photos">
                 <?php
-                if(wp_get_option('flickrid') != false && wp_get_option('flickrid') != "") {
-                    $flickrid = wp_get_option('flickrid');
+                if(get_option($optpre.'flickrid') != false && get_option($optpre'flickrid') != "") {
+                    $flickrid = get_option($optpre.'flickrid');
                 } else {
                     $flickrid = '49503157467@N01';
                 }
-                if(wp_get_option('home_show_photo_heading') != "0") {
+                if(get_option($optpre.'home_show_photo_heading') != "0") {
                     echo "<h2>Recent Photos</h2>";
                 }
                 ?>
@@ -222,20 +222,20 @@
             <!-- sidebar -->
             <div id="sidebar">
                 <?php
-                if(wp_get_option('home_sidebar_buttons') != "0") {
+                if(get_option($optpre.'home_sidebar_buttons') != "0") {
                     include TEMPLATEPATH .'/widgets/sidebar-buttons.php';
                 }
                 ?>
                 <!-- width = 340, height = 240 -->
-                <?php if (wp_get_option('home_ustream')):?>
+                <?php if (get_option($optpre.'home_ustream')):?>
                 <div id="home-youtube">
-                    <?php echo "<h3>".wp_get_option('home_ustream_heading')."</h3>"; ?>
+                    <?php echo "<h3>".get_option($optpre.'home_ustream_heading')."</h3>"; ?>
                     <?php $key = "uzhqbxc7pqzqyvqze84swcer"; ?>
                     <?php
-                        if (wp_get_option('ustreamchannel') != false && wp_get_option('ustreamchannel') != "") { $chan = wp_get_option('ustreamchannel'); } else { $trip = true; }
-                        if (wp_get_option('home_ustream_height') != false && wp_get_option('home_ustream_height') != "") { $height = wp_get_option('home_ustream_height'); } else { $trip = true; }
-                        if (wp_get_option('home_ustream_width') != false && wp_get_option('home_ustream_width') != "") { $width = wp_get_option('home_ustream_width'); } else { $trip = true; }
-                        if (wp_get_option('home_ustream_autoplay') == "1") { $autoplay = true; } else { $autoplay = false; }
+                        if (get_option($optpre.'ustreamchannel') != false && get_option($optpre.'ustreamchannel') != "") { $chan = get_option($optpre.'ustreamchannel'); } else { $trip = true; }
+                        if (get_option($optpre.'home_ustream_height') != false && get_option($optpre.'home_ustream_height') != "") { $height = get_option($optpre.'home_ustream_height'); } else { $trip = true; }
+                        if (get_option($optpre.'home_ustream_width') != false && get_option($optpre.'home_ustream_width') != "") { $width = get_option($optpre.'home_ustream_width'); } else { $trip = true; }
+                        if (get_option($optpre.'home_ustream_autoplay') == "1") { $autoplay = true; } else { $autoplay = false; }
                         if ($trip == true) {
                             $out = "<!-- Please go back to the Home Editor and set the settings for this widget. -->";
                         } else {

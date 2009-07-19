@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= wp_get_option( 'auth_credit' ); ?>
+<?php $wp_auth_credit= get_option($optpre.'auth_credit'); ?>
 
 			<!-- content -->
 			<div id="content">
@@ -75,7 +75,7 @@
 			
 				<?php endwhile; ?>
 				<!-- Page Navigation -->
-                <?php if (wp_get_option('plug_pagenavi')):?>
+                <?php if (get_option($optpre.'plug_pagenavi')):?>
                 <div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>
 				
                 <?php else: ?>

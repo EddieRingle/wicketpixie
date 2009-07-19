@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= wp_get_option( 'auth_credit' ); ?>
+<?php $wp_auth_credit= get_option($optpre.'auth_credit'); ?>
 			
 			<!-- content -->
 			<div id="content">
@@ -60,7 +60,7 @@
 						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
-						        <?php if (wp_get_option('plug_related-posts')):?>
+						        <?php if (get_option($optpre.'plug_related-posts')):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
 						    </div>
@@ -74,7 +74,7 @@
 						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
-						        <?php if (wp_get_option('plug_related-posts')):?>
+						        <?php if (get_option($optpre.'plug_related-posts')):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
 						    </div>
@@ -95,7 +95,7 @@
 				<!-- post-meta -->
 				<div class="post-meta">
 					
-					<?php if(wp_get_option('plug_related-posts') && function_exists(wp_related_posts)):?>
+					<?php if(get_option($optpre.'plug_related-posts') && function_exists(wp_related_posts)):?>
 					<!-- related-posts -->
 					<div id="related-posts">
 						<h3>You might also be interested in...</h3>

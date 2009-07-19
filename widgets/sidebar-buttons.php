@@ -1,9 +1,9 @@
 <!-- social-buttons -->
 <?php
-    $blogfeed = wp_get_option("blog_feed_url");
-    $podcastfeed = wp_get_option("podcastfeed");
-    $twitter = wp_get_option("twitterid");
-    $youtube = wp_get_option("youtubeid");
+    $blogfeed = get_option($optpre."blog_feed_url");
+    $podcastfeed = get_option($optpre."podcastfeed");
+    $twitter = get_option($optpre."twitterid");
+    $youtube = get_option($optpre."youtubeid");
     $wcount = 0;
     if($blogfeed != false && $blogfeed != "") {
         $witem[$wcount] = "<a href='$blogfeed'><img src='".get_template_directory_uri()."/images/button-feed.png' style='float:left;padding:10px 10px 20px 14px;border:0px;' height='60' width='60' alt='Subscribe'/></a>\n";

@@ -127,8 +127,8 @@ function wicketpixie_admin_index() {
 				</th>
 				<td style="padding-right:10px;">
 					<?php
-						if (wp_get_option($value['id']) != false) {
-							$optdata = wp_get_option($value['id']);
+						if (get_option($optpre.$value['id']) != false) {
+							$optdata = get_option($optpre.$value['id']);
 						} else { 
 							$optdata = $value['std']; 
 						}

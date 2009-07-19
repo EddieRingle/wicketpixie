@@ -135,7 +135,7 @@ class NotifyAdmin
 	*/
 	 function notifyMenu() {
 		$notify= new NotifyAdmin;
-        $wp_notify = wp_get_option('notify');
+        $wp_notify = get_option($optpre.'enable_notify');
 		if ( $_GET['page'] == basename(__FILE__) ) {
 	        if ( 'add' == $_REQUEST['action'] ) {
 				$notify->add( $_REQUEST );
@@ -152,7 +152,7 @@ class NotifyAdmin
 			
 				<div id="admin-options">
 					<h2><?php _e('Notification Settings'); ?></h2>
-                    <?php if($wp_notify != 1) { ?>
+                    <?php if($wp_notify != '1') { ?>
                     <p><strong>WicketPixie Notifications are currently disabled, please go to the WicketPixie Options page to enable them.</strong><br /></p>
                     <?php } ?>
                     <p>What are WicketPixie Notifications? They send out messages to different services like Twitter and Ping.fm to let your followers know of any new blog posts. Need more help? <a href="#explain" title="Click for more info" id="explaintext">It's only a click away</a>.</p>
@@ -214,7 +214,7 @@ class NotifyAdmin
 * A variable that is checked when we want to know if WicketPixie Notifications
 * are enabled or not.
 **/
-$wp_notify = wp_get_option('notify');
+$wp_notify = get_option($optpre.'enable_notify');
 
 /**
 * This is called when a post is published and
@@ -347,7 +347,7 @@ function notify_twitter($post,$dbdata) {
 
 add_action ('admin_menu', array( 'NotifyAdmin', 'addNotifyMenu' ) );
 
-if($wp_notify == 1)
+if($wp_notify == '1')
 {
     add_action ('publish_post', 'prep_notify');
 }

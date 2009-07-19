@@ -1,9 +1,9 @@
 <?php
-/* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
-if(wp_get_option('blog_feed_url') != false) {
-    $blogfeed = wp_get_option('blog_feed_url');
+// Blog feed URL
+if(get_option($optpre.'blog_feed_url') != false) {
+    $blogfeed = get_option($optpre.'blog_feed_url');
 } else {
-    $blogfeed = 'http://feeds.pirillo.com/ChrisPirillo';
+    $blogfeed = get_bloginfo_rss('rss2_url');
 }
 $status= new SourceUpdate;
 $sources= new SourceAdmin;
@@ -31,7 +31,7 @@ $adsense = new AdsenseAdmin;
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="shortcut icon" type="image/ico" href="<?php bloginfo('home'); ?>/favicon.ico" />	
 
-    <?php if(wp_get_option('enable_ajaxloader') != "0") { ?>
+    <?php if(get_option($optpre.'enable_ajaxloader') != '0') { ?>
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/loader.css?<?php echo time(); ?>" type="text/css" media="all" />
     <?php } ?>
     <style type="text/css">
@@ -100,7 +100,7 @@ $adsense = new AdsenseAdmin;
 
 <body>
     <?php
-    if(wp_get_option('enable_ajaxloader') != "0") { ?>
+    if(get_option($optpre.'enable_ajaxloader') != '0') { ?>
 	<!-- DIV Loader -->
 	<div id="loadingFrame">
 		<div id="loading">
@@ -160,9 +160,9 @@ $adsense = new AdsenseAdmin;
 			
 			<div id="logo">
                 <?php
-                if(wp_get_option('headersize')) {
-                    $fontsize = wp_get_option('headersize');
-                    echo "<span style=\"font-size: ",$fontsize,"px;\">";
+                if(get_option($optpre.'headersize')) {
+                    $fontsize = get_option($optpre.'headersize');
+                    echo '<span style="font-size:',$fontsize,'px;">';
                     ?>
                             <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>
                     <?php

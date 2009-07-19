@@ -71,14 +71,14 @@ class AdsenseAdmin
 	
 	// Turns WicketPixie's AdSense features on and off
 	function toggle() {
-	    if(wp_get_option('enable_adsense')) {
-	        if(wp_get_option('enable_adsense') == 'true') {
-	            wp_update_option('enable_adsense','false');
-	        } elseif(wp_get_option('enable_adsense') == 'false') {
-	            wp_update_option('enable_adsense','true');
+	    if(get_option($optpre.'enable_adsense')) {
+	        if(get_option($optpre.'enable_adsense') == 'true') {
+	            update_option($optpre.'enable_adsense','false');
+	        } elseif(get_option($optpre.'enable_adsense') == 'false') {
+	            update_option($optpre.'enable_adsense','true');
 	        }
 	    } else {
-	        wp_add_option('enable_adsense','true');
+	        add_option($optpre.'enable_adsense','true');
 	    }
 	}
 	
@@ -86,10 +86,10 @@ class AdsenseAdmin
 	function pub_id($_REQUEST) {
 	    $args = $_REQUEST;
 	    
-	    if(wp_get_option('adsense_pubid')) {
-	        wp_update_option('adsense_pubid',$args['pubid']);
+	    if(get_option($optpre.'adsense_pubid')) {
+	        update_option($optpre.'adsense_pubid',$args['pubid']);
 	    } else {
-	        wp_add_option('adsense_pubid',$args['pubid']);
+	        add_option($optpre.'adsense_pubid',$args['pubid']);
 	    }
 	}
 	
@@ -151,7 +151,7 @@ class AdsenseAdmin
 	    global $wpdb,$chrisads;
 	    $table = $wpdb->prefix . 'wik_adsense';
 	    $ad_id = $wpdb->get_var("SELECT ad_id FROM $table WHERE placement= '$placement' LIMIT 1");
-	    $pubid = wp_get_option('adsense_pubid');
+	    $pubid = get_option($optpre.'adsense_pubid');
 	    
 	    if($ad_id != "" && $pubid != "") {
 	        if($placement == 'blog_header') {
@@ -267,8 +267,8 @@ class AdsenseAdmin
 					<h2>Toggle AdSense Ads</h2>
 					<p>One click button to disable the showing of AdSense ads.</p>
 					<?php
-					if(wp_get_option('enable_adsense')) {
-					    if(wp_get_option('enable_adsense') == "true") {
+					if(get_option($optpre.'enable_adsense')) {
+					    if(get_option($optpre.'enable_adsense') == "true") {
 					        $val = "off";
 					    } else {
 					        $val = "on";
@@ -327,7 +327,7 @@ class AdsenseAdmin
 					        <h2>Google AdSense Publisher ID</h2>
 					        <p>Please enter your AdSense Publisher ID here.</p>
 					        <p style="font-style:italic;">The Publisher ID currently in use is:<br />
-					        <?php if(wp_get_option('adsense_pubid') != false && wp_option_isempty('adsense_pubid') == false) {
+					        <?php if(get_option($optpre.'adsense_pubid') != false) {
                                                           echo wp_get_option('adsense_pubid');
                                                       } else {
                                                           echo "N/A";
@@ -335,8 +335,8 @@ class AdsenseAdmin
                             ?>
 					        </p>
 					        <?php
-					            if(wp_get_option('adsense_pubid')) {
-					                $pub_id = wp_get_option('adsense_pubid');
+					            if(get_option($optpre.'adsense_pubid')) {
+					                $pub_id = get_option($optpre.'adsense_pubid');
 					            } else {
 					                $pub_id = "Pub-ID";
 					            }
@@ -371,10 +371,10 @@ class AdsenseAdmin
 
 // This checks to see if WicketPixie's AdSense features are enabled
 function is_enabled_adsense() {
-    if(wp_get_option('enable_adsense')) {
-        if(wp_get_option('enable_adsense') == 'true') {
+    if(get_option($optpre.'enable_adsense')) {
+        if(get_option($optpre.'enable_adsense') == 'true') {
             return true;
-        } elseif(wp_get_option('enable_adsense') == 'false') {
+        } elseif(get_option($optpre.'enable_adsense') == 'false') {
             return false;
         }
     } else {

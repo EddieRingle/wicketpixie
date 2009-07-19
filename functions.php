@@ -9,7 +9,7 @@ Copyright (c) 2006-2009 Chris Pirillo <chris@pirillo.com>,
 All rights reserved.
 */
 
-require( TEMPLATEPATH .'/app/wipioptions.php');
+$optpre = 'wicketpixie_';
 include_once( TEMPLATEPATH . '/widgets/sources.php' );
 
 // No spaces in this constant please
@@ -18,7 +18,7 @@ include_once( TEMPLATEPATH . '/widgets/sources.php' );
 * b = beta (testing, works but may have bugs)
 * rc = release candidate (stable testing, minor issues are left)
 */
-define('WIK_VERSION',"1.1.3-rc1");
+define('WIK_VERSION',"1.2-a1");
 
 function collect() {
 	global $wpdb;
@@ -111,28 +111,28 @@ function wicketpixie_ustream_widget()
 
 function wicketpixie_ustream_widget_control()
 {
-    if(wp_get_option('sidebar_ustream_heading') != false) {
-        $heading = wp_get_option('sidebar_ustream_heading');
+    if(get_option($optpre.'sidebar_ustream_heading') != false) {
+        $heading = get_option($optpre.'sidebar_ustream_heading');
     }
-    if(wp_get_option('sidebar_ustreamchannel') != false) {
-        $channelname = wp_get_option('sidebar_ustreamchannel');
-    } elseif(wp_get_option('ustreamchannel') != false) {
-        $channelname = wp_get_option('ustreamchannel');
+    if(get_option($optpre.'sidebar_ustreamchannel') != false) {
+        $channelname = get_option($optpre.'sidebar_ustreamchannel');
+    } elseif(get_option($optpre.'ustreamchannel') != false) {
+        $channelname = get_option($optpre.'ustreamchannel');
     }
-    if(wp_get_option('sidebar_ustream_autoplay') != false) {
-        $autoplay = wp_get_option('sidebar_ustream_autoplay');
-    } elseif(wp_get_option('home_ustream_autoplay') != false) {
-        $autoplay = wp_get_option('home_ustream_autoplay');
+    if(get_option($optpre.'sidebar_ustream_autoplay') != false) {
+        $autoplay = get_option($optpre.'sidebar_ustream_autoplay');
+    } elseif(get_option($optpre.'home_ustream_autoplay') != false) {
+        $autoplay = get_option($optpre.'home_ustream_autoplay');
     }
-    if(wp_get_option('sidebar_ustream_height') != false) {
-        $height = wp_get_option('sidebar_ustream_height');
-    } elseif(wp_get_option('home_ustream_height') != false) {
-        $height = wp_get_option('home_ustream_height');
+    if(get_option($optpre.'sidebar_ustream_height') != false) {
+        $height = get_option($optpre.'sidebar_ustream_height');
+    } elseif(get_option($optpre.'home_ustream_height') != false) {
+        $height = get_option($optpre.'home_ustream_height');
     }
-    if(wp_get_option('sidebar_ustream_width') != false) {
-        $width = wp_get_option('sidebar_ustream_width');
-    } elseif(wp_get_option('home_ustream_width') != false) {
-        $width = wp_get_option('home_ustream_width');
+    if(get_option($optpre.'sidebar_ustream_width') != false) {
+        $width = get_option($optpre.'sidebar_ustream_width');
+    } elseif(get_option($optpre.'home_ustream_width') != false) {
+        $width = get_option($optpre.'home_ustream_width');
     }
     if($_POST['ustreamWidget-Submit']) {
         if(!wp_add_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading'])) {
@@ -299,7 +299,7 @@ function wicketpixie_add_admin() {
                         wp_update_option($value['id'],$_POST[$value['id']]);
                     }
 				} else {
-				    if(wp_get_option($value['id'])) {
+				    if(get_option($optpre.$value['id'])) {
 					    wp_delete_option( $value['id'] );
 					}
 				}
@@ -334,7 +334,7 @@ function wicketpixie_add_admin() {
         } elseif( 'reset' == $_POST['action'] ) {
 			check_admin_referer('wicketpixie-settings');
            	foreach( $options as $value ) {
-           	    if(wp_get_option($value['id'])) {
+           	    if(get_option($optpre.$value['id'])) {
                    	wp_delete_option( $value['id'] );
                 }
 			}
@@ -382,7 +382,7 @@ function wicketpixie_admin() {
 			<tr valign="top"> 
 			    <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
 			    <td style="padding-bottom:10px;">
-			        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( wp_get_option( $value['id'] ) != false) { echo wp_get_option( $value['id'] ); } else { echo $value['std']; } ?>" /><?php if ($value['id'] == 'headersize') { echo 'px'; } ?>
+			        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option($optpre.$value['id']) != false) { echo get_option($optpre.$value['id']); } else { echo $value['std']; } ?>" /><?php if ($value['id'] == 'headersize') { echo 'px'; } ?>
 			    </td>
 			</tr>
 
@@ -394,9 +394,9 @@ function wicketpixie_admin() {
 			            <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
 			                <?php foreach ($value['options'] as $option) { ?>
 			                <option<?php
-								if ( $option == wp_get_option( $value['id'] ) ) { 
+								if ( $option == get_option($optpre.$value['id']) ) { 
 									echo ' selected="selected"'; 
-								} elseif( $option == $value['std'] && !wp_get_option( $value['id'] ) ) {
+								} elseif($option == $value['std'] && !get_option($optpre.$value['id'])) {
 									echo ' selected="selected"';
 								} ?>
 							><?php echo $option; ?></option>
@@ -413,16 +413,16 @@ function wicketpixie_admin() {
 						</th>
 		        <td style="padding-bottom:10px;">
 							<?php
-								$image_check= wp_get_option( 'body_bg_image' );
+								$image_check= get_option($optpre.'body_bg_image');
 								if( isset( $image_check ) && $image_check != '' ) {
-									$image_check= wp_get_option('body_bg_image');
+									$image_check= get_option($optpre.'body_bg_image');
 								} else {
 									$image_check= 'false';
 								}
 								//var_dump( $image_check ); exit;
 							?>
-							<?php if( wp_get_option( $value['id'] ) ) { ?>
-							<input type="hidden" name="<?php echo $value['id']; ?>" value="<?php echo wp_get_option( $value['id'] ); ?>">				
+							<?php if( get_option($optpre.$value['id'] ) ) { ?>
+							<input type="hidden" name="<?php echo $value['id']; ?>" value="<?php echo get_option($optpre.$value['id'] ); ?>">				
 							<?php } ?>
 							<select name="saved_images" id="saved_images">
 								<option value="">Choose an image</option>
@@ -435,7 +435,7 @@ function wicketpixie_admin() {
 									echo $value['std'];
 								} elseif( $image_check!= '0' ) {
 								?>
-								<a href="<?php echo TEMPLATEPATH .'/images/backgrounds/'. wp_get_option( $value['id'] ); ?>" title="<?php echo wp_get_option( $value['id'] ); ?>"><?php echo wp_get_option( $value['id'] ); ?></a>
+								<a href="<?php echo TEMPLATEPATH .'/images/backgrounds/'. get_option($optpre.$value['id']); ?>" title="<?php echo get_option($optpre.$value['id']); ?>"><?php echo get_option($optpre.$value['id']); ?></a>
 								<?php
 								} else {
 									echo 'None'; 
@@ -475,16 +475,16 @@ function wicketpixie_wp_head() { ?>
 	<?php
 	global $options;
 	foreach ( $options as $value ) {
-	    if ( wp_get_option( $value['id'] ) === FALSE ) { 
+	    if ( get_option($optpre.$value['id']) === FALSE ) { 
 			$$value['id'] = $value['std']; 
 		} else { 
-			$$value['id'] = wp_get_option( $value['id'] ); 
+			$$value['id'] = get_option($optpre.$value['id']); 
 		} 
 	}
 	
-	$image_check= wp_get_option( 'body_bg_image' );
+	$image_check= get_option($optpre.'body_bg_image');
 	if( isset( $image_check ) && $image_check != '' ) {
-		$image_check= wp_get_option('body_bg_image');
+		$image_check= get_option($optpre.'body_bg_image');
 	} else {
 		$image_check= 'false';
 	}
@@ -492,7 +492,7 @@ function wicketpixie_wp_head() { ?>
 	?>
 
 	<style type="text/css">
-		body { font-family: <?php echo $body_font; ?>; background: <?php echo $body_bg_color; ?> <?php if( wp_get_option('body_bg_image') != 'false' ) { ?>url("<?php bloginfo('template_directory'); ?>/images/backgrounds/<?php echo $body_bg_image; ?>") <?php echo $body_bg_position; ?> <?php echo $body_bg_repeat; ?> 50% 0<?php } ?>; }
+		body { font-family: <?php echo $body_font; ?>; background: <?php echo $body_bg_color; ?> <?php if( get_option($optpre.'body_bg_image') != 'false' ) { ?>url("<?php bloginfo('template_directory'); ?>/images/backgrounds/<?php echo $body_bg_image; ?>") <?php echo $body_bg_position; ?> <?php echo $body_bg_repeat; ?> 50% 0<?php } ?>; }
 		#logo { font-family: <?php echo $headings_font; ?>; color: <?php echo $color_logo; ?>; }
 		#logo a:link, #logo a:visited, #logo a:active { color: <?php echo $color_logo; ?>; }
 		#logo a:hover { color: #fff; }

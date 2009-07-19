@@ -5,7 +5,7 @@
 					
 				<!-- page -->
 				<div class="page">
-					<?php if (wp_get_option('plug_aagoog404') && function_exists("aa_google_404")):?>
+					<?php if (get_option($optpre.'plug_aagoog404') && function_exists("aa_google_404")):?>
 					<?php aa_google_404(); ?>
                     <?php else: ?>
 					<h1>We Can't Find the Droid You're Looking For</h1>
