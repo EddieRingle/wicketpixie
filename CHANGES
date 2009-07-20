@@ -1,5 +1,11 @@
 WICKETPIXIE CHANGELOG
 
+v1.2 (TRUNK) - TBA, 2009
+ * PERFORMANCE: New AdminPage class written from scratch in hopes of better
+ admin pages overall. (90% complete; 0% admin pages using new class)
+ * PERFORMANCE: Switched back to using WordPress' database functions for
+ storing settings.
+ 
 v1.1.3 - June 18, 2009
  * ADDED: Added the option to toggle the AJAX loader on and off.
  * ADDED: Recent comments and tag cloud are in the home page sidebar now.
