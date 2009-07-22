@@ -136,9 +136,9 @@ class ThemeOptions extends AdminPage
         }
     }
     
-    function save()
+    function save_hook()
     {
-        if ( $_POST['completed'] == 1 && $_FILES['wicketpixie_theme_body_bg_image']['tmp_name'] != '' ) {
+        if ( $_POST['completed'] == 'true' && $_FILES['wicketpixie_theme_body_bg_image']['tmp_name'] != '' ) {
 			$new_name= $_FILES['wicketpixie_theme_body_bg_image']['name'];
 			$new_home= TEMPLATEPATH . '/images/backgrounds/' . $new_name;
 			if( move_uploaded_file( $_FILES['wicketpixie_theme_body_bg_image']['tmp_name'], $new_home ) ) {
@@ -151,8 +151,6 @@ class ThemeOptions extends AdminPage
 		if( $_POST['saved_images'] != '' ) {
             update_option('wicketpixie_theme_body_bg_image',$_POST['saved_images']);
 		}
-		
-        parent::save();
     }
     
     function extra_types_html($value,$checkdata)
@@ -170,7 +168,6 @@ class ThemeOptions extends AdminPage
 						} else {
 							$image_check= 'false';
 						}
-						//var_dump( $image_check ); exit;
 					?>
 					<?php if( get_option($value['id'] ) ) { ?>
 					<input type="hidden" name="<?php echo $value['id']; ?>" value="<?php echo get_option($value['id'] ); ?>">				
@@ -188,12 +185,12 @@ class ThemeOptions extends AdminPage
 					<select name="saved_images" id="saved_images">
 						<option value="">Choose an image</option>
 						<?php foreach( $images as $image ) { ?>
-						<option value="<?php echo $image; ?>"><?php echo $image; ?></option>
+						<option value="<?php echo $image; ?>" <?php if(get_option('wicketpixie_theme_body_bg_image') == $image) { echo 'selected="selected"'; } ?>><?php echo $image; ?></option>
 						<?php } ?>
 					</select>	Current:
 					<?php 
 						if( $image_check== 'false' ) { 
-							echo $value['std'];
+							echo 'None';
 						} elseif( $image_check != 'false' ) {
 						?>
 						<a href="<?php echo TEMPLATEPATH .'/images/backgrounds/'. get_option($value['id']); ?>" title="<?php echo get_option($value['id']); ?>"><?php echo get_option($value['id']); ?></a>
@@ -203,8 +200,8 @@ class ThemeOptions extends AdminPage
 						} ?>
 					<p><input type="file" id="<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>">
 					<input type="hidden" name="MAX_FILE_SIZE" value="1500000">
-					<input type="hidden" name="completed" value="1"></p>
-					<p><input type="checkbox" value="true" name="no_image" <?php if($image_check == 'false') { echo 'checked="checked"'; } else { echo ''; } ?>> No Background Image</p>
+					<input type="hidden" name="completed" value="true"></p>
+					<p><input type="checkbox" value="<?php echo get_option('wicketpixie_theme_no_image'); ?>" name="wicketpixie_theme_no_image" <?php if(get_option('wicketpixie_theme_no_image') == 'true') { echo 'checked="checked"'; } else { echo ''; } ?>> No Background Image</p>
 				</td>
 	    </tr>	
 	<?php
@@ -241,7 +238,7 @@ function wicketpixie_wp_head() { ?>
 	?>
 
 	<style type="text/css">
-		body { font-family: <?php echo $wicketpixie_theme_body_font; ?>; background: <?php echo $wicketpixie_theme_body_bg_color; ?> <?php if( get_option('wicketpixie_theme_body_bg_image') != 'false' ) { ?>url("<?php bloginfo('template_directory'); ?>/images/backgrounds/<?php echo $wicketpixie_theme_body_bg_image; ?>") <?php echo $wicketpixie_theme_body_bg_position; ?> <?php echo $wicketpixie_theme_body_bg_repeat; ?> 50% 0<?php } ?>; }
+		body { font-family: <?php echo $wicketpixie_theme_body_font; ?>; background: <?php echo $wicketpixie_theme_body_bg_color; ?> <?php if( get_option('wicketpixie_theme_no_image') != 'true' ) { ?>url("<?php bloginfo('template_directory'); ?>/images/backgrounds/<?php echo $wicketpixie_theme_body_bg_image; ?>") <?php echo $wicketpixie_theme_body_bg_position; ?> <?php echo $wicketpixie_theme_body_bg_repeat; ?> 50% 0<?php } ?>; }
 		#logo { font-family: <?php echo $wicketpixie_theme_headings_font; ?>; color: <?php echo $wicketpixie_theme_logo_color; ?>; }
 		#logo a:link, #logo a:visited, #logo a:active { color: <?php echo $wicketpixie_theme_logo_color; ?>; }
 		#logo a:hover { color: #fff; }

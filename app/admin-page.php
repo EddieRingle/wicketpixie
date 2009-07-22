@@ -37,6 +37,10 @@ class AdminPage
     {
     }
     
+    function save_hook()
+    {
+    }
+    
     function save()
     {
         foreach($this->arrays as $array) {
@@ -59,6 +63,9 @@ class AdminPage
                 }
             }
         }
+        
+        $this->save_hook();
+        
         wp_redirect($_SERVER['PHP_SELF'] .'?page='.$this->filename.'&saved=true');
     }
     
