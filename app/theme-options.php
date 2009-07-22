@@ -155,7 +155,7 @@ class ThemeOptions extends AdminPage
         parent::save();
     }
     
-    function extra_types_html($value)
+    function extra_types_html($value,$checkdata)
     {
         if( $value['type'] == 'file' ) { ?>
 	    <tr valign="top">
@@ -209,7 +209,7 @@ class ThemeOptions extends AdminPage
 	    </tr>	
 	<?php
 		} else {
-		    parent::extra_types_html($value);
+		    parent::extra_types_html($value,$checkdata);
 		}
     }
     
