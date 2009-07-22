@@ -8,7 +8,7 @@ Version: 1.1b1
 Author URI: http://chris.pirillo.com
 */
 
-class SourceAdmin {
+class SourceAdmin extends AdminPage {
 	
 	var $db_version= '1.0';
 	
@@ -72,15 +72,23 @@ class SourceAdmin {
 					}
 				}
 			
-			wp_add_option( 'wik_db_version', $db_version );
+			add_option('wicketpixie_sources_db_version', $db_version );
 			
 	}
 	
-	/**
-	* Just calling WP's method to add a new menu to the design section.
-	*/
-	function addMenu() {
-		add_submenu_page('wicketpixie-admin.php', __('WicketPixie Social Me'), __('Social Me Manager'), 9, basename(__FILE__), array( 'SourceAdmin', 'sourceMenu' ) );
+	function __construct()
+	{
+	    parent::__construct('Social Me Manager','sourcemanager.php','wicketpixie-admin.php',null);
+	}
+	
+	function page_output()
+	{
+	    $this->SourceMenu();
+	}
+	
+	function __destruct()
+	{
+	    parent::__destruct();
 	}
 	
 	/**
@@ -559,6 +567,7 @@ class SourceAdmin {
                     You can also include the list of these accounts in your sidebar - just be sure to enable the <a href="widgets.php">WicketPixie Social Me widget</a> first!</p>
 					<?php if( $sources->check() != 'false' && $sources->count() != '' ) { ?>
 					<form>
+					<?php wp_nonce_field('wicketpixie-settings'); ?>
 						<p style="margin-bottom:0;">Sort by: <select name="type" id="type">
 							<?php foreach( $sources->types() as $type ) { ?>
 								<option value="<?php echo $type->type_id; ?>"><?php echo $type->name; ?></option>
@@ -597,12 +606,14 @@ class SourceAdmin {
 					   	<td style="text-align:center;"><?php echo $streamed; ?></td>
 					   	<td>
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;gather=true&amp;id=<?php echo $source->id; ?>">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" value="Edit" />
 								<input type="hidden" name="action" value="gather" />
 							</form>
 							</td>
 							<td>
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;delete=true&amp;id=<?php echo $source->id; ?>">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" name="action" value="Delete" />
 								<input type="hidden" name="action" value="delete" />
 							</form>
@@ -610,6 +621,7 @@ class SourceAdmin {
                             <?php if ($isfeed == 1) { ?>
 							<td>
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;flush=true&amp;id=<?php echo $source->id; ?>">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" value="Flush" />
 								<input type="hidden" name="action" value="flush" />
 								<input type="hidden" name="flush_name" value="<?php echo $source->title; ?>" />
@@ -625,6 +637,7 @@ class SourceAdmin {
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
 						<?php $data= $sources->gather( $_REQUEST['id'] ); ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;edit=true" class="form-table" style="margin-bottom:30px;">
+						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Editing "<?php echo $data[0]->title; ?>"</h2>
 							<p><input type="text" name="title" id="title" value="<?php echo $data[0]->title; ?>" /></p>
 							<p><input type="text" name="profile" id="profile" value="<?php echo $data[0]->profile_url; ?>" /></p>
@@ -647,6 +660,7 @@ class SourceAdmin {
 					<?php } ?>
 					<?php if( $sources->check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;add=true" class="form-table" style="margin-bottom:30px;">
+						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add a New Social Me</h2>
 							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Social Me Title')value=''" onblur="if(this.value=='')value='Social Me Title';" value="Social Me Title" /></p>
 							<p><input type="text" name="profile" id="profile" onfocus="if(this.value=='Profile URL')value=''" onblur="if(this.value=='')value='Profile URL';" value="Profile URL" /></p>
@@ -666,6 +680,7 @@ class SourceAdmin {
 							</p>
 						</form>
 						<form name="hulk_smash" id="hulk_smash" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;hulk_smash=true">
+						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Delete the Social Mes Table</h2>
 							<p>Please note, this is undoable and will result in the loss of all the data you have stored to date. Only do this if you are having problems with your social mes and you have exhausted every other option.</p>
 							<p class="submit">
@@ -676,6 +691,7 @@ class SourceAdmin {
 						<?php } else { ?>
 							<p>Table not installed. You should go ahead and run the installer.</p>
 							<form name="install" id="install" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;install=true">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<p class="submit">
 									<input type="hidden" name="action" value="install" />
 									<input type="submit" value="Install Social Me" />

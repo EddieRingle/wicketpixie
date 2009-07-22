@@ -26,7 +26,7 @@ $falbum_options = null;
 // plugin menu
 function falbum_add_pages() {
 	if (function_exists('add_options_page')) {
-		add_submenu_page('wp_plugins.php', 'FAlbum', 'FAlbum', 8, basename(__FILE__), 'falbum_options_page');
+		add_submenu_page('wipi-plugins.php', 'FAlbum', 'FAlbum', 8, basename(__FILE__), 'falbum_options_page');
 	}
 }
 

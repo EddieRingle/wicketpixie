@@ -91,12 +91,12 @@ if( function_exists( 'register_sidebar_widget' ) ) {
 
 function wicketpixie_my_profiles()
 {
-	include( TEMPLATEPATH . '/widgets/my-profiles.php'); 
+	include( TEMPLATEPATH .'/widgets/my-profiles.php'); 
 }
 
 function wicketpixie_recent_posts()
 {	
-	include( TEMPLATEPATH . '/widgets/recent-posts.php'); 
+	include( TEMPLATEPATH .'/widgets/recent-posts.php'); 
 }
 
 function wicketpixie_social_buttons()
@@ -111,51 +111,39 @@ function wicketpixie_ustream_widget()
 
 function wicketpixie_ustream_widget_control()
 {
-    if(get_option($optpre.'sidebar_ustream_heading') != false) {
-        $heading = get_option($optpre.'sidebar_ustream_heading');
+    if(get_option('wicketpixie_sidebar_ustream_heading') != false) {
+        $heading = get_option('wicketpixie_sidebar_ustream_heading');
     }
-    if(get_option($optpre.'sidebar_ustreamchannel') != false) {
-        $channelname = get_option($optpre.'sidebar_ustreamchannel');
-    } elseif(get_option($optpre.'ustreamchannel') != false) {
-        $channelname = get_option($optpre.'ustreamchannel');
+    if(get_option('wicketpixie_sidebar_ustream_channel') != false) {
+        $channelname = get_option('wicketpixie_sidebar_ustream_channel');
+    } elseif(get_option('wicketpixie_ustream_channel') != false) {
+        $channelname = get_option('wicketpixie_ustream_channel');
     }
-    if(get_option($optpre.'sidebar_ustream_autoplay') != false) {
-        $autoplay = get_option($optpre.'sidebar_ustream_autoplay');
-    } elseif(get_option($optpre.'home_ustream_autoplay') != false) {
-        $autoplay = get_option($optpre.'home_ustream_autoplay');
+    if(get_option('wicketpixie_sidebar_ustream_autoplay') != false) {
+        $autoplay = get_option('wicketpixie_sidebar_ustream_autoplay');
+    } elseif(get_option('wicketpixie_home_ustream_autoplay') != false) {
+        $autoplay = get_option('wicketpixie_home_ustream_autoplay');
     }
-    if(get_option($optpre.'sidebar_ustream_height') != false) {
-        $height = get_option($optpre.'sidebar_ustream_height');
-    } elseif(get_option($optpre.'home_ustream_height') != false) {
-        $height = get_option($optpre.'home_ustream_height');
+    if(get_option('wicketpixie_sidebar_ustream_height') != false) {
+        $height = get_option('wicketpixie_sidebar_ustream_height');
+    } elseif(get_option('wicketpixie_home_ustream_height') != false) {
+        $height = get_option('wicketpixie_home_ustream_height');
     }
-    if(get_option($optpre.'sidebar_ustream_width') != false) {
-        $width = get_option($optpre.'sidebar_ustream_width');
-    } elseif(get_option($optpre.'home_ustream_width') != false) {
-        $width = get_option($optpre.'home_ustream_width');
+    if(get_option('wicketpixie_sidebar_ustream_width') != false) {
+        $width = get_option('wicketpixie_sidebar_ustream_width');
+    } elseif(get_option('wicketpixie_home_ustream_width') != false) {
+        $width = get_option('wicketpixie_home_ustream_width');
     }
     if($_POST['ustreamWidget-Submit']) {
-        if(!wp_add_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading'])) {
-            wp_update_option('sidebar_ustream_heading',$_POST['ustreamWidget-heading']);
-        }
-        if(!wp_add_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName'])) {
-            wp_update_option('sidebar_ustreamchannel',$_POST['ustreamWidget-ChannelName']);
-        }
+        update_option('wicketpixie_sidebar_ustream_heading',$_POST['ustreamWidget-heading']);
+        update_option('wicketpixie_sidebar_ustream_channel',$_POST['ustreamWidget-ChannelName']);
         if(isset($_POST['ustreamWidget-Autoplay'])) {
-            if(!wp_add_option('sidebar_ustream_autoplay','1')) {
-                wp_update_option('sidebar_ustream_autoplay','1');
-            }
+            update_option('wicketpixie_sidebar_ustream_autoplay','true');
         } else {
-            if(!wp_add_option('sidebar_ustream_autoplay','0')) {
-                wp_update_option('sidebar_ustream_autoplay','0');
-            }
+            update_option('wicketpixie_sidebar_ustream_autoplay','false');
         }
-        if(!wp_add_option('sidebar_ustream_height',$_POST['ustreamWidget-Height'])) {
-            wp_update_option('sidebar_ustream_height',$_POST['ustreamWidget-Height']);
-        }
-        if(!wp_add_option('sidebar_ustream_width',$_POST['ustreamWidget-Width'])) {
-            wp_update_option('sidebar_ustream_width',$_POST['ustreamWidget-Width']);
-        }
+        update_option('wicketpixie_sidebar_ustream_height',$_POST['ustreamWidget-Height']);
+        update_option('wicketpixie_sidebar_ustream_width',$_POST['ustreamWidget-Width']);
     }
     ?>
     <p>
@@ -168,439 +156,83 @@ function wicketpixie_ustream_widget_control()
     <label for="ustreamWidget-Width">Width: </label>
     <input size="5" type="text" id="ustreamWidget-Width" name="ustreamWidget-Width" value="<?php echo $width; ?>" />px (300 recommended)<br/>
     <label for="ustreamWidget-Autoplay">Autoplay: </label>
-    <input type="checkbox" id="ustreamWidget-Autoplay" name="ustreamWidget-Autoplay" <?php if ($autoplay === '1') { echo "checked='checked'"; } ?> />
+    <input type="checkbox" id="ustreamWidget-Autoplay" name="ustreamWidget-Autoplay" <?php if ($autoplay === 'true') { echo "checked='checked'"; } ?> />
     <input type="hidden" id="ustreamWidget-Submit" name="ustreamWidget-Submit" value="1" />    
     </p>
     <?php
 }
 
-$themename = "WicketPixie";
-$options = array (
-    
-	array(  
-		"name" => "Background Color",
-		"description" => "The color that fills the screen around the content area.",
-		"id" => "body_bg_color",
-		"std" => "#270b05",
-		"type" => "text"),
-		
-	array(  
-		"name" => "Background Image",
-		"description" => "Optional background image.",
-		"id" => "body_bg_image",
-		"std" => "solidwood-dark.jpg",
-		"type" => "file"),
-		
-	array(  
-		"name" => "Background Image Repeat",
-		"description" => "Specify how you would like the background image positioned.",		
-		"id" => "body_bg_repeat",
-		"std" => "repeat-x",
-		"type" => "select",
-		"options" => array("no-repeat", "repeat", "repeat-x", "repeat-y")),	
-		
-	array(  
-		"name" => "Background Image Position",
-		"description" => "Have the background scroll with the page, or stay in one place.",		
-		"id" => "body_bg_position",
-		"std" => "fixed",
-		"type" => "select",
-		"options" => array("fixed", "scroll")),
-
-	array(  
-		"name" => "Body Font Family",
-		"description" => "The main font used through-out the content areas.",
-		"id" => "body_font",
-		"std" => "Lucida Grande, Arial, Verdana, sans-serif",
-		"type" => "select",
-		"options" => array("Lucida Grande, Arial, Verdana, sans-serif", "Helvetica, Arial, Verdana, sans-serif", "Arial, Verdana, sans-serif", "Verdana, Arial sans-serif", "Georgia, Times New Roman, Times, serif", "Times New Roman, Georgia, Times, serif", "Times, Times New Roman, Georgia, serif")),
-
-	array(  
-		"name" => "Headings Font Family",
-		"description" => "The font used for post titles, section headings and the logo.",
-		"id" => "headings_font",
-		"std" => "Georgia, Times New Roman, Times, serif",
-		"type" => "select",
-		"options" => array("Georgia, Times New Roman, Times, serif", "Times New Roman, Georgia, Times, serif", "Times, Times New Roman, Georgia, serif", "Lucida Grande, Arial, Verdana, sans-serif", "Helvetica, Arial, Verdana, sans-serif", "Arial, Verdana, sans-serif", "Verdana, Arial sans-serif")),
-
-    array(  
-		"name" => "Header Font Size",
-		"description" => "The font size of the header logo, in px.",
-		"id" => "headersize",
-		"std" => "40",
-		"type" => "text"),
-
-	array(  
-		"name" => "Logo Text Color",
-		"description" => "The color of the logo text.",
-		"id" => "color_logo",
-		"std" => "#fff0a5",
-		"type" => "text"),
-		
-	array(  
-		"name" => "Status/Description Text Color",
-		"description" => "The color of the status update or description text in the header.",
-		"id" => "color_description",
-		"std" => "#9e6839",
-		"type" => "text"),
-		
-	array(  
-		"name" => "Titles/Content Headings Color",
-		"description" => "The color of post titles and headings in the content area.",
-		"id" => "color_titles",
-		"std" => "#b64926",
-		"type" => "text"),	
-		
-	array(  
-		"name" => "Sidebar Headings Color",
-		"description" => "The color of headings in the sidebar.",
-		"id" => "color_headings",
-		"std" => "#8e2800",
-		"type" => "text"),
-
-	array(  
-		"name" => "Content Links Color",
-		"description" => "The color of links in the content area (main column).",
-		"id" => "color_links_content",
-		"std" => "#8e2800",
-		"type" => "text"),
-
-	array(  
-		"name" => "Sidebar Links Color",
-		"description" => "The color of links in the sidebar.",
-		"id" => "color_links_sidebar",
-		"std" => "#333",
-		"type" => "text"),
-	array(
-	    "name" => "Max Image Width in Posts",
-	    "description" => "Set the maximum width (in pixels) of images in post contents.",
-	    "id" => "post_max_image_width",
-	    "std" => "340",
-	    "type" => "text")
-);
-
 function wicketpixie_add_admin_footer() {
 	echo "Thank you for using WicketPixie v".WIK_VERSION.", a free premium WordPress theme from <a href='http://chris.pirillo.com/'>Chris Pirillo</a>.<br/>";
 }
-function wicketpixie_add_admin() {
-    global $themename, $options;
-	if ( isset( $_GET['page'] ) && $_GET['page'] == basename(__FILE__) ) {
-        if ( 'save' == $_POST['action'] ) {
-            check_admin_referer('wicketpixie-settings');
-            foreach ( $options as $value ) {
-                if(!wp_add_option($value['id'],$_POST[$value['id']])) {
-                    wp_update_option($value['id'],$_POST[$value['id']]);
-                }
-			}
 
-            foreach ( $options as $value ) {
-				if( isset( $_POST[ $value['id'] ] ) ) {
-				    if(!wp_add_option($value['id'],$_POST[$value['id']])) {
-                        wp_update_option($value['id'],$_POST[$value['id']]);
-                    }
-				} else {
-				    if(get_option($optpre.$value['id'])) {
-					    wp_delete_option( $value['id'] );
-					}
-				}
-			}
-			
-			if( $_POST['no_image'] ) {
-			    if(!wp_add_option('body_bg_image','0')) {
-			        wp_update_option('body_bg_image','0');
-			    }
-			}
-			
-			if ( $_POST['completed'] == 1 && $_FILES['body_bg_image']['tmp_name'] != '' ) {
-				$new_name= $_FILES['body_bg_image']['name'];
-				$new_home= TEMPLATEPATH . '/images/backgrounds/' . $new_name;
-				if( move_uploaded_file( $_FILES['body_bg_image']['tmp_name'], $new_home ) ) {
-				    if(!wp_add_option('body_bg_image',$new_name)) {
-			            wp_update_option('body_bg_image',$new_name);
-			        }
-				} else {
-					error_log( 'No joy, no uploaded file' );
-				}
-			}
-			
-			if( $_POST['saved_images'] != '' ) {
-			    if(!wp_add_option('body_bg_image',$_POST['saved_images'])) {
-			        wp_update_option('body_bg_image',$_POST['saved_images']);
-			    }
-			}
-			
-			wp_redirect($_SERVER['PHP_SELF'] ."?page=functions.php&saved=true");
-			die;
-        } elseif( 'reset' == $_POST['action'] ) {
-			check_admin_referer('wicketpixie-settings');
-           	foreach( $options as $value ) {
-           	    if(get_option($optpre.$value['id'])) {
-                   	wp_delete_option( $value['id'] );
-                }
-			}
-			wp_redirect($_SERVER['PHP_SELF'] ."?page=functions.php&saved=true");
-			die;
-        }
-    }
+// The parent AdminPage class
+require_once(TEMPLATEPATH .'/app/admin-page.php');
 
-/*
-    add_theme_page($themename." Options", "WicketPixie Options", 'edit_themes', basename(__FILE__), 'wicketpixie_admin');
-*/
-    add_submenu_page('wicketpixie-admin.php','WicketPixie Theme Options','Theme Options','edit_themes',basename(__FILE__),'wicketpixie_admin');
-}
+// WicketPixie Admin page
+require_once( TEMPLATEPATH .'/app/wicketpixie-admin.php');
+$a = new WiPiAdmin();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
 
-function wicketpixie_admin() {
-    global $themename, $options;
+// WiPi Plugins page
+require_once( TEMPLATEPATH .'/app/wipi-plugins.php');
+$a = new WiPiPlugins();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+add_plugins();
+unset($a);
 
-	$uploaded= opendir( TEMPLATEPATH .'/images/backgrounds/' ); 
-	$images= array();
-		while ( $file= readdir( $uploaded ) ) { 
-			$pattern = "/[\"‘]?([^\"’]?.*(png|jpg|gif))[\"’]?/i";
-			if( preg_match($pattern, $file ) ) {
-				$images[]= $file;
-		}
-	}
+// Adsense Settings page
+require_once( TEMPLATEPATH .'/app/adsenseads.php');
+$a = new AdsenseAdmin();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
+register_activation_hook('/app/adsenseads.php',array('AdsenseAdmin','install'));
 
-    if ( isset( $_REQUEST['saved'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.__('Options saved.').'</strong></p></div>';
-    if ( isset( $_REQUEST['reset'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.__('Options reset.').'</strong></p></div>';
-    
-?>
-<div class="wrap">
-	
-	<div id="admin-options">
-	
-		<h2>Style Options</h2>
-        
-		<form method="post" style="padding:20px 0 10px;" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=functions.php&amp;saved=true">
-            <?php wp_nonce_field('wicketpixie-settings'); ?>
-			<table class="form-table">
+// Custom Code page
+require_once( TEMPLATEPATH .'/app/customcode.php');
+$a = new CustomCodeAdmin();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
 
-			<?php foreach ($options as $value) { 
-    
-			if ($value['type'] == "text") { ?>
-        
-			<tr valign="top"> 
-			    <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
-			    <td style="padding-bottom:10px;">
-			        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php if ( get_option($optpre.$value['id']) != false) { echo get_option($optpre.$value['id']); } else { echo $value['std']; } ?>" /><?php if ($value['id'] == 'headersize') { echo 'px'; } ?>
-			    </td>
-			</tr>
+// Faves Manager
+require_once( TEMPLATEPATH .'/app/faves.php');
+$a = new FavesAdmin();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
+register_activation_hook('/app/faves.php',array('FavesAdmin','install'));
 
-			<?php } elseif ($value['type'] == "select") { ?>
+// Home Editor
+require_once( TEMPLATEPATH .'/app/homeeditor.php');
+$a = new HomeAdmin();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
 
-			    <tr valign="top"> 
-			        <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
-			        <td style="padding-bottom:10px;">
-			            <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-			                <?php foreach ($value['options'] as $option) { ?>
-			                <option<?php
-								if ( $option == get_option($optpre.$value['id']) ) { 
-									echo ' selected="selected"'; 
-								} elseif($option == $value['std'] && !get_option($optpre.$value['id'])) {
-									echo ' selected="selected"';
-								} ?>
-							><?php echo $option; ?></option>
-			                <?php } ?>
-			            </select>
-			        </td>
-			    </tr>
+// Social Me Manager
+require_once( TEMPLATEPATH .'/app/sourcemanager.php' );
+$a = new SourceAdmin();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
+register_activation_hook('/app/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
 
-			<?php 
-				} elseif( $value['type'] == 'file' ) { ?>
-			    <tr valign="top">
-						<th scope="row" style="font-size:12px; text-align:left; padding-right:10px;">
-							<acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym>				
-						</th>
-		        <td style="padding-bottom:10px;">
-							<?php
-								$image_check= get_option($optpre.'body_bg_image');
-								if( isset( $image_check ) && $image_check != '' ) {
-									$image_check= get_option($optpre.'body_bg_image');
-								} else {
-									$image_check= 'false';
-								}
-								//var_dump( $image_check ); exit;
-							?>
-							<?php if( get_option($optpre.$value['id'] ) ) { ?>
-							<input type="hidden" name="<?php echo $value['id']; ?>" value="<?php echo get_option($optpre.$value['id'] ); ?>">				
-							<?php } ?>
-							<select name="saved_images" id="saved_images">
-								<option value="">Choose an image</option>
-								<?php foreach( $images as $image ) { ?>
-								<option value="<?php echo $image; ?>"><?php echo $image; ?></option>
-								<?php } ?>
-							</select>	Current:
-							<?php 
-								if( $image_check== 'false' ) { 
-									echo $value['std'];
-								} elseif( $image_check!= '0' ) {
-								?>
-								<a href="<?php echo TEMPLATEPATH .'/images/backgrounds/'. get_option($optpre.$value['id']); ?>" title="<?php echo get_option($optpre.$value['id']); ?>"><?php echo get_option($optpre.$value['id']); ?></a>
-								<?php
-								} else {
-									echo 'None'; 
-								} ?>
-							<p><input type="file" id="<?php echo $value['id']; ?>" name="<?php echo $value['id']; ?>">
-							<input type="hidden" name="MAX_FILE_SIZE" value="1500000">
-							<input type="hidden" name="completed" value="1"></p>
-							<p><input type="checkbox" value="1" name="no_image" <?php if( $image_check== '0' ) { echo 'checked'; } else { echo ''; } ?>> No Background Image</p>
-						</td>
-			    </tr>	
-			<?php
-				}
-			}
-			?>
-
-			</table>
-
-			<p class="submit">
-				<input name="save" type="submit" value="Save changes" class="button" />    
-				<input type="hidden" name="action" value="save" />
-			</p>
-
-		</form>
-
-		<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=functions.php&amp;reset=true" style="padding-bottom:40px;">
-            <?php wp_nonce_field('wicketpixie-settings'); ?>
-			<input name="reset" type="submit" value="Reset Style Options" class="button-secondary" />
-			<input type="hidden" name="action" value="reset" />
-		</form>
-        <br style="clear:both;" />
-	</div>
-	<?php include_once('app/advert.php'); ?>
-<?php
-}
-
-function wicketpixie_wp_head() { ?>
-	<?php
-	global $options;
-	foreach ( $options as $value ) {
-	    if ( get_option($optpre.$value['id']) === FALSE ) { 
-			$$value['id'] = $value['std']; 
-		} else { 
-			$$value['id'] = get_option($optpre.$value['id']); 
-		} 
-	}
-	
-	$image_check= get_option($optpre.'body_bg_image');
-	if( isset( $image_check ) && $image_check != '' ) {
-		$image_check= get_option($optpre.'body_bg_image');
-	} else {
-		$image_check= 'false';
-	}
-	
-	?>
-
-	<style type="text/css">
-		body { font-family: <?php echo $body_font; ?>; background: <?php echo $body_bg_color; ?> <?php if( get_option($optpre.'body_bg_image') != 'false' ) { ?>url("<?php bloginfo('template_directory'); ?>/images/backgrounds/<?php echo $body_bg_image; ?>") <?php echo $body_bg_position; ?> <?php echo $body_bg_repeat; ?> 50% 0<?php } ?>; }
-		#logo { font-family: <?php echo $headings_font; ?>; color: <?php echo $color_logo; ?>; }
-		#logo a:link, #logo a:visited, #logo a:active { color: <?php echo $color_logo; ?>; }
-		#logo a:hover { color: #fff; }
-		#description, #status p, #status a:link, #status a:active, #status a:visited { color: <?php echo $color_description; ?>; }
-		.content a:link, .content a:visited, .content a:active { color: <?php echo $color_links_content; ?>; }
-		.content a:hover { color: #000; border-bottom: 1px solid <?php echo $color_links_content; ?>; }
-		.content h1, .content h2, .content h3, .content h4, .content h5, .content h6 { color: <?php echo $color_titles; ?>; font-family: <?php echo $headings_font; ?>; font-weight: bold; }
-		.content h1 a:link, .content h1 a:visited, .content h1 a:active, .content h2 a:link, .content h2 a:visited, .content h2 a:active, .content h3 a:link, .content h3 a:visited, .content h3 a:active, .content h4 a:link, .content h4 a:visited, .content h4 a:active, .content h5 a:link, .content h5 a:visited, .content h5 a:active, .content h6 a:link, .content h6 a:visited, .content h6 a:active { color: <?php echo $color_titles; ?>; }
-		.content h1 a:hover, .content h2 a:hover, .content h3 a:hover, .content h4 a:hover, .content h5 a:hover, .content h6 a:hover { color: #000; }
-		#content .comment h3 a:link, #content .comment h3 a:active, #content .comment h3 a:visited { color: <?php echo $color_links_content; ?>; }
-		#content .comment h3 a:hover { color: #000; border-bottom: 1px solid <?php echo $color_links; ?>; }
-		#content .comment h5 { font-family: <?php echo $body_font; ?>; }
-        #content img { max-width: <?php echo $post_max_image_width; ?>; }
-		#comment-form input, #comment-form textarea { font-family: <?php echo $body_font; ?>; }
-		#sidebar a:link, #sidebar a:visited, #sidebar a:active { color: <?php echo $color_links_sidebar; ?>; }
-		#sidebar a:hover { color: #000; }
-		#sidebar h1, #sidebar h2, #sidebar h3, #sidebar h3 a:link, #sidebar h3 a:visited, #sidebar h3 a:active, #sidebar h4, #sidebar h5, #sidebar h6 { color: <?php echo $color_headings; ?>; font-family: <?php echo $headings_font; ?>; font-weight: bold; }
-		#sidebar h5 { font-family: <?php echo $body_font; ?>; }
-	</style>
-<?php }
-
-function wicketpixie_admin_head() {
-	$path= get_bloginfo('template_directory');
-	echo '<script type="text/javascript" src="' . $path . '/js/colorpicker.js"></script>';
-	echo '<link rel="stylesheet" href="' . $path . '/css/admin.css" type="text/css" media="screen, projection" />';
-?>
-    <script src="<?php echo get_bloginfo('template_directory'), '/contrib/iphone-style-checkboxes/iphone-style-checkboxes.js'; ?>" type="text/javascript" charset="utf-8"></script>
-    <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'), '/contrib/iphone-style-checkboxes/style.css'; ?>" type="text/css" media="screen" charset="utf-8">
-	<script type="text/javascript">
-		jQuery(function($) {
-            $("#color_logo").attachColorPicker();
-            $("#body_bg_color").attachColorPicker();
-            $("#color_description").attachColorPicker();
-            $("#color_titles").attachColorPicker();
-            $("#color_headings").attachColorPicker();
-            $("#color_links_content").attachColorPicker();
-            $("#color_links_sidebar").attachColorPicker();
-        });
-	</script>
-	<script>
-	jQuery(function($) {
-		$('#explaintext').click(function(){
-			$('#explain').toggle();
-			return false;
-		});
-		$(document).ready(function() {
-		    $('#admin-options :checkbox').iphoneStyle();
-		})
-	});
-	</script>
-	<style type="text/css">
-	#ColorPickerDiv 
-	{
-	    display: block;
-	    display: none;
-	    position: relative;
-	    border: 1px solid #777;
-	    background: #fff
-	}
-
-	#ColorPickerDiv TD.color
-	{
-		cursor: pointer;
-		font-size: xx-small;
-		font-family: 'Arial' , 'Microsoft Sans Serif';
-	}
-	#ColorPickerDiv TD.color label
-	{
-		cursor: pointer;
-	}
-
-	.ColorPickerDivSample
-	{
-		margin: 0 0 0 4px;
-		border: solid 1px #000;
-		padding: 0 10px;	
-		position: relative;
-		cursor: pointer;
-	}
-	
-	#explain
-	{
-		display:none;
-		background: #eee;
-		padding: 5px;
-	}
-	</style>
-<?php
-}
-
+// Theme Options
+require_once(TEMPLATEPATH .'/app/theme-options.php');
+$a = new ThemeOptions();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
 add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
 
-require( TEMPLATEPATH .'/wicketpixie-admin.php');
-add_action('admin_menu','wicketpixie_toplevel_admin');
+// WicketPixie Notifications page
+require_once( TEMPLATEPATH .'/app/notify.php');
+$a = new NotifyAdmin();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
+register_activation_hook('/app/notify.php',array('NotifyAdmin','install'));
 
-add_action('admin_menu', 'wicketpixie_add_admin');
-require( TEMPLATEPATH .'/wp_plugins.php');
+// Version number in admin footer
+add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
+// Status update bubble
+require_once( TEMPLATEPATH .'/app/update.php');
 
-require( TEMPLATEPATH .'/app/adsenseads.php');
-require( TEMPLATEPATH .'/app/customcode.php');
-require( TEMPLATEPATH .'/app/faves.php');
-require( TEMPLATEPATH .'/app/homeeditor.php');
-add_action('admin_menu', array('HomeAdmin','addMenu'));
-require( TEMPLATEPATH .'/app/notify.php');
-require( TEMPLATEPATH .'/app/sourcemanager.php' );
-add_action ('admin_menu', array( 'SourceAdmin', 'addMenu' ) );
-register_activation_hook('/app/sourcemanager.php', array( 'SourceAdmin', 'install' ) );
-add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
-require( TEMPLATEPATH .'/app/update.php');
 ?>

@@ -1,10 +1,11 @@
 <!-- social-buttons -->
 <?php
-    $blogfeed = get_option($optpre."blog_feed_url");
-    $podcastfeed = get_option($optpre."podcastfeed");
-    $twitter = get_option($optpre."twitterid");
-    $youtube = get_option($optpre."youtubeid");
+    $blogfeed = get_option('wicketpixie_blog_feed_url');
+    $podcastfeed = get_option('wicketpixie_podcast_feed_url');
+    $twitter = get_option('wicketpixie_twitter_id');
+    $youtube = get_option('wicketpixie_youtube_id');
     $wcount = 0;
+    $witem = array();
     if($blogfeed != false && $blogfeed != "") {
         $witem[$wcount] = "<a href='$blogfeed'><img src='".get_template_directory_uri()."/images/button-feed.png' style='float:left;padding:10px 10px 20px 14px;border:0px;' height='60' width='60' alt='Subscribe'/></a>\n";
         $wcount++;

@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= get_option($optpre.'auth_credit'); ?>
+<?php $wp_auth_credit= get_option('wicketpixie_show_post_author'); ?>
 			
 			<!-- content -->
 			<div id="content">
@@ -38,8 +38,8 @@
 					</div>
 
 					<div class="post-author">
-						<?php if( $wp_auth_credit == 1 ) { ?>
-						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
+						<?php if( $wp_auth_credit == 'true' ) { ?>
+						<?php echo get_avatar( get_the_author_email(), $size = '48', $default = 'images/avatar.jpg' ); ?>
 						<p><strong><?php the_time('l, F jS, Y') ?></strong><br/>
 							by <?php the_author_posts_link(); ?><?php edit_post_link('Edit', ' - ', ''); ?></p>
 						<?php } else { ?>
@@ -51,38 +51,19 @@
 					<div class="clearer"></div>
 					
 					<!-- post-ad -->
-					<?php
-					if(is_enabled_adsense() == true) {
-					?>
-					    <div id="post-ad">
-						    <?php $adsense->wp_adsense('blog_post_side'); ?>
-						    <div style="margin: 15px 0 0 5px">
+                        <div id="post-ad">
+                            <?php if(is_enabled_adsense() == true) { $adsense->wp_adsense('blog_post_side'); } ?>
+                            <div style="margin: 15px 0 0 5px">
 						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
-						        <?php if (get_option($optpre.'plug_related-posts')):?>
+						        <?php if (get_option('wicketpixie_plugin_related-posts') == 'true'):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
 						    </div>
-					    </div>
-					<?php
-					} else {
-					?>
-					    <div id="post-ad">
-					    <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
-					        <div style="margin: 15px 0 0 5px">
-						        <p style="margin: 0px auto;width: inherit;">
-						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-						        </p>
-						        <?php if (get_option($optpre.'plug_related-posts')):?>
-						        <?php wp_related_posts(5); ?>
-						        <?php endif;?>
-						    </div>
-					    </div>
-					<?php
-					}
-					?>
-					<!-- /post-ad -->
+                        </div>
+                    <!-- /post-ad -->
+                    
                     <div class="KonaBody">
 					<?php the_content(); ?>
 					</div>					
@@ -95,7 +76,7 @@
 				<!-- post-meta -->
 				<div class="post-meta">
 					
-					<?php if(get_option($optpre.'plug_related-posts') && function_exists(wp_related_posts)):?>
+					<?php if(get_option('wicketpixie_plugin_related-posts') == 'true' && function_exists(wp_related_posts)):?>
 					<!-- related-posts -->
 					<div id="related-posts">
 						<h3>You might also be interested in...</h3>

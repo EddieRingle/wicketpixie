@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= get_option($optpre.'auth_credit'); ?>
+<?php $wp_auth_credit= get_option('wicketpixie_show_post_author'); ?>
 
             <!-- content -->
             <div id="content">
@@ -39,8 +39,8 @@
                     </div>
 
                     <div class="post-author">
-                        <?php if( $wp_auth_credit == 1 ) { ?>
-                        <?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
+                        <?php if( $wp_auth_credit == 'true' ) { ?>
+                        <?php echo get_avatar( get_the_author_email(), $size = '48', $default = 'images/avatar.jpg' ); ?>
                         <p><strong><?php the_time('l, F jS') ?></strong><br/>
                             by <?php the_author_posts_link(); ?></p>
                         <?php } else { ?>
@@ -51,37 +51,17 @@
                     <div class="clearer"></div>
                     
                     <!-- post-ad -->
-                    <?php
-                    if(is_enabled_adsense() == true) {
-                    ?>
                         <div id="post-ad">
-                            <?php $adsense->wp_adsense('blog_post_side'); ?>
+                            <?php if(is_enabled_adsense() == true) { $adsense->wp_adsense('blog_post_side'); } ?>
                             <div style="margin: 15px 0 0 5px">
 						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
-						        <?php if (get_option($optpre.'plug_related-posts')):?>
+						        <?php if (get_option('wicketpixie_plugin_related-posts') == 'true'):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
 						    </div>
                         </div>
-                    <?php
-                    } else {
-                    ?>
-                        <div id="post-ad">
-                        <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
-                            <div style="margin: 15px 0 0 5px">
-						        <p style="margin: 0px auto;width: inherit;">
-						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-						        </p>
-						        <?php if (get_option($optpre.'plug_related-posts')):?>
-						        <?php wp_related_posts(5); ?>
-						        <?php endif;?>
-						    </div>
-                        </div>
-                    <?php
-                    }
-                    ?>
                     <!-- /post-ad -->
                     
                     <div class="KonaBody">
@@ -95,14 +75,14 @@
                 <!-- post-meta -->
                 <div class="post-meta">
                     
-                    <?php if(get_option($optpre.'plug_related-posts') && function_exists(wp_related_posts)):?>
+                    <?php if(get_option('wicketpixie_plugin_related-posts') == 'true' && function_exists(wp_related_posts)):?>
                     <!-- related-posts -->
                     <div id="related-posts">
                         <h3>You might also be interested in...</h3>
                          <?php wp_related_posts(5); ?>
                     </div>
                     <!-- /related-posts -->
-                    <?php endif;?>
+                    <?php endif; ?>
                     
                     <!-- post-meta-right -->
                     <div class="post-meta-right">
@@ -146,8 +126,8 @@
                 
                 <!-- Custom Code Area -->
                 <?php
-                if(get_option($optpre.'home_custom') != false && get_option($optpre.'home_custom') != "") {
-                    echo stripslashes(get_option($optpre.'home_custom'));
+                if(get_option('wicketpixie_home_custom_code') != false && get_option('wicketpixie_home_custom_code') != '') {
+                    echo stripslashes(get_option('wicketpixie_home_custom_code'));
                 }
                 ?>
                 <!-- /Custom Code Area -->
@@ -156,14 +136,14 @@
                 <?php endif; ?>
                 
                 <?php
-                if(get_option($optpre.'home_video') != "0") { ?>
+                if(get_option('wicketpixie_home_video_enable') == 'true') { ?>
                 <div id="home-categories">
                 <?php
-                    if(get_option($optpre.'home_show_vid_heading') != "0") {
+                    if(get_option('wicketpixie_home_show_video_heading') == 'true') {
                         echo "<h2>My Videos</h2>";
                     }
-                    if(get_option($optpre.'home_video_code') != false && get_option($optpre.'home_video_code') != "") {
-                                echo stripslashes(get_option($optpre.'home_video_code'));
+                    if(get_option('wicketpixie_home_video_code') != false && get_option('wicketpixie_home_video_code') != '') {
+                                echo stripslashes(get_option('wicketpixie_home_video_code'));
                     } else {
                     ?>
                     <!--[if !IE]> -->
@@ -184,16 +164,16 @@
                 <?php } ?>
                 
                 <?php
-                if(get_option($optpre.'home_flickr') != "0") { ?>
+                if(get_option('wicketpixie_home_flickr_enable') == 'true') { ?>
                 <!-- home-photos -->
                 <div id="home-photos">
                 <?php
-                if(get_option($optpre.'flickrid') != false && get_option($optpre'flickrid') != "") {
-                    $flickrid = get_option($optpre.'flickrid');
+                if(get_option('wicketpixie_flickr_id') != false && get_option('wicketpixie_flickr_id') != 'false') {
+                    $flickrid = get_option('wicketpixie_flickr_id');
                 } else {
                     $flickrid = '49503157467@N01';
                 }
-                if(get_option($optpre.'home_show_photo_heading') != "0") {
+                if(get_option('wicketpixie_home_show_photo_heading') == 'true') {
                     echo "<h2>Recent Photos</h2>";
                 }
                 ?>
@@ -204,17 +184,7 @@
                 <div class="clearer"></div>
                 <?php
                 }
-                ?>
-                
-                <!-- home-tags
-                <div id="home-tags">                    
-                    <h2>Popular Tags</h2>
-                    <ul>
-                        <?php wp_tag_cloud('orderby=count&order=DESC&unit=px&smallest=11&largest=11&format=list'); ?>
-                    </ul>
-                    <div class="clearer"></div>                    
-                </div>
-                /home-tags -->                
+                ?>             
 
             </div>
             <!-- content -->
@@ -222,20 +192,23 @@
             <!-- sidebar -->
             <div id="sidebar">
                 <?php
-                if(get_option($optpre.'home_sidebar_buttons') != "0") {
+                if(get_option('wicketpixie_home_social_buttons_enable') == 'true') {
                     include TEMPLATEPATH .'/widgets/sidebar-buttons.php';
                 }
                 ?>
                 <!-- width = 340, height = 240 -->
-                <?php if (get_option($optpre.'home_ustream')):?>
+                <?php if (get_option('wicketpixie_home_ustream_enable') == 'true'):?>
                 <div id="home-youtube">
-                    <?php echo "<h3>".get_option($optpre.'home_ustream_heading')."</h3>"; ?>
+                    <?php echo "<h3>".get_option('wicketpixie_home_ustream_heading')."</h3>"; ?>
                     <?php $key = "uzhqbxc7pqzqyvqze84swcer"; ?>
                     <?php
-                        if (get_option($optpre.'ustreamchannel') != false && get_option($optpre.'ustreamchannel') != "") { $chan = get_option($optpre.'ustreamchannel'); } else { $trip = true; }
-                        if (get_option($optpre.'home_ustream_height') != false && get_option($optpre.'home_ustream_height') != "") { $height = get_option($optpre.'home_ustream_height'); } else { $trip = true; }
-                        if (get_option($optpre.'home_ustream_width') != false && get_option($optpre.'home_ustream_width') != "") { $width = get_option($optpre.'home_ustream_width'); } else { $trip = true; }
-                        if (get_option($optpre.'home_ustream_autoplay') == "1") { $autoplay = true; } else { $autoplay = false; }
+                        $ustream_channel = get_option('wicketpixie_ustream_channel');
+                        if ($ustream_channel != false && $ustream_channel != "") { $chan = $ustream_channel; } else { $trip = true; }
+                        $ustream_height = get_option('wicketpixie_home_ustream_height');
+                        if ($ustream_height != false && $ustream_height != "") { $height = $ustream_height; } else { $trip = true; }
+                        $ustream_width = get_option('wicketpixie_home_ustream_width');
+                        if ($ustream_width != false && $ustream_width != "") { $width = $ustream_width; } else { $trip = true; }
+                        if (get_option($optpre.'home_ustream_autoplay') == 'true') { $autoplay = true; } else { $autoplay = false; }
                         if ($trip == true) {
                             $out = "<!-- Please go back to the Home Editor and set the settings for this widget. -->";
                         } else {

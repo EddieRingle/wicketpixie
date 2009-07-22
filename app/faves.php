@@ -1,7 +1,21 @@
 <?php
-class FavesAdmin
+class FavesAdmin extends AdminPage
 {
 	
+	function __construct()
+	{
+	    parent::__construct('Faves Manager','faves.php','wicketpixie-admin.php',null);
+	}
+	
+	function page_output()
+	{
+	    $this->favesMenu();
+	}
+	
+	function __destruct()
+	{
+	    parent::__destruct();
+	}
 	/**
 	* Here we install the tables and initial data needed to
 	* power our special functions
@@ -22,35 +36,15 @@ class FavesAdmin
 				UNIQUE KEY id (id)
 			);";
 		}
-			if( $q != '' ) {
-				dbDelta( $q );
-			}
-			
-			$dfaves= array(
-						array('title' => 'Chris Pirillo', 
-									'feed_url' => 'http://feeds.pirillo.com/ChrisPirillo', 
-									'sortorder' => '1'),
-						array('title' => 'Lockergnome.com', 
-									'feed_url' => 'http://feed.lockergnome.com/nexus/all', 
-									'sortorder' => '2'),
-						array('title' => 'Lockergnome Coupons', 
-									'feed_url' => 'http://feeds.feedburner.com/NewCoupons', 
-									'sortorder' => '3'),				
-					);
-
-				foreach( $dfaves as $fave ) {
-					if( !$wpdb->get_var( "SELECT id FROM $table WHERE feed_url = '" . $fave['feed_url'] . "'" ) ) {
-					$i= "INSERT INTO " . $table . " (id,title,feed_url,sortorder) VALUES('', '" . $fave['title'] . "','" . $fave['feed_url'] . "', '" . $fave['sortorder'] . "')";
-					$query= $wpdb->query( $i );
-					}
-				}
-			
+		if( $q != '' ) {
+			dbDelta( $q );
+		}
 	}
 	
 	 function check() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
-		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
+		if( $wpdb->get_var( "SHOW TABLES LIKE '$table'" ) == $table ) {
 			return TRUE;
 		} else {
 			return FALSE;
@@ -69,17 +63,19 @@ class FavesAdmin
 		
 		$args= $_REQUEST;		
 		$table= $wpdb->prefix . 'wik_faves';
-		if( $args['title'] != 'Fave Title' ) {
-		if( !$wpdb->get_var( "SELECT id FROM $table WHERE feed_url = '" . $args['url'] . "'" ) ) {
-			$id= $wpdb->get_var( "SELECT sortorder FROM $table ORDER BY sortorder DESC LIMIT 1" );
-			$new_id= ( $id + 1 );
+		if( $args['title'] != 'Fave Title' && $args['url'] != 'Fave Feed URL' ) {
+		    if( $wpdb->get_var( "SELECT id FROM $table WHERE feed_url = '{$args['url']}'" ) == NULL ) {
+			    $id= $wpdb->get_var( "SELECT sortorder FROM $table ORDER BY sortorder DESC LIMIT 1" );
+			    $new_id= ( $id + 1 );
 			
-			$i= "INSERT INTO " . $table . " (id,title,feed_url,sortorder) VALUES('', '" 
-				. $args['title'] . "','" 
-				. $args['url'] . "',"
-				. $new_id . ")";
-			$query= $wpdb->query( $i );
-		}
+			    $i= "INSERT INTO " . $table . " (id,title,feed_url,sortorder) VALUES('', '" 
+				    . $args['title'] . "','" 
+				    . $args['url'] . "',"
+				    . $new_id . ")";
+			    $query= $wpdb->query( $i );
+		    } else {
+		        echo($wpdb->get_var("SELECT id FROM $table WHERE feed_url = '{$args['url']}'"));
+		    }
 		}
 	}
 	
@@ -157,10 +153,6 @@ class FavesAdmin
 		}
 	}
 	
-	 function addFavesMenu() {
-		add_submenu_page( 'wicketpixie-admin.php', __('WicketPixie Faves'), __('Faves Manager'), 9, basename(__FILE__), array( 'FavesAdmin', 'favesMenu' ) );
-	}
-	
 	/**
 	* The admin menu for our faves system
 	*/
@@ -169,14 +161,12 @@ class FavesAdmin
 		if ( $_GET['page'] == basename(__FILE__) ) {
 	        if ( 'add' == $_REQUEST['action'] ) {
 				$faves->add( $_REQUEST );
-			}
-			
-		    if ( 'edit' == $_REQUEST['action'] ) {
+			} elseif ( 'edit' == $_REQUEST['action'] ) {
 				$faves->edit( $_REQUEST );
-			}
-			
-			if ( 'delete' == $_REQUEST['action'] ) {
+			} elseif ( 'delete' == $_REQUEST['action'] ) {
 				$faves->burninate( $_REQUEST['id'] );
+			} elseif('install' == $_REQUEST['action']) {
+			    $faves->install();
 			}
 		}
 		?>
@@ -184,10 +174,9 @@ class FavesAdmin
 		<div id="message" class="updated fade"><p><strong><?php echo __('Fave saved.'); ?></strong></p></div>
 		<?php } ?>
 			<div class="wrap">
-			
 				<div id="admin-options">
 					<h2><?php _e('Manage My Faves'); ?></h2>
-					<?php if( $faves->check() != 'false' && $faves->count() != '' ) { ?>
+					<?php if( $faves->check() == true && $faves->count() != '' ) { ?>
 					<table class="form-table" style="margin-bottom:30px;">
 						<tr>
 							<th>Title</th>
@@ -202,12 +191,14 @@ class FavesAdmin
 						   	<td style="text-align:center;"><a href="<?php echo $fave->feed_url; ?>" title="<?php echo $fave->feed_url; ?>"><img src="<?php bloginfo('template_directory'); ?>/images/icon-feed.gif" alt="View"/></a></td>
 						   	<td style="text-align:center;">
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;gather=true&amp;id=<?php echo $fave->id; ?>">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" value="Edit" />
 								<input type="hidden" name="action" value="gather" />
 							</form>
 							</td>
 							<td style="text-align:center;">
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;delete=true&amp;id=<?php echo $fave->id; ?>">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" name="action" value="Delete" />
 								<input type="hidden" name="action" value="delete" />
 							</form>
@@ -221,6 +212,7 @@ class FavesAdmin
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
 						<?php $data= $faves->gather( $_REQUEST['id'] ); ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;edit=true">
+						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Editing "<?php echo $data[0]->title; ?>"</h2>
 							<p><input type="text" name="title" id="title" value="<?php echo $data[0]->title; ?>" /></p>
 							<p><input type="text" name="url" id="url" value="<?php echo $data[0]->feed_url; ?>" /></p>
@@ -231,8 +223,9 @@ class FavesAdmin
 							</p>
 						</form>
                     <?php } ?>
-					<?php if( $faves->check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
+					<?php if( $faves->check() == true && !isset( $_REQUEST['gather'] ) ) { ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;add=true" class="form-table">
+                        <?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add a New Fave</h2>
 							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Fave Title')value=''" onblur="if(this.value=='')value='Fave Title';" value="Fave Title" /></p>
 							<p><input type="text" name="url" id="url" onfocus="if(this.value=='Fave Feed URL')value=''" onblur="if(this.value=='')value='Fave Feed URL';" value="Fave Feed URL" /></p>
@@ -241,12 +234,19 @@ class FavesAdmin
 								<input type="hidden" name="action" value="add" />
 							</p>
 						</form>
+					<?php } else { ?>
+					<h2>Install the Faves table</h2>
+					<p>Before you can add Faves, you must install the table first:</p>
+				    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>&amp;install=true">
+				        <p class="submit">
+							<input name="save" type="submit" value="Install Faves" />
+							<input type="hidden" name="action" value="install" />
+						</p>
+					</form>
 					<?php } ?>
 				</div>
 				<?php include_once('advert.php'); ?>
 <?php
 	}
 }
-add_action ('admin_menu', array( 'FavesAdmin', 'addFavesMenu' ) );
-FavesAdmin::install();
 ?>

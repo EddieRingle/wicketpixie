@@ -10,253 +10,128 @@ $homeoptions = array(
     array(
     "name" => "Flickr Widget",
     "description" => "Display the Flickr widget on the home page.",
-    "id" => "home_flickr",
-    "std" => 1,
-    "status" => "checked",
+    "id" => 'wicketpixie_home_flickr_enable',
+    "std" => 'false',
     "type" => "checkbox"),
     array(
     "name" => "Video Embed",
     "description" => "Enable the Video Embed Code entered below.",
-    "id" => "home_video",
-    "std" => 1,
-    "status" => "checked",
+    "id" => 'wicketpixie_home_video_enable',
+    "std" => 'false',
     "type" => "checkbox"),
     array(
-    "name" => "Video Embed Code",
+    "name" => "Video Object Code",
     "description" => "Enter code for a video object. For example, a YouTube custom player.",
-    "id" => "home_video_code",
-    "std" => "No video embed code yet...",
+    "id" => 'wicketpixie_home_video_code',
+    "std" => "<!-- Add video object code in the WicketPixie Home Editor -->",
     "type" => "textarea"),
     array(
     "name" => "Show 'My Videos' heading",
     "description" => "Show the 'My Videos' heading above the video embed.",
-    "id" => "home_show_vid_heading",
-    "std" => 1,
-    "status" => "checked",
+    "id" => 'wicketpixie_home_show_video_heading',
+    "std" => 'false',
     "type" => "checkbox"),
     array(
     "name" => "Show 'Recent Photos' heading",
     "description" => "Show the 'Recent Photos' heading above the video embed.",
-    "id" => "home_show_photo_heading",
-    "std" => 1,
-    "status" => "checked",
+    "id" => 'wicketpixie_home_show_photo_heading',
+    "std" => 'false',
     "type" => "checkbox"),
     array(
     "name" => "Enable Social Buttons Widget",
     "description" => "Show the Social Buttons Widget in the homepage sidebar.",
-    "id" => "home_sidebar_buttons",
-    "std" => 1,
-    "status" => "checked",
+    "id" => 'wicketpixie_home_social_buttons_enable',
+    "std" => 'false',
     "type" => "checkbox"),
     array(
     "name" => "Ustream Widget",
     "description" => "Check to enable the Ustream embed on the homepage sidebar.",
-    "id" => "home_ustream",
-    "std" => 1,
-    "status" => "checked",
+    "id" => 'wicketpixie_home_ustream_enable',
+    "std" => 'false',
     "type" => "checkbox"),
     array(
     "name" => "Autoplay Ustream",
     "description" => "Check if you want the Ustream object to automatically play on page load.",
-    "id" => "home_ustream_autoplay",
-    "std" => 1,
-    "status" => "checked",
+    "id" => 'wicketpixie_home_ustream_autoplay',
+    "std" => 'false',
     "type" => "checkbox"),
     array(
     "name" => "Ustream Object Heading",
     "description" => "The heading that will appear above the Ustream Object.",
-    "id" => "home_ustream_heading",
+    "id" => 'wicketpixie_home_ustream_heading',
     "std" => "Live Video",
     "type" => "textbox"),
     array(
     "name" => "Ustream Object Height",
-    "description" => "Enter code for a video object. For example, a YouTube custom player.",
-    "id" => "home_ustream_height",
+    "description" => "Enter height of the Ustream object in pixels. 293px is recommended.",
+    "id" => 'wicketpixie_home_ustream_height',
     "std" => "293",
     "type" => "textbox"),
     array(
     "name" => "Ustream Object Width",
-    "description" => "Enter code for a video object. For example, a YouTube custom player.",
-    "id" => "home_ustream_width",
+    "description" => "Enter width of the Ustream object in pixels. 340px is recommended.",
+    "id" => 'wicketpixie_home_ustream_width',
     "std" => "340",
     "type" => "textbox"),
     array(
     "name" => "Custom Code",
     "description" => "Content that is displayed after the post meta data but before the Flickr Widget, Embedded Video, etc.",
-    "id" => "home_custom",
+    "id" => 'wicketpixie_home_custom_code',
     "std" => "<!-- No custom code yet... -->",
     "type" => "textarea")
 );
-class HomeAdmin {
 
-	/**
-	* Just calling WP's method to add a new menu to the design section.
-	*/
-	function addMenu()
-	{
-	    global $homeoptions;
-        if ( 'save' == $_POST['action'] ) {
-            foreach ( $homeoptions as $value ) {
-	            if(!wp_add_option($value['id'],$_POST[$value['id']])) {
-                    wp_update_option($value['id'],$_POST[$value['id']]);
-                }
-			}
-            foreach ( $homeoptions as $value ) { 
-                if( $value['type'] == 'checkbox' ) {
-                    if(isset($_POST[$value['id']])) {
-                        if(!wp_add_option($value['id'],'1')) {
-                            wp_update_option($value['id'],'1');
-                        }
-                    } else {
-                        if(!wp_add_option($value['id'],'0')) {
-                            wp_update_option($value['id'],'0');
-                        }
-                    }	
-                } elseif( $value['type'] != 'checkbox' ) {
-                    if(!wp_add_option($value['id'],$_POST[$value['id']])) {
-                        wp_update_option($value['id'],$_POST[$value['id']]);
-                    }
-                } else {
-                    if(!wp_add_option($value['id'],$_POST[$value['id']])) {
-                        wp_update_option($value['id'],$_POST[$value['id']]);
-                    }
-                }
-            }
-            wp_redirect($_SERVER['PHP_SELF'] ."?page=homeeditor.php&saved=true");
-            die;
-	    }
-		add_submenu_page('wicketpixie-admin.php', __('WicketPixie Home Editor'), __('Home Editor'), 9, basename(__FILE__), array( 'HomeAdmin', 'homeMenu' ) );
-	}
+class HomeAdmin extends AdminPage {
 
-	/**
-	* The admin page for our home editor.
-	**/
-    function homeMenu()
+    function __construct()
     {
-        global $homeoptions;
-
+        parent::__construct('Home Editor','homeeditor.php','wicketpixie-admin.php',array($GLOBALS['homeoptions']));
+    }
+    
+    function request_check()
+    {
+        parent::request_check();
         require_once(TEMPLATEPATH .'/app/customcode.php');
-        if (isset($_POST['ccode'])) {
+        if (isset($_POST['save-custom-code'])) {
             writeto($_POST['code'],'homesidebar.php');
-        } elseif (isset($_POST['clearcc'])) {
+        } elseif (isset($_POST['clear-custom-code'])) {
             unlink(CUSTOMPATH .'/homesidebar.php');
         }
-        
-        if ( isset( $_REQUEST['saved'] ) ) echo '<div id="message" class="updated fade"><p><strong>'.__('Options saved.').'</strong></p></div>';
-    ?>
-    <div class="wrap">
-	
-	    <div id="admin-options">
-	
-		    <h2>Home Editor</h2>
-            
-		    <form method="post" style="padding:20px 0 10px;" enctype="multipart/form-data" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=homeeditor.php&amp;saved=true">
-			    <table class="form-table">
-
-			    <?php foreach ($homeoptions as $value) {
-        
-			    if ($value['type'] == "textarea") {
-                    if ($value['id'] == "home_video" || $value['id'] == "home_custom") {
-                        if (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') {
-                            $content = stripslashes(wp_get_option($value['id']));
-                        } else {
-                            $content = $value['std'];
-                        }
-                    } else {
-                        if (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') {
-                            $content = wp_get_option($value['id']);
-                        } else {
-                            $value['std'];
-                        }
-                    }
-                ?>
-			    <tr valign="top"> 
-			        <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
-			        <td style="padding-bottom:10px;">
-			            <textarea name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php stripslashes($content); ?>"><?php echo stripslashes($content); ?></textarea>
-			        </td>
-			    </tr>
-
-			    <?php } elseif ($value['type'] == "select") { ?>
-
-			        <tr valign="top"> 
-			            <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
-			            <td style="padding-bottom:10px;">
-			                <select name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>">
-			                    <?php foreach ($value['options'] as $option) { ?>
-			                    <option<?php
-								    if ( $option == wp_get_option( $value['id'] ) ) { 
-									    echo ' selected="selected"'; 
-								    } elseif( $option == $value['std'] && !wp_get_option( $value['id'] ) ) {
-									    echo ' selected="selected"';
-								    } ?>
-							    ><?php echo $option; ?></option>
-			                    <?php } ?>
-			                </select>
-			            </td>
-			        </tr>
-
-			    <?php 
-				    } elseif( $value['type'] == 'checkbox' ) { ?>
-				    <tr valign="top">
-				        <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
-			            <td style="padding-right:10px;">
-					        <?php
-						        if (wp_get_option($value['id']) != false) {
-							        $checked = wp_get_option($value['id']);
-						        } else { 
-							        $checked = $value['std']; 
-						        }
-					        ?>
-					        <input name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" type="<?php echo $value['type']; ?>" value="<?php echo $value['id']; ?>" <?php if($checked === '1') { echo "checked='checked'"; } ?> />
-					</tr>
-			    <?php
-				    } elseif( $value['type'] == 'textbox' ) { ?>
-				    <tr valign="top"> 
-			        <th scope="row" style="font-size:12px; text-align:left; padding-right:10px;"><acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym></th>
-			        <td style="padding-bottom:10px;">
-			            <input type="<?php echo $value['type']; ?>" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="<?php if ( wp_get_option( $value['id'] ) != false && wp_get_option($value['id']) != '') { echo wp_get_option( $value['id'] ); } else { echo $value['std']; } ?>"><?php (wp_get_option($value['id']) != false && wp_get_option($value['id']) != '') ? wp_get_option($value['id']) : $value['std']; ?></input>
-			        </td>
-			    </tr>
-			    <?php
-				    }
-			    }
-			    ?>
-
-			    </table>
-
-			    <p class="submit">
-				    <input name="save" type="submit" value="Save changes" class="button" />    
-				    <input type="hidden" name="action" value="save" />
-			    </p>
-
-		    </form>
-		    <?php
-		    require_once(TEMPLATEPATH .'/app/customcode.php');
-		    ?>
-		    <h3>Custom Sidebar Code</h3>
-                <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the after the Recent Posts section of the homepage sidebar.</p>
-                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=homeeditor.php&amp;ccode=true" class="form-table">
-                    <h4>Edit Custom Sidebar code</h4>
-                    <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("homesidebar.php",true); ?></textarea></p>
-                    <p class="submit">
-                        <input name="save" type="submit" value="Save Custom Sidebar code" /> 
-                        <input type="hidden" name="ccode" value="true" />
-                        <input type="hidden" name="file" value="homesidebar" />
-                    </p>
-                </form>
-                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=homeeditor.php&amp;clearcc=true" class="form-table">
-                    <h4>Clear Custom Sidebar code</h4>
-                    <p>WARNING: This will delete all custom code you have entered to appear after the Recent Posts section of the homepage sidebar, if you want to continue, click 'Clear Custom Sidebar code'</p>
-                    <p class="submit">
-                        <input name="clear" type="submit" value="Clear Custom Sidebar code" />
-                        <input type="hidden" name="clearcc" value="true" />
-                        <input type="hidden" name="file" value="homesidebar" />
-                    </p>
-                </form>
-	    </div>
-	    <?php include_once('advert.php'); ?>
-    <?php
+    }
+    
+    function after_form()
+    {
+		require_once(TEMPLATEPATH .'/app/customcode.php');
+	    ?>
+	    <h3>Custom Sidebar Code</h3>
+        <p>Enter HTML markup, PHP code, or JavaScript that you would like to appear between the after the Recent Posts section of the homepage sidebar.</p>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>" class="form-table">
+        <?php wp_nonce_field('wicketpixie-settings'); ?>
+            <h4>Edit Custom Sidebar code</h4>
+            <p><textarea name="code" id="code" style="border: 1px solid #999999;" cols="80" rows="25" /><?php echo fetchcustomcode("homesidebar.php",true); ?></textarea></p>
+            <p class="submit">
+                <input name="save" type="submit" value="Save Custom Sidebar code" /> 
+                <input type="hidden" name="save-custom-code" value="true" />
+                <input type="hidden" name="file" value="homesidebar" />
+            </p>
+        </form>
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>" class="form-table">
+        <?php wp_nonce_field('wicketpixie-settings'); ?>
+            <h4>Clear Custom Sidebar code</h4>
+            <p>WARNING: This will delete all custom code you have entered to appear after the Recent Posts section of the homepage sidebar, if you want to continue, click 'Clear Custom Sidebar code'</p>
+            <p class="submit">
+                <input name="clear" type="submit" value="Clear Custom Sidebar code" />
+                <input type="hidden" name="clear-custom-code" value="true" />
+                <input type="hidden" name="file" value="homesidebar" />
+            </p>
+        </form>
+        <?php
+    }
+    
+    function __destruct()
+    {
+        parent::__destruct();
+        unset($GLOBALS['homeoptions']);
     }
 }
 ?>

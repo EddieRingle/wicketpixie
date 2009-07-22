@@ -38,7 +38,9 @@ if ( is_user_logged_in() ) {
 							if( $feed->data ) {
 						?>
 						<div class="faves-feed<?php echo $class; ?>">
-							<h3><img src="http://www.google.com/s2/favicons?domain=<?php ltrim('http://', $fave->url); ?>" alt="<?php echo $fave->title; ?>" /><?php echo $fave->title; ?></h3>
+						    <?php $domain = explode($fave->feed_url,'/');
+						    $domain = $domain[2]; ?>
+							<h3><img src="http://www.google.com/s2/favicons?domain=<?php echo $domain; ?>" alt="<?php echo $fave->title; ?>" /><?php echo $fave->title; ?></h3>
 							<?php if ( is_user_logged_in() ) { ?>
 							<form name"re-order-<?php echo $fave->id; ?>" method="post" action="<?php the_permalink(); ?>?sort=true&amp;id=<?php echo $fave->id; ?>">
 							<input type="hidden" name="action" value="sort">

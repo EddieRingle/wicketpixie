@@ -75,7 +75,7 @@
 			
 				<?php endwhile; ?>
 				<!-- Page Navigation -->
-                <?php if (get_option($optpre.'plug_pagenavi')):?>
+                <?php if (get_option($optpre.'plug_pagenavi') == 'true'):?>
                 <div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>
 				
                 <?php else: ?>

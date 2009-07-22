@@ -1,12 +1,13 @@
 <?php
 // Blog feed URL
-if(get_option($optpre.'blog_feed_url') != false) {
-    $blogfeed = get_option($optpre.'blog_feed_url');
+if(get_option('wicketpixie_blog_feed_url') != false) {
+    $blogfeed = get_option('wicketpixie_blog_feed_url');
 } else {
     $blogfeed = get_bloginfo_rss('rss2_url');
 }
 $status= new SourceUpdate;
 $sources= new SourceAdmin;
+global $optpre;
 global $adsense;
 $adsense = new AdsenseAdmin;
 ?>
@@ -16,6 +17,7 @@ $adsense = new AdsenseAdmin;
 
 <head profile="http://gmpg.org/xfn/11">
     <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+    <!-- Debug: <?php echo $optpre; ?> -->
     
     <title><?php if (is_home()) { ?><?php bloginfo('name'); ?><?php } else { ?><?php wp_title('',true,''); ?> &raquo; <?php bloginfo('name'); ?><?php } ?></title>
 
@@ -31,7 +33,7 @@ $adsense = new AdsenseAdmin;
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="shortcut icon" type="image/ico" href="<?php bloginfo('home'); ?>/favicon.ico" />	
 
-    <?php if(get_option($optpre.'enable_ajaxloader') != '0') { ?>
+    <?php if(get_option('wicketpixie_enable_ajax_loader') == 'true') { ?>
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/loader.css?<?php echo time(); ?>" type="text/css" media="all" />
     <?php } ?>
     <style type="text/css">
@@ -93,14 +95,11 @@ $adsense = new AdsenseAdmin;
     $metadesc = strip_tags($metadesc);
     ?>
     <meta name="description" content="<?php echo $metadesc; ?>" />
-    <?php
-        flush();
-    ?>
 </head>
 
 <body>
     <?php
-    if(get_option($optpre.'enable_ajaxloader') != '0') { ?>
+    if(get_option('wicketpixie_enable_ajax_loader') == 'true') { ?>
 	<!-- DIV Loader -->
 	<div id="loadingFrame">
 		<div id="loading">
@@ -160,8 +159,8 @@ $adsense = new AdsenseAdmin;
 			
 			<div id="logo">
                 <?php
-                if(get_option($optpre.'headersize')) {
-                    $fontsize = get_option($optpre.'headersize');
+                if(get_option('wicketpixie_theme_header_size')) {
+                    $fontsize = get_option('wicketpixie_theme_header_size');
                     echo '<span style="font-size:',$fontsize,'px;">';
                     ?>
                             <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>
@@ -229,8 +228,6 @@ $adsense = new AdsenseAdmin;
 			<?php if (!is_home()) { ?><li><a href="<?php bloginfo('home'); ?>/">Home</a></li><?php } ?>				
 			<?php wp_list_pages("depth=1&sort_column=menu_order&title_li="); ?>
 		</ul>
-	    <div id="navLoading" class="navLoader"></div>
-
 	</div>
 	<!-- /nav -->
 

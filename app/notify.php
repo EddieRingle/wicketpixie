@@ -1,7 +1,22 @@
 <?php
-class NotifyAdmin
+class NotifyAdmin extends AdminPage
 {
-        
+
+    function __construct()
+    {
+        parent::__construct('Notifications Manager','notify.php','wicketpixie-admin.php',null);
+    }
+    
+    function page_output()
+    {
+        $this->notifyMenu();
+    }
+    
+    function __destruct()
+    {
+        parent::__destruct();
+    }
+    
 	/**
 	* Here we install the tables and initial data needed to
 	* power our special functions
@@ -31,7 +46,7 @@ class NotifyAdmin
 	 function check() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
-		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
+		if( $wpdb->get_var( "show tables like '$table'" ) == $table ) {
 			return TRUE;
 		} else {
 			return FALSE;
@@ -54,7 +69,7 @@ class NotifyAdmin
         if($args['apikey'] == "API Key") $args['apikey'] = "";
         if($args['username'] == "Username") $args['username'] = "";
         if($args['password'] == "Password") $args['password'] = "";
-		if( !$wpdb->get_var( "SELECT id FROM $table WHERE service = '" . $args['service'] . "'" ) ) {
+		if( $wpdb->get_var( "SELECT id FROM $table WHERE service = '" . $args['service'] . "'" ) == NULL ) {
 			$id= $wpdb->get_var( "SELECT sortorder FROM $table ORDER BY sortorder DESC LIMIT 1" );
 			$new_id= ( $id + 1 );
 			
@@ -125,8 +140,17 @@ class NotifyAdmin
 		}
 	}
 	
-	 function addNotifyMenu() {
-		add_submenu_page( 'wicketpixie-admin.php', __('WicketPixie Notifications'), __('Notifications Manager'), 9, basename(__FILE__), array( 'NotifyAdmin', 'notifyMenu' ) );
+	// Turns WicketPixie Notifications on and off
+	function toggle() {
+	    if(get_option('wicketpixie_notifications_enable')) {
+	        if(get_option('wicketpixie_notifications_enable') == 'true') {
+	            update_option('wicketpixie_notifications_enable','false');
+	        } elseif(get_option('wicketpixie_notifications_enable') == 'false') {
+	            update_option('wicketpixie_notifications_enable','true');
+	        }
+	    } else {
+	        add_option('wicketpixie_notifications_enable','true');
+	    }
 	}
 	
 	/**
@@ -135,13 +159,19 @@ class NotifyAdmin
 	*/
 	 function notifyMenu() {
 		$notify= new NotifyAdmin;
-        $wp_notify = get_option($optpre.'enable_notify');
+        $wp_notify = get_option('wicketpixie_notifications_enable');
 		if ( $_GET['page'] == basename(__FILE__) ) {
 	        if ( 'add' == $_REQUEST['action'] ) {
 				$notify->add( $_REQUEST );
 			}			
 			elseif ( 'delete' == $_REQUEST['action'] ) {
 				$notify->burninate( $_REQUEST['id'] );
+			}
+			elseif ( 'toggle' == $_POST['action'] ) {
+			    $notify->toggle();
+			}
+			elseif('install' == $_POST['action']) {
+			    $notify->install();
 			}
 		}
 		?>
@@ -152,7 +182,7 @@ class NotifyAdmin
 			
 				<div id="admin-options">
 					<h2><?php _e('Notification Settings'); ?></h2>
-                    <?php if($wp_notify != '1') { ?>
+                    <?php if($wp_notify != 'true') { ?>
                     <p><strong>WicketPixie Notifications are currently disabled, please go to the WicketPixie Options page to enable them.</strong><br /></p>
                     <?php } ?>
                     <p>What are WicketPixie Notifications? They send out messages to different services like Twitter and Ping.fm to let your followers know of any new blog posts. Need more help? <a href="#explain" title="Click for more info" id="explaintext">It's only a click away</a>.</p>
@@ -166,7 +196,28 @@ class NotifyAdmin
 					</div>
                     <p>If you choose to use Ping.fm, unless the other services are not setup in your Ping.fm account please do not add your details for them, as the notification will be sent out twice.</p>
                     <p><strong>Please note:</strong> <em>When entering service details, you may only need to enter a username and password, you may only need to enter an API/App key, or you may enter both. It all depends on which service you select.</em></p>
-					<?php if( $notify->check() != 'false' && $notify->count() != '' ) { ?>
+                    
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>" class="form-table">
+                    <?php wp_nonce_field('wicketpixie-settings'); ?>
+					    <h2>Toggle WicketPixie Notifications</h2>
+					    <?php
+					    if(get_option('wicketpixie_notifications_enable')) {
+					        if(get_option('wicketpixie_notifications_enable') == "true") {
+					            $val = "off";
+					        } else {
+					            $val = "on";
+					        }
+					    } else {
+					        $val = "on";
+					    }
+					    ?>
+					    <p class="submit">
+					    <input type="submit" name="toggle" value="Turn <?php echo $val; ?> WicketPixie Notifications" />
+					    <input type="hidden" name="action" value="toggle" />
+					    </p>
+					</form>
+					
+					<?php if( $notify->check() == true && $notify->count() != '' ) { ?>
 					<table class="form-table" style="margin-bottom:30px;">
 						<tr>
 							<th>Service</th>
@@ -191,7 +242,9 @@ class NotifyAdmin
 					<?php } else { ?>
 						<p>You haven't added any services, add them here.</p>
 					<?php } ?>
+				    <?php if($notify->check() == true) { ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=notify.php&amp;add=true" class="form-table">
+						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add a Service</h2>
 							<p><select name="service" id="title">
                             <option value="ping.fm">Ping.fm</option>
@@ -205,6 +258,16 @@ class NotifyAdmin
                                 <input type="hidden" name="action" value="add" />
 							</p>
 						</form>
+					<?php } else { ?>
+					    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>&amp;install=true">
+					        <h2>Install Notifications table</h2>
+                            <p>Before you can add a service, you must install the table.</p>
+                            <p class="submit">
+                                <input name="save" type="submit" value="Install Notifications table"/>
+                                <input type="hidden" name="action" value="install"/>
+                            </p>
+                        </form>
+					<?php } ?>
 				</div>
                 <?php include_once('advert.php'); ?>
 <?php
@@ -214,7 +277,7 @@ class NotifyAdmin
 * A variable that is checked when we want to know if WicketPixie Notifications
 * are enabled or not.
 **/
-$wp_notify = get_option($optpre.'enable_notify');
+$wp_notify = get_option('wicketpixie_notifications_enable');
 
 /**
 * This is called when a post is published and
@@ -243,7 +306,7 @@ function prep_notify($id) {
 * This calls each service's notification function
 **/
 function notify($post,$devkeys) {
-$notify = new NotifyAdmin();
+    $notify = new NotifyAdmin();
     foreach($notify->collect() as $services) {
         if($services->service == 'ping.fm') {
             $errnum = notify_pingfm($post,$services->apikey,$devkeys['ping.fm']);
@@ -345,11 +408,8 @@ function notify_twitter($post,$dbdata) {
     return $success;
 }
 
-add_action ('admin_menu', array( 'NotifyAdmin', 'addNotifyMenu' ) );
-
-if($wp_notify == '1')
+if($wp_notify == 'true')
 {
     add_action ('publish_post', 'prep_notify');
 }
-NotifyAdmin::install();
 ?>

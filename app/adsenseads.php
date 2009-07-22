@@ -1,14 +1,23 @@
 <?php
-$chrisads = array(
-    "pubid" => "pub-7561297527511227",
-    "120x240"   => "3837687211",
-    "250x300"   => "0722333443",
-    "728x90"    => "5760307022",
-    "120x600"   => "7794173943"
-);
-class AdsenseAdmin
+
+class AdsenseAdmin extends AdminPage
 {
-        
+
+    function __construct()
+    {
+        parent::__construct('Adsense Settings','adsenseads.php','wicketpixie-admin.php',null);
+    }
+    
+    function page_output()
+    {
+        $this->AdsenseMenu();
+    }
+    
+    function __destruct()
+    {
+        parent::__destruct();
+    }
+    
 	/**
 	* Here we install the tables and initial data needed to
 	* power our special functions
@@ -36,7 +45,7 @@ class AdsenseAdmin
 	 function check() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_adsense';
-		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
+		if( $wpdb->get_var( "show tables like '$table'" ) == $table ) {
 			return TRUE;
 		} else {
 			return FALSE;
@@ -71,14 +80,14 @@ class AdsenseAdmin
 	
 	// Turns WicketPixie's AdSense features on and off
 	function toggle() {
-	    if(get_option($optpre.'enable_adsense')) {
-	        if(get_option($optpre.'enable_adsense') == 'true') {
-	            update_option($optpre.'enable_adsense','false');
-	        } elseif(get_option($optpre.'enable_adsense') == 'false') {
-	            update_option($optpre.'enable_adsense','true');
+	    if(get_option('wicketpixie_enable_adsense')) {
+	        if(get_option('wicketpixie_enable_adsense') == 'true') {
+	            update_option('wicketpixie_enable_adsense','false');
+	        } elseif(get_option('wicketpixie_enable_adsense') == 'false') {
+	            update_option('wicketpixie_enable_adsense','true');
 	        }
 	    } else {
-	        add_option($optpre.'enable_adsense','true');
+	        add_option('wicketpixie_enable_adsense','true');
 	    }
 	}
 	
@@ -86,10 +95,10 @@ class AdsenseAdmin
 	function pub_id($_REQUEST) {
 	    $args = $_REQUEST;
 	    
-	    if(get_option($optpre.'adsense_pubid')) {
-	        update_option($optpre.'adsense_pubid',$args['pubid']);
+	    if(get_option('wicketpixie_adsense_pubid')) {
+	        update_option('wicketpixie_adsense_pubid',$args['pubid']);
 	    } else {
-	        add_option($optpre.'adsense_pubid',$args['pubid']);
+	        add_option('wicketpixie_adsense_pubid',$args['pubid']);
 	    }
 	}
 	
@@ -148,10 +157,10 @@ class AdsenseAdmin
 	}
 	
 	function wp_adsense($placement) {
-	    global $wpdb,$chrisads;
+	    global $wpdb;
 	    $table = $wpdb->prefix . 'wik_adsense';
 	    $ad_id = $wpdb->get_var("SELECT ad_id FROM $table WHERE placement= '$placement' LIMIT 1");
-	    $pubid = get_option($optpre.'adsense_pubid');
+	    $pubid = get_option('wicketpixie_adsense_pubid');
 	    
 	    if($ad_id != "" && $pubid != "") {
 	        if($placement == 'blog_header') {
@@ -186,44 +195,8 @@ class AdsenseAdmin
 
             echo $codeblock;
         } else {
-            if($placement == 'blog_header') {
-	            $width = "728";
-	            $height = "90";
-	            $ad_id = $chrisads['728x90'];
-	        } elseif($placement == 'blog_post_side') {
-	            $width = "120";
-	            $height = "240";
-	            $ad_id = $chrisads['120x240'];
-	        } elseif($placement == 'blog_post_bottom') {
-	            $width = "300";
-	            $height = "250";
-	            $ad_id = $chrisads['300x250'];
-	        } elseif($placement == 'blog_sidebar') {
-	            $width = "120";
-	            $height = "600";
-	            $ad_id = $chrisads['120x600'];
-	        } else {
-	            $width = "";
-	            $height = "";
-	        }
-	        $codeblock = "<script type='text/javascript'><!--
-    google_ad_client = '".$chrisads['pubid']."';
-    google_ad_slot = '$ad_id';
-    google_ad_width = $width;
-    google_ad_height = $height;
-    google_color_border = 'FFFFFF';
-    //-->
-    </script>
-    <script type='text/javascript'
-    src='http://pagead2.googlesyndication.com/pagead/show_ads.js'>
-    </script>";
-
-            echo $codeblock;
+            echo '<!-- No ad found for this type, set one up on the WicketPixie Adsense Settings page. -->';
         }
-	}
-	
-	 function addAdsenseMenu() {
-		add_submenu_page( 'wicketpixie-admin.php', __('WicketPixie AdSense Settings'), __('AdSense Settings'), 9, basename(__FILE__), array( 'AdsenseAdmin', 'adsenseMenu' ) );
 	}
 	
 	/**
@@ -243,6 +216,9 @@ class AdsenseAdmin
 			}			
 			elseif ( 'delete' == $_REQUEST['action'] ) {
 				$adsense->burninate( $_REQUEST['id'] );
+			}
+			elseif('install' == $_POST['action']) {
+			    $adsense->install();
 			}
 		}
 		?>
@@ -264,11 +240,12 @@ class AdsenseAdmin
                             </ol>
 					</div>
 					<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&toggle=true" class="form-table">
+                    <?php wp_nonce_field('wicketpixie-settings'); ?>
 					<h2>Toggle AdSense Ads</h2>
 					<p>One click button to disable the showing of AdSense ads.</p>
 					<?php
-					if(get_option($optpre.'enable_adsense')) {
-					    if(get_option($optpre.'enable_adsense') == "true") {
+					if(get_option('wicketpixie_enable_adsense')) {
+					    if(get_option('wicketpixie_enable_adsense') == "true") {
 					        $val = "off";
 					    } else {
 					        $val = "on";
@@ -284,7 +261,7 @@ class AdsenseAdmin
 					</form>
 					<p>To find an ad's ID number, first log in to Google AdSense. Next, click 'AdSense Setup' and then 'Manage Ads'.
 					In the 'Name (#ID)' column find the ad you've created. The ad's ID will be underneath the ad's name in gray font.</p>
-					<?php if( $adsense->check() != 'false' && $adsense->count() != '' ) { ?>
+					<?php if( $adsense->check() == true && $adsense->count() != '' ) { ?>
 					<table class="form-table" style="margin-bottom:30px;">
 						<tr>
 							<th>Ad ID</th>
@@ -312,7 +289,8 @@ class AdsenseAdmin
 						   	?>
 						   	</td>
 							<td style="text-align:center;">
-							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&amp;delete=true&amp;id=<?php echo $adslot->id; ?>">
+                            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&amp;delete=true&amp;id=<?php echo $adslot->id; ?>">
+                            <?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" name="action" value="Delete" />
 								<input type="hidden" name="action" value="delete" />
 							</form>
@@ -324,19 +302,20 @@ class AdsenseAdmin
 						<p>You haven't added any ad slots, add them here.</p>
 					<?php } ?>
 					    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&amp;pubid=true" class="form-table">
+                        <?php wp_nonce_field('wicketpixie-settings'); ?>
 					        <h2>Google AdSense Publisher ID</h2>
 					        <p>Please enter your AdSense Publisher ID here.</p>
 					        <p style="font-style:italic;">The Publisher ID currently in use is:<br />
-					        <?php if(get_option($optpre.'adsense_pubid') != false) {
-                                                          echo wp_get_option('adsense_pubid');
+					        <?php if(get_option('wicketpixie_adsense_pubid') != false) {
+                                                          echo get_option('wicketpixie_adsense_pubid');
                                                       } else {
                                                           echo "N/A";
                                                       }
                             ?>
 					        </p>
 					        <?php
-					            if(get_option($optpre.'adsense_pubid')) {
-					                $pub_id = get_option($optpre.'adsense_pubid');
+					            if(get_option('wicketpixie_adsense_pubid')) {
+					                $pub_id = get_option('wicketpixie_adsense_pubid');
 					            } else {
 					                $pub_id = "Pub-ID";
 					            }
@@ -348,7 +327,9 @@ class AdsenseAdmin
 					        </p>
 					    </form>
 					    
+					    <?php if($adsense->check() == true) { ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&amp;add=true" class="form-table">
+                        <?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add an Ad Slot</h2>
 							<p>Please leave off the pound sign (#) when entering the Ad ID. Also remember, only one ad per placement. ;-)</p>
 							<p><input type="text" name="ad_id" id="ad_id" onfocus="if(this.value=='Ad ID')value=''" value="Ad ID" /></p>
@@ -363,6 +344,16 @@ class AdsenseAdmin
                                 <input type="hidden" name="action" value="add" />
 							</p>
 						</form>
+						<?php } else { ?>
+						<h2>Install AdSense table</h2>
+						<p>You need to install the AdSense table before adding ad slots.</p>
+						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&amp;install=true">
+						    <p class="submit">
+						        <input name="save" type="submit" value="Install AdSense table"/>
+						        <input type="hidden" name="action" value="install"/>
+                            </p>
+                        </form>
+                        <?php } ?>
 				</div>
                 <?php include_once('advert.php'); ?>
 <?php
@@ -371,18 +362,14 @@ class AdsenseAdmin
 
 // This checks to see if WicketPixie's AdSense features are enabled
 function is_enabled_adsense() {
-    if(get_option($optpre.'enable_adsense')) {
-        if(get_option($optpre.'enable_adsense') == 'true') {
+    if(get_option('wicketpixie_enable_adsense')) {
+        if(get_option('wicketpixie_enable_adsense') == 'true') {
             return true;
-        } elseif(get_option($optpre.'enable_adsense') == 'false') {
+        } elseif(get_option('wicketpixie_enable_adsense') == 'false') {
             return false;
         }
     } else {
         return false;
     }
 }
-
-add_action ('admin_menu', array( 'AdsenseAdmin', 'addAdsenseMenu' ) );
-
-AdsenseAdmin::install();
 ?>

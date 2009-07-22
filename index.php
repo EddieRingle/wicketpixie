@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= get_option($optpre.'auth_credit'); ?>
+<?php $wp_auth_credit= get_option('wicketpixie_show_post_author'); ?>
 
             <!-- google_ad_section_start -->
 			<!-- content -->
@@ -38,8 +38,8 @@
 					</div>
 
 					<div class="post-author">
-						<?php if( $wp_auth_credit == 1 ) { ?>
-						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
+						<?php if( $wp_auth_credit == 'true' ) { ?>
+						<?php echo get_avatar( get_the_author_email(), $size = '48', $default = 'images/avatar.jpg' ); ?>
 						<p><strong><?php the_time('l, F jS, Y') ?></strong><br/>
 							by <?php the_author_posts_link(); ?><?php edit_post_link('Edit', ' - ', ''); ?></p>
 						<?php } else { ?>
@@ -60,7 +60,7 @@
 				<?php endwhile; ?>
 
 				<!-- Page Navigation -->
-                <?php if (get_option($optpre.'plug_pagenavi')):?>
+                <?php if (get_option('wicketpixie_plugin_pagenavi') == 'true'):?>
                 <div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>
                 <?php else: ?>
 				<div class="navigation">

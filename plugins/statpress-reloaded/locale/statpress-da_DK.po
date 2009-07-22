@@ -1,0 +1,554 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: StatPress Reloaded 1.5.14\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2009-03-12 06:50+0100\n"
+"PO-Revision-Date: 2009-03-12 06:51+0100\n"
+"Last-Translator: Georg S. Adamsen <wordpress@blogos.dk>\n"
+"Language-Team: Team Blogos <wordpress@blogos.dk>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-Language: Danish\n"
+"X-Poedit-Country: DENMARK\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;__ngettext_noop:1,2;_c\n"
+"X-Poedit-Basepath: d:\\wordpress\\plugins\\statpress-reloaded\n"
+"X-Poedit-SearchPath-0: d:\\wordpress\\plugins\\statpress-reloaded\n"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:39
+msgid "Details"
+msgstr "Detaljer"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:40
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:885
+msgid "Spy"
+msgstr "Spionage"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:41
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:957
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1027
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1195
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1224
+msgid "Search"
+msgstr "Søgning"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:42
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:278
+msgid "Export"
+msgstr "Eksport"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:43
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:140
+msgid "Options"
+msgstr "Indstillinger"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:44
+msgid "User Agents"
+msgstr "Softwareagenter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:45
+msgid "StatPressUpdate"
+msgstr "StatPressOpdatering"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:134
+msgid "Saved"
+msgstr "Gemt"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:144
+msgid "Collect data about logged users, too."
+msgstr "Indsaml også data om brugere, der er logget på."
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:145
+msgid "Do not collect spiders visits"
+msgstr "Indsaml ikke data om søgerobotbesøg"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:148
+msgid "Automatically delete visits older than"
+msgstr "Automatisk slet besøg ældre end"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:155
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:185
+msgid "Never delete!"
+msgstr "Slet aldrig!"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:161
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:188
+msgid "month"
+msgstr "måned"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:167
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:173
+msgid "months"
+msgstr "måneder"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:179
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:189
+msgid "year"
+msgstr "år"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:183
+msgid "Automatically delete spider visits older than"
+msgstr "Automatisk slet søgerobot-besøg ældre end"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:186
+msgid "day"
+msgstr "dag"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:187
+msgid "week"
+msgstr "uge"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:193
+msgid "Days in Overview graph"
+msgstr "Dage i Oversigtsgraf"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:219
+msgid "Minimum capability to view stats"
+msgstr "Minimumskrav for at se statistikker"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:227
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:904
+msgid "more info"
+msgstr "mere info"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:232
+msgid "Save options"
+msgstr "Gem indstillinger"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:265
+msgid "Export stats to text file"
+msgstr "Eksportér statistik til tekstfil"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:269
+msgid "From"
+msgstr "Fra"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:272
+msgid "To"
+msgstr "Til"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:275
+msgid "Fields delimiter"
+msgstr "Adskillelsestegn for felter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:322
+msgid "Overview"
+msgstr "Oversigt"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:325
+msgid "Total"
+msgstr "Total"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:326
+msgid "Last month"
+msgstr "Sidste måned"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:327
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:328
+msgid "This month"
+msgstr "Denne måned"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:328
+msgid "Target"
+msgstr "Mål"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:329
+msgid "Yesterday"
+msgstr "I går"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:330
+msgid "Today"
+msgstr "I dag"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:336
+msgid "Visitors"
+msgstr "Besøgende"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:409
+msgid "Pageviews"
+msgstr "Sidevisninger"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:481
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:857
+msgid "Spiders"
+msgstr "Søgerobotter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:552
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:842
+msgid "Feeds"
+msgstr "Feeds"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:699
+msgid "visitors"
+msgstr "besøgende"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:700
+msgid "pageviews"
+msgstr "sidevisninger"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:701
+msgid "spiders"
+msgstr "søgerobotter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:702
+msgid "feeds"
+msgstr "feeds"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+msgid "Last hits"
+msgstr "Seneste hits"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:755
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:765
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:775
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:785
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:797
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1570
+msgid "Date"
+msgstr "Dato"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:755
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:765
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:775
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:785
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:798
+msgid "Time"
+msgstr "Tid"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:954
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1572
+msgid "IP"
+msgstr "IP"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+msgid "Threat"
+msgstr "Trussel"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+msgid "Domain"
+msgstr "Domæne"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:785
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:800
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1183
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1205
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1212
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1234
+msgid "Page"
+msgstr "Side"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+msgid "OS"
+msgstr "Operativsystem"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:839
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:952
+msgid "Browser"
+msgstr "Webbrowser"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:718
+msgid "Feed"
+msgstr "Feed"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:755
+msgid "Last search terms"
+msgstr "Seneste søgetermer"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:755
+msgid "Terms"
+msgstr "termer"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:755
+msgid "Engine"
+msgstr "Maskine"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:755
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:765
+msgid "Result"
+msgstr "Resultat"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:760
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:770
+msgid "page viewed"
+msgstr "viste side"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:765
+msgid "Last referrers"
+msgstr "Seneste henvisningssteder"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:765
+msgid "URL"
+msgstr "URL"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:775
+msgid "Last agents"
+msgstr "Seneste softwareagenter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:775
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:801
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:947
+msgid "Agent"
+msgstr "Softwareagent"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:775
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:785
+msgid "What"
+msgstr "Hvad"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:785
+msgid "Last pages"
+msgstr "Seneste sider"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:795
+msgid "Last spiders"
+msgstr "Seneste søgerobotter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:799
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:953
+msgid "Spider"
+msgstr "Søgerobot"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:816
+msgid "StatPress table size"
+msgstr "StatPress-tabelstørrelse"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:817
+msgid "StatPress current time"
+msgstr "StatPress-aktuel tid"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:818
+msgid "RSS2 url"
+msgstr "RSS2 url"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:819
+msgid "ATOM url"
+msgstr "Atom url"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:820
+msgid "RSS url"
+msgstr "RSS url"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:821
+msgid "COMMENT RSS2 url"
+msgstr "Kommentar RSS2 url"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:822
+msgid "COMMENT ATOM url"
+msgstr "Kommentar Atom url"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:833
+msgid "Top days"
+msgstr "Bedste dage"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:836
+msgid "O.S."
+msgstr "OS"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:845
+msgid "Search engines"
+msgstr "Søgemaskiner"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:848
+msgid "Top search terms"
+msgstr "Mest brugte søgetermer"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:851
+msgid "Top referrer"
+msgstr "Mest brugte henvisningssteder (referrers)"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:854
+msgid "Countries (domains)"
+msgstr "Lande (domæner)"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:860
+msgid "Top pages"
+msgstr "Mest besøgte sider"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:864
+msgid "Top Days - Unique visitors"
+msgstr "Bedste dage - Unikke besøgende"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:868
+msgid "Top Days - Pageviews"
+msgstr "Bedste dage - Sidevisninger"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:872
+msgid "Top IPs - Pageviews"
+msgstr "IP med fleste besøg - Sidevisninger"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:924
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:928
+msgid "arrived from"
+msgstr "kommet fra"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:924
+msgid "searching"
+msgstr "søger"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:946
+msgid "URL Requested"
+msgstr "Rekvireret URL"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:948
+msgid "Referrer"
+msgstr "Henvisningssted"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:949
+msgid "Search terms"
+msgstr "Søgetermer"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:950
+msgid "Search engine"
+msgstr "Søgemaskine"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:951
+msgid "Operative system"
+msgstr "Operativsystem"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:964
+msgid "Field"
+msgstr "Felt"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:975
+msgid "Group by"
+msgstr "Gruppér efter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:976
+msgid "Sort by"
+msgstr "Sortér efter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:977
+msgid "if contains"
+msgstr "hvis det indeholder"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:990
+msgid "sort by count if grouped"
+msgstr "sortér efter tæller hvis grupperet"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:995
+msgid "include spiders/crawlers/bot"
+msgstr "Medtag søgerobotter/webcrawlere/bot"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1000
+msgid "include feed"
+msgstr "Medtag feed"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1005
+msgid "SELECT DISTINCT"
+msgstr "Vælg distinkt"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1014
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:2039
+msgid "Limit results to"
+msgstr "Begræns resultater til"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1111
+msgid "Results"
+msgstr "Resultater"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1124
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1573
+msgid "Count"
+msgstr "Tæller"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1187
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1216
+msgid "Category"
+msgstr "Kategori"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1191
+msgid "Calendar"
+msgstr "Kalender"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1306
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:2040
+msgid "Visits"
+msgstr "Besøg"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1568
+msgid "Unknown User Agents"
+msgstr "Ukendte brugersoftwareagenter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1571
+msgid "Last Time"
+msgstr "Sidste gang"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1574
+msgid "User Agent"
+msgstr "Brugersoftwareagent"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1734
+msgid "Updating table struct"
+msgstr "Opdaterer tabelstruktur"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1736
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1779
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1791
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1803
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1816
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1821
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1839
+msgid "done"
+msgstr "udført"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1739
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1819
+msgid "Updating Feeds"
+msgstr "Opdaterer feeds"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1782
+msgid "Updating OS"
+msgstr "Opdaterer Operativsystem"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1794
+msgid "Updating Browsers"
+msgstr "Opdaterer Webbrowsers"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1805
+msgid "Updating Spiders"
+msgstr "Opdaterer søgerobotter"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1824
+msgid "Updating Search engines"
+msgstr "Opdaterer søgemaskiner"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1827
+msgid "null-ed"
+msgstr "sat til null"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1829
+msgid "select-ed"
+msgstr "sat til valgt"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1843
+msgid "Updated"
+msgstr "Opdateret"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1997
+msgid "Title:"
+msgstr "Titel:"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:1998
+msgid "Body:"
+msgstr "Body:"
+
+#: d:\wordpress\plugins\statpress-reloaded/statpress.php:2038
+msgid "Title"
+msgstr "Titel"
+
+#~ msgid "Donate"
+#~ msgstr "Send penge"
+#~ msgid "Crypt IP addresses"
+#~ msgstr "Kryptér (og skjul) IP-adresser"
+#~ msgid "Language"
+#~ msgstr "Sprog"
+#~ msgid "Support"
+#~ msgstr "Support"
+

@@ -1,58 +1,84 @@
 (function($){
   $.iphoneStyle = {
-    defaults: { checkedLabel: 'ON', uncheckedLabel: 'OFF', background: '#fff' }
-  }
+    defaults: {
+      duration: 200,
+      checkedLabel: 'ON',
+      uncheckedLabel: 'OFF',
+      resizeHandle: true,
+      resizeContainer: true,
+      background: '#fff',
+      containerClass: 'iPhoneCheckContainer',
+      labelOnClass: 'iPhoneCheckLabelOn',
+      labelOffClass: 'iPhoneCheckLabelOff',
+      handleClass: 'iPhoneCheckHandle',
+      handleCenterClass: 'iPhoneCheckHandleCenter',
+      handleRightClass: 'iPhoneCheckHandleRight'
+    }
+  };
   
   $.fn.iphoneStyle = function(options) {
-    options = $.extend($.iphoneStyle.defaults, options);
+    options = $.extend({}, $.iphoneStyle.defaults, options);
     
     return this.each(function() {
       var elem = $(this);
       
-      if (!elem.is(':checkbox'))
+      if (!elem.is(':checkbox')) {
         return;
+      }
       
       elem.css({ opacity: 0 });
-      elem.wrap('<div class="container" />');
-      elem.after('<div class="handle"><div class="bg" style="background: ' + options.background + '"/><div class="slider" /></div>')
-          .after('<label class="off">'+ options.uncheckedLabel + '</label>')
-          .after('<label class="on">' + options.checkedLabel   + '</label>');
+      elem.wrap('<div class="' + options.containerClass + '" />');
+      elem.after('<div class="' + options.handleClass + '"><div class="' + options.handleRightClass + '"><div class="' + options.handleCenterClass + '" /></div></div>')
+          .after('<label class="' + options.labelOffClass + '">'+ options.uncheckedLabel + '</label>')
+          .after('<label class="' + options.labelOnClass + '">' + options.checkedLabel + '</label>');
       
-      var handle    = elem.siblings('.handle'),
-          handlebg  = handle.children('.bg'),
-          offlabel  = elem.siblings('.off'),
-          onlabel   = elem.siblings('.on'),
-          container = elem.parent('.container'),
-          rightside = container.width() - 39;
+      var handle = elem.siblings('.' + options.handleClass),
+          offlabel = elem.siblings('.' + options.labelOffClass),
+          onlabel = elem.siblings('.' + options.labelOnClass),
+          container = elem.parent('.' + options.containerClass);
       
-      container.click(function() {
+      // Automatically resize the handle
+      if (options.resizeHandle) {
+        var min = (onlabel.width() < offlabel.width()) ? onlabel.width() : offlabel.width();
+        handle.css({ width: min });
+      }
+      
+      // Automatically resize the control
+      if (options.resizeContainer) {
+        var max = (onlabel.width() > offlabel.width()) ? onlabel.width() : offlabel.width();
+        container.css({ width: max + handle.width() + 24 });
+      }
+      
+      offlabel.css({ width: container.width() - 12 });
+      
+      var rightside = container.width() - handle.width() - 8;
+      
+      if (elem.is(':checked')) {
+        handle.css({ left: rightside });
+        onlabel.css({ width: rightside });
+      } else {
+        handle.css({ left: 0 });
+        onlabel.css({ width: 0 });
+      }
+      
+      container.mouseup(function() {
         var is_onstate = (handle.position().left <= 0);
-            new_left   = (is_onstate) ? rightside : 0,
-            bgleft     = (is_onstate) ? 34 : 0;
-
-        handlebg.hide();
-        handle.animate({ left: new_left }, 100, function() {
-          handlebg.css({ left: bgleft }).show();
-        });
-        
-        if (is_onstate) {
-          offlabel.animate({ opacity: 0 }, 200);
-          onlabel.animate({ opacity: 1 }, 200);
-        } else {
-          offlabel.animate({ opacity: 1 }, 200);
-          onlabel.animate({ opacity: 0 }, 200);
-        }
-        
-        elem.attr('checked', !is_onstate);
+        elem.attr('checked', is_onstate).change();
         return false;
       });
       
-      // initial load
-      if (elem.is(':checked')) {
-        offlabel.css({ opacity: 0 });
-        onlabel.css({ opacity: 1 });
-        handle.css({ left: rightside });
-        handlebg.css({ left: 34 });
+      elem.change(function() {
+        var is_onstate = (handle.position().left <= 0),
+            new_left = (is_onstate) ? rightside : 0;
+ 
+        handle.animate({ left: new_left }, options.duration);
+        onlabel.animate({ width: new_left }, options.duration);
+      });
+      
+      // Disable text selection
+      $(container, onlabel, offlabel, handle).mousedown(function() { return false; });
+      if ($.browser.ie) {
+        $(container, onlabel, offlabel, handle).bind('startselect', function() { return false; });
       }
     });
   };

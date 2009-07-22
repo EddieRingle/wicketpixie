@@ -25,13 +25,13 @@
 				</div>
 				<!-- /post -->
 				
-				<?php if ($adsense_counter == 0) { ?>
+				<?php if ($adsense_counter == 0 && is_enabled_adsense() == true) { ?>
 				<div align="center" style="margin: 15px 0 30px 0">
 					<?php $adsense->wp_adsense('blog_post_bottom'); ?>
 				</div>
-			    <?php } ?>
-
-			<?php $adsense_counter++; ?>
+                <?php } else {
+                        $adsense_counter++;
+                      }?>
 				
 				<?php endwhile; ?>
 
