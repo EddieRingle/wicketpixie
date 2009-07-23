@@ -127,7 +127,7 @@ class AdminPage
                                     <?php
                                     foreach($value['options'] as $option) {
                                     ?>
-                                    <option value="<?php echo $option; ?>" <?php if($value['std'] == $option) { echo 'selected="selected"'; } ?>><?php echo $option; ?></option>
+                                    <option value="<?php echo $option; ?>" <?php if($optdata == $option) { echo 'selected="selected"'; } ?>><?php echo $option; ?></option>
 			                        <?php
 			                        }
 			                        ?>
