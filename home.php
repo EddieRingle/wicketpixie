@@ -167,17 +167,22 @@
                 if(get_option('wicketpixie_home_flickr_enable') == 'true') { ?>
                 <!-- home-photos -->
                 <div id="home-photos">
-                <?php
+                <?php                
                 if(get_option('wicketpixie_flickr_id') != false && get_option('wicketpixie_flickr_id') != 'false') {
                     $flickrid = get_option('wicketpixie_flickr_id');
                 } else {
                     $flickrid = '49503157467@N01';
                 }
+                if(get_option('wicketpixie_home_flickr_number') != false) {
+                    $num = get_option('wicketpixie_home_flickr_number');
+                } else {
+                    $num = '5';
+                }
                 if(get_option('wicketpixie_home_show_photo_heading') == 'true') {
                     echo "<h2>Recent Photos</h2>";
                 }
                 ?>
-                    <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=6&amp;display=latest&amp;size=s&amp;layout=x&amp;source=user&amp;user=<?php echo $flickrid; ?>"></script>
+                    <script type="text/javascript" src="http://www.flickr.com/badge_code_v2.gne?count=<?php echo $num; ?>&amp;display=latest&amp;size=s&amp;layout=h&amp;source=user&amp;user=<?php echo $flickrid; ?>"></script>
                 </div>
                 <!-- /home-photos -->
                 

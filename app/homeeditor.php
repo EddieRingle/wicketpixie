@@ -8,11 +8,18 @@
 // Arrays that hold our options
 $homeoptions = array(
     array(
-    "name" => "Flickr Widget",
-    "description" => "Display the Flickr widget on the home page.",
+    "name" => "Flickr Badge",
+    "description" => "Display the Flickr badge on the home page.",
     "id" => 'wicketpixie_home_flickr_enable',
     "std" => 'false',
     "type" => "checkbox"),
+    array(
+    'name' => '# of Flickr Images',
+    'description' => 'Select how many images will be displayed in the Flickr badge.',
+    'id' => 'wicketpixie_home_flickr_number',
+    'std' => '5',
+    'type' => 'select',
+    'options' => array('3','4','5','6')),
     array(
     "name" => "Video Embed",
     "description" => "Enable the Video Embed Code entered below.",

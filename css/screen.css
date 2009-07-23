@@ -446,25 +446,27 @@ body {
 }
 
 #home-photos {
-	float: left;
-	width: 510px;
-	margin-left: 20px;
-	padding: 0;
-	border-top: 0;
-}
-
-#home-photos div {
-	float: left;
-	display: inline;
-	margin: 0 7px 7px 0;
+    width: 100%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px;
+	border-top: 0px;
+	display: block;
 }
 
 #content #home-photos img {
-	display: block;
+	display: inline;
+	margin: 0px 3px;
 	border: 1px solid #666;
 }
 
-#content #home-photos img:hover {
+#content #home-photos h2 {
+    text-align: left;
+    margin-left: 20px;
+}
+
+#home-photos img:hover {
 	border: 1px solid #000;
 }
 
