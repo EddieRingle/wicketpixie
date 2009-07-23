@@ -144,7 +144,7 @@ class SourceAdmin extends AdminPage {
 	
 	function get_streams() {
 		global $wpdb;
-		require_once('simplepie.php');
+		require_once(SIMPLEPIEPATH);
 		$this->clean_dir();
 
 		$table= $wpdb->prefix . 'wik_sources';
@@ -435,7 +435,7 @@ class SourceAdmin extends AdminPage {
 		return $name[0]->name;
 	}
 	 function get_feed( $url ) {
-		require_once ( 'simplepie.php' );
+		require_once ( SIMPLEPIEPATH );
 		$feed_path= $url;
 		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 		SourceAdmin::clean_dir();

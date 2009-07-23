@@ -25,7 +25,7 @@ class SourceUpdate
     * Fetches the latest entry from the source's feed
     **/
     function fetchfeed() {
-        require_once('simplepie.php');
+        require_once(SIMPLEPIEPATH);
         $feed = $this->select();
         
         if(preg_match('/twitter\.com/',$feed[0]->feed_url) == true) {
