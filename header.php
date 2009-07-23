@@ -47,7 +47,6 @@ $adsense = new AdsenseAdmin;
 	<?php
     include_once (TEMPLATEPATH . '/plugins/random-posts.php');
 	include_once (TEMPLATEPATH . '/plugins/search-excerpt.php');
-    include_once (TEMPLATEPATH . '/app/gapikey.php');
     
     clearstatcache();
     if(!is_dir(ABSPATH.'wp-content/uploads/activity')) {
@@ -64,16 +63,13 @@ $adsense = new AdsenseAdmin;
     if(is_user_logged_in()) { ?>
     <script src="http://wicketpixie.uservoice.com/pages/general/widgets/tab.js?alignment=right&amp;color=000000" type="text/javascript"></script>
     <?php } */ ?>
-    <script type="text/javascript">
-    google.load("jquery", "1.3.2");
-    </script>
-    <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
-    		
 <?php wp_head(); ?>
 <?php
     echo "\n";
     wp_customheader();
+    echo "\n";
 ?>
+    <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
 	
     <?php
     $blogurl = get_bloginfo('url');
