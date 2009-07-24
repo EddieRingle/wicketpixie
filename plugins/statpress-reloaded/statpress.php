@@ -1509,7 +1509,7 @@ for ($i = $startPage; $i <= $page+6; $i++) {
       function iriGetSE($referrer = null)
       {
           $key = null;
-          $lines = file(ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/searchengines.dat');
+          $lines = file(STATPRESS_DIR . '/def/searchengines.dat');
           foreach ($lines as $line_num => $se)
           {
               list($nome, $url, $key) = explode("|", $se);
@@ -1534,9 +1534,9 @@ for ($i = $startPage; $i <= $page+6; $i++) {
       {
           $agent = str_replace(" ", "", $agent);
           $key = null;
-          $lines = file(ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '/def/spider.dat');
-          if (file_exists(ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'))
-              $lines = array_merge($lines, file(ABSPATH . 'wp-content/plugins/' . dirname(plugin_basename(__FILE__)) . '-custom/spider.dat'));
+          $lines = file(STATPRESS_DIR . '/def/spider.dat');
+          if (file_exists(STATPRESS_DIR . '-custom/spider.dat'))
+              $lines = array_merge($lines, file(STATPRESS_DIR . '-custom/spider.dat'));
           foreach ($lines as $line_num => $spider)
           {
               list($nome, $key) = explode("|", $spider);
