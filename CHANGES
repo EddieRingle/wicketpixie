@@ -1,6 +1,6 @@
 WICKETPIXIE CHANGELOG
 
-v1.2 (TRUNK) - TBA, 2009
+v1.2 - TBA, 2009 (Beta 1 - July 24, 2009)
  * PERFORMANCE: New AdminPage class written from scratch in hopes of better
  admin pages overall.
  * PERFORMANCE: Switched back to using WordPress' database functions for
