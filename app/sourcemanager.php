@@ -456,30 +456,59 @@ class SourceAdmin extends AdminPage {
 		return $widget_contents;
 	}
 
-	 function create_file( $widget ) {
-		$cleaned = strtolower( $widget->title );
-		$cleaned = preg_replace( '/\W/', ' ', $cleaned );
-		$cleaned = str_replace( " ", "", $cleaned );
-		$favicon_url = explode('/', $widget->profile_url);
-		
-		$data= '';
-		$data .= '<?php' . "\n";
-		$data .= '$total= 5;' . "\n";
-		$data .= 'echo \'<div class="widget">\';' . "\n";
-		$data .= "echo '<h3><img src=\"http://www.google.com/s2/favicons?domain=$favicon_url[2]\" alt=\"$widget->title\" />$widget->title</h3>';" . "\n";
-		$data .= "echo '<ul>';" . "\n";
-		$data .= '$items= SourceAdmin::get_feed( "'. $widget->feed_url . '" );
-		foreach( $items as $item ) {
-			if( $i != $total ) {
-				echo \'<li><a href="\' . $item[\'link\'] . \'" title="\' . $item[\'title\'] . \'">\' . $item[\'title\'] . \'</a></li>\';' . "\n";
-			$data .= '$i++;' . "\n";
-			$data .= '}' . "\n";
-		$data .= '}' . "\n";
-		$data .= "echo '</ul>';" . "\n";
-		$data .="echo '</div>';" . "\n";
+	 function create_file($title,$cleaned,$favicon_url,$feed_url) {		
+		$data = null;
+        $data =
+        "<?php
+        /**
+        * ${title}FeedWidget Class
+        */
+        class ${title}FeedWidget extends WP_Widget
+        {
+            function ${title}FeedWidget()
+            {
+                \$widget_ops = array('classname' => 'widget_${cleaned}_feed','description' => __('Lists feed items from the ${title} feed added in the Social Me Manager.'));
+                \$this->WP_Widget('${cleaned}feed',__('${title} Feed'),\$widget_ops,null);
+            }
+
+            function widget(\$args,\$instance)
+            {
+                extract(\$args);
+
+                echo \$before_widget;
+                echo \$before_title, '<img src=\"http://www.google.com/s2/favicons?domain=$favicon_url[2]\" alt=\"',${title},'\" />',${title}, \$after_title;
+                
+                \$items = SourceAdmin::get_feed('${feed_url}');
+                ?>
+                    <ul>
+                    <?php
+                    \$total = 5;
+                    foreach(\$items as \$item) {
+                        if(\$i != \$total) {
+                            echo '<li><a href=\"',\$item['link'],'\" title=\"',\$item['title'],'\">',\$item['title'],'</a></li>';
+                            \$i++;
+                        }
+                    }
+                    ?>
+                    </ul>
+                <?php
+                echo \$after_widget;
+            }
+
+            function update(\$new_instance,\$old_instance)
+            {
+                return \$old_instance;
+            }
+
+            function form(\$instance)
+            {
+            }
+        }
+        ?>";
+        
 		$path= TEMPLATEPATH . "/widgets/" . $cleaned . ".php";
 		file_put_contents( $path, $data );
-		error_log( 'Creating '.$widget->title.' widget.' );
+		error_log( 'Creating '.$title.' widget.' );
 	}
 
     /**
@@ -491,15 +520,17 @@ class SourceAdmin extends AdminPage {
 		$data='<?php';
 		foreach( $this->collect() as $widget ) {
             if($this->feed_check($widget->title) == 1) {
-                $cleaned= strtolower( $widget->title );
+                $title = $widget->title;
+                $cleaned= strtolower( $title );
                 $cleaned= preg_replace( '/\W/', ' ', $cleaned );
                 $cleaned= str_replace( " ", "", $cleaned );
                 $data .= "
-                function wicketpixie_$cleaned() {
-                    include( TEMPLATEPATH . '/widgets/$cleaned.php');
+                function ${title}Init() {
+                    include_once( TEMPLATEPATH . '/widgets/$cleaned.php');
+                    register_widget('${title}FeedWidget');
                 }";
                 add_option( $cleaned . '-num', 5 );	
-                $this->create_file( $widget );
+                $this->create_file($title,$cleaned,explode('/',$widget->profile_url),$widget->feed_url);
             }
 		}
 		$data .= ' ?>';

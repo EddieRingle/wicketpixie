@@ -30,7 +30,7 @@ $homeoptions = array(
     "name" => "Video Object Code",
     "description" => "Enter code for a video object. For example, a YouTube custom player.",
     "id" => 'wicketpixie_home_video_code',
-    "std" => "<!-- Add video object code in the WicketPixie Home Editor -->",
+    "std" => "",
     "type" => "textarea"),
     array(
     "name" => "Show 'My Videos' heading",
