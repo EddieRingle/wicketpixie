@@ -8,5 +8,6 @@ version of WicketPixie newer than 1.0.1.
 Upgrading to WicketPixie 1.2+:
 
 As of WicketPixie 1.2, major code changes will break the widgets for your
-Social Mes (or Sources). To fix them, click on 'Regenerate Widgets' in
-the WicketPixie Social Me Manager.
+Social Mes (or Sources). To fix them, make sure to chmod 777 the widgets
+directory and the file 'widgets/sources.php', then click on 'Regenerate Widgets'
+in the WicketPixie Social Me Manager.

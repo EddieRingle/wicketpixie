@@ -168,10 +168,13 @@ if(function_exists('register_widget')) {
     foreach( SourceAdmin::collect() as $widget ) {
         if(SourceAdmin::feed_check($widget->title) == 1) {
             $title = $widget->title;
+            $t_title = str_replace(' ','',$title);
 	        $cleaned= strtolower( $title );
 	        $cleaned= preg_replace( '/\W/', ' ', $cleaned );
 	        $cleaned= str_replace( " ", "", $cleaned );
-	        add_action('widgets_init',"${title}Init");
+            if(is_file(TEMPLATEPATH .'/widgets/'.$cleaned.'.php')) {
+                add_action('widgets_init',"${t_title}Init");
+            }
 	    }
     }
 }
