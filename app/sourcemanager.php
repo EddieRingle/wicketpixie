@@ -478,7 +478,7 @@ class SourceAdmin extends AdminPage {
                 extract(\$args);
 
                 echo \$before_widget;
-                echo \$before_title, '<img src=\"http://www.google.com/s2/favicons?domain=$favicon_url[2]\" alt=\"',${title},'\" />','${title}', \$after_title;
+                echo \$before_title, '<img src=\"http://www.google.com/s2/favicons?domain=$favicon_url[2]\" alt=\"','${title}','\" />','${title}', \$after_title;
                 
                 \$items = SourceAdmin::get_feed('${feed_url}');
                 ?>
