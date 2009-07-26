@@ -543,48 +543,52 @@ class SourceAdmin extends AdminPage {
 	 function sourceMenu() {
 		$sources= new SourceAdmin;
 		if ( $_GET['page'] == basename(__FILE__) ) {
-	        if ( 'add' == $_REQUEST['action'] ) {
-				$return= $sources->add( $_REQUEST );
-			}
-			
-			if ( 'gather' == $_REQUEST['action'] ) {
-				$sources->gather( $_REQUEST['id'] );
-			}
-			
-			if ( 'edit' == $_REQUEST['action'] ) {
-				$sources->edit( $_REQUEST );
-			}
-			
-	        if ( 'delete' == $_REQUEST['action'] ) {
-				$sources->burninate( $_REQUEST['id'] );
-			}
-			
-			if( 'hulk_smash' == $_REQUEST['action'] ) {
-				$sources->hulk_smash();
-			}
-			
-			if( 'install' == $_REQUEST['action'] ) {
-				$sources->install();
-			}
-			
-			if( 'flush' == $_REQUEST['action'] ) {
-				$sources->flush_streams( $_REQUEST['flush_name'] );
-			}
+		    switch($_POST['action'])
+		    {
+		        case 'add':
+		            $sources->add($_REQUEST);
+		            ?>
+		            <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account saved.'); ?></strong></p></div>
+		            <?php
+		            break;
+		        case 'gather':
+		            $sources->gather($_REQUEST['id']);
+		            break;
+                case 'edit':
+                    $sources->edit($_REQUEST);
+                    ?>
+                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account modified.'); ?></strong></p></div>
+		            <?php
+                    break;
+                case 'delete':
+                    $sources->burninate($_REQUEST['id']);
+                    ?>
+                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
+		            <?php
+                    break;
+                case 'hulk_smash':
+                    $sources->hulk_smash();
+                    ?>
+                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me database cleared.'); ?></strong></p></div>
+		            <?php
+                    break;
+                case 'install':
+                    $sources->install();
+                    ?>
+                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
+		            <?php
+                    break;
+                case 'flush':
+                    $sources->flush_streams($_REQUEST['flush_name']);
+                    ?>
+                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account flushed.'); ?></strong></p></div>
+		            <?php
+                    break;
+                default:
+                    break;
+            }
 		}
 		?>
-		<?php if(isset($_REQUEST['add'])) { ?>
-		<div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account saved.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['edit'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account modified.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['delete'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['flush'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account flushed.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['install'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['hulk_smash'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me database cleared.'); ?></strong></p></div>
-		<?php } ?>
 			<div class="wrap">
 				
 				<div id="admin-options">
