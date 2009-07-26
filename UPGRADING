@@ -5,11 +5,8 @@ WicketPixie plugins from /wp-content/plugins/ and also delete the
 /wp-content/uploads/activity/ folder. You will not have to do this with any
 version of WicketPixie newer than 1.0.1.
 
-Upgrading to WicketPixie 1.1:
+Upgrading to WicketPixie 1.2+:
 
-As of WicketPixie 1.1, options will be stored in files instead of the WordPress
-database. You _WILL_ lose your settings, so write them down before upgrading.
-Don't worry, Sources and Faves are safe. ;-)
-
-To upgrade, just copy the wicketpixie directory to wp-content/themes,
-overwriting the old wicketpixie directory. After that, you're done.
+As of WicketPixie 1.2, major code changes will break the widgets for your
+Social Mes (or Sources). To fix them, click on 'Regenerate Widgets' in
+the WicketPixie Social Me Manager.

@@ -456,16 +456,18 @@ class SourceAdmin extends AdminPage {
 		return $widget_contents;
 	}
 
-	 function create_file($title,$cleaned,$favicon_url,$feed_url) {		
+	 function create_file($title,$cleaned,$favicon_url,$feed_url)
+	 {
+	    $t_title = str_replace(' ','',$title);
 		$data = null;
         $data =
         "<?php
         /**
-        * ${title}FeedWidget Class
+        * ${t_title}FeedWidget Class
         */
-        class ${title}FeedWidget extends WP_Widget
+        class ${t_title}FeedWidget extends WP_Widget
         {
-            function ${title}FeedWidget()
+            function ${t_title}FeedWidget()
             {
                 \$widget_ops = array('classname' => 'widget_${cleaned}_feed','description' => __('Lists feed items from the ${title} feed added in the Social Me Manager.'));
                 \$this->WP_Widget('${cleaned}feed',__('${title} Feed'),\$widget_ops,null);
@@ -521,13 +523,14 @@ class SourceAdmin extends AdminPage {
 		foreach( $this->collect() as $widget ) {
             if($this->feed_check($widget->title) == 1) {
                 $title = $widget->title;
+                $t_title = str_replace(' ','',$title);
                 $cleaned= strtolower( $title );
                 $cleaned= preg_replace( '/\W/', ' ', $cleaned );
                 $cleaned= str_replace( " ", "", $cleaned );
                 $data .= "
-                function ${title}Init() {
+                function ${t_title}Init() {
                     include_once( TEMPLATEPATH . '/widgets/$cleaned.php');
-                    register_widget('${title}FeedWidget');
+                    register_widget('${t_title}FeedWidget');
                 }";
                 add_option( $cleaned . '-num', 5 );	
                 $this->create_file($title,$cleaned,explode('/',$widget->profile_url),$widget->feed_url);
@@ -566,6 +569,12 @@ class SourceAdmin extends AdminPage {
                     <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
 		            <?php
                     break;
+                case 'regen_widgets':
+                    $sources->create_widget();
+                    ?>
+                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Widgets regenerated.'); ?></strong></p></div>
+                    <?php
+                    break;
                 case 'hulk_smash':
                     $sources->hulk_smash();
                     ?>
@@ -600,6 +609,15 @@ class SourceAdmin extends AdminPage {
                     you might add your Twitter, YouTube, and Flickr accounts here - making sure you use the corresponding RSS (or Atom) feeds for your profile,
                     so that WicketPixie can display your latest content from them on your Social Me page.<br /><br />
                     You can also include the list of these accounts in your sidebar - just be sure to enable the <a href="widgets.php">WicketPixie Social Me widget</a> first!</p>
+                    <h3>Widget Regenerator</h3>
+                    <p>If you are upgrading to 1.2+ from a version earlier than 1.2, you will need to click this button if you already have Social Mes added. You can also press this button if widgets seem to be broken.</p>
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;regen_widgets=true">
+                        <p class="submit">
+                            <input type="submit" name="submit" value="Regenerate Widgets" />
+                            <input type="hidden" name="action" value="regen_widgets" />
+                        </p>
+                    </form>
+                    <h3>Social Me Listing</h3>
 					<?php if( $sources->check() != 'false' && $sources->count() != '' ) { ?>
 					<form>
 					<?php wp_nonce_field('wicketpixie-settings'); ?>
