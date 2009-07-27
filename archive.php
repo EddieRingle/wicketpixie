@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-<?php $wp_auth_credit= get_option($optpre.'auth_credit'); ?>
+<?php $wp_auth_credit= get_option('wicketpixie_show_post_author'); ?>
 
 			<!-- content -->
 			<div id="content">
