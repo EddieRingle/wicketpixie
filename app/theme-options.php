@@ -156,11 +156,6 @@ class ThemeOptions extends AdminPage
     function extra_types_html($value,$checkdata)
     {
         if( $value['type'] == 'file' ) { ?>
-	    <tr valign="top">
-				<th scope="row" style="font-size:12px; text-align:left; padding-right:10px;">
-					<acronym title="<?php echo $value['description']; ?>"><?php echo $value['name']; ?></acronym>				
-				</th>
-        <td style="padding-bottom:10px;">
 					<?php
 						$image_check= get_option('wicketpixie_theme_body_bg_image');
 						if( isset( $image_check ) && $image_check != '' ) {
@@ -202,8 +197,6 @@ class ThemeOptions extends AdminPage
 					<input type="hidden" name="MAX_FILE_SIZE" value="1500000">
 					<input type="hidden" name="completed" value="true"></p>
 					<p><input type="checkbox" value="<?php echo get_option('wicketpixie_theme_no_image'); ?>" name="wicketpixie_theme_no_image" <?php if(get_option('wicketpixie_theme_no_image') == 'true') { echo 'checked="checked"'; } else { echo ''; } ?>> No Background Image</p>
-				</td>
-	    </tr>	
 	<?php
 		} else {
 		    parent::extra_types_html($value,$checkdata);
