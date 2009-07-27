@@ -167,9 +167,9 @@ if(function_exists('register_widget')) {
     include_once(TEMPLATEPATH .'/widgets/sources.php');
     foreach( SourceAdmin::collect() as $widget ) {
         if(SourceAdmin::feed_check($widget->title) == 1) {
-            $title = $widget->title;
-            $t_title = str_replace(' ','',$title);
-	        $cleaned= strtolower( $title );
+            $source_title = $widget->title;
+            $t_title = str_replace(' ','',$source_title);
+	        $cleaned= strtolower( $source_title );
 	        $cleaned= preg_replace( '/\W/', ' ', $cleaned );
 	        $cleaned= str_replace( " ", "", $cleaned );
             if(is_file(TEMPLATEPATH .'/widgets/'.$cleaned.'.php')) {
