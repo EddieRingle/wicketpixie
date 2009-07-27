@@ -53,7 +53,12 @@ $socnet_settings = array(
         "name" => "YouTube Username",
         "description" => "Your username for YouTube.",
         "id" => 'wicketpixie_youtube_id',
-        "type" => "text")
+        "type" => "text"),
+    array(
+        'name' => 'TweetMeme on Posts',
+        'description' => 'Show the TweetMeme widget on post pages.',
+        'id' => 'wicketpixie_tweetmeme_enable',
+        'type' => 'checkbox')
 );
 
 class WiPiAdmin extends AdminPage

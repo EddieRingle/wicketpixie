@@ -54,9 +54,11 @@
                         <div id="post-ad">
                             <?php if(is_enabled_adsense() == true) { $adsense->wp_adsense('blog_post_side'); } ?>
                             <div style="margin: 15px 0 0 5px">
+                                <?php if(get_option('wicketpixie_tweetmeme_enable') == 'true') { ?>
 						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
+						        <?php } ?>
 						        <?php if (get_option('wicketpixie_plugin_related-posts') == 'true'):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
