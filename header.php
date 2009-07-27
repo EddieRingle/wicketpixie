@@ -36,6 +36,7 @@ $adsense = new AdsenseAdmin;
     <?php if(get_option('wicketpixie_enable_ajax_loader') == 'true') { ?>
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/loader.css?<?php echo time(); ?>" type="text/css" media="all" />
     <?php } ?>
+    <?php ob_flush(); flush(); ?>
     <style type="text/css">
         .recentcomments a {
             display: inline !important;
@@ -68,9 +69,7 @@ $adsense = new AdsenseAdmin;
     echo "\n";
     wp_customheader();
     echo "\n";
-?>
-    <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
-	
+?>	
     <?php
     $blogurl = get_bloginfo('url');
     $currurl = $blogurl.$_SERVER['REQUEST_URI'];
@@ -106,6 +105,7 @@ $adsense = new AdsenseAdmin;
 	<?php } else { ?>
 	<!-- AJAX loader disabled, enable it in WicketPixie Settings -->
 	<?php } ?>
+	<?php ob_flush(); flush(); ?>
 <!-- google_ad_section_start(weight=ignore) -->
 	<!-- topbar -->
 	<div id="topbar">
