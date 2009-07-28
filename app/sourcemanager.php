@@ -16,7 +16,7 @@ class SourceAdmin extends AdminPage {
 	* Here we install the tables and initial data needed to
 	* power our special functions
 	*/
-	function install() {
+	static function install() {
 		global $wpdb, $db_version;
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		$table= $wpdb->prefix . 'wik_sources';
@@ -94,12 +94,12 @@ class SourceAdmin extends AdminPage {
 	/**
 	* Grab all the sources we have stored in the db.
 	* <code>
-	* foreach( $sources->collect() as $source ) {
+	* foreach( SourceAdmin::collect() as $source ) {
 	* 	echo $source->title;	
 	* }
 	* </code>
 	*/
-	function collect() {
+	static function collect() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$sources= $wpdb->get_results( "SELECT * FROM $table" );
@@ -113,7 +113,7 @@ class SourceAdmin extends AdminPage {
 	/**
 	* Called when we think the caches are getting messy
 	**/
-	function clean_dir() {
+	static function clean_dir() {
         clearstatcache();
     
         // Clean the activity stream
@@ -142,10 +142,10 @@ class SourceAdmin extends AdminPage {
         }
 	}
 	
-	function get_streams() {
+	static function get_streams() {
 		global $wpdb;
 		require_once(SIMPLEPIEPATH);
-		$this->clean_dir();
+		SourceAdmin::clean_dir();
 
 		$table= $wpdb->prefix . 'wik_sources';
 		$streams= $wpdb->get_results( "SELECT title,feed_url FROM $table WHERE lifestream = 1" );
@@ -174,10 +174,10 @@ class SourceAdmin extends AdminPage {
 		return $stream_contents;
 	}
 
-	function archive_streams() {
+	static function archive_streams() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_life_data';
-		foreach( $this->get_streams() as $archive ) {
+		foreach( SourceAdmin::get_streams() as $archive ) {
 			if( !$wpdb->get_var( "SELECT id FROM $table WHERE link = '" . $archive['link'] . "' AND date= " . $archive['date'] ) ) {
 				$a= "INSERT INTO $table (id,name,content,date,link,enabled) VALUES('', '" 
 					. addslashes( $archive['name'] ) . "','" 
@@ -193,32 +193,32 @@ class SourceAdmin extends AdminPage {
 	/**
 	* Method to grab all of our lifestream data from the DB.
 	* <code>
-	* foreach( $sources->show_streams() as $stream ) {
+	* foreach( SourceAdmin::show_streams() as $stream ) {
 	*	// do something clever
 	* }
 	* </code>
 	*/
-	function show_streams() {
+	static function show_streams() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_life_data';
 		$show= $wpdb->get_results( "SELECT * FROM $table WHERE enabled = 1 ORDER BY date DESC" );
 		return $show;
 	}
 	
-	function flush_streams( $stream ) {
+	static function flush_streams( $stream ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_life_data';
 		$delete= $wpdb->get_results( "DELETE FROM $table WHERE name = '$stream'" );
 	}
 	
-	function source( $name ) {
+	static function source( $name ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$which= $wpdb->get_results( "SELECT profile_url, favicon FROM $table WHERE title = '$name'" );
 		return $which[0];
 	}
     
-    function feed_check ($name) {
+    static function feed_check ($name) {
         global $wpdb;
         $table = $wpdb->prefix . 'wik_sources';
         $feedlink = $wpdb->get_var("SELECT feed_url FROM $table WHERE title = '$name'");
@@ -231,7 +231,7 @@ class SourceAdmin extends AdminPage {
         return $isfeed;
     }
 	
-	function legend_types() {
+	static function legend_types() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$types= $wpdb->get_results( "SELECT * FROM $table ORDER BY title" );
@@ -242,10 +242,10 @@ class SourceAdmin extends AdminPage {
 	* Convenience method for counting the number of 
 	* sources currently in the DB.
 	* <code>
-	* $sources->count();
+	* SourceAdmin::count();
 	* </code>
 	*/
-	function count() {
+	static function count() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$total= $wpdb->get_results( "SELECT ID as count FROM $table" );
@@ -256,10 +256,10 @@ class SourceAdmin extends AdminPage {
 	* Convenience method for checking if we have installed
 	* the table for sources. Returns TRUE or FALSE.
 	* <code>
-	* $sources->check();
+	* SourceAdmin::check();
 	* </code>
 	*/
-	function check() {
+	static function check() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
@@ -274,10 +274,10 @@ class SourceAdmin extends AdminPage {
 	* pass the entire request body and add() takes
 	* care of the rest.
 	* <code>
-	* $sources->add( $_REQUEST );
+	* SourceAdmin::add( $_REQUEST );
 	* </code>
 	*/
-	function add( $_REQUEST ) {
+	static function add( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
         if( $args['lifestream'] == 1 ) { 
@@ -311,7 +311,7 @@ class SourceAdmin extends AdminPage {
 		. $update . ", "
 		. "'http://www.google.com/s2/favicons?domain=$favicon_url[2]')";
 		$query= $wpdb->query( $i );
-		$this->create_widget();
+		SourceAdmin::create_widget();
 		$message= 'Social Site Saved';
 		} else {
 			$message= 'You forgot to fill out some information, please try again.';
@@ -320,7 +320,7 @@ class SourceAdmin extends AdminPage {
 		return $message;
 	}
 	
-	function gather( $id ) {
+	static function gather( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$gather= $wpdb->get_results( "SELECT * FROM $table WHERE id= $id" );
@@ -330,15 +330,15 @@ class SourceAdmin extends AdminPage {
 	/**
 	* Edit the information for a given source.
 	*/
-	function edit( $_REQUEST ) {
+	static function edit( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 			if( $args['lifestream'] == 1 ) { 
 				$stream= 1;
-				$this->toggle( $args['id'], 1 );
+				SourceAdmin::toggle( $args['id'], 1 );
 			} else { 
 				$stream= 0;
-				$this->toggle( $args['id'], 0 );
+				SourceAdmin::toggle( $args['id'], 0 );
 			}
 
 			if( $args['updates'] == 1 ) { 
@@ -362,10 +362,10 @@ class SourceAdmin extends AdminPage {
 						", updates = " . $update .
 						" WHERE id = " . $args['id'];
 			$query= $wpdb->query( $u );
-			$this->create_widget();
+			SourceAdmin::create_widget();
 	}
 	
-	function toggle( $id, $direction ) {
+	static function toggle( $id, $direction ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$name= $wpdb->get_results( "SELECT title FROM $table WHERE id = $id" );
@@ -383,21 +383,21 @@ class SourceAdmin extends AdminPage {
 	* burninate the peasants. Or sources as the case may be.
 	* Removes the offending record from the DB.
 	* <code>
-	* $sources->burninate( $id );
+	* SourceAdmin::burninate( $id );
 	* </code>
 	*/
-	function burninate( $id ) {
+	static function burninate( $id ) {
 		global $wpdb;
-		$this->toggle( $id, 0 );
+		SourceAdmin::toggle( $id, 0 );
 		$table= $wpdb->prefix . 'wik_sources';
 		$u= $wpdb->query( "UPDATE $lifedata SET enabled= 0 WHERE name= '$source'" );
 		$d= $wpdb->query( "DELETE FROM $table WHERE id = $id" );
 		$trogdor= $wpdb->query( $d );
 		
-		$this->create_widget();
+		SourceAdmin::create_widget();
 	}
 	
-	function hulk_smash() {
+	static function hulk_smash() {
 		global $wpdb;
 		$puny_table= $wpdb->prefix . 'wik_sources';
 		$to_smash= $wpdb->query( "DROP TABLE $puny_table" );
@@ -407,10 +407,10 @@ class SourceAdmin extends AdminPage {
 	/**
 	* Method to fetch the types of sources we have stored in the db.
 	* <code>
-	* $sources->types();
+	* SourceAdmin::types();
 	* </code>
 	*/
-	function types() {
+	static function types() {
 		global $wpdb;
 		$link= $wpdb->prefix . 'wik_source_types';
 		$types= $wpdb->get_results( "SELECT * FROM $link" );
@@ -425,16 +425,15 @@ class SourceAdmin extends AdminPage {
 	* Helper method to return the human readable name
 	* of a type, given a type_id.
 	* <code>
-	* $sources->type_name( $type_id );
+	* SourceAdmin::type_name( $type_id );
 	* </code>
 	*/
-	 function type_name( $id ) {
+    static function type_name( $id ) {
 		global $wpdb;
 		$link= $wpdb->prefix . 'wik_source_types';
 		$name= $wpdb->get_results( "SELECT name FROM $link WHERE type_id = '$id'" );
 		return $name[0]->name;
-	}
-	 function get_feed( $url ) {
+	}    static function get_feed( $url ) {
 		require_once ( SIMPLEPIEPATH );
 		$feed_path= $url;
 		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
@@ -456,7 +455,7 @@ class SourceAdmin extends AdminPage {
 		return $widget_contents;
 	}
 
-	 function create_file($title,$cleaned,$favicon_url,$feed_url)
+	 static function create_file($title,$cleaned,$favicon_url,$feed_url)
 	 {
 	    $t_title = str_replace(' ','',$title);
 		$data = null;
@@ -517,11 +516,11 @@ class SourceAdmin extends AdminPage {
     * Makes a widget which you can put in your sidebar.
     * The widget displays the 5 most recent entries in the source's feed.
     **/
-	function create_widget() {
+	static function create_widget() {
 		$data= '';
 		$data='<?php';
-		foreach( $this->collect() as $widget ) {
-            if($this->feed_check($widget->title) == 1) {
+		foreach( SourceAdmin::collect() as $widget ) {
+            if(SourceAdmin::feed_check($widget->title) == 1) {
                 $title = $widget->title;
                 $t_title = str_replace(' ','',$title);
                 $cleaned= strtolower( $title );
@@ -533,7 +532,7 @@ class SourceAdmin extends AdminPage {
                     register_widget('${t_title}FeedWidget');
                 }";
                 add_option( $cleaned . '-num', 5 );	
-                $this->create_file($title,$cleaned,explode('/',$widget->profile_url),$widget->feed_url);
+                SourceAdmin::create_file($title,$cleaned,explode('/',$widget->profile_url),$widget->feed_url);
             }
 		}
 		$data .= ' ?>';
@@ -544,51 +543,50 @@ class SourceAdmin extends AdminPage {
 	* The admin page for our sources/activity system.
 	**/
 	 function sourceMenu() {
-		$sources= new SourceAdmin;
 		if ( $_GET['page'] == basename(__FILE__) ) {
 		    switch($_POST['action'])
 		    {
 		        case 'add':
-		            $sources->add($_REQUEST);
+		            SourceAdmin::add($_REQUEST);
 		            ?>
 		            <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account saved.'); ?></strong></p></div>
 		            <?php
 		            break;
 		        case 'gather':
-		            $sources->gather($_REQUEST['id']);
+		            SourceAdmin::gather($_REQUEST['id']);
 		            break;
                 case 'edit':
-                    $sources->edit($_REQUEST);
+                    SourceAdmin::edit($_REQUEST);
                     ?>
                     <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account modified.'); ?></strong></p></div>
 		            <?php
                     break;
                 case 'delete':
-                    $sources->burninate($_REQUEST['id']);
+                    SourceAdmin::burninate($_REQUEST['id']);
                     ?>
                     <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
 		            <?php
                     break;
                 case 'regen_widgets':
-                    $sources->create_widget();
+                    SourceAdmin::create_widget();
                     ?>
                     <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Widgets regenerated.'); ?></strong></p></div>
                     <?php
                     break;
                 case 'hulk_smash':
-                    $sources->hulk_smash();
+                    SourceAdmin::hulk_smash();
                     ?>
                     <div id="message" class="updated fade"><p><strong><?php echo __('Social Me database cleared.'); ?></strong></p></div>
 		            <?php
                     break;
                 case 'install':
-                    $sources->install();
+                    SourceAdmin::install();
                     ?>
                     <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
 		            <?php
                     break;
                 case 'flush':
-                    $sources->flush_streams($_REQUEST['flush_name']);
+                    SourceAdmin::flush_streams($_REQUEST['flush_name']);
                     ?>
                     <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account flushed.'); ?></strong></p></div>
 		            <?php
@@ -618,11 +616,11 @@ class SourceAdmin extends AdminPage {
                         </p>
                     </form>
                     <h3>Social Me Listing</h3>
-					<?php if( $sources->check() != 'false' && $sources->count() != '' ) { ?>
+					<?php if( SourceAdmin::check() != 'false' && SourceAdmin::count() != '' ) { ?>
 					<form>
 					<?php wp_nonce_field('wicketpixie-settings'); ?>
 						<p style="margin-bottom:0;">Sort by: <select name="type" id="type">
-							<?php foreach( $sources->types() as $type ) { ?>
+							<?php foreach( SourceAdmin::types() as $type ) { ?>
 								<option value="<?php echo $type->type_id; ?>"><?php echo $type->name; ?></option>
 							<?php } ?>
 						</select>	</p>
@@ -637,13 +635,13 @@ class SourceAdmin extends AdminPage {
 							<th style="text-align:center;" colspan="3">Actions</th>
 						</tr>
 						<?php 
-							foreach( $sources->collect() as $source ) {
+							foreach( SourceAdmin::collect() as $source ) {
 								if( $source->lifestream == 0 ) {
 									$streamed= 'No';
 								} else {
 									$streamed= 'Yes';
 								}
-                                $isfeed = $sources->feed_check($source->title);
+                                $isfeed = SourceAdmin::feed_check($source->title);
 						?>		
 						<tr>
 							<td style="width:16px;"><img src="<?php echo $source->favicon; ?>" alt="Favicon" style="width: 16px; height: 16;" /></td>
@@ -655,7 +653,7 @@ class SourceAdmin extends AdminPage {
                         <?php } else { ?>
                         <td style="text-align:center;">?</td>
                         <?php } ?>
-					   	<td style="text-align:center;"><?php echo $sources->type_name( $source->type ); ?></td>
+					   	<td style="text-align:center;"><?php echo SourceAdmin::type_name( $source->type ); ?></td>
 					   	<td style="text-align:center;"><?php echo $streamed; ?></td>
 					   	<td>
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;gather=true&amp;id=<?php echo $source->id; ?>">
@@ -688,7 +686,7 @@ class SourceAdmin extends AdminPage {
 						<p>You don't have any Social Mes, why not add some?</p>
 					<?php } ?>
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
-						<?php $data= $sources->gather( $_REQUEST['id'] ); ?>
+						<?php $data= SourceAdmin::gather( $_REQUEST['id'] ); ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;edit=true" class="form-table" style="margin-bottom:30px;">
 						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Editing "<?php echo $data[0]->title; ?>"</h2>
@@ -699,7 +697,7 @@ class SourceAdmin extends AdminPage {
 							<p><input type="checkbox" name="updates" id="updates" value="1" <?php if( $data[0]->updates == '1' ) { echo 'checked'; } ?>> Use for Status Updates?</p>
 							<p>Type:
 								<select name="type" id="type">
-									<?php foreach( $sources->types() as $type ) { ?>
+									<?php foreach( SourceAdmin::types() as $type ) { ?>
 										<option value="<?php echo $type->type_id; ?>" <?php if( $type->type_id == $data[0]->type ) { echo 'selected'; } ?>><?php echo $type->name; ?></option>
 									<?php } ?>
 								</select>
@@ -711,7 +709,7 @@ class SourceAdmin extends AdminPage {
 							</p>
 						</form>
 					<?php } ?>
-					<?php if( $sources->check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
+					<?php if( SourceAdmin::check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;add=true" class="form-table" style="margin-bottom:30px;">
 						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add a New Social Me</h2>
@@ -722,7 +720,7 @@ class SourceAdmin extends AdminPage {
 							<p><input type="checkbox" name="updates" id="updates" value="1"> Use for Status Updates?</p>
 							<p>Type:
 								<select name="type" id="type">
-									<?php foreach( $sources->types() as $type ) { ?>
+									<?php foreach( SourceAdmin::types() as $type ) { ?>
 										<option value="<?php echo $type->type_id; ?>"><?php echo $type->name; ?></option>
 									<?php } ?>
 								</select>

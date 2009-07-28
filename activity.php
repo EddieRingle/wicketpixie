@@ -4,8 +4,7 @@
  * Template for the Activity Stream page
 **/
 require_once( ABSPATH . WPINC . '/rss-functions.php' );
-$activities= new SourceAdmin;
-$activities->archive_streams();
+SourceAdmin::archive_streams();
 ?>
 <?php get_header(); ?>
 			<!-- content -->
@@ -24,7 +23,7 @@ $activities->archive_streams();
 					<div id="activity">
 						<div>
 							<?php
-							$data= $activities->show_streams();
+							$data= SourceAdmin::show_streams();
 							$page= ( isset( $_GET['page'] ) && ( $_GET['page'] > 0 ) ) ? intval( $_GET['page'] ) : 1;
 							$view= 50;
 							$results= array_chunk( $data, $view, true );
@@ -40,7 +39,7 @@ $activities->archive_streams();
 							<?php
 								$day= '';
 								foreach( (array)$results[$page - 1] as $stream ) {
-								$source_data= $activities->source( $stream->name );
+								$source_data= SourceAdmin::source( $stream->name );
 								$this_day= date("F jS", $stream->date );
 								if ( $day != $this_day ) {
 							?>

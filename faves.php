@@ -3,11 +3,10 @@
  * Template Name: Faves
 **/
 ?>
-<?php get_header(); ?>
-<?php $faves= new FavesAdmin;
+<?php get_header();
 if ( is_user_logged_in() ) {
    	if ( 'sort' == $_REQUEST['action'] ) {
-		$faves->sort( $_REQUEST );
+		FavesAdmin::sort( $_REQUEST );
 	}
 }
 ?>
@@ -28,10 +27,10 @@ if ( is_user_logged_in() ) {
 					<!-- faves -->
 					<div id="faves">
 						<!-- faves-feed -->
-					<?php $i= 0; foreach( $faves->show_faves() as $fave ) { ?>
+					<?php $i= 0; foreach( FavesAdmin::show_faves() as $fave ) { ?>
 						<?php						
 						$class= ( $i++ & 1 ) ? ' odd' : '';
-						require_once ('app/simplepie.php');
+						require_once (SIMPLEPIEPATH);
 						$feed_path= $fave->feed_url;
 						$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
 						$feed->handle_content_type();
@@ -46,7 +45,7 @@ if ( is_user_logged_in() ) {
 							<input type="hidden" name="action" value="sort">
 							<input type="hidden" name="id" value="<?php echo $fave->id; ?>">
 							<strong>Current Place: <?php echo $fave->sortorder; ?></strong> | New Place <select name="newsort" id="newsort-<?php echo $fave->id; ?>">
-								<?php foreach( $faves->positions() as $place ) { ?>
+								<?php foreach( FavesAdmin::positions() as $place ) { ?>
 									<option value="<?php echo $place->sortorder; ?>"><?php echo $place->sortorder; ?></option>
 								<?php } ?>
 							</select>

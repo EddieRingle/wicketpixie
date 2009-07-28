@@ -6,7 +6,6 @@ if(get_option('wicketpixie_blog_feed_url') != false) {
     $blogfeed = get_bloginfo_rss('rss2_url');
 }
 $status= new SourceUpdate;
-$sources= new SourceAdmin;
 global $optpre;
 global $adsense;
 $adsense = new AdsenseAdmin;
@@ -105,7 +104,7 @@ $adsense = new AdsenseAdmin;
 	<?php } else { ?>
 	<!-- AJAX loader disabled, enable it in WicketPixie Settings -->
 	<?php } ?>
-	<?php ob_flush(); flush(); ?>
+	<?php flush(); ?>
 <!-- google_ad_section_start(weight=ignore) -->
 	<!-- topbar -->
 	<div id="topbar">

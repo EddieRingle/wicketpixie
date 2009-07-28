@@ -19,8 +19,7 @@ class FavesAdmin extends AdminPage
 	/**
 	* Here we install the tables and initial data needed to
 	* power our special functions
-	*/
-	 function install() {
+	*/    static function install() {
 		global $wpdb;
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		$table= $wpdb->prefix . 'wik_faves';
@@ -41,7 +40,7 @@ class FavesAdmin extends AdminPage
 		}
 	}
 	
-	 function check() {
+    static function check() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		if( $wpdb->get_var( "SHOW TABLES LIKE '$table'" ) == $table ) {
@@ -51,14 +50,14 @@ class FavesAdmin extends AdminPage
 		}
 	}
 	
-	 function count() {
+    static function count() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$total= $wpdb->get_results( "SELECT ID as count FROM $table" );
 		return $total[0]->count;
 	}
 	
-	 function add( $_REQUEST ) {
+    static function add( $_REQUEST ) {
 		global $wpdb;
 		
 		$args= $_REQUEST;		
@@ -79,7 +78,7 @@ class FavesAdmin extends AdminPage
 		}
 	}
 	
-	 function collect() {
+    static function collect() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$sources= $wpdb->get_results( "SELECT * FROM $table" );
@@ -90,7 +89,7 @@ class FavesAdmin extends AdminPage
 		}
 	}
 	
-	 function gather( $id ) {
+    static function gather( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$gather= $wpdb->get_results( "SELECT * FROM $table WHERE id= $id" );
@@ -100,7 +99,7 @@ class FavesAdmin extends AdminPage
 	/**
 	* Edit the information for a given fave.
 	*/
-	 function edit( $_REQUEST ) {
+    static function edit( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 			$table= $wpdb->prefix . 'wik_faves';
@@ -111,7 +110,7 @@ class FavesAdmin extends AdminPage
 			$query= $wpdb->query( $u );
 	}
 	
-	 function burninate( $id ) {
+    static function burninate( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$d= $wpdb->query( "DELETE FROM $table WHERE id = $id" );
@@ -126,21 +125,21 @@ class FavesAdmin extends AdminPage
 	* }
 	* </code>
 	*/
-	 function show_faves() {
+    static function show_faves() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$show= $wpdb->get_results( "SELECT * FROM $table ORDER BY sortorder ASC" );
 		return $show;
 	}
 	
-	 function positions() {
+    static function positions() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_faves';
 		$numbers= $wpdb->get_results( "SELECT sortorder FROM $table ORDER BY sortorder ASC" );
 		return $numbers;
 	}
 	
-	 function sort( $_REQUEST ) {
+    static function sort( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 		$table= $wpdb->prefix . 'wik_faves';
@@ -156,17 +155,16 @@ class FavesAdmin extends AdminPage
 	/**
 	* The admin menu for our faves system
 	*/
-	 function favesMenu() {
-		$faves= new FavesAdmin;
+    function favesMenu() {
 		if ( $_GET['page'] == basename(__FILE__) ) {
 	        if ( 'add' == $_REQUEST['action'] ) {
-				$faves->add( $_REQUEST );
+				FavesAdmin::add( $_REQUEST );
 			} elseif ( 'edit' == $_REQUEST['action'] ) {
-				$faves->edit( $_REQUEST );
+				FavesAdmin::edit( $_REQUEST );
 			} elseif ( 'delete' == $_REQUEST['action'] ) {
-				$faves->burninate( $_REQUEST['id'] );
+				FavesAdmin::burninate( $_REQUEST['id'] );
 			} elseif('install' == $_REQUEST['action']) {
-			    $faves->install();
+			    FavesAdmin::install();
 			}
 		}
 		?>
@@ -176,7 +174,7 @@ class FavesAdmin extends AdminPage
 			<div class="wrap">
 				<div id="admin-options">
 					<h2><?php _e('Manage My Faves'); ?></h2>
-					<?php if( $faves->check() == true && $faves->count() != '' ) { ?>
+					<?php if( FavesAdmin::check() == true && FavesAdmin::count() != '' ) { ?>
 					<table class="form-table" style="margin-bottom:30px;">
 						<tr>
 							<th>Title</th>
@@ -184,20 +182,20 @@ class FavesAdmin extends AdminPage
 							<th style="text-align:center;" colspan="2">Actions</th>
 						</tr>
 					<?php 
-						foreach( $faves->collect() as $fave ) {
+						foreach( FavesAdmin::collect() as $fave ) {
 					?>		
 						<tr>
 							<td><?php echo $fave->title; ?></td>
 						   	<td style="text-align:center;"><a href="<?php echo $fave->feed_url; ?>" title="<?php echo $fave->feed_url; ?>"><img src="<?php bloginfo('template_directory'); ?>/images/icon-feed.gif" alt="View"/></a></td>
 						   	<td style="text-align:center;">
-							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;gather=true&amp;id=<?php echo $fave->id; ?>">
+							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>&amp;gather=true&amp;id=<?php echo $fave->id; ?>">
 							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" value="Edit" />
 								<input type="hidden" name="action" value="gather" />
 							</form>
 							</td>
 							<td style="text-align:center;">
-							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;delete=true&amp;id=<?php echo $fave->id; ?>">
+							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>&amp;delete=true&amp;id=<?php echo $fave->id; ?>">
 							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" name="action" value="Delete" />
 								<input type="hidden" name="action" value="delete" />
@@ -210,8 +208,8 @@ class FavesAdmin extends AdminPage
 						<p>You don't have any Favorites, why not add some?</p>
 					<?php } ?>
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
-						<?php $data= $faves->gather( $_REQUEST['id'] ); ?>
-						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;edit=true">
+						<?php $data = FavesAdmin::gather( $_REQUEST['id'] ); ?>
+						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>&amp;edit=true">
 						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Editing "<?php echo $data[0]->title; ?>"</h2>
 							<p><input type="text" name="title" id="title" value="<?php echo $data[0]->title; ?>" /></p>
@@ -223,8 +221,8 @@ class FavesAdmin extends AdminPage
 							</p>
 						</form>
                     <?php } ?>
-					<?php if( $faves->check() == true && !isset( $_REQUEST['gather'] ) ) { ?>
-						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=faves.php&amp;add=true" class="form-table">
+					<?php if( FavesAdmin::check() == true && !isset( $_REQUEST['gather'] ) ) { ?>
+						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>&amp;add=true" class="form-table">
                         <?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add a New Fave</h2>
 							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Fave Title')value=''" onblur="if(this.value=='')value='Fave Title';" value="Fave Title" /></p>
