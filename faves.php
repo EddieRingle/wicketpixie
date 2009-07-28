@@ -82,8 +82,8 @@ if ( is_user_logged_in() ) {
 			<?php get_sidebar(); ?>
 			<!-- sidebar -->
 <script type="text/javascript">
-	$(document).ready(
-		function () {
+	jQuery(document).ready(
+		function ($) {
 			$('div.groupWrapper').Sortable(
 				{
 					accept: 'groupItem',
