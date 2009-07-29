@@ -13,9 +13,9 @@ INSTALLING
 
 Just place the wicketpixie folder in your /wp-content/themes/ directory and
 then activate the theme. Then make sure the httpd user has write access to
-the widgets folder and it's contents (chmod 0777) and the app folder
+the widgets folder and it's contents (chmod -R 0777) and the app folder
 (chmod 0777). Remember, if your web server uses the same user that owns
-the wicketpixie files, there is no need to change permissions.
+the WicketPixie files, there is no need to change permissions.
 
 UPGRADING
 
@@ -31,4 +31,7 @@ LINKS
 http://chris.pirillo.com/wicketpixie/ - Main WicketPixie information page
 
 http://github.com/eddieringle/wicketpixie - WicketPixie on GitHub
-(Issue tracker, code repository, wiki, etc.)
+(Code repository)
+
+http://code.idlesoft.net/projects/wicketpixie - WicketPixie on IdleCode
+(Issue tracker, Wiki, Forums, etc.)
