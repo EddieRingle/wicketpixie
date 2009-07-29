@@ -263,13 +263,13 @@ function wicketpixie_admin_head() {
     <link rel="stylesheet" href="<?php echo get_bloginfo('template_directory'), '/contrib/iphone-style-checkboxes/style.css'; ?>" type="text/css" media="screen" charset="utf-8"> <?php ?>
 	<script type="text/javascript">
 		jQuery(function($) {
-            $("#color_logo").attachColorPicker();
-            $("#body_bg_color").attachColorPicker();
-            $("#color_description").attachColorPicker();
-            $("#color_titles").attachColorPicker();
-            $("#color_headings").attachColorPicker();
-            $("#color_links_content").attachColorPicker();
-            $("#color_links_sidebar").attachColorPicker();
+            $("#wicketpixie_theme_logo_color").attachColorPicker();
+            $("#wicketpixie_theme_body_bg_color").attachColorPicker();
+            $("#wicketpixie_theme_description_color").attachColorPicker();
+            $("#wicketpixie_theme_titles_color").attachColorPicker();
+            $("#wicketpixie_theme_sidebar_headings_color").attachColorPicker();
+            $("#wicketpixie_theme_content_links_color").attachColorPicker();
+            $("#wicketpixie_theme_sidebar_links_color").attachColorPicker();
         });
 	</script>
 	<script>
