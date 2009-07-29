@@ -63,13 +63,13 @@ body {
 
 #topbar ul li a:link, #topbar ul li a:visited, #topbar ul li a:active {
 	display: block;
-	color: #666;
+	color: #ccc;
 	text-decoration: none;
 	padding: 1px 0 1px 21px;
 }
 
 #topbar ul li a:hover {
-	color: #999;
+	color: #fff;
 	text-decoration: none;
 }
 
