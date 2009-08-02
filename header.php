@@ -83,7 +83,7 @@ $adsense = new AdsenseAdmin;
     } else {
         // We must be in a page or a post
         $postdata = get_post($postid,ARRAY_A);
-        $metadesc = substr($postdata['post_content'],0,140) . ' [...]';
+        $metadesc = substr($postdata['post_content'],0,134) . ' [...]';
     }
     
     $metadesc = strip_tags($metadesc);
