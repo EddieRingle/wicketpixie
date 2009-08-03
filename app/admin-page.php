@@ -103,7 +103,7 @@ class AdminPage
                 <?php foreach($this->arrays as $array) { ?>
                 <?php if($array['name'] != '') { echo '<h3>',$array["name"],'</h3>'; } ?>
                 <?php if($array['desc'] != '') { echo $array['desc']; } ?>
-                <form method="post" style="padding:20px 0 40px;" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>">
+                <form method="post" enctype="multipart/form-data" style="padding:20px 0 40px;" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>">
                     <?php wp_nonce_field('wicketpixie-settings'); ?>
                     <table class="form-table">
                         <?php foreach( $array as $value ) {
