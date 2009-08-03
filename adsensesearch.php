@@ -9,7 +9,7 @@
 <script type="text/javascript">
   var googleSearchIframeName = "cse-search-results";
   var googleSearchFormName = "cse-search-box";
-  var googleSearchFrameWidth = 920;
+  var googleSearchFrameWidth = 880;
   var googleSearchDomain = "www.google.com";
   var googleSearchPath = "/cse";
 </script>

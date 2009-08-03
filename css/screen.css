@@ -1568,6 +1568,11 @@ a.adspot_adurl {
 /* MISCELLANEOUS
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
+/* AdSense for Search */
+#cse-search-results {
+    margin: 15px 20px;
+}
+
 .clearer {
 	clear: both;
 	line-height: 1;
