@@ -1,6 +1,7 @@
 WICKETPIXIE CHANGELOG
 
-v1.2 - TBA, 2009 (Beta 2 - July 28, 2009)
+v1.2 - TBA, 2009 (RC1 - August 3, 2009)
+ * FEATURE: AdSense for Search functionality.
  * PERFORMANCE: New AdminPage class written from scratch in hopes of better
  admin pages overall.
  * PERFORMANCE: Switched back to using WordPress' database functions for
