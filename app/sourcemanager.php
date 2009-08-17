@@ -1,13 +1,4 @@
 <?php
-/*
-Plugin Name: WicketPixie Source Manager
-Plugin URI: http://chris.pirillo.com
-Description: Management Screen for the sources in WicketPixie
-Author: Chris J. Davis and Eddie Ringle
-Version: 1.1b1
-Author URI: http://chris.pirillo.com
-*/
-
 class SourceAdmin extends AdminPage {
 	
 	var $db_version= '1.0';
@@ -433,7 +424,8 @@ class SourceAdmin extends AdminPage {
 		$link= $wpdb->prefix . 'wik_source_types';
 		$name= $wpdb->get_results( "SELECT name FROM $link WHERE type_id = '$id'" );
 		return $name[0]->name;
-	}    static function get_feed( $url ) {
+	}
+    static function get_feed( $url ) {
 		require_once ( SIMPLEPIEPATH );
 		$feed_path= $url;
 		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
@@ -455,10 +447,11 @@ class SourceAdmin extends AdminPage {
 		return $widget_contents;
 	}
 
-	 static function create_file($title,$cleaned,$favicon_url,$feed_url)
-	 {
-	    $t_title = str_replace(' ','',$title);
-		$data = null;
+    static function create_file($title,$cleaned,$favicon_url,$feed_url)
+    {
+	$to_replace = array(' ','.','!','@','#','$','%','^','&','*','(',')','+','=','-','[',']','{','}','|','\','/','"',"'",':',';','<','>',',','?','~','`');
+	$t_title = str_replace($to_replace,'_',$title);
+	$data = null;
         $data =
         "<?php
         /**
