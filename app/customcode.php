@@ -1,5 +1,14 @@
 <?php
 /**
+ * WicketPixie v1.2
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+/**
 * The convention for filenames is:
 * header.php - included inbetween <head></head> tags
 * footer.php - included before the </body> tag

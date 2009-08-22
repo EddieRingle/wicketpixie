@@ -1,14 +1,13 @@
 <?php
-/*
-WicketPixie - A Social Media WordPress Theme
-Licensed under the New BSD License.
-Copyright (c) 2006-2009 Chris Pirillo <chris@pirillo.com>,
-                        Eddie Ringle <eddie@eringle.net>,
-                        Chris J. Davis <cjdavis@viewzi.com>,
-                        Dave Bates <me@dave-bates.net>.
-All rights reserved.
-*/
-
+/**
+ * WicketPixie v1.2
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
 $optpre = 'wicketpixie_';
 include_once( TEMPLATEPATH . '/widgets/sources.php' );
 define(SIMPLEPIEPATH,ABSPATH.'wp-includes/class-simplepie.php');
