@@ -39,7 +39,7 @@
 
 					<div class="post-author">
 						<?php if( $wp_auth_credit == 'true' ) { ?>
-						<?php echo get_avatar( get_the_author_email(), $size = '48', $default = 'images/avatar.jpg' ); ?>
+						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
 						<p><strong><?php the_time('l, F jS, Y') ?></strong><br/>
 							by <?php the_author_posts_link(); ?><?php edit_post_link('Edit', ' - ', ''); ?></p>
 						<?php } else { ?>

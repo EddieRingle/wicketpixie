@@ -40,7 +40,7 @@
 
                     <div class="post-author">
                         <?php if( $wp_auth_credit == 'true' ) { ?>
-                        <?php echo get_avatar( get_the_author_email(), $size = '48', $default = 'images/avatar.jpg' ); ?>
+                        <?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
                         <p><strong><?php the_time('l, F jS') ?></strong><br/>
                             by <?php the_author_posts_link(); ?></p>
                         <?php } else { ?>
