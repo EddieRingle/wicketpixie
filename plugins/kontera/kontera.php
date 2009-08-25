@@ -174,7 +174,7 @@ function kontera_echo_javascript() {
 ?>	<!-- Kontera ContentLink -->
     <script type="text/javascript">
 	var dc_UnitID = 14;
-	var dc_PublisherID = <?php echo $publisher_id ?>;
+	var dc_PublisherID = <?php echo (!$publisher_id) ? '22324' : $publisher_id; ?>;
 	var dc_AdLinkColor = '<?php echo $ad_link_color ?>';
 	var dc_isBoldActive = 'no';
 	var dc_open_new_win = 'yes';
@@ -206,7 +206,7 @@ function kontera_options_menu() {
 	<p class="submit">
 	<input type="submit" name="Submit" value="<?php _e('Update Options »') ?>" />
 	</p>
-	<p>Don't have a Kontera account? <a href="http://go.tagjag.com/kontera" title="Signup for Kontera">Sign-up now!</a></p>
+	<p style="font-weight:bold;">Don't have a Kontera account? <a href="http://go.tagjag.com/kontera" title="Signup for Kontera">Sign-up now!</a></p>
 	<?php
 
 	echo '<table border="0" cellspacing="5">';
