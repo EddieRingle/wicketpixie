@@ -186,7 +186,7 @@ class AdsenseAdmin extends AdminPage
 	    $ad_id = $wpdb->get_var("SELECT ad_id FROM $table WHERE placement= '$placement' LIMIT 1");
 	    $pubid = get_option('wicketpixie_adsense_pubid');
 	    
-	    if($ad_id != "" && $pubid != "") {
+	    if ($ad_id != "" && $pubid != "") {
 	        if($placement == 'blog_header') {
 	            $width = "728";
 	            $height = "90";
@@ -218,8 +218,47 @@ class AdsenseAdmin extends AdminPage
     </script>";
 
             echo $codeblock;
+        } elseif ($ad_id == "" && $pubid != "") {
+            echo '<!-- No ad found for this type, set one up on the WicketPixie AdSense Settings page. -->';
+        } elseif ($pubid == "" && $ad_id != "") {
+            echo '<!-- You forgot to set your Publisher ID on the WicketPixie AdSense Settings page. -->';
         } else {
-            echo '<!-- No ad found for this type, set one up on the WicketPixie Adsense Settings page. -->';
+            if($placement == 'blog_header') {
+	            $width = "728";
+	            $height = "90";
+	            $ad_id = '5760307022';
+	        } elseif($placement == 'blog_post_side') {
+	            $width = "120";
+	            $height = "240";
+	            $ad_id = '3837687211';
+	        } elseif($placement == 'blog_post_bottom') {
+	            $width = "300";
+	            $height = "250";
+	            $ad_id = '0722333443';
+	        } elseif($placement == 'blog_sidebar') {
+	            $width = "120";
+	            $height = "600";
+	            $ad_id = '7794173943';
+	        } else {
+	            $width = "";
+	            $height = "";
+	            echo "<!-- An error has occurred. Check your settings on WicketPixie's AdSense Settings page. -->";
+	            return NULL;
+	        }
+	        // The JavaScript for the ad
+	        $codeblock = "<script type='text/javascript'><!--
+    google_ad_client = 'pub-7561297527511227';
+    google_ad_slot = '$ad_id';
+    google_ad_width = $width;
+    google_ad_height = $height;
+    google_color_border = 'FFFFFF';
+    //-->
+    </script>
+    <script type='text/javascript'
+    src='http://pagead2.googlesyndication.com/pagead/show_ads.js'>
+    </script>";
+
+            echo $codeblock;
         }
 	}
 	
