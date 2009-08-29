@@ -8,6 +8,7 @@
  *
  * Licensed under the New BSD License.
  */
+
 $optpre = 'wicketpixie_';
 include_once( TEMPLATEPATH . '/widgets/sources.php' );
 define(SIMPLEPIEPATH,ABSPATH.'wp-includes/class-simplepie.php');
@@ -19,6 +20,12 @@ define(SIMPLEPIEPATH,ABSPATH.'wp-includes/class-simplepie.php');
 * rc = release candidate (stable testing, minor issues are left)
 */
 define('WIK_VERSION',"1.2-rc1");
+
+/* Debug settings */
+define(DEBUG,true);
+if (DEBUG == true) {
+    error_reporting(E_ALL);
+}
 
 /* Dynamic (Widget-enabled) Sidebar */
 if ( function_exists('register_sidebar') )
