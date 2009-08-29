@@ -39,7 +39,7 @@ class AdsenseAdmin extends AdminPage
 		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
 			$q= "CREATE TABLE " . $table . "( 
 				id int NOT NULL AUTO_INCREMENT,
-				ad_id varchar(255) NOT NULL,
+				ad_code varchar(255) NOT NULL,
 			    placement varchar(255) NOT NULL,
                 sortorder smallint(9) NOT NULL,
 				UNIQUE KEY id (id)
@@ -73,13 +73,13 @@ class AdsenseAdmin extends AdminPage
 		
 		$args= $_REQUEST;		
 		$table= $wpdb->prefix . 'wik_adsense';
-        if($args['ad_id'] == "Ad ID") $args['ad_id'] = "";
-		if( !$wpdb->get_var( "SELECT id FROM $table WHERE ad_id = '" . $args['ad_id'] . "'" ) ) {
+        if($args['ad_code'] == "Ad Code") $args['ad_code'] = "";
+		if( !$wpdb->get_var( "SELECT id FROM $table WHERE ad_code = '" . $args['ad_code'] . "'" ) ) {
 			$id= $wpdb->get_var( "SELECT sortorder FROM $table ORDER BY sortorder DESC LIMIT 1" );
 			$new_id= ( $id + 1 );
 			
-			$i= "INSERT INTO " . $table . " (id,ad_id,placement,sortorder) VALUES('', '" 
-				. $args['ad_id'] . "','"
+			$i= "INSERT INTO " . $table . " (id,ad_code,placement,sortorder) VALUES('', '" 
+				. $args['ad_code'] . "','"
                 . $args['placement'] . "',"
 				. $new_id . ")";
 			$query= $wpdb->query( $i );
@@ -96,17 +96,6 @@ class AdsenseAdmin extends AdminPage
 	        }
 	    } else {
 	        add_option('wicketpixie_enable_adsense','true');
-	    }
-	}
-	
-	// Sets the user's pub-id
-	function pub_id($_REQUEST) {
-	    $args = $_REQUEST;
-	    
-	    if(get_option('wicketpixie_adsense_pubid')) {
-	        update_option('wicketpixie_adsense_pubid',$args['pubid']);
-	    } else {
-	        add_option('wicketpixie_adsense_pubid',$args['pubid']);
 	    }
 	}
 	
@@ -183,45 +172,12 @@ class AdsenseAdmin extends AdminPage
 	function wp_adsense($placement) {
 	    global $wpdb;
 	    $table = $wpdb->prefix . 'wik_adsense';
-	    $ad_id = $wpdb->get_var("SELECT ad_id FROM $table WHERE placement= '$placement' LIMIT 1");
-	    $pubid = get_option('wicketpixie_adsense_pubid');
+	    $ad_code = $wpdb->get_var("SELECT ad_code FROM $table WHERE placement= '$placement' LIMIT 1");
 	    
-	    if ($ad_id != "" && $pubid != "") {
-	        if($placement == 'blog_header') {
-	            $width = "728";
-	            $height = "90";
-	        } elseif($placement == 'blog_post_side') {
-	            $width = "120";
-	            $height = "240";
-	        } elseif($placement == 'blog_post_bottom') {
-	            $width = "300";
-	            $height = "250";
-	        } elseif($placement == 'blog_sidebar') {
-	            $width = "120";
-	            $height = "600";
-	        } else {
-	            $width = "";
-	            $height = "";
-	        }
-	        
-	        // The JavaScript for the ad
-	        $codeblock = "<script type='text/javascript'><!--
-    google_ad_client = '$pubid';
-    google_ad_slot = '$ad_id';
-    google_ad_width = $width;
-    google_ad_height = $height;
-    google_color_border = 'FFFFFF';
-    //-->
-    </script>
-    <script type='text/javascript'
-    src='http://pagead2.googlesyndication.com/pagead/show_ads.js'>
-    </script>";
-
-            echo $codeblock;
-        } elseif ($ad_id == "" && $pubid != "") {
-            echo '<!-- No ad found for this type, set one up on the WicketPixie AdSense Settings page. -->';
-        } elseif ($pubid == "" && $ad_id != "") {
-            echo '<!-- You forgot to set your Publisher ID on the WicketPixie AdSense Settings page. -->';
+	    if ($ad_code != "") {
+            echo $ad_code;
+        } elseif ($ad_code == "") {
+            echo '<!-- No ad code found for this type, set one up on the WicketPixie AdSense Settings page. -->';
         } else {
             if($placement == 'blog_header') {
 	            $width = "728";
@@ -271,10 +227,7 @@ class AdsenseAdmin extends AdminPage
 			}
 			elseif ( 'toggle' == $_REQUEST['action'] ) {
 			    $adsense->toggle();
-			}
-			elseif ( 'pubid' == $_REQUEST['action'] ) {
-			    $adsense->pub_id( $_REQUEST );
-			}			
+			}		
 			elseif ( 'delete' == $_REQUEST['action'] ) {
 				$adsense->burninate( $_REQUEST['id'] );
 			}
@@ -294,20 +247,20 @@ class AdsenseAdmin extends AdminPage
 	    $adsense = new AdsenseAdmin;
 		?>
 		<?php if ( isset( $_REQUEST['add'] ) ) { ?>
-		<div id="message" class="updated fade"><p><strong><?php echo __('Ad Slot added.'); ?></strong></p></div>
+		<div id="message" class="updated fade"><p><strong><?php echo __('Ad code added.'); ?></strong></p></div>
 		<?php } ?>
 			<div class="wrap">
 			
 				<div id="admin-options">
 					<h2><?php _e('AdSense Settings'); ?></h2>
-                    <p>Here you can add in your AdSense information and ad slot info so it can be displayed
+                    <p>Here you can add in your AdSense information and ad code so it can be displayed
                     on your blog. Need more help? <a href="#explain" title="Click for more info" id="explaintext">It's only a click away</a>.</p>
 					<div id="explain">
                         <h3>For those that need help, here's a rundown:</h3>
                             <ol>
                                 <li>Create an ad slot after logging into Google AdSense.</li>
-                                <li>On this page, enter your pub-id and add enter ad details.</li>
-                                <li>Enjoy. :-)</li>
+                                <li>On this page, enter the ad code given to you in the correct field.</li>
+                                <li>Enjoy your monetized blog.</li>
                             </ol>
 					</div>
 					<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&toggle=true" class="form-table">
@@ -375,12 +328,11 @@ class AdsenseAdmin extends AdminPage
                         <input type="hidden" name="action" value="adsearch" />
 					</p>
 					</form>
-					<p>To find an ad's ID number, first log in to Google AdSense. Next, click 'AdSense Setup' and then 'Manage Ads'.
-					In the 'Name (#ID)' column find the ad you've created. The ad's ID will be underneath the ad's name in gray font.</p>
+
 					<?php if( $adsense->check() == true && $adsense->count() != '' ) { ?>
 					<table class="form-table" style="margin-bottom:30px;">
 						<tr>
-							<th>Ad ID</th>
+							<th>Ad Code</th>
 							<th style="text-align:center;">Placement</th>
 							<th style="text-align:center;" colspan="1">Actions</th>
 						</tr>
@@ -388,7 +340,7 @@ class AdsenseAdmin extends AdminPage
 						foreach( $adsense->collect() as $adslot ) {
 					?>		
 						<tr>
-							<td><?php echo $adslot->ad_id; ?></td>
+							<td><?php echo $adslot->ad_code; ?></td>
 						   	<td style="text-align:center;">
         					   	<?php
         					   	if($adslot->placement == 'blog_header') {
@@ -417,38 +369,13 @@ class AdsenseAdmin extends AdminPage
 					<?php } else { ?>
 						<p>You haven't added any ad slots, add them here.</p>
 					<?php } ?>
-					    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&amp;pubid=true" class="form-table">
-                        <?php wp_nonce_field('wicketpixie-settings'); ?>
-					        <h2>Google AdSense Publisher ID</h2>
-					        <p>Please enter your AdSense Publisher ID here.</p>
-					        <p style="font-style:italic;">The Publisher ID currently in use is:<br />
-					        <?php if(get_option('wicketpixie_adsense_pubid') != false) {
-                                                          echo get_option('wicketpixie_adsense_pubid');
-                                                      } else {
-                                                          echo "N/A";
-                                                      }
-                            ?>
-					        </p>
-					        <?php
-					            if(get_option('wicketpixie_adsense_pubid')) {
-					                $pub_id = get_option('wicketpixie_adsense_pubid');
-					            } else {
-					                $pub_id = "Pub-ID";
-					            }
-					        ?>
-					        <p><input type="text" name="pubid" id="pubid" onfocus="if(this.value=='<?php echo $pub_id; ?>')value=''" value="<?php echo $pub_id; ?>" /></p>
-					        <p class="submit">
-					            <input name="save" type="submit" value="Save Pub-ID" />
-					            <input type="hidden" name="action" value="pubid" />
-					        </p>
-					    </form>
 					    
 					    <?php if($adsense->check() == true) { ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=adsenseads.php&amp;add=true" class="form-table">
                         <?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add an Ad Slot</h2>
-							<p>Please leave off the pound sign (#) when entering the Ad ID. Also remember, only one ad per placement. ;-)</p>
-							<p><input type="text" name="ad_id" id="ad_id" onfocus="if(this.value=='Ad ID')value=''" value="Ad ID" /></p>
+							<p>Remember, copy your ad code from the AdSense site after creating your ad slot. Also remember, only one ad per placement. ;-)</p>
+							<p><textarea name="ad_code" id="ad_code" onfocus="if(this.value=='Ad Code')value=''" value="Ad Code" /></p>
 							<p><select name="placement" id="title">
                             <option value="blog_header">Blog header (728x90)</option>
                             <option value="blog_post_side">Right of Blog Post (120x240)</option>
