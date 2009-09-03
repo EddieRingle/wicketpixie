@@ -353,7 +353,7 @@ class AdsenseAdmin extends AdminPage
 						foreach( $adsense->collect() as $adslot ) {
 					?>		
 						<tr>
-							<td><?php echo $adslot->ad_code; ?></td>
+							<td><?php echo htmlentities($adslot->ad_code); ?></td>
 						   	<td style="text-align:center;">
         					   	<?php
         					   	if($adslot->placement == 'blog_header') {
