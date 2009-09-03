@@ -1,6 +1,6 @@
 WICKETPIXIE CHANGELOG
 
-v1.2 - TBA, 2009 (RC1 - August 3, 2009)
+v1.2 - TBA, 2009 (RC2 - September 3, 2009)
  * FEATURE: AdSense for Search functionality.
  * CHANGE: Add AdSense ads via code instead of ad ids.
  * PERFORMANCE: New AdminPage class written from scratch in hopes of better
@@ -16,7 +16,6 @@ v1.2 - TBA, 2009 (RC1 - August 3, 2009)
  selectable in WicketPixie Admin.
  * PLUGIN: Updated StatPress Reloaded to 1.5.21.
  * REMOVED: TweetMeme widget on the home page.
- * REMOVED: Some of the defaults Chris wanted in WicketPixie.
  
 v1.1.3 - June 18, 2009
  * ADDED: Added the option to toggle the AJAX loader on and off.
