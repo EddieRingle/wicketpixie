@@ -458,7 +458,7 @@ class SourceAdmin extends AdminPage {
 
     static function create_file($title,$cleaned,$favicon_url,$feed_url)
     {
-	$to_replace = array(' ','.','!','@','#','$','%','^','&','*','(',')','+','=','-','[',']','{','}','|','\','/','"',"'",':',';','<','>',',','?','~','`');
+	$to_replace = array(' ','.','!','@','#','$','%','^','&','*','(',')','+','=','-','[',']','{','}','|',"\\",'/','"',"'",':',';','<','>',',','?','~','`');
 	$t_title = str_replace($to_replace,'_',$title);
 	$data = null;
         $data =
