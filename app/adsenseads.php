@@ -35,12 +35,12 @@ class AdsenseAdmin extends AdminPage
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		$table= $wpdb->prefix . 'wik_adsense';
 
-        $wipi_adsense_db_version = '1.1';
+        $wipi_adsense_db_version = '1.2';
 		$q= '';
 		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
 			$q= "CREATE TABLE " . $table . "( 
 				id int NOT NULL AUTO_INCREMENT,
-				ad_code varchar(255) NOT NULL,
+				ad_code varchar(512) NOT NULL,
 			    placement varchar(255) NOT NULL,
                 sortorder smallint(9) NOT NULL,
 				UNIQUE KEY id (id)
@@ -52,7 +52,7 @@ class AdsenseAdmin extends AdminPage
 		if ($wipi_adsense_db_version != get_option('wicketpixie_adsense_db_version')) {
 		    $q= "CREATE TABLE " . $table . "( 
 				id int NOT NULL AUTO_INCREMENT,
-				ad_code varchar(255) NOT NULL,
+				ad_code varchar(512) NOT NULL,
 			    placement varchar(255) NOT NULL,
                 sortorder smallint(9) NOT NULL,
 				UNIQUE KEY id (id)
