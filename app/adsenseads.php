@@ -49,7 +49,7 @@ class AdsenseAdmin extends AdminPage
 		if( $q != '' ) {
 			dbDelta( $q );
 		}
-		if ($wipi_adsense_db_version != get_option('wicketpixie_adsense_db_version') {
+		if ($wipi_adsense_db_version != get_option('wicketpixie_adsense_db_version')) {
 		    $q= "CREATE TABLE " . $table . "( 
 				id int NOT NULL AUTO_INCREMENT,
 				ad_code varchar(255) NOT NULL,
@@ -388,7 +388,7 @@ class AdsenseAdmin extends AdminPage
                         <?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add an Ad Slot</h2>
 							<p>Remember, copy your ad code from the AdSense site after creating your ad slot. Also remember, only one ad per placement. ;-)</p>
-							<p><textarea name="ad_code" id="ad_code" onfocus="if(this.value=='Ad Code')value=''" value="Ad Code" /></p>
+							<p><textarea name="ad_code" id="ad_code" onfocus="if(this.innerHTML=='Ad Code') this.innerHTML = ''">Ad Code</textarea></p>
 							<p><select name="placement" id="title">
                             <option value="blog_header">Blog header (728x90)</option>
                             <option value="blog_post_side">Right of Blog Post (120x240)</option>
