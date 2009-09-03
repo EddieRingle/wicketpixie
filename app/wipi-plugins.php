@@ -8,6 +8,8 @@
  *
  * Licensed under the New BSD License.
  */
+require_once(TEMPLATEPATH .'/functions.php');
+$DEBUG = DEBUG;
 $plugins = array(
     'name' => '',
     array(
@@ -92,10 +94,17 @@ $plugins = array(
 function add_plugins()
 {
     global $plugins;
+    global $DEBUG;
+    if ($DEBUG == true) {
+        error_reporting(E_WARNING | E_ERROR | E_PARSE);
+    }
     foreach($plugins as $plugin) {
         if(get_option($plugin['id']) == 'true' || $plugin['std'] == 'true') {
             require_once $plugin['path'];
         }
+    }
+    if ($DEBUG == true) {
+        error_reporting(E_ALL);
     }
 }
 
