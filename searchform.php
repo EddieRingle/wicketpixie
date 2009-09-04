@@ -9,7 +9,7 @@
 <?php
 $search_page = get_bloginfo('home') . '/search/';
 ?>
-<form id="search" action="<?php echo $search_page; ?>" id="cse-search-box">
+<form id="search" action="<?php echo $search_page; ?>">
   <div>
     <input type="hidden" name="cx" value="<?php echo get_option('wicketpixie_adsense_search_pubid'); ?>" />
     <input type="hidden" name="cof" value="FORID:10" />
@@ -19,5 +19,5 @@ $search_page = get_bloginfo('home') . '/search/';
   </div>
 </form>
 
-<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=cse-search-box&amp;lang=en"></script>
+<script type="text/javascript" src="http://www.google.com/coop/cse/brand?form=search&amp;lang=en"></script>
 <?php } ?>
