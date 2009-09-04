@@ -214,7 +214,7 @@ class ThemeOptions extends AdminPage
     function __destruct()
     {
         parent::__destruct();
-        unset($GLOBAL['theme_options']);
+        unset($GLOBALS['theme_options']);
     }
 }
 
