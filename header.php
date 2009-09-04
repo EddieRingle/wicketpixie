@@ -59,10 +59,7 @@ $adsense = new AdsenseAdmin;
     if(!is_dir(TEMPLATEPATH . '/app/cache')) {
         mkdir(TEMPLATEPATH . '/app/cache',0777);
     }
-    /*
-    if(is_user_logged_in()) { ?>
-    <script src="http://wicketpixie.uservoice.com/pages/general/widgets/tab.js?alignment=right&amp;color=000000" type="text/javascript"></script>
-    <?php } */ ?>
+    ?>
 <?php wp_head(); ?>
 <?php
     echo "\n";
