@@ -126,21 +126,24 @@ class NotifyAdmin extends AdminPage
 	* Returns the list of services that WicketPixie will notify when
 	* a blog post is published.
 	**/
-	function show_notifications() {
+	function show_notifications()
+	{
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$show= $wpdb->get_results( "SELECT * FROM $table ORDER BY sortorder ASC" );
 		return $show;
 	}
 	
-	function positions() {
+	function positions()
+	{
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$numbers= $wpdb->get_results( "SELECT sortorder FROM $table ORDER BY sortorder ASC" );
 		return $numbers;
 	}
 	
-	function sort( $_REQUEST ) {
+	function sort( $_REQUEST )
+	{
 		global $wpdb;
 		$args= $_REQUEST;
 		$table= $wpdb->prefix . 'wik_notify';
@@ -154,7 +157,8 @@ class NotifyAdmin extends AdminPage
 	}
 	
 	// Turns WicketPixie Notifications on and off
-	function toggle() {
+	function toggle()
+	{
 	    if(get_option('wicketpixie_notifications_enable')) {
 	        if(get_option('wicketpixie_notifications_enable') == 'true') {
 	            update_option('wicketpixie_notifications_enable','false');
@@ -167,14 +171,10 @@ class NotifyAdmin extends AdminPage
 	    wp_redirect($_SERVER['PHP_SELF'] .'?page='.$this->filename.'&toggled=true');
 	}
 	
-	/**
-	* The admin page where the user selects the services that
-	* should be notified whenever a blog post is published.
-	*/
-	 function notifyMenu() {
-		$notify= new NotifyAdmin;
-        $wp_notify = get_option('wicketpixie_notifications_enable');
-		if (isset($_GET['page']) && isset($_POST['action']) && $_GET['page'] == basename(__FILE__)) {
+	function request_check()
+	{
+	    $notify = new NotifyAdmin;
+	    if (isset($_GET['page']) && isset($_POST['action']) && $_GET['page'] == basename(__FILE__)) {
 	        if ('add' == $_POST['action']) {
 				$notify->add( $_REQUEST );
 			} elseif ( 'delete' == $_POST['action'] ) {
@@ -185,6 +185,16 @@ class NotifyAdmin extends AdminPage
 			    $notify->install();
 			}
 		}
+		unset($notify);
+	}
+	/**
+	* The admin page where the user selects the services that
+	* should be notified whenever a blog post is published.
+	*/
+	 function notifyMenu()
+	 {
+		$notify= new NotifyAdmin;
+        $wp_notify = get_option('wicketpixie_notifications_enable');
 		?>
 		<?php if ( isset( $_REQUEST['add'] ) ) { ?>
 		<div id="message" class="updated fade"><p><strong><?php echo __('Service added.'); ?></strong></p></div>
