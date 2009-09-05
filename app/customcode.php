@@ -101,27 +101,44 @@ class CustomCodeAdmin extends AdminPage
     function customcode_admin()
     {
         if ( $_GET['page'] == basename(__FILE__) ) {
-            if ( 'add' == $_REQUEST['action'] ) {
-                if('header' == $_POST['file']) {
-                    writeto($_POST['code'],"header.php");
-                } elseif('footer' == $_POST['file']) {
-                    writeto($_POST['code'],"footer.php");
-                } elseif('afterhomepost' == $_POST['file']) {
-                    writeto($_POST['code'],"afterhomepost.php");
-                } elseif('afterposts' == $_POST['file']) {
-                    writeto($_POST['code'],"afterposts.php");
+            if (isset($_POST['action']) && $_POST['action'] == 'add') {
+                if (isset($_POST['file'])) {
+                    switch ($_POST['file']) {
+                    case 'header':
+                        writeto($_POST['code'],"header.php");
+                        break;
+                    case 'footer':
+                        writeto($_POST['code'],"footer.php");
+                        break;
+                    case 'afterhomepost':
+                        writeto($_POST['code'],"afterhomepost.php");
+                        break;
+                    case 'afterposts':
+                        writeto($_POST['code'],"afterposts.php");
+                        break;
+                    default:
+                        break;
+                    }
                 }
-            }			
-            elseif ( 'clear' == $_REQUEST['action'] ) {
-                if('header' == $_POST['file']) {
-                    unlink(CUSTOMPATH .'/header.php');
-                } elseif('footer' == $_POST['file']) {
-                    unlink(CUSTOMPATH .'/footer.php');
-                } elseif('afterhomepost' == $_POST['file']) {
-                    unlink(CUSTOMPATH .'/afterhomepost.php');
-                } elseif('afterposts' == $_POST['file']) {
-                    unlink(CUSTOMPATH .'/afterposts.php');
-                }
+            } elseif (isset($_POST['action']) && $_POST['action'] == 'clear') {
+                if (isset($_POST['file'])) {
+                    switch ($_POST['file']) {
+                    case 'header':
+                        unlink(CUSTOMPATH .'/header.php');
+                        break;
+                    case 'footer':
+                        unlink(CUSTOMPATH .'/footer.php');
+                        break;
+                    case 'afterhomepost':
+                        unlink(CUSTOMPATH .'/afterhomepost.php');
+                        break;
+                    case 'afterposts':
+                        unlink(CUSTOMPATH .'/afterposts.php');
+                        break;
+                    default:
+                        break;
+                    }
+                }
             }
         }
         ?>

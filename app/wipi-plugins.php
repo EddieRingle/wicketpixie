@@ -130,7 +130,7 @@ class WiPiPlugins extends AdminPage
         $aa404 = false;
 
         foreach ( $plugins as $value ) {
-            if (!empty($_POST[$value['id']])) {
+            if (isset($value['id']) && isset($_POST[$value['id']]) && !empty($_POST[$value['id']])) {
                  if (strpos($_POST[$value['id']], "aagoog404") !== false) $aa404 = true;
             }
         }

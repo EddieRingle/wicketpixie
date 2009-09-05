@@ -66,7 +66,11 @@ class NotifyAdmin extends AdminPage
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_notify';
 		$total= $wpdb->get_results( "SELECT ID as count FROM $table" );
-		return $total[0]->count;
+		if (isset($total[0])) {
+		    return $total[0]->count;
+		} else {
+		    return 0;
+		}
 	}
 	
 	 function add( $_REQUEST ) {
@@ -75,21 +79,21 @@ class NotifyAdmin extends AdminPage
 		$args= $_REQUEST;		
 		$table= $wpdb->prefix . 'wik_notify';
 		if( $args['service'] != 'Service Name' ) {
-        if($args['apikey'] == "API Key") $args['apikey'] = "";
-        if($args['username'] == "Username") $args['username'] = "";
-        if($args['password'] == "Password") $args['password'] = "";
-		if( $wpdb->get_var( "SELECT id FROM $table WHERE service = '" . $args['service'] . "'" ) == NULL ) {
-			$id= $wpdb->get_var( "SELECT sortorder FROM $table ORDER BY sortorder DESC LIMIT 1" );
-			$new_id= ( $id + 1 );
+            if($args['apikey'] == "API Key") $args['apikey'] = "";
+            if($args['username'] == "Username") $args['username'] = "";
+            if($args['password'] == "Password") $args['password'] = "";
+		    if( $wpdb->get_var( "SELECT id FROM $table WHERE service = '" . $args['service'] . "'" ) == NULL ) {
+			    $id= $wpdb->get_var( "SELECT sortorder FROM $table ORDER BY sortorder DESC LIMIT 1" );
+			    $new_id= ( $id + 1 );
 			
-			$i= "INSERT INTO " . $table . " (id,service,username,password,apikey,sortorder) VALUES('', '" 
-				. $args['service'] . "','" 
-				. $args['username'] . "','"
-                . $args['password'] . "','"
-                . $args['apikey'] . "',"
-				. $new_id . ")";
-			$query= $wpdb->query( $i );
-		}
+			    $i= "INSERT INTO " . $table . " (id,service,username,password,apikey,sortorder) VALUES('', '" 
+				    . $args['service'] . "','" 
+				    . $args['username'] . "','"
+                    . $args['password'] . "','"
+                    . $args['apikey'] . "',"
+				    . $new_id . ")";
+			    $query= $wpdb->query( $i );
+		    }
 		}
 	}
 	
@@ -160,6 +164,7 @@ class NotifyAdmin extends AdminPage
 	    } else {
 	        add_option('wicketpixie_notifications_enable','true');
 	    }
+	    
 	}
 	
 	/**
@@ -169,17 +174,14 @@ class NotifyAdmin extends AdminPage
 	 function notifyMenu() {
 		$notify= new NotifyAdmin;
         $wp_notify = get_option('wicketpixie_notifications_enable');
-		if ( $_GET['page'] == basename(__FILE__) ) {
-	        if ( 'add' == $_REQUEST['action'] ) {
+		if (isset($_GET['page']) && isset($_POST['action']) && $_GET['page'] == basename(__FILE__)) {
+	        if ('add' == $_POST['action']) {
 				$notify->add( $_REQUEST );
-			}			
-			elseif ( 'delete' == $_REQUEST['action'] ) {
+			} elseif ( 'delete' == $_POST['action'] ) {
 				$notify->burninate( $_REQUEST['id'] );
-			}
-			elseif ( 'toggle' == $_POST['action'] ) {
+			} elseif ( 'toggle' == $_POST['action'] ) {
 			    $notify->toggle();
-			}
-			elseif('install' == $_POST['action']) {
+			} elseif('install' == $_POST['action']) {
 			    $notify->install();
 			}
 		}

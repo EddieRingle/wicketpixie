@@ -61,9 +61,13 @@ class FavesAdmin extends AdminPage
 	
     static function count() {
 		global $wpdb;
-		$table= $wpdb->prefix . 'wik_faves';
-		$total= $wpdb->get_results( "SELECT ID as count FROM $table" );
-		return $total[0]->count;
+		$table = $wpdb->prefix . 'wik_faves';
+		$total = $wpdb->get_results( "SELECT ID as count FROM $table" );
+		if (isset($total[0])) {
+		    return $total[0]->count;
+		} else {
+		    return 0;
+		}
 	}
 	
     static function add( $_REQUEST ) {
@@ -165,15 +169,24 @@ class FavesAdmin extends AdminPage
 	* The admin menu for our faves system
 	*/
     function favesMenu() {
-		if ( $_GET['page'] == basename(__FILE__) ) {
-	        if ( 'add' == $_REQUEST['action'] ) {
-				FavesAdmin::add( $_REQUEST );
-			} elseif ( 'edit' == $_REQUEST['action'] ) {
-				FavesAdmin::edit( $_REQUEST );
-			} elseif ( 'delete' == $_REQUEST['action'] ) {
-				FavesAdmin::burninate( $_REQUEST['id'] );
-			} elseif('install' == $_REQUEST['action']) {
-			    FavesAdmin::install();
+		if (isset($_GET['page']) && $_GET['page'] == basename(__FILE__)) {
+		    if (isset($_POST['action'])) {
+		        switch ($_POST['action']) {
+		        case 'add':
+		            FavesAdmin::add($_REQUEST);
+		            break;
+		        case 'edit':
+		            FavesAdmin::edit($_REQUEST);
+		            break;
+		        case 'delete':
+		            FavesAdmin::burninate($_REQUEST['id']);
+		            break;
+		        case 'install':
+		            FavesAdmin::install();
+		            break;
+		        default:
+		            break;
+		        }
 			}
 		}
 		?>

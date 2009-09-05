@@ -544,57 +544,56 @@ class SourceAdmin extends AdminPage {
 	/**
 	* The admin page for our sources/activity system.
 	**/
-	 function sourceMenu() {
-		if ( $_GET['page'] == basename(__FILE__) ) {
-		    switch($_POST['action'])
-		    {
-		        case 'add':
-		            SourceAdmin::add($_REQUEST);
-		            ?>
-		            <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account saved.'); ?></strong></p></div>
-		            <?php
-		            break;
-		        case 'gather':
-		            SourceAdmin::gather($_REQUEST['id']);
-		            break;
-                case 'edit':
-                    SourceAdmin::edit($_REQUEST);
-                    ?>
-                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account modified.'); ?></strong></p></div>
-		            <?php
-                    break;
-                case 'delete':
-                    SourceAdmin::burninate($_REQUEST['id']);
-                    ?>
-                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
-		            <?php
-                    break;
-                case 'regen_widgets':
-                    SourceAdmin::create_widget();
-                    ?>
-                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Widgets regenerated.'); ?></strong></p></div>
-                    <?php
-                    break;
-                case 'hulk_smash':
-                    SourceAdmin::hulk_smash();
-                    ?>
-                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me database cleared.'); ?></strong></p></div>
-		            <?php
-                    break;
-                case 'install':
-                    SourceAdmin::install();
-                    ?>
-                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
-		            <?php
-                    break;
-                case 'flush':
-                    SourceAdmin::flush_streams($_REQUEST['flush_name']);
-                    ?>
-                    <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account flushed.'); ?></strong></p></div>
-		            <?php
-                    break;
-                default:
-                    break;
+    function sourceMenu() {
+        if (isset($_GET['page']) && isset($_POST['action']) && $_GET['page'] == basename(__FILE__)) {
+            switch ($_POST['action']) {
+            case 'add':
+	            SourceAdmin::add($_REQUEST);
+	            ?>
+	            <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account saved.'); ?></strong></p></div>
+	            <?php
+	            break;
+	        case 'gather':
+	            SourceAdmin::gather($_REQUEST['id']);
+	            break;
+            case 'edit':
+                SourceAdmin::edit($_REQUEST);
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account modified.'); ?></strong></p></div>
+	            <?php
+                break;
+            case 'delete':
+                SourceAdmin::burninate($_REQUEST['id']);
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
+	            <?php
+                break;
+            case 'regen_widgets':
+                SourceAdmin::create_widget();
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Widgets regenerated.'); ?></strong></p></div>
+                <?php
+                break;
+            case 'hulk_smash':
+                SourceAdmin::hulk_smash();
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me database cleared.'); ?></strong></p></div>
+	            <?php
+                break;
+            case 'install':
+                SourceAdmin::install();
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
+	            <?php
+                break;
+            case 'flush':
+                SourceAdmin::flush_streams($_REQUEST['flush_name']);
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account flushed.'); ?></strong></p></div>
+	            <?php
+                break;
+            default:
+                break;
             }
 		}
 		?>

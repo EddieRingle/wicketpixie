@@ -95,9 +95,11 @@ class AdminPage
     
     function request_check()
     {
-        if($_GET['page'] == $this->filename && $_POST['action'] == 'save') {
-            check_admin_referer('wicketpixie-settings');
-            $this->save();
+        if (isset($_GET['page']) && isset($_POST['action'])) {
+            if($_GET['page'] == $this->filename && $_POST['action'] == 'save') {
+                check_admin_referer('wicketpixie-settings');
+                $this->save();
+            }
         }
     }
     
@@ -109,8 +111,8 @@ class AdminPage
                 <h2><?php echo $this->page_name; ?></h2>
                 <?php echo $this->page_description; ?>
                 <?php foreach($this->arrays as $array) { ?>
-                <?php if($array['name'] != '') { echo '<h3>',$array["name"],'</h3>'; } ?>
-                <?php if($array['desc'] != '') { echo $array['desc']; } ?>
+                <?php if (isset($array['name']) && $array['name'] != '') { echo '<h3>',$array["name"],'</h3>'; } ?>
+                <?php if (isset($array['desc']) && $array['desc'] != '') { echo $array['desc']; } ?>
                 <form method="post" enctype="multipart/form-data" style="padding:20px 0 40px;" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=<?php echo $this->filename; ?>">
                     <?php wp_nonce_field('wicketpixie-settings'); ?>
                     <table class="form-table">
@@ -125,7 +127,7 @@ class AdminPage
 			                        if (get_option($value['id'])) {
 				                        $optdata = get_option($value['id']);
 			                        } else { 
-				                        $optdata = $value['std'];
+				                        $optdata = (isset($value['std'])) ? $value['std'] : '';
 			                        }
 			                    ?>
 			                    <?php
@@ -152,7 +154,7 @@ class AdminPage
                     <p class="submit">
                         <input name="save" type="submit" value="Save changes" />
                         <input type="hidden" name="action" value="save" />
-                        <input type="hidden" name="group" value="<?php echo $array['name']; ?>" />
+                        <input type="hidden" name="group" value="<?php echo (isset($array['name'])) ? $array['name'] : ''; ?>" />
                     </p>
                 </form>
                 <?php } ?>

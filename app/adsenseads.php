@@ -234,21 +234,27 @@ class AdsenseAdmin extends AdminPage
 	function request_check()
 	{
 	    $adsense = new AdsenseAdmin;
-		if ( $_GET['page'] == basename(__FILE__) ) {
-	        if ( 'add' == $_REQUEST['action'] ) {
-				$adsense->add( $_REQUEST );
-			}
-			elseif ( 'toggle' == $_REQUEST['action'] ) {
-			    $adsense->toggle();
-			}		
-			elseif ( 'delete' == $_REQUEST['action'] ) {
-				$adsense->burninate( $_REQUEST['id'] );
-			}
-			elseif('install' == $_POST['action']) {
-			    $adsense->install();
-			}
-			elseif('adsearch' == $_POST['action']) {
-			    $adsense->adsearch();
+		if (isset($_GET['page']) && $_GET['page'] == basename(__FILE__)) {
+		    if (isset($_POST['action'])) {
+		        switch ($_POST['action']) {
+	            case 'add':
+				    $adsense->add( $_REQUEST );
+				    break;
+				case 'toggle':
+			        $adsense->toggle();
+			        break;
+			    case 'delete':
+				    $adsense->burninate( $_REQUEST['id'] );
+				    break;
+				case 'install':
+			        $adsense->install();
+			        break;
+			    case 'adsearch':
+			        $adsense->adsearch();
+			        break;
+			    default:
+			        break;
+			    }
 			}
 		}
 	}
