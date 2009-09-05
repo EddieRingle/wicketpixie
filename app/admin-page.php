@@ -33,7 +33,9 @@ class AdminPage
     
     function default_save_types($value)
     {
-        update_option($value['id'],$_POST[$value['id']]);
+        if (isset($value['id']) && isset($_POST[$value['id']])) {
+            update_option($value['id'],$_POST[$value['id']]);
+        }
     }
     
     function extra_types_html($value,$checkdata)
@@ -52,7 +54,7 @@ class AdminPage
     function save()
     {
         foreach($this->arrays as $array) {
-            if($array['name'] == $_POST['group']) {
+            if((isset($array['name']) && $array['name'] == $_POST['group']) || (!isset($array['name']) && $_POST['group'] == '')) {
                 foreach($array as $value) {
                     if(is_array($value)) {
                         switch($value['type']) {

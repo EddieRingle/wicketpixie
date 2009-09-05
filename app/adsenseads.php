@@ -77,7 +77,11 @@ class AdsenseAdmin extends AdminPage
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_adsense';
 		$total= $wpdb->get_results( "SELECT ID as count FROM $table" );
-		return $total[0]->count;
+		if (isset($total[0])) {
+		    return $total[0]->count;
+		} else {
+		    return 0;
+		}
 	}
 	
 	// Adds an ad slot to the database
