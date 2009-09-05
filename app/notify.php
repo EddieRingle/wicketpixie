@@ -164,7 +164,7 @@ class NotifyAdmin extends AdminPage
 	    } else {
 	        add_option('wicketpixie_notifications_enable','true');
 	    }
-	    
+	    wp_redirect($_SERVER['PHP_SELF'] .'?page='.$this->filename.'&toggled=true');
 	}
 	
 	/**

@@ -110,6 +110,7 @@ class AdsenseAdmin extends AdminPage
 	    } else {
 	        add_option('wicketpixie_enable_adsense','true');
 	    }
+	    wp_redirect($_SERVER['PHP_SELF'] .'?page='.$this->filename.'&toggled=true');
 	}
 	
 	 function collect() {
