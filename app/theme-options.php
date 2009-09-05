@@ -133,10 +133,10 @@ class ThemeOptions extends AdminPage
     {
         parent::request_check();
         
-        if( 'reset' == $_POST['action'] ) {
+        if (isset($_POST['action']) && $_POST['action'] == 'reset') {
 		    check_admin_referer('wicketpixie-settings');
-           	foreach( $GLOBALS['theme_options'] as $value ) {
-           	    if(get_option($this->$value['id'])) {
+           	foreach ($GLOBALS['theme_options'] as $value) {
+           	    if (get_option($this->$value['id'])) {
                    	delete_option( $this->$value['id'] );
                 }
 		    }
@@ -156,7 +156,7 @@ class ThemeOptions extends AdminPage
 			}
 		}
 		
-		if( $_POST['saved_images'] != '' ) {
+		if ( $_POST['saved_images'] != '' ) {
             update_option('wicketpixie_theme_body_bg_image',$_POST['saved_images']);
 		}
     }

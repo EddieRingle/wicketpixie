@@ -82,8 +82,8 @@ class WiPiAdmin extends AdminPage
     function request_check()
     {
         parent::request_check();
-        if ( 'save-custom-code' == $_POST['action'] ) {
-            if('global_announcement' == $_POST['file']) {
+        if (isset($_POST['action']) && $_POST['action'] == 'save-custom-code') {
+            if(isset($_POST['file']) && $_POST['file'] == 'global_announcement') {
                 require_once(TEMPLATEPATH .'/app/customcode.php');
                 writeto($_POST['code'],"global_announcement.php");
             }
@@ -96,7 +96,7 @@ class WiPiAdmin extends AdminPage
         <h3>Global Announcement</h3>
 	    <?php
 	    require_once(TEMPLATEPATH .'/app/customcode.php');
-	    if(function_exists(fetchcustomcode)) {
+	    if(function_exists('fetchcustomcode')) {
 	        $glob = fetchcustomcode('global_announcement.php',true);
 	        if($glob == fetchcustomcode('idontexist.no')) {
 	            $glob = "";
