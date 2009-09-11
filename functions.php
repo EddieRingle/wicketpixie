@@ -116,6 +116,13 @@ $a = new HomeAdmin();
 add_action('admin_menu',array($a,'add_page_to_menu'));
 unset($a);
 
+// WicketPixie Notifications page
+require_once( TEMPLATEPATH .'/app/notify.php');
+$a = new NotifyAdmin();
+add_action('admin_menu',array($a,'add_page_to_menu'));
+unset($a);
+register_activation_hook('/app/notify.php',array('NotifyAdmin','install'));
+
 // Social Me Manager
 require_once( TEMPLATEPATH .'/app/sourcemanager.php' );
 $a = new SourceAdmin();
@@ -130,13 +137,6 @@ add_action('admin_menu',array($a,'add_page_to_menu'));
 unset($a);
 add_action('admin_head', 'wicketpixie_admin_head');
 add_action('wp_head', 'wicketpixie_wp_head');
-
-// WicketPixie Notifications page
-require_once( TEMPLATEPATH .'/app/notify.php');
-$a = new NotifyAdmin();
-add_action('admin_menu',array($a,'add_page_to_menu'));
-unset($a);
-register_activation_hook('/app/notify.php',array('NotifyAdmin','install'));
 
 /* Version number in admin footer */
 function wicketpixie_add_admin_footer() {
