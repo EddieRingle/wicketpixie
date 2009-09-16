@@ -10,7 +10,6 @@
  */
 
 $optpre = 'wicketpixie_';
-include_once( TEMPLATEPATH . '/widgets/sources.php' );
 define(SIMPLEPIEPATH,ABSPATH.'wp-includes/class-simplepie.php');
 
 // No spaces in this constant please (use hyphens)
