@@ -35,7 +35,7 @@ class AdsenseAdmin extends AdminPage
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		$table= $wpdb->prefix . 'wik_adsense';
 
-        $wipi_adsense_db_version = '1.2';
+        $wipi_adsense_db_version = '1.2p1';
 		$q= '';
 		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
 			$q= "CREATE TABLE " . $table . "( 
