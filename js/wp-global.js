@@ -5,6 +5,5 @@ jQuery(document).ready(function ($) {
 
 
 function hideLoading() {
-    jQuery("#loadingFrame").css('display', 'none');	
-	jQuery("#wrapper").css('display','block');
+    jQuery("#loadingFrame").css('display', 'none');
 }
