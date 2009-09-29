@@ -35,7 +35,7 @@ class AdsenseAdmin extends AdminPage
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		$table= $wpdb->prefix . 'wik_adsense';
 
-        $wipi_adsense_db_version = '1.2p1';
+        $wipi_adsense_db_version = '1.2.1';
 		$q= '';
 		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
 			$q= "CREATE TABLE " . $table . "( 
@@ -50,15 +50,8 @@ class AdsenseAdmin extends AdminPage
 			dbDelta( $q );
 		}
 		if ($wipi_adsense_db_version != get_option('wicketpixie_adsense_db_version')) {
-		    $q= "CREATE TABLE " . $table . "( 
-				id int NOT NULL AUTO_INCREMENT,
-				ad_code VARCHAR(512) NOT NULL,
-			    placement VARCHAR(255) NOT NULL,
-                sortorder smallint(9) NOT NULL,
-				UNIQUE KEY id (id)
-			);";
-
-			dbDelta($q);
+		    $wpdb->query("ALTER TABLE $table CHANGE ad_id ad_code varchar(255);");
+			$wpdb->query("ALTER TABLE $table MODIFY ad_code VARCHAR(512);");
 			update_option('wicketpixie_adsense_db_version',$wipi_adsense_db_version);
 		}
 	}
