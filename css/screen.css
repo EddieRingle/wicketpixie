@@ -17,7 +17,7 @@ body {
 }
 
 #wrapper {
-	display: none;
+	display: block;
 	clear: both;
 	width: 920px;
 	margin: 0 auto;
