@@ -1,8 +1,9 @@
 WICKETPIXIE CHANGELOG
 
-v1.2 - TBA, 2009 (RC2 - September 3, 2009)
+v1.2 - TBA, 2009 (RC4 - October 3, 2009)
  * FEATURE: AdSense for Search functionality.
  * CHANGE: Add AdSense ads via code instead of ad ids.
+ * PERFORMANCE: CSS Tweaks speed up page load times tremendously.
  * PERFORMANCE: New AdminPage class written from scratch in hopes of better
  admin pages overall.
  * PERFORMANCE: Switched back to using WordPress' database functions for
