@@ -22,7 +22,7 @@ define(SIMPLEPIEPATH,ABSPATH.'wp-includes/class-simplepie.php');
 define('WIK_VERSION',"1.2-rc4");
 
 /* Debug settings */
-define(DEBUG,true);
+define(DEBUG,false);
 if (DEBUG == true) {
     error_reporting(E_ALL);
 }
