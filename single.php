@@ -49,6 +49,7 @@
 					
 					<div class="clearer"></div>
 					
+					<?php if (get_option('wicketpixie_post_enable_aside') == 'true') { ?>
 					<!-- post-ad -->
                         <div id="post-ad">
                             <?php if(is_enabled_adsense() == true) { $adsense->wp_adsense('blog_post_side'); } ?>
@@ -64,6 +65,7 @@
 						    </div>
                         </div>
                     <!-- /post-ad -->
+                    <?php } ?>
                     
                     <div class="KonaBody">
                     <?php if(is_enabled_adsense() == true) { ?>

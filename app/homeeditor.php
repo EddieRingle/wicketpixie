@@ -94,7 +94,13 @@ $homeoptions = array(
     "description" => "Content that is displayed after the post meta data but before the Flickr Widget, Embedded Video, etc.",
     "id" => 'wicketpixie_home_custom_code',
     "std" => "<!-- No custom code yet... -->",
-    "type" => "textarea")
+    "type" => "textarea"),
+    array(
+    "name" => "Enable Post Sidebar",
+    "description" => "Enable the area next to the post containing the AdSense ad and Related Posts.",
+    "id" => 'wicketpixie_home_enable_aside',
+    "std" => 'false',
+    'type' => 'checkbox')
 );
 
 class HomeAdmin extends AdminPage {

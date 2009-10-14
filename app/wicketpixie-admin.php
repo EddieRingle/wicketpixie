@@ -62,6 +62,15 @@ $socnet_settings = array(
         "description" => "Your username for YouTube.",
         "id" => 'wicketpixie_youtube_id',
         "type" => "text"),
+);
+
+$misc_settings = array(
+    'name' => 'Miscellaneous Settings',
+    array(
+        'name' => 'Post side box',
+        'description' => 'Enable the box that contains the AdSense ad, TweetMeme, and Related Posts.',
+        'id' => 'wicketpixie_post_enable_aside',
+        'type' => 'checkbox'),
     array(
         'name' => 'TweetMeme on Posts',
         'description' => 'Show the TweetMeme widget on post pages.',
@@ -73,10 +82,10 @@ class WiPiAdmin extends AdminPage
 {
     function __construct()
     {
-        parent::__construct('','wicketpixie-admin.php',null,array($GLOBALS['site_settings'],$GLOBALS['socnet_settings']));
+        parent::__construct('','wicketpixie-admin.php',null,array($GLOBALS['site_settings'],$GLOBALS['socnet_settings'],$GLOBALS['misc_settings']));
         $this->page_title = 'WicketPixie Admin';
         $this->page_name = 'WicketPixie';
-        $this->page_description = 'WicketPixie requires some information before it works properly.';
+        $this->page_description = 'WicketPixie requires some configuration before it works properly.';
     }
     
     function request_check()
@@ -120,7 +129,7 @@ class WiPiAdmin extends AdminPage
     
     function __destruct()
     {
-        unset($GLOBALS['site_settings'],$GLOBALS['socnet_settings']);
+        unset($GLOBALS['site_settings'],$GLOBALS['socnet_settings'],$GLOBALS['misc_settings']);
         parent::__destruct();
     }
 }
