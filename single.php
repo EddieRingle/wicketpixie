@@ -10,7 +10,6 @@
 				
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
-				
 				    <?php
 				    require_once(TEMPLATEPATH .'/app/customcode.php');
 				    $glob = fetchcustomcode('global_announcement.php',true);
@@ -67,6 +66,11 @@
                     <!-- /post-ad -->
                     
                     <div class="KonaBody">
+                    <?php if(is_enabled_adsense() == true) { ?>
+                    <span style="float:left;display:block;clear:none;margin-right:10px;">
+                    <?php $adsense->wp_adsense('blog_post_front'); ?>
+                    </span>
+                    <?php } ?>
 					<?php the_content(); ?>
 					</div>					
 					

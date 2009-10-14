@@ -62,6 +62,11 @@
                     <!-- /post-ad -->
                     
                     <div class="KonaBody">
+                    <?php if(is_enabled_adsense() == true) { ?>
+                    <span style="float:left;display:block;clear:none;margin-right:10px;">
+                    <?php $adsense->wp_adsense('blog_home_post_front'); ?>
+                    </span>
+                    <?php } ?>
                     <?php the_content('Continue reading &raquo;'); ?>
                     </div>
                     <?php wp_after_home_post_code(); ?>

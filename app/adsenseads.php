@@ -206,6 +206,14 @@ class AdsenseAdmin extends AdminPage
 	            $width = "120";
 	            $height = "600";
 	            $ad_id = '7794173943';
+	        } elseif($placement == 'blog_home_post_front') {
+	            $width = '300';
+	            $height = '250';
+	            $ad_id = '0722333443';
+	        } elseif($placement == 'blog_post_front') {
+	            $width = '300';
+	            $height = '250';
+	            $ad_id = '0722333443';
 	        } else {
 	            $width = "";
 	            $height = "";
@@ -368,6 +376,10 @@ class AdsenseAdmin extends AdminPage
         					   	    echo "Underneath Home Post (300x250)";
         					   	} elseif($adslot->placement == 'blog_sidebar') {
         					   	    echo "Bottom-left of Sidebar (120x600)";
+        					   	} elseif($adslot->placement == 'blog_home_post_front') {
+        					   	    echo "Home Post, Before Content (300x250)";
+        					   	} elseif($adslot->placement == 'blog_post_front') {
+        					   	    echo "Single Post, Before Content (300x250)";
         					   	} else {
         					   	    echo $adslot-placement;
         					   	}
@@ -398,6 +410,8 @@ class AdsenseAdmin extends AdminPage
                             <option value="blog_post_side">Right of Blog Post (120x240)</option>
                             <option value="blog_post_bottom">Underneath Home Post (300x250)</option>
                             <option value="blog_sidebar">Bottom-left of Sidebar (120x600)</option>
+                            <option value="blog_home_post_front">Home Post, Before Content (300x250)</option>
+                            <option value="blog_post_front">Single Post, Before Content (300x250)</option>
                             </select></p>
                             <p class="submit">
                                 <input name="save" type="submit" value="Add Ad Slot" /> 
