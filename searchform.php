@@ -1,4 +1,13 @@
 <?php
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
 if(get_option('wicketpixie_adsense_search_enabled') != 'true') { ?>
 <form id="search" method="get" action="<?php bloginfo('home'); ?>/">
 	<div>

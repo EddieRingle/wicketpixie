@@ -1,5 +1,16 @@
-<?php get_header(); ?>
-<?php $wp_auth_credit= get_option('wicketpixie_show_post_author'); ?>
+<?php
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+
+    get_header();
+    $wp_auth_credit= get_option('wicketpixie_show_post_author'); ?>
 			
 			<!-- content -->
 			<div id="content">
