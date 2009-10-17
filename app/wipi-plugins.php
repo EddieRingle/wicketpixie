@@ -9,6 +9,7 @@
  * Licensed under the New BSD License.
  */
 require_once(TEMPLATEPATH .'/functions.php');
+$debug = DEBUG;
 $plugins = array(
     'name' => '',
     array(
@@ -93,17 +94,18 @@ $plugins = array(
 function add_plugins()
 {
     global $plugins;
-    global DEBUG;
-
-    error_reporting(E_ALL | ~E_NOTICE);
+    global $debug;
+    error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
 
     foreach($plugins as $plugin) {
-        if(get_option($plugin['id']) == 'true' || $plugin['std'] == 'true') {
-            require_once $plugin['path'];
+        if (is_array($plugin)) {
+            if(get_option($plugin['id']) == 'true' || $plugin['std'] == 'true') {
+                require_once $plugin['path'];
+            }
         }
     }
-    if (DEBUG == true) {
-        error_reporting(E_ALL);
+    if ($debug == true) {
+        error_reporting(E_ALL & E_NOTICE & _STRICT);
     }
 }
 

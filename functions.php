@@ -23,7 +23,7 @@ define('WIK_VERSION',"2.0-pre");
 /* Debug settings */
 define(DEBUG,true);
 if (DEBUG == true) {
-    error_reporting(E_ALL);
+    error_reporting(E_ALL & E_NOTICE & E_STRICT);
 }
 
 /* Dynamic (Widget-enabled) Sidebar */
