@@ -24,3 +24,17 @@
 			<!-- sidebar -->
 			
 <?php get_footer(); ?>
+=======
+<?php
+/**
+ * WicketPixie v1.3
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+global $templatef;
+include_once(TEMPLATEPATH.'/templates/'.$templatef.'/page.php');
+?>

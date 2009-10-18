@@ -1,13 +1,14 @@
-<?php if(get_option('wicketpixie_adsense_search_enabled') != 'true') { ?>
+<?php
+if(get_option('wicketpixie_adsense_search_enabled') != 'true') { ?>
 <form id="search" method="get" action="<?php bloginfo('home'); ?>/">
 	<div>
 		<input type="text" name="s" id="s" value="" size="35" />
 		<input name="search" type="image" src="<?php bloginfo('template_directory'); ?>/images/search-button.gif" alt="Search" id="search-submit" />
 	</div>
 </form>
-<?php } elseif(get_option('wicketpixie_adsense_search_enabled') == 'true' && get_option('wicketpixie_adsense_search_pubid') != "") { ?>
 <?php
-$search_page = get_bloginfo('home') . '/search/';
+} elseif(get_option('wicketpixie_adsense_search_enabled') == 'true' && get_option('wicketpixie_adsense_search_pubid') != "") {
+    $search_page = get_bloginfo('home') . '/search/';
 ?>
 <form id="search" action="<?php echo $search_page; ?>">
   <div>
