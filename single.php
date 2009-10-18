@@ -21,7 +21,6 @@
 				
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
-				
 				    <?php
 				    require_once(TEMPLATEPATH .'/app/customcode.php');
 				    $glob = fetchcustomcode('global_announcement.php',true);
@@ -61,6 +60,7 @@
 					
 					<div class="clearer"></div>
 					
+					<?php if (get_option('wicketpixie_post_enable_aside') == 'true') { ?>
 					<!-- post-ad -->
                         <div id="post-ad">
                             <?php if(is_enabled_adsense() == true) { $adsense->wp_adsense('blog_post_side'); } ?>
@@ -76,8 +76,14 @@
 						    </div>
                         </div>
                     <!-- /post-ad -->
+                    <?php } ?>
                     
                     <div class="KonaBody">
+                    <?php if(is_enabled_adsense() == true) { ?>
+                    <span style="float:left;display:block;clear:none;margin-right:10px;">
+                    <?php $adsense->wp_adsense('blog_post_front'); ?>
+                    </span>
+                    <?php } ?>
 					<?php the_content(); ?>
 					</div>					
 					

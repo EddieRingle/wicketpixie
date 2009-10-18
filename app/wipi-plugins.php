@@ -96,7 +96,6 @@ function add_plugins()
     global $plugins;
     global $debug;
     error_reporting(E_ALL & ~E_NOTICE & ~E_STRICT);
-
     foreach($plugins as $plugin) {
         if (is_array($plugin)) {
             if(get_option($plugin['id']) == 'true' || $plugin['std'] == 'true') {

@@ -29,13 +29,14 @@ $adsense = new AdsenseAdmin;
     
     <title><?php if (is_home()) { ?><?php bloginfo('name'); ?><?php } else { ?><?php wp_title('',true,''); ?> &raquo; <?php bloginfo('name'); ?><?php } ?></title>
 
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); echo '?'.time(); ?>" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css?<?php echo time(); ?>" type="text/css" media="screen, projection" />	
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/screen.css?<?php echo time(); ?>" type="text/css" media="screen, projection" />
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/print.css?<?php echo time(); ?>" type="text/css" media="print" />
-	<!--[if IE]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie.css?<?php echo time(); ?>" type="text/css" media="screen, projection" /><![endif]-->
-	<!--[if gte IE 7]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie7.css?<?php echo time(); ?>" type="text/css" media="screen, projection" /><![endif]-->
-	<!--[if lte IE 6]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie6.css?<?php echo time(); ?>" type="text/css" media="screen, projection" /><![endif]-->	
+    <?php $time = time(); ?>
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); echo '?', $time; ?>" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css?<?php echo $time; ?>" type="text/css" media="screen, projection" />	
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/screen.css?<?php echo $time; ?>" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/print.css?<?php echo $time; ?>" type="text/css" media="print" />
+	<!--[if IE]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie.css?<?php echo $time; ?>" type="text/css" media="screen, projection" /><![endif]-->
+	<!--[if gte IE 7]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie7.css?<?php echo $time; ?>" type="text/css" media="screen, projection" /><![endif]-->
+	<!--[if lte IE 6]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie6.css?<?php echo $time; ?>" type="text/css" media="screen, projection" /><![endif]-->	
 	
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php echo $blogfeed; ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />

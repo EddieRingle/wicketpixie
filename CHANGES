@@ -1,8 +1,10 @@
 WICKETPIXIE CHANGELOG
 
-v1.2 - TBA, 2009 (RC2 - September 3, 2009)
+v1.2 - TBA, 2009 (RC5 - October 13, 2009)
  * FEATURE: AdSense for Search functionality.
+ * FEATURE: Check out all the performance changes. ;-)
  * CHANGE: Add AdSense ads via code instead of ad ids.
+ * PERFORMANCE: CSS Tweaks speed up page load times tremendously.
  * PERFORMANCE: New AdminPage class written from scratch in hopes of better
  admin pages overall.
  * PERFORMANCE: Switched back to using WordPress' database functions for
@@ -11,11 +13,15 @@ v1.2 - TBA, 2009 (RC2 - September 3, 2009)
  * PERFORMANCE: Updated widgets to use WordPress 2.8's new Widget API.
  * PERFORMANCE: Sped up page loads by moving JavaScript files down to the footer
  and adding a PHP flush() call in the header to get content out sooner.
+ * ADDED: 300x250 AdSense slot for post content on single posts and the home post.
+ * ADDED: The entire post side box is togglable for those that want more space.
  * ADDED: TweetMeme widget on posts is now toggleable.
  * ADDED: The number of Flickr photos displayed in the Flickr badge is now
  selectable in WicketPixie Admin.
  * PLUGIN: Updated StatPress Reloaded to 1.5.21.
  * REMOVED: TweetMeme widget on the home page.
+ * FIXED: Many PHP Notices.
+ * FIXED: Invalid (X)HTML.
  
 v1.1.3 - June 18, 2009
  * ADDED: Added the option to toggle the AJAX loader on and off.
