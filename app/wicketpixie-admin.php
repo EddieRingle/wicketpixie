@@ -15,12 +15,6 @@ $site_settings = array(
         "description" => "RSS feed URL of your blog.",
         "id" => 'wicketpixie_blog_feed_url',
         "type" => "text"),
-    array(
-        "name" => "Enable AJAX Loader",
-        "description" => "Show loading screen while page content loads.",
-        "id" => 'wicketpixie_enable_ajax_loader',
-        "std" => 'false',
-        "type" => "checkbox"),
     	array(
 		"name"	=>	"Show author on posts",
 		"description"	=>	"Whether or not to show who wrote a particular post.",

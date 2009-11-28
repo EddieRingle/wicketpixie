@@ -41,9 +41,6 @@ $adsense = new AdsenseAdmin;
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="shortcut icon" type="image/ico" href="<?php bloginfo('home'); ?>/favicon.ico" />	
 
-    <?php if(get_option('wicketpixie_enable_ajax_loader') == 'true') { ?>
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/loader.css?<?php echo time(); ?>" type="text/css" media="all" />
-    <?php } ?>
     <?php ob_flush(); flush(); ?>
     <style type="text/css">
         .recentcomments a {
@@ -98,18 +95,6 @@ $adsense = new AdsenseAdmin;
 </head>
 
 <body>
-    <?php
-    if(get_option('wicketpixie_enable_ajax_loader') == 'true') { ?>
-	<!-- DIV Loader -->
-	<div id="loadingFrame">
-		<div id="loading">
-		    <img src="<?php echo get_template_directory_uri(); ?>/images/loading.gif" alt="Loading"/><br />
-		    <b>Loading....</b>
-        </div>
-	</div>
-	<?php } else { ?>
-	<!-- AJAX loader disabled, enable it in WicketPixie Settings -->
-	<?php } ?>
 	<?php flush(); ?>
 <!-- google_ad_section_start(weight=ignore) -->
 	<!-- topbar -->
