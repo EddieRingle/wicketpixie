@@ -117,7 +117,7 @@ class SourceAdmin extends AdminPage {
         clearstatcache();
     
         // Clean the activity stream
-		$cache = ABSPATH . 'wp-content/uploads/activity/';
+		$cache = TEMPLATEPATH .'/app/cache/activity/';
         if(is_dir($cache))
         {
             $d = dir($cache);
@@ -152,7 +152,7 @@ class SourceAdmin extends AdminPage {
 		
 		foreach ( $streams as $stream ) {
 			$feed_path= $stream->feed_url;
-			$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
+			$feed= new SimplePie( (string) $feed_path, TEMPLATEPATH . (string) '/app/cache/activity' );
 			$feed->set_cache_duration(10);
 			$feed->handle_content_type();
 			if( $feed->data ) {
@@ -441,7 +441,7 @@ class SourceAdmin extends AdminPage {
     static function get_feed( $url ) {
 		require_once ( SIMPLEPIEPATH );
 		$feed_path= $url;
-		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
+		$feed= new SimplePie((string) $feed_path, TEMPLATEPATH . (string)'/app/cache/activity');
 		SourceAdmin::clean_dir();
 		$feed->handle_content_type();
 			if( $feed->data ) {

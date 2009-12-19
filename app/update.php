@@ -42,7 +42,7 @@ class SourceUpdate
         }
         
         $feed_path = $feed[0]->feed_url;
-        $feed = new SimplePie((string)$feed_path, ABSPATH . (string)'wp-content/uploads/activity');
+        $feed = new SimplePie((string)$feed_path, TEMPLATEPATH . (string)'/app/cache/activity');
         
         SourceAdmin::clean_dir();
         

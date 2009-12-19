@@ -1,5 +1,8 @@
 WICKETPIXIE CHANGELOG
 
+v2.0 - TBA
+ * FIXED: Possible permission denied warnings in header.php
+
 v1.2 - TBA, 2009 (RC5 - October 13, 2009)
  * FEATURE: AdSense for Search functionality.
  * FEATURE: Check out all the performance changes. ;-)
