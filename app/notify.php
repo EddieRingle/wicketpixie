@@ -431,6 +431,8 @@ function notify_twitter($post,$dbdata) {
 
 if($wp_notify == 'true')
 {
-    add_action ('publish_post', 'prep_notify');
+    add_action('new_to_publish', 'prep_notify');
+    add_action('future_to_publish', 'prep_notify');
+    add_action('draft_to_publish', 'prep_notify');
 }
 ?>
