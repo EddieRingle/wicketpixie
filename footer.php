@@ -35,10 +35,10 @@
 		jQuery(document).ready(function($) {
 		  $('#subscribe').hide();
 		  $("#topbar-subscribe a").toggle(
-		    function () { $("#subscribe").animate({ height: "show", duration: 700, easing:"easeInQuad"}); 
+		    function () { $("#subscribe").slideDown();
 		    return false; 
 		  },
-		    function () { $("#subscribe").animate({ height: "hide", duration: 700, easing:"easeOutQuad"}); 
+		    function () { $("#subscribe").slideUp();
 		    return false; 
 		  });
 		});
@@ -47,10 +47,10 @@
 		jQuery(document).ready(function($) {
 		  $('#share').hide();
 		  $("#topbar-share a").toggle(
-		    function () { $("#share").animate({ height: "show", duration: 700, easing:"easeInQuad"}); 
+		    function () { $("#share").slideDown();
 		    return false; 
 		  },
-		    function () { $("#share").animate({ height: "hide", duration: 700, easing:"easeOutQuad"}); 
+		    function () { $("#share").slideUp();
 		    return false; 
 		  });
 		});
@@ -60,5 +60,6 @@
 <?php echo "\n"; ?>
 <?php wp_customfooter(); ?>
 <?php echo "\n"; ?>
+<?php wipi_hook_after_html(); ?>
 </body>
 </html>
