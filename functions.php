@@ -2,8 +2,8 @@
 /**
  * WicketPixie v2.0
  * (c) 2006-2009 Eddie Ringle,
- *               Chris J. Davis,
- *               Dave Bates
+ *                 Chris J. Davis,
+ *                 Dave Bates
  * Provided by Chris Pirillo
  *
  * Licensed under the New BSD License.
@@ -12,11 +12,13 @@
 $optpre = 'wicketpixie_';
 define('SIMPLEPIEPATH',ABSPATH.'wp-includes/class-simplepie.php');
 
-// No spaces in this constant please (use hyphens)
 /*
+* WicketPixie Version Number
+* pre = prealpha (experimental, no guarantees that anything works)
 * a = alpha (unstable, most likely broken)
 * b = beta (testing, works but may have bugs)
 * rc = release candidate (stable testing, minor issues are left)
+* no suffix = stable release (hopefully no bugs!)
 */
 define('WIK_VERSION',"2.0-pre");
 
