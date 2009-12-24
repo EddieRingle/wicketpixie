@@ -147,13 +147,6 @@ add_action('in_admin_footer', 'wicketpixie_add_admin_footer');
 /* Status updates */
 require_once( TEMPLATEPATH .'/app/update.php');
 
-/* jQuery 
-function load_jQuery()
-{
-    wp_enqueue_script('jquery');
-}
-add_action('init','load_jQuery'); */
-
 /* Widgets */
 
 if(function_exists('register_widget')) {
