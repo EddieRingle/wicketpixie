@@ -247,7 +247,7 @@ body {
 	width: 100%;
 	text-align: center;
 	padding-top: 9px;
-	background: url("../images/nav-bg.png") no-repeat 50% 0;
+	background: transparent url("../images/nav-bg.png") no-repeat 50% 0;
 }
 /*
 #nav .navLoader {
