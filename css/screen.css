@@ -13,7 +13,7 @@ body {
     clear: both;
     width: 920px;
     margin: 0 auto;
-    padding: 0 /*10*/20px;
+    padding: 0 20px;
     text-align: left;
     background: transparent url("../images/wrapper-bg.png") repeat-y 0 0;
 }
@@ -249,15 +249,7 @@ body {
 	padding-top: 9px;
 	background: transparent url("../images/nav-bg.png") no-repeat 50% 0;
 }
-/*
-#nav .navLoader {
-	width: 940px;
-	height: 40px;
-	background: #000;
-	margin: 0 auto;
-	text-align: left;
-}
-*/
+
 #nav ul {
 	width: 940px;
 	margin: 0 auto;
