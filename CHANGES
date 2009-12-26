@@ -1,7 +1,11 @@
 WICKETPIXIE CHANGELOG
 
 v2.0 - TBA
+ * CHANGED: Using jscolor instead of old color picker.
+ * CHANGED: Switched to using a smoother slide animation for topbar dropdowns.
+ * FIXED: Only notify Twitter/Ping.fm of a post if it is newly published.
  * FIXED: Possible permission denied warnings in header.php
+ * REMOVED: Ajax Loader page
 
 v1.2 - TBA, 2009 (RC5 - October 13, 2009)
  * FEATURE: AdSense for Search functionality.
