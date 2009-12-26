@@ -1,6 +1,4 @@
 jQuery(document).ready(function ($) {
-    //Add all your global onReady Functions here
-    setTimeout("hideLoading()", 500);
     /* Subscribe dropdown */
     $('#subscribe').hide();
     $("#topbar-subscribe a").toggle(
@@ -20,8 +18,3 @@ jQuery(document).ready(function ($) {
     return false;
     });
 });
-
-
-function hideLoading() {
-    jQuery("#loadingFrame").css('display', 'none');
-}
