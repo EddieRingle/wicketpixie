@@ -30,32 +30,7 @@
 	<script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
 	
 	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/suckerfish-ie.js"></script>
-	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/suckerfish-keyboard.js"></script>
-	<script type="text/javascript">
-		jQuery(document).ready(function($) {
-		  $('#subscribe').hide();
-		  $("#topbar-subscribe a").toggle(
-		    function () { $("#subscribe").slideDown();
-		    return false; 
-		  },
-		    function () { $("#subscribe").slideUp();
-		    return false; 
-		  });
-		});
-	</script>
-	<script type="text/javascript">
-		jQuery(document).ready(function($) {
-		  $('#share').hide();
-		  $("#topbar-share a").toggle(
-		    function () { $("#share").slideDown();
-		    return false; 
-		  },
-		    function () { $("#share").slideUp();
-		    return false; 
-		  });
-		});
-	</script>
-	
+	<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/suckerfish-keyboard.js"></script>	
 <?php wp_footer(); ?>
 <?php echo "\n"; ?>
 <?php wp_customfooter(); ?>
