@@ -101,12 +101,6 @@ function load_admin_pages()
     add_action('admin_menu',array($a,'add_page_to_menu'));
     unset($a);
 
-    // Layout Editor
-    require_once(TEMPLATEPATH .'/app/layouteditor.php');
-    $a = new LayoutEditor();
-    add_action('admin_menu',array($a,'add_page_to_menu'));
-    unset($a);
-
     // WicketPixie Notifications page
     require_once(TEMPLATEPATH .'/app/notify.php');
     $a = new NotifyAdmin();
