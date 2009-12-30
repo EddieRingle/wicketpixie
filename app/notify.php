@@ -432,5 +432,7 @@ if($wp_notify == 'true')
     add_action('new_to_publish', 'prep_notify');
     add_action('future_to_publish', 'prep_notify');
     add_action('draft_to_publish', 'prep_notify');
+    add_action('private_to_publish', 'prep_notify');
+    add_action('pending_to_publish', 'prep_notify');
 }
 ?>
