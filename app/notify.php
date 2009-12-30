@@ -304,13 +304,11 @@ $wp_notify = get_option('wicketpixie_notifications_enable');
 * This is called when a post is published and
 * prepares to notify all services listed in the database
 **/
-function prep_notify($id) {
-    global $wpdb;
-    $table = $wpdb->posts;
-    $post['title'] = $wpdb->get_var("SELECT post_title FROM $table WHERE ID=$id");
-    $post['link'] = get_permalink($id);
-    $post['id'] = $id;
-    
+function prep_notify($p) {
+    $post['title'] = get_the_title($p->ID);
+    $post['link'] = get_permalink($p->ID);
+    $post['id'] = $p->ID;
+
     /**
     * Developer API Keys
     * DO NOT MODIFY FOR ANY REASON!
@@ -318,9 +316,9 @@ function prep_notify($id) {
     $devkeys = array(
     "ping.fm" => "7cf76eb04856576acaec0b2abd2da88b"
     );
-    
+
     notify($post,$devkeys);
-    return $id;
+    return $p;
 }
 
 /**
