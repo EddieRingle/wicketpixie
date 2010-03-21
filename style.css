@@ -14,7 +14,7 @@ html {
 body {
     font-family: "Lucida Grande", Arial, sans-serif;
     text-align: left;
-    width: 950px;
+    width: 100%;
     min-width: 850px;
     margin: 0 auto;
 }
@@ -43,11 +43,6 @@ h1, h2, h3, h4, h5, h6 {
     clear: both;
     background-color: #000;
     padding: 0px 10px;
-/*
-    border-top-right-radius: 10px;
-    border-top-left-radius: 0px;
-    -moz-border-radius-topright: 10px;
-    -moz-border-radius-topleft: 0px; */
     box-shadow: 0 0 10px #000;
     -moz-box-shadow: 0 0 10px 0 #000;
     -webkit-box-shadow: 0 0 10px 0 #000;
@@ -92,28 +87,30 @@ h1, h2, h3, h4, h5, h6 {
     color: #FFF;
 }
 #page {
-    background-color: #FFF;
-    border-radius: 10px;
-    border-top-left-radius: 0px;
+    background: #FFF url(;
     padding: 10px 15px;
+    position: relative;
+    overflow: auto;
 }
 #content {
     background-color: #fff;
-    width: 55%;
     float: left;
     margin: 0;
-    padding: 0;
+    padding: 5px;
+    width: auto;
+    min-width: 550px;
 }
 .sidebar {
+    width: auto;/*
     max-width: 320px;
-    min-width: 240px;
-    padding: 0;
+    min-width: 150px;*/
+    padding: 5px;
     margin: 0;
 }
-.sidebar1 {
+.sidebar-1 {
     float: left;
 }
-.sidebar2 {
+.sidebar-2 {
     float: right;
 }
 .left-border {
@@ -124,12 +121,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 #footer-wrap {
     background-color: #000;
-/*
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px; */
     box-shadow: 0 0 10px 0 #000;
     -moz-box-shadow: 0 0 10px 0 #000;
     -webkit-box-shadow: 0 0 10px 0 #000;
+    position: relative;
+    z-index: -999;
     clear: both;
 }
 #footer {
@@ -149,7 +145,4 @@ h1, h2, h3, h4, h5, h6 {
 }
 #footer .footer-right {
     float: right;
-}
-.clear {
-    clear: both;
 }
