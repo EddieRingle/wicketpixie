@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php get_sidebar('1'); ?>
+<?php //get_sidebar('1'); ?>
 
 			<div id="content">
 				<?php
@@ -16,8 +16,6 @@
 					</div>
 				</div>
 				<?php
-				comments_template();
-
 				endwhile; endif;
 				?>
 			</div>
