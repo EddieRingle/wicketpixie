@@ -18,7 +18,7 @@
                     <h1><a href="/">WicketPixie</a></h1>
                 </div>
                 <div id="sideline">
-                    <p>&lt; insert site description/status update here &gt;</p>
+                    <p><?php bloginfo('description'); ?></p>
                 </div>
             </div>
         </div>
