@@ -11,6 +11,7 @@
 ?>
 </head>
 <body>
+    <?php flush(); ?>
     <div id="wrapper">
         <div id="header-wrap">
             <div id="header">
