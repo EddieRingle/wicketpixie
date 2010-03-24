@@ -32,7 +32,7 @@
 			<li><a href="<?php bloginfo('home'); ?>">Home</a></li>
 			<?php
 			}
-			wp_list_pages('sort_column=menu_order&title_li=');
+			wp_list_pages('depth=3&sort_column=menu_order&title_li=');
 			?>
                     </ul>
                 </div>
