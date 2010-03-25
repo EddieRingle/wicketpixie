@@ -1492,7 +1492,7 @@ class All_in_One_SEO_Pack {
 		}
 		//add_management_page(__('All in One SEO Title', 'all_in_one_seo_pack'), __('All in One SEO', 'all_in_one_seo_pack'), 10, $file, array($this, 'management_panel'));
 		//add_submenu_page('options-general.php', __('All in One SEO', 'all_in_one_seo_pack'), __('All in One SEO', 'all_in_one_seo_pack'), 10, $file, array($this, 'options_panel'));
-		add_submenu_page('wp_plugins.php', __('All in One SEO', 'all_in_one_seo_pack'), __('All in One SEO', 'all_in_one_seo_pack'), 10, $file, array($this, 'options_panel'));
+		add_submenu_page('wipi-plugins.php', __('All in One SEO', 'all_in_one_seo_pack'), __('All in One SEO', 'all_in_one_seo_pack'), 10, basename(__FILE__), array($this, 'options_panel'));
 	}
 	
 	function management_panel() {

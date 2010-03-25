@@ -9,6 +9,7 @@ Author URI: http://eddieringle.com
 */
 // The Hook
 add_filter('wp_list_pages', 'add_nofollow');
+
 // Replacement time \o/
 function add_nofollow($output) {	
 	global $wpdb;

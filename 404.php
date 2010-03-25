@@ -1,11 +1,21 @@
-<?php get_header(); ?>
+<?php
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+    get_header(); ?>
 			
 			<!-- content -->
 			<div id="content">
 					
 				<!-- page -->
 				<div class="page">
-					<?php if (wp_get_option('plug_aagoog404') && function_exists("aa_google_404")):?>
+					<?php if (get_option($optpre.'plug_aagoog404') == 'true' && function_exists("aa_google_404")):?>
 					<?php aa_google_404(); ?>
                     <?php else: ?>
 					<h1>We Can't Find the Droid You're Looking For</h1>

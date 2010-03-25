@@ -1,4 +1,15 @@
-<?php get_header(); ?>
+<?php
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+
+    get_header(); ?>
 			
 			<!-- content -->
 			<div id="content">
@@ -25,13 +36,13 @@
 				</div>
 				<!-- /post -->
 				
-				<?php if ($adsense_counter == 0) { ?>
+				<?php if ($adsense_counter == 0 && is_enabled_adsense() == true) { ?>
 				<div align="center" style="margin: 15px 0 30px 0">
 					<?php $adsense->wp_adsense('blog_post_bottom'); ?>
 				</div>
-			    <?php } ?>
-
-			<?php $adsense_counter++; ?>
+                <?php } else {
+                        $adsense_counter++;
+                      }?>
 				
 				<?php endwhile; ?>
 

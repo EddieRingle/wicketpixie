@@ -1,14 +1,14 @@
 <?php
-/*
-Plugin Name: WicketPixie Source Manager
-Plugin URI: http://chris.pirillo.com
-Description: Management Screen for the sources in WicketPixie
-Author: Chris J. Davis and Eddie Ringle
-Version: 1.1b1
-Author URI: http://chris.pirillo.com
-*/
-
-class SourceAdmin {
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+class SourceAdmin extends AdminPage {
 	
 	var $db_version= '1.0';
 	
@@ -16,7 +16,7 @@ class SourceAdmin {
 	* Here we install the tables and initial data needed to
 	* power our special functions
 	*/
-	function install() {
+	static function install() {
 		global $wpdb, $db_version;
 		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		$table= $wpdb->prefix . 'wik_sources';
@@ -72,26 +72,34 @@ class SourceAdmin {
 					}
 				}
 			
-			wp_add_option( 'wik_db_version', $db_version );
+			add_option('wicketpixie_sources_db_version', $db_version );
 			
 	}
 	
-	/**
-	* Just calling WP's method to add a new menu to the design section.
-	*/
-	function addMenu() {
-		add_submenu_page('wicketpixie-admin.php', __('WicketPixie Social Me'), __('Social Me Manager'), 9, basename(__FILE__), array( 'SourceAdmin', 'sourceMenu' ) );
+	function __construct()
+	{
+	    parent::__construct('Social Me Manager','sourcemanager.php','wicketpixie-admin.php',null);
+	}
+	
+	function page_output()
+	{
+	    $this->SourceMenu();
+	}
+	
+	function __destruct()
+	{
+	    parent::__destruct();
 	}
 	
 	/**
 	* Grab all the sources we have stored in the db.
 	* <code>
-	* foreach( $sources->collect() as $source ) {
+	* foreach( SourceAdmin::collect() as $source ) {
 	* 	echo $source->title;	
 	* }
 	* </code>
 	*/
-	function collect() {
+	static function collect() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$sources= $wpdb->get_results( "SELECT * FROM $table" );
@@ -105,11 +113,11 @@ class SourceAdmin {
 	/**
 	* Called when we think the caches are getting messy
 	**/
-	function clean_dir() {
+	static function clean_dir() {
         clearstatcache();
     
         // Clean the activity stream
-		$cache = ABSPATH . 'wp-content/uploads/activity/';
+		$cache = TEMPLATEPATH .'/app/cache/activity/';
         if(is_dir($cache))
         {
             $d = dir($cache);
@@ -134,17 +142,17 @@ class SourceAdmin {
         }
 	}
 	
-	function get_streams() {
+	static function get_streams() {
 		global $wpdb;
-		require_once('simplepie.php');
-		$this->clean_dir();
+		require_once(SIMPLEPIEPATH);
+		SourceAdmin::clean_dir();
 
 		$table= $wpdb->prefix . 'wik_sources';
 		$streams= $wpdb->get_results( "SELECT title,feed_url FROM $table WHERE lifestream = 1" );
 		
 		foreach ( $streams as $stream ) {
 			$feed_path= $stream->feed_url;
-			$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
+			$feed= new SimplePie( (string) $feed_path, TEMPLATEPATH . (string) '/app/cache/activity' );
 			$feed->set_cache_duration(10);
 			$feed->handle_content_type();
 			if( $feed->data ) {
@@ -166,10 +174,10 @@ class SourceAdmin {
 		return $stream_contents;
 	}
 
-	function archive_streams() {
+	static function archive_streams() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_life_data';
-		foreach( $this->get_streams() as $archive ) {
+		foreach( SourceAdmin::get_streams() as $archive ) {
 			if( !$wpdb->get_var( "SELECT id FROM $table WHERE link = '" . $archive['link'] . "' AND date= " . $archive['date'] ) ) {
 				$a= "INSERT INTO $table (id,name,content,date,link,enabled) VALUES('', '" 
 					. addslashes( $archive['name'] ) . "','" 
@@ -185,32 +193,32 @@ class SourceAdmin {
 	/**
 	* Method to grab all of our lifestream data from the DB.
 	* <code>
-	* foreach( $sources->show_streams() as $stream ) {
+	* foreach( SourceAdmin::show_streams() as $stream ) {
 	*	// do something clever
 	* }
 	* </code>
 	*/
-	function show_streams() {
+	static function show_streams() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_life_data';
 		$show= $wpdb->get_results( "SELECT * FROM $table WHERE enabled = 1 ORDER BY date DESC" );
 		return $show;
 	}
 	
-	function flush_streams( $stream ) {
+	static function flush_streams( $stream ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_life_data';
 		$delete= $wpdb->get_results( "DELETE FROM $table WHERE name = '$stream'" );
 	}
 	
-	function source( $name ) {
+	static function source( $name ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$which= $wpdb->get_results( "SELECT profile_url, favicon FROM $table WHERE title = '$name'" );
 		return $which[0];
 	}
     
-    function feed_check ($name) {
+    static function feed_check ($name) {
         global $wpdb;
         $table = $wpdb->prefix . 'wik_sources';
         $feedlink = $wpdb->get_var("SELECT feed_url FROM $table WHERE title = '$name'");
@@ -223,7 +231,7 @@ class SourceAdmin {
         return $isfeed;
     }
 	
-	function legend_types() {
+	static function legend_types() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$types= $wpdb->get_results( "SELECT * FROM $table ORDER BY title" );
@@ -234,24 +242,28 @@ class SourceAdmin {
 	* Convenience method for counting the number of 
 	* sources currently in the DB.
 	* <code>
-	* $sources->count();
+	* SourceAdmin::count();
 	* </code>
 	*/
-	function count() {
+	static function count() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$total= $wpdb->get_results( "SELECT ID as count FROM $table" );
-		return $total[0]->count;
+		if (isset($total[0])) {
+		    return $total[0]->count;
+		} else {
+		    return 0;
+		}
 	}
 	
 	/**
 	* Convenience method for checking if we have installed
 	* the table for sources. Returns TRUE or FALSE.
 	* <code>
-	* $sources->check();
+	* SourceAdmin::check();
 	* </code>
 	*/
-	function check() {
+	static function check() {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		if( $wpdb->get_var( "show tables like '$table'" ) != $table ) {
@@ -266,10 +278,10 @@ class SourceAdmin {
 	* pass the entire request body and add() takes
 	* care of the rest.
 	* <code>
-	* $sources->add( $_REQUEST );
+	* SourceAdmin::add( $_REQUEST );
 	* </code>
 	*/
-	function add( $_REQUEST ) {
+	static function add( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
         if( $args['lifestream'] == 1 ) { 
@@ -303,7 +315,7 @@ class SourceAdmin {
 		. $update . ", "
 		. "'http://www.google.com/s2/favicons?domain=$favicon_url[2]')";
 		$query= $wpdb->query( $i );
-		$this->create_widget();
+		SourceAdmin::create_widget();
 		$message= 'Social Site Saved';
 		} else {
 			$message= 'You forgot to fill out some information, please try again.';
@@ -312,7 +324,7 @@ class SourceAdmin {
 		return $message;
 	}
 	
-	function gather( $id ) {
+	static function gather( $id ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$gather= $wpdb->get_results( "SELECT * FROM $table WHERE id= $id" );
@@ -322,15 +334,15 @@ class SourceAdmin {
 	/**
 	* Edit the information for a given source.
 	*/
-	function edit( $_REQUEST ) {
+	static function edit( $_REQUEST ) {
 		global $wpdb;
 		$args= $_REQUEST;
 			if( $args['lifestream'] == 1 ) { 
 				$stream= 1;
-				$this->toggle( $args['id'], 1 );
+				SourceAdmin::toggle( $args['id'], 1 );
 			} else { 
 				$stream= 0;
-				$this->toggle( $args['id'], 0 );
+				SourceAdmin::toggle( $args['id'], 0 );
 			}
 
 			if( $args['updates'] == 1 ) { 
@@ -354,10 +366,10 @@ class SourceAdmin {
 						", updates = " . $update .
 						" WHERE id = " . $args['id'];
 			$query= $wpdb->query( $u );
-			$this->create_widget();
+			SourceAdmin::create_widget();
 	}
 	
-	function toggle( $id, $direction ) {
+	static function toggle( $id, $direction ) {
 		global $wpdb;
 		$table= $wpdb->prefix . 'wik_sources';
 		$name= $wpdb->get_results( "SELECT title FROM $table WHERE id = $id" );
@@ -375,21 +387,21 @@ class SourceAdmin {
 	* burninate the peasants. Or sources as the case may be.
 	* Removes the offending record from the DB.
 	* <code>
-	* $sources->burninate( $id );
+	* SourceAdmin::burninate( $id );
 	* </code>
 	*/
-	function burninate( $id ) {
+	static function burninate( $id ) {
 		global $wpdb;
-		$this->toggle( $id, 0 );
+		SourceAdmin::toggle( $id, 0 );
 		$table= $wpdb->prefix . 'wik_sources';
 		$u= $wpdb->query( "UPDATE $lifedata SET enabled= 0 WHERE name= '$source'" );
 		$d= $wpdb->query( "DELETE FROM $table WHERE id = $id" );
 		$trogdor= $wpdb->query( $d );
 		
-		$this->create_widget();
+		SourceAdmin::create_widget();
 	}
 	
-	function hulk_smash() {
+	static function hulk_smash() {
 		global $wpdb;
 		$puny_table= $wpdb->prefix . 'wik_sources';
 		$to_smash= $wpdb->query( "DROP TABLE $puny_table" );
@@ -399,10 +411,10 @@ class SourceAdmin {
 	/**
 	* Method to fetch the types of sources we have stored in the db.
 	* <code>
-	* $sources->types();
+	* SourceAdmin::types();
 	* </code>
 	*/
-	function types() {
+	static function types() {
 		global $wpdb;
 		$link= $wpdb->prefix . 'wik_source_types';
 		$types= $wpdb->get_results( "SELECT * FROM $link" );
@@ -417,19 +429,19 @@ class SourceAdmin {
 	* Helper method to return the human readable name
 	* of a type, given a type_id.
 	* <code>
-	* $sources->type_name( $type_id );
+	* SourceAdmin::type_name( $type_id );
 	* </code>
 	*/
-	 function type_name( $id ) {
+    static function type_name( $id ) {
 		global $wpdb;
 		$link= $wpdb->prefix . 'wik_source_types';
 		$name= $wpdb->get_results( "SELECT name FROM $link WHERE type_id = '$id'" );
 		return $name[0]->name;
 	}
-	 function get_feed( $url ) {
-		require_once ( 'simplepie.php' );
+    static function get_feed( $url ) {
+		require_once ( SIMPLEPIEPATH );
 		$feed_path= $url;
-		$feed= new SimplePie( (string) $feed_path, ABSPATH . (string) 'wp-content/uploads/activity' );
+		$feed= new SimplePie((string) $feed_path, TEMPLATEPATH . (string)'/app/cache/activity');
 		SourceAdmin::clean_dir();
 		$feed->handle_content_type();
 			if( $feed->data ) {
@@ -448,50 +460,85 @@ class SourceAdmin {
 		return $widget_contents;
 	}
 
-	 function create_file( $widget ) {
-		$cleaned = strtolower( $widget->title );
-		$cleaned = preg_replace( '/\W/', ' ', $cleaned );
-		$cleaned = str_replace( " ", "", $cleaned );
-		$favicon_url = explode('/', $widget->profile_url);
-		
-		$data= '';
-		$data .= '<?php' . "\n";
-		$data .= '$total= 5;' . "\n";
-		$data .= 'echo \'<div class="widget">\';' . "\n";
-		$data .= "echo '<h3><img src=\"http://www.google.com/s2/favicons?domain=$favicon_url[2]\" alt=\"$widget->title\" />$widget->title</h3>';" . "\n";
-		$data .= "echo '<ul>';" . "\n";
-		$data .= '$items= SourceAdmin::get_feed( "'. $widget->feed_url . '" );
-		foreach( $items as $item ) {
-			if( $i != $total ) {
-				echo \'<li><a href="\' . $item[\'link\'] . \'" title="\' . $item[\'title\'] . \'">\' . $item[\'title\'] . \'</a></li>\';' . "\n";
-			$data .= '$i++;' . "\n";
-			$data .= '}' . "\n";
-		$data .= '}' . "\n";
-		$data .= "echo '</ul>';" . "\n";
-		$data .="echo '</div>';" . "\n";
+    static function create_file($title,$cleaned,$favicon_url,$feed_url)
+    {
+	$to_replace = array(' ','.','!','@','#','$','%','^','&','*','(',')','+','=','-','[',']','{','}','|',"\\",'/','"',"'",':',';','<','>',',','?','~','`');
+	$t_title = str_replace($to_replace,'_',$title);
+	$data = null;
+        $data =
+        "<?php
+        /**
+        * ${t_title}FeedWidget Class
+        */
+        class ${t_title}FeedWidget extends WP_Widget
+        {
+            function ${t_title}FeedWidget()
+            {
+                \$widget_ops = array('classname' => 'widget_${cleaned}_feed','description' => __('Lists feed items from the ${title} feed added in the Social Me Manager.'));
+                \$this->WP_Widget('${cleaned}feed',__('${title} Feed'),\$widget_ops,null);
+            }
+
+            function widget(\$args,\$instance)
+            {
+                extract(\$args);
+
+                echo \$before_widget;
+                echo \$before_title, '<img src=\"http://www.google.com/s2/favicons?domain=$favicon_url[2]\" alt=\"','${title}','\" />','${title}', \$after_title;
+                
+                \$items = SourceAdmin::get_feed('${feed_url}');
+                ?>
+                    <ul>
+                    <?php
+                    \$total = 5;
+                    foreach(\$items as \$item) {
+                        if(\$i != \$total) {
+                            echo '<li><a href=\"',\$item['link'],'\" title=\"',\$item['title'],'\">',\$item['title'],'</a></li>';
+                            \$i++;
+                        }
+                    }
+                    ?>
+                    </ul>
+                <?php
+                echo \$after_widget;
+            }
+
+            function update(\$new_instance,\$old_instance)
+            {
+                return \$old_instance;
+            }
+
+            function form(\$instance)
+            {
+            }
+        }
+        ?>";
+        
 		$path= TEMPLATEPATH . "/widgets/" . $cleaned . ".php";
 		file_put_contents( $path, $data );
-		error_log( 'Creating '.$widget->title.' widget.' );
+		error_log( 'Creating '.$title.' widget.' );
 	}
 
     /**
     * Makes a widget which you can put in your sidebar.
     * The widget displays the 5 most recent entries in the source's feed.
     **/
-	function create_widget() {
+	static function create_widget() {
 		$data= '';
 		$data='<?php';
-		foreach( $this->collect() as $widget ) {
-            if($this->feed_check($widget->title) == 1) {
-                $cleaned= strtolower( $widget->title );
+		foreach( SourceAdmin::collect() as $widget ) {
+            if(SourceAdmin::feed_check($widget->title) == 1) {
+                $title = $widget->title;
+                $t_title = str_replace(' ','',$title);
+                $cleaned= strtolower( $title );
                 $cleaned= preg_replace( '/\W/', ' ', $cleaned );
                 $cleaned= str_replace( " ", "", $cleaned );
                 $data .= "
-                function wicketpixie_$cleaned() {
-                    include( TEMPLATEPATH . '/widgets/$cleaned.php');
+                function ${t_title}Init() {
+                    include_once( TEMPLATEPATH . '/widgets/$cleaned.php');
+                    register_widget('${t_title}FeedWidget');
                 }";
                 add_option( $cleaned . '-num', 5 );	
-                $this->create_file( $widget );
+                SourceAdmin::create_file($title,$cleaned,explode('/',$widget->profile_url),$widget->feed_url);
             }
 		}
 		$data .= ' ?>';
@@ -501,51 +548,59 @@ class SourceAdmin {
 	/**
 	* The admin page for our sources/activity system.
 	**/
-	 function sourceMenu() {
-		$sources= new SourceAdmin;
-		if ( $_GET['page'] == basename(__FILE__) ) {
-	        if ( 'add' == $_REQUEST['action'] ) {
-				$return= $sources->add( $_REQUEST );
-			}
-			
-			if ( 'gather' == $_REQUEST['action'] ) {
-				$sources->gather( $_REQUEST['id'] );
-			}
-			
-			if ( 'edit' == $_REQUEST['action'] ) {
-				$sources->edit( $_REQUEST );
-			}
-			
-	        if ( 'delete' == $_REQUEST['action'] ) {
-				$sources->burninate( $_REQUEST['id'] );
-			}
-			
-			if( 'hulk_smash' == $_REQUEST['action'] ) {
-				$sources->hulk_smash();
-			}
-			
-			if( 'install' == $_REQUEST['action'] ) {
-				$sources->install();
-			}
-			
-			if( 'flush' == $_REQUEST['action'] ) {
-				$sources->flush_streams( $_REQUEST['flush_name'] );
-			}
+    function sourceMenu() {
+        if (isset($_GET['page']) && isset($_POST['action']) && $_GET['page'] == basename(__FILE__)) {
+            switch ($_POST['action']) {
+            case 'add':
+	            SourceAdmin::add($_REQUEST);
+	            ?>
+	            <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account saved.'); ?></strong></p></div>
+	            <?php
+	            break;
+	        case 'gather':
+	            SourceAdmin::gather($_REQUEST['id']);
+	            break;
+            case 'edit':
+                SourceAdmin::edit($_REQUEST);
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account modified.'); ?></strong></p></div>
+	            <?php
+                break;
+            case 'delete':
+                SourceAdmin::burninate($_REQUEST['id']);
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
+	            <?php
+                break;
+            case 'regen_widgets':
+                SourceAdmin::create_widget();
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Widgets regenerated.'); ?></strong></p></div>
+                <?php
+                break;
+            case 'hulk_smash':
+                SourceAdmin::hulk_smash();
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me database cleared.'); ?></strong></p></div>
+	            <?php
+                break;
+            case 'install':
+                SourceAdmin::install();
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
+	            <?php
+                break;
+            case 'flush':
+                SourceAdmin::flush_streams($_REQUEST['flush_name']);
+                ?>
+                <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account flushed.'); ?></strong></p></div>
+	            <?php
+                break;
+            default:
+                break;
+            }
 		}
 		?>
-		<?php if(isset($_REQUEST['add'])) { ?>
-		<div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account saved.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['edit'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account modified.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['delete'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account removed.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['flush'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Account flushed.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['install'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me Manager installed.'); ?></strong></p></div>
-		<?php } elseif(isset($_REQUEST['hulk_smash'])) { ?>
-        <div id="message" class="updated fade"><p><strong><?php echo __('Social Me database cleared.'); ?></strong></p></div>
-		<?php } ?>
 			<div class="wrap">
 				
 				<div id="admin-options">
@@ -557,10 +612,20 @@ class SourceAdmin {
                     you might add your Twitter, YouTube, and Flickr accounts here - making sure you use the corresponding RSS (or Atom) feeds for your profile,
                     so that WicketPixie can display your latest content from them on your Social Me page.<br /><br />
                     You can also include the list of these accounts in your sidebar - just be sure to enable the <a href="widgets.php">WicketPixie Social Me widget</a> first!</p>
-					<?php if( $sources->check() != 'false' && $sources->count() != '' ) { ?>
+                    <h3>Widget Regenerator</h3>
+                    <p>If you are upgrading to 1.2+ from a version earlier than 1.2, you will need to click this button if you already have Social Mes added. You can also press this button if widgets seem to be broken.</p>
+                    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;regen_widgets=true">
+                        <p class="submit">
+                            <input type="submit" name="submit" value="Regenerate Widgets" />
+                            <input type="hidden" name="action" value="regen_widgets" />
+                        </p>
+                    </form>
+                    <h3>Social Me Listing</h3>
+					<?php if( SourceAdmin::check() != 'false' && SourceAdmin::count() != '' ) { ?>
 					<form>
+					<?php wp_nonce_field('wicketpixie-settings'); ?>
 						<p style="margin-bottom:0;">Sort by: <select name="type" id="type">
-							<?php foreach( $sources->types() as $type ) { ?>
+							<?php foreach( SourceAdmin::types() as $type ) { ?>
 								<option value="<?php echo $type->type_id; ?>"><?php echo $type->name; ?></option>
 							<?php } ?>
 						</select>	</p>
@@ -575,13 +640,13 @@ class SourceAdmin {
 							<th style="text-align:center;" colspan="3">Actions</th>
 						</tr>
 						<?php 
-							foreach( $sources->collect() as $source ) {
+							foreach( SourceAdmin::collect() as $source ) {
 								if( $source->lifestream == 0 ) {
 									$streamed= 'No';
 								} else {
 									$streamed= 'Yes';
 								}
-                                $isfeed = $sources->feed_check($source->title);
+                                $isfeed = SourceAdmin::feed_check($source->title);
 						?>		
 						<tr>
 							<td style="width:16px;"><img src="<?php echo $source->favicon; ?>" alt="Favicon" style="width: 16px; height: 16;" /></td>
@@ -593,16 +658,18 @@ class SourceAdmin {
                         <?php } else { ?>
                         <td style="text-align:center;">?</td>
                         <?php } ?>
-					   	<td style="text-align:center;"><?php echo $sources->type_name( $source->type ); ?></td>
+					   	<td style="text-align:center;"><?php echo SourceAdmin::type_name( $source->type ); ?></td>
 					   	<td style="text-align:center;"><?php echo $streamed; ?></td>
 					   	<td>
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;gather=true&amp;id=<?php echo $source->id; ?>">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" value="Edit" />
 								<input type="hidden" name="action" value="gather" />
 							</form>
 							</td>
 							<td>
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;delete=true&amp;id=<?php echo $source->id; ?>">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" name="action" value="Delete" />
 								<input type="hidden" name="action" value="delete" />
 							</form>
@@ -610,6 +677,7 @@ class SourceAdmin {
                             <?php if ($isfeed == 1) { ?>
 							<td>
 							<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;flush=true&amp;id=<?php echo $source->id; ?>">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<input type="submit" value="Flush" />
 								<input type="hidden" name="action" value="flush" />
 								<input type="hidden" name="flush_name" value="<?php echo $source->title; ?>" />
@@ -623,8 +691,9 @@ class SourceAdmin {
 						<p>You don't have any Social Mes, why not add some?</p>
 					<?php } ?>
 					<?php if ( isset( $_REQUEST['gather'] ) ) { ?>
-						<?php $data= $sources->gather( $_REQUEST['id'] ); ?>
+						<?php $data= SourceAdmin::gather( $_REQUEST['id'] ); ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;edit=true" class="form-table" style="margin-bottom:30px;">
+						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Editing "<?php echo $data[0]->title; ?>"</h2>
 							<p><input type="text" name="title" id="title" value="<?php echo $data[0]->title; ?>" /></p>
 							<p><input type="text" name="profile" id="profile" value="<?php echo $data[0]->profile_url; ?>" /></p>
@@ -633,7 +702,7 @@ class SourceAdmin {
 							<p><input type="checkbox" name="updates" id="updates" value="1" <?php if( $data[0]->updates == '1' ) { echo 'checked'; } ?>> Use for Status Updates?</p>
 							<p>Type:
 								<select name="type" id="type">
-									<?php foreach( $sources->types() as $type ) { ?>
+									<?php foreach( SourceAdmin::types() as $type ) { ?>
 										<option value="<?php echo $type->type_id; ?>" <?php if( $type->type_id == $data[0]->type ) { echo 'selected'; } ?>><?php echo $type->name; ?></option>
 									<?php } ?>
 								</select>
@@ -645,8 +714,9 @@ class SourceAdmin {
 							</p>
 						</form>
 					<?php } ?>
-					<?php if( $sources->check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
+					<?php if( SourceAdmin::check() != 'false' && !isset( $_REQUEST['gather'] ) ) { ?>
 						<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;add=true" class="form-table" style="margin-bottom:30px;">
+						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Add a New Social Me</h2>
 							<p><input type="text" name="title" id="title" onfocus="if(this.value=='Social Me Title')value=''" onblur="if(this.value=='')value='Social Me Title';" value="Social Me Title" /></p>
 							<p><input type="text" name="profile" id="profile" onfocus="if(this.value=='Profile URL')value=''" onblur="if(this.value=='')value='Profile URL';" value="Profile URL" /></p>
@@ -655,7 +725,7 @@ class SourceAdmin {
 							<p><input type="checkbox" name="updates" id="updates" value="1"> Use for Status Updates?</p>
 							<p>Type:
 								<select name="type" id="type">
-									<?php foreach( $sources->types() as $type ) { ?>
+									<?php foreach( SourceAdmin::types() as $type ) { ?>
 										<option value="<?php echo $type->type_id; ?>"><?php echo $type->name; ?></option>
 									<?php } ?>
 								</select>
@@ -666,6 +736,7 @@ class SourceAdmin {
 							</p>
 						</form>
 						<form name="hulk_smash" id="hulk_smash" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;hulk_smash=true">
+						<?php wp_nonce_field('wicketpixie-settings'); ?>
 							<h2>Delete the Social Mes Table</h2>
 							<p>Please note, this is undoable and will result in the loss of all the data you have stored to date. Only do this if you are having problems with your social mes and you have exhausted every other option.</p>
 							<p class="submit">
@@ -676,6 +747,7 @@ class SourceAdmin {
 						<?php } else { ?>
 							<p>Table not installed. You should go ahead and run the installer.</p>
 							<form name="install" id="install" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=sourcemanager.php&amp;install=true">
+							<?php wp_nonce_field('wicketpixie-settings'); ?>
 								<p class="submit">
 									<input type="hidden" name="action" value="install" />
 									<input type="submit" value="Install Social Me" />

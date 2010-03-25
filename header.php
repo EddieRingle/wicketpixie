@@ -1,12 +1,21 @@
 <?php
-/* Change this to wherever your blog feed is located. Default is WordPress-generated feed. */
-if(wp_get_option('blog_feed_url') != false) {
-    $blogfeed = wp_get_option('blog_feed_url');
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+// Blog feed URL
+if(get_option('wicketpixie_blog_feed_url') != false) {
+    $blogfeed = get_option('wicketpixie_blog_feed_url');
 } else {
-    $blogfeed = 'http://feeds.pirillo.com/ChrisPirillo';
+    $blogfeed = get_bloginfo_rss('rss2_url');
 }
 $status= new SourceUpdate;
-$sources= new SourceAdmin;
+global $optpre;
 global $adsense;
 $adsense = new AdsenseAdmin;
 ?>
@@ -19,51 +28,46 @@ $adsense = new AdsenseAdmin;
     
     <title><?php if (is_home()) { ?><?php bloginfo('name'); ?><?php } else { ?><?php wp_title('',true,''); ?> &raquo; <?php bloginfo('name'); ?><?php } ?></title>
 
-	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); echo '?'.time(); ?>" type="text/css" media="screen" />
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css?<?php echo time(); ?>" type="text/css" media="screen, projection" />	
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/screen.css?<?php echo time(); ?>" type="text/css" media="screen, projection" />
-	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/print.css?<?php echo time(); ?>" type="text/css" media="print" />
-	<!--[if IE]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie.css?<?php echo time(); ?>" type="text/css" media="screen, projection" /><![endif]-->
-	<!--[if gte IE 7]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie7.css?<?php echo time(); ?>" type="text/css" media="screen, projection" /><![endif]-->
-	<!--[if lte IE 6]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie6.css?<?php echo time(); ?>" type="text/css" media="screen, projection" /><![endif]-->	
+    <?php $time = time(); ?>
+	<link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); echo '?', $time; ?>" type="text/css" media="screen" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/reset.css?<?php echo $time; ?>" type="text/css" media="screen, projection" />	
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/screen.css?<?php echo $time; ?>" type="text/css" media="screen, projection" />
+	<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/print.css?<?php echo $time; ?>" type="text/css" media="print" />
+	<!--[if IE]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie.css?<?php echo $time; ?>" type="text/css" media="screen, projection" /><![endif]-->
+	<!--[if gte IE 7]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie7.css?<?php echo $time; ?>" type="text/css" media="screen, projection" /><![endif]-->
+	<!--[if lte IE 6]><link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/ie6.css?<?php echo $time; ?>" type="text/css" media="screen, projection" /><![endif]-->	
 	
 	<link rel="alternate" type="application/rss+xml" title="<?php bloginfo('name'); ?> RSS Feed" href="<?php echo $blogfeed; ?>" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
 	<link rel="shortcut icon" type="image/ico" href="<?php bloginfo('home'); ?>/favicon.ico" />	
 
-    <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/css/loader.css?<?php echo time(); ?>" type="text/css" media="all" />
+    <?php ob_flush(); flush(); ?>
+    <style type="text/css">
+        .recentcomments a {
+            display: inline !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
 	
 	<?php
     include_once (TEMPLATEPATH . '/plugins/random-posts.php');
 	include_once (TEMPLATEPATH . '/plugins/search-excerpt.php');
-    include_once (TEMPLATEPATH . '/app/gapikey.php');
     
     clearstatcache();
-    if(!is_dir(ABSPATH.'wp-content/uploads/activity')) {
-        if(!is_dir(ABSPATH.'wp-content/uploads'))
-        {
-            mkdir(ABSPATH.'wp-content/uploads',0777);
-        }
-        mkdir(ABSPATH.'wp-content/uploads/activity',0777);
-    }
     if(!is_dir(TEMPLATEPATH . '/app/cache')) {
         mkdir(TEMPLATEPATH . '/app/cache',0777);
     }
-    /*
-    if(is_user_logged_in()) { ?>
-    <script src="http://wicketpixie.uservoice.com/pages/general/widgets/tab.js?alignment=right&amp;color=000000" type="text/javascript"></script>
-    <?php } */ ?>
-    <script type="text/javascript">
-    google.load("jquery", "1.3.2");
-    </script>
-    <script type="text/javascript" src="<?php echo get_template_directory_uri();?>/js/wp-global.js"></script>
-    		
-<?php wp_head(); ?>
-<?php
+    if(!is_dir(TEMPLATEPATH . '/app/cache/activity')) {
+        mkdir(TEMPLATEPATH . '/app/cache/activity',0777);
+    }
+    
+    wp_head();
+
     echo "\n";
     wp_customheader();
-?>
-	
+    echo "\n";
+?>	
     <?php
     $blogurl = get_bloginfo('url');
     $currurl = $blogurl.$_SERVER['REQUEST_URI'];
@@ -78,23 +82,16 @@ $adsense = new AdsenseAdmin;
     } else {
         // We must be in a page or a post
         $postdata = get_post($postid,ARRAY_A);
-        $metadesc = substr($postdata['post_content'],0,140) . ' [...]';
+        $metadesc = substr($postdata['post_content'],0,134) . ' [...]';
     }
     
     $metadesc = strip_tags($metadesc);
     ?>
-    <meta name="description" value="<?php echo $metadesc; ?>" />
-    <?php
-        flush();
-        sleep(1);
-    ?>
+    <meta name="description" content="<?php echo $metadesc; ?>" />
 </head>
 
 <body>
-	<!-- DIV Loader -->
-	<div id="loadingFrame">
-		<div id="loading"><img src="<?php echo get_template_directory_uri(); ?>/images/loading.gif"><br /><b>Loading....</b></div>
-	</div>
+	<?php flush(); ?>
 <!-- google_ad_section_start(weight=ignore) -->
 	<!-- topbar -->
 	<div id="topbar">
@@ -120,7 +117,7 @@ $adsense = new AdsenseAdmin;
 			<li><a href="http://www.bloglines.com/sub/<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Bloglines</a></li>
 			<li><a href="http://fusion.google.com/add?feedurl=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Google Reader</a></li>			
 			<li><a href="http://feeds.my.aol.com/add.jsp?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">My AOL</a></li>
-			<li><a href="http://my.msn.com/addtomymsn.armx?id=rss&ut=<?php echo $blogfeed; ?>&ru=<?php echo get_settings('home'); ?>" class="feed" rel="nofollow">My MSN</a></li>
+			<li><a href="http://my.msn.com/addtomymsn.armx?id=rss&amp;ut=<?php echo $blogfeed; ?>&amp;ru=<?php echo get_settings('home'); ?>" class="feed" rel="nofollow">My MSN</a></li>
 			<li><a href="http://add.my.yahoo.com/rss?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">My Yahoo!</a></li>
 			<li><a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">NewsGator</a></li>			
 			<li><a href="http://www.pageflakes.com/subscribe.aspx?url=<?php echo $blogfeed; ?>" class="feed" rel="nofollow">Pageflakes</a></li>
@@ -144,13 +141,13 @@ $adsense = new AdsenseAdmin;
 			
 			<div id="logo">
                 <?php
-                if(wp_get_option('headersize')) {
-                    $fontsize = wp_get_option('headersize');
-                    echo "<font style='font-size: ".$fontsize."px;'>";
+                if(get_option('wicketpixie_theme_header_size')) {
+                    $fontsize = get_option('wicketpixie_theme_header_size');
+                    echo '<span style="font-size:',$fontsize,'px;">';
                     ?>
-                        <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>
+                            <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>
                     <?php
-                    echo "</font>";
+                    echo "</span>";
                 } else {
                 ?>
                 <a href="<?php echo get_option('home'); ?>/" rel="nofollow"><?php bloginfo('name'); ?></a>
@@ -210,11 +207,22 @@ $adsense = new AdsenseAdmin;
 	<!-- nav -->
 	<div id="nav">
 		<ul>
-			<?php if (is_home()) { echo ''; } else { ?><li><a href="<?php bloginfo('home'); ?>/">Home</a><?php } ?>				
-			<?php wp_list_pages("depth=1&sort_column=menu_order&title_li="); ?>
+			<?php
+			if (!is_home()) { ?>
+			 <li><a href="<?php bloginfo('home'); ?>/">Home</a></li>
+            <?php
+            }
+			if (get_option('wicketpixie_adsense_search_enabled') == 'true') {
+			    $sp = get_page_by_title('Search');
+			    $id = $sp->ID;
+			    wp_list_pages("depth=1&sort_column=menu_order&exclude=${id}&title_li=");
+			    echo "<!-- Excluding $id -->";
+			    unset($sp,$id);
+			} else {
+			    wp_list_pages("depth=1&sort_column=menu_order&title_li=");
+            }
+            ?>
 		</ul>
-	    <div id="navLoading" class="navLoader"></div>
-
 	</div>
 	<!-- /nav -->
 

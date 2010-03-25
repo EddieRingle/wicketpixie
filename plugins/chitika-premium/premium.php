@@ -439,7 +439,7 @@ class chitikaPremium {
 	}
 	
 	function add_options_page() {
-		add_submenu_page('wp_plugins.php', 'Chitika | Premium Settings', 'Chitika | Premium', 10, 'premium/premium.php', array(&$this, 'options_page'));
+		add_submenu_page('wipi-plugins.php', 'Chitika | Premium Settings', 'Chitika | Premium', 10, basename(__FILE__), array(&$this, 'options_page'));
 	}
 	
 	/* Parses premium tag for attributes values.

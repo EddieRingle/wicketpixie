@@ -1,4 +1,13 @@
 <?php
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
 class SourceUpdate
 {
     /**
@@ -25,7 +34,7 @@ class SourceUpdate
     * Fetches the latest entry from the source's feed
     **/
     function fetchfeed() {
-        require_once('simplepie.php');
+        require_once(SIMPLEPIEPATH);
         $feed = $this->select();
         
         if(preg_match('/twitter\.com/',$feed[0]->feed_url) == true) {
@@ -33,7 +42,7 @@ class SourceUpdate
         }
         
         $feed_path = $feed[0]->feed_url;
-        $feed = new SimplePie((string)$feed_path, ABSPATH . (string)'wp-content/uploads/activity');
+        $feed = new SimplePie((string)$feed_path, TEMPLATEPATH . (string)'/app/cache/activity');
         
         SourceAdmin::clean_dir();
         

@@ -1,5 +1,15 @@
-<?php get_header(); ?>
-<?php $wp_auth_credit= wp_get_option( 'auth_credit' ); ?>
+<?php
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+    get_header();
+    $wp_auth_credit= get_option('wicketpixie_show_post_author'); ?>
 
 			<!-- content -->
 			<div id="content">
@@ -75,7 +85,7 @@
 			
 				<?php endwhile; ?>
 				<!-- Page Navigation -->
-                <?php if (wp_get_option('plug_pagenavi')):?>
+                <?php if (get_option($optpre.'plug_pagenavi') == 'true'):?>
                 <div id="paginator" style='text-align: center'><?php if (function_exists('wp_pagenavi')) { wp_pagenavi(); }?></div>
 				
                 <?php else: ?>

@@ -1,5 +1,16 @@
-<?php get_header(); ?>
-<?php $wp_auth_credit= wp_get_option( 'auth_credit' ); ?>
+<?php
+/**
+ * WicketPixie v2.0
+ * (c) 2006-2009 Eddie Ringle,
+ *               Chris J. Davis,
+ *               Dave Bates
+ * Provided by Chris Pirillo
+ *
+ * Licensed under the New BSD License.
+ */
+
+    get_header();
+    $wp_auth_credit= get_option('wicketpixie_show_post_author'); ?>
 			
 			<!-- content -->
 			<div id="content">
@@ -10,7 +21,6 @@
 				
 				<!-- post -->
 				<div class="post" style="border-bottom:0;">
-				
 				    <?php
 				    require_once(TEMPLATEPATH .'/app/customcode.php');
 				    $glob = fetchcustomcode('global_announcement.php',true);
@@ -38,7 +48,7 @@
 					</div>
 
 					<div class="post-author">
-						<?php if( $wp_auth_credit == 1 ) { ?>
+						<?php if( $wp_auth_credit == 'true' ) { ?>
 						<?php echo get_avatar( get_the_author_email(), $size = '36', $default = 'images/avatar.jpg' ); ?>
 						<p><strong><?php the_time('l, F jS, Y') ?></strong><br/>
 							by <?php the_author_posts_link(); ?><?php edit_post_link('Edit', ' - ', ''); ?></p>
@@ -50,40 +60,30 @@
 					
 					<div class="clearer"></div>
 					
+					<?php if (get_option('wicketpixie_post_enable_aside') == 'true') { ?>
 					<!-- post-ad -->
-					<?php
-					if(is_enabled_adsense() == true) {
-					?>
-					    <div id="post-ad">
-						    <?php $adsense->wp_adsense('blog_post_side'); ?>
-						    <ul style="margin: 15px 0 0 5px">
-						        <p align="center">
+                        <div id="post-ad">
+                            <?php if(is_enabled_adsense() == true) { $adsense->wp_adsense('blog_post_side'); } ?>
+                            <div style="margin: 15px 0 0 5px">
+                                <?php if(get_option('wicketpixie_tweetmeme_enable') == 'true') { ?>
+						        <p style="margin: 0px auto;width: inherit;">
 						            <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
 						        </p>
-						        <?php if (wp_get_option('plug_related-posts')):?>
+						        <?php } ?>
+						        <?php if (get_option('wicketpixie_plugin_related-posts') == 'true'):?>
 						        <?php wp_related_posts(5); ?>
 						        <?php endif;?>
-						    </ul>
-					    </div>
-					<?php
-					} else {
-					?>
-					    <div id="post-ad">
-					    <!-- Enable Adsense on the WicketPixie Adsense Ads admin page. -->
-					        <ul style="margin: 15px 0 0 5px">
-					            <p align="center">
-					                <script type="text/javascript" src="http://tweetmeme.com/i/scripts/button.js"></script>
-					            </p>
-						        <?php if (wp_get_option('plug_related-posts')):?>
-						        <?php wp_related_posts(5); ?>
-						        <?php endif;?>
-					        </ul>
-					    </div>
-					<?php
-					}
-					?>
-					<!-- /post-ad -->
+						    </div>
+                        </div>
+                    <!-- /post-ad -->
+                    <?php } ?>
+                    
                     <div class="KonaBody">
+                    <?php if(is_enabled_adsense() == true) { ?>
+                    <span style="float:left;display:block;clear:none;margin-right:10px;">
+                    <?php $adsense->wp_adsense('blog_post_front'); ?>
+                    </span>
+                    <?php } ?>
 					<?php the_content(); ?>
 					</div>					
 					
@@ -95,13 +95,11 @@
 				<!-- post-meta -->
 				<div class="post-meta">
 					
-					<?php if(wp_get_option('plug_related-posts') && function_exists(wp_related_posts)):?>
+					<?php if(get_option('wicketpixie_plugin_related-posts') == 'true' && function_exists(wp_related_posts)):?>
 					<!-- related-posts -->
 					<div id="related-posts">
 						<h3>You might also be interested in...</h3>
-						<ul>
 							<?php wp_related_posts(); ?>
-						</ul>						
 					</div>
 					<!-- /related-posts -->
 					<?php endif;?>
@@ -119,7 +117,7 @@
 						<!-- post-meta-categories -->
 						<div class="post-meta-categories">
 							<h6>Categories</h6>
-							<p> <?php the_category(); ?></p>
+							<?php the_category(); ?>
 						</div>
 						<!-- /post-meta-categories -->
 						

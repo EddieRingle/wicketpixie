@@ -1,29 +1,21 @@
- /* 
-Theme Name: WicketPixie
-Theme URI: http://chris.pirillo.com/wicketpixie/
-Description: Funded by <a href="http://chris.pirillo.com/">Chris Pirillo</a> and <a href="http://www.lockergnome.com/">Lockergnome</a>. Design, markup/CSS and theme development by <a href="http://mattbrett.com">Matt Brett</a>. App developed by <a href="http://eddieringle.com">Eddie Ringle</a> and <a href="http://dave-bates.net">Dave Bates</a>. Solid Wood backgrounds by <a href="http://www.bartelme.at/">Bartelme Design</a>. More social media discussions at <a href="http://gnomedex.com/">Gnomedex</a>.
-Version: 1.1
-Author: Chris Pirillo
-Author URL: http://chris.pirillo.com
-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -   */
-
 html {
     overflow-y: scroll;
 }
 body {
-	font-size: 62.5%;
-	color: #000;
-	text-align: center;
+    font-size: 62.5%;
+    background-color: #FFF;
+    color: #000;
+    text-align: center;
 }
 
 #wrapper {
-	display: none;
-	clear: both;
-	width: 920px;
-	margin: 0 auto;
-	padding: 0 /*10*/20px;
-	text-align: left;
-	background: /*#000*/ url("../images/wrapper-bg.png") repeat-y 0 0;
+    display: block;
+    clear: both;
+    width: 920px;
+    margin: 0 auto;
+    padding: 0 20px;
+    text-align: left;
+    background: transparent url("../images/wrapper-bg.png") repeat-y 0 0;
 }
 
 /* @group topbar */
@@ -32,115 +24,120 @@ body {
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
 #topbar {
-     top: 0;
-     left: 0;
-	position: fixed;
-	float: left;
-	width: 100%;
-	padding: 5px 0 19px;
-	background: url("../images/topbar-bg.png") repeat-x 50% 100%;
-	z-index: 900;
+    top: 0;
+    left: 0;
+    position: fixed;
+    float: left;
+    width: 100%;
+    padding: 5px 0 19px;
+    background: transparent url("../images/topbar-bg.png") repeat-x 50% 100%;
+    z-index: 900;
 }
 
 #topbar-inner {
-	width: 920px;
-	margin: 0 auto;
-	text-align: left;
+    width: 920px;
+    margin: 0 auto;
+    text-align: left;
 }
 
 #topbar ul {
-	float: left;
-	padding-top: 2px;
+    float: left;
+    padding-top: 2px;
 }
 
 #topbar ul li {
-	float: left;
-	margin-right: 20px;
-	font-size: 1.1em;
-	line-height: 16px;
-	text-transform: uppercase;
+    float: left;
+    margin-right: 20px;
+    font-size: 1.1em;
+    line-height: 16px;
+    text-transform: uppercase;
 }
 
 #topbar ul li a:link, #topbar ul li a:visited, #topbar ul li a:active {
-	display: block;
-	color: #666;
-	text-decoration: none;
-	padding: 1px 0 1px 21px;
+    display: block;
+    background-color: transparent;
+    color: #ccc;
+    text-decoration: none;
+    padding: 1px 0 1px 21px;
 }
 
 #topbar ul li a:hover {
-	color: #999;
-	text-decoration: none;
+    background-color: transparent;
+    color: #fff;
+    text-decoration: none;
 }
 
 #topbar-subscribe {
-	background: url("../images/icon-feed.gif") no-repeat 0 50%;
+    background: transparent url("../images/icon-feed.gif") no-repeat 0 50%;
 }
 
 #topbar-share {
-	display: inline;
+    display: inline;
 }
 
 #subscribe, #share {
-	display: none;
-	position: absolute;
-	top: 31px;
-	left: 50%;
-	width: 220px;
-	padding: 10px 19px;
-	font: 1.2em Arial, Helvetica, Geneva, sans-serif;
-	text-align: left;
-	background: #000000 url("../images/topbar-dropdown.png") no-repeat 0 100%;
+    display: none;
+    position: absolute;
+    top: 31px;
+    left: 50%;
+    width: 220px;
+    padding: 10px 19px;
+    font: 1.2em Arial, Helvetica, Geneva, sans-serif;
+    text-align: left;
+    background: transparent url("../images/topbar-dropdown.png") no-repeat 0 100%;
 }
 
 #subscribe {
-	position: fixed;
-	margin: -1px 0 0 -469px;
-     z-index: 999;
- }
-
-#share {
-	position: fixed;
-	margin: -1px 0 0 -383px;
-     z-index: 999;
+    position: fixed;
+    margin: -1px 0 0 -469px;
+    z-index: 999;
 }
 
-#subscribe ul {
-	
+#share {
+    position: fixed;
+    margin: -1px 0 0 -383px;
+    z-index: 999;
+}
+
+#subscribe ul {	
 }
 
 #subscribe li, #share li {
-	float: left;
-	width: 46%;
-	height: 20px;
-	margin: 0 2% 10px 0;
-	font-size: .95em;
+    float: left;
+    width: 46%;
+    height: 20px;
+    margin: 0 2% 10px 0;
+    font-size: .95em;
 }
 
 #subscribe a:link, #subscribe a:active, #subscribe a:visited {
-	color: #fff;
-	text-decoration: none;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
 }
 
 #subscribe li a.feed {
-	padding: 1px 0 1px 19px;
-	background: url("../images/icon-feed.gif") no-repeat 0 50%;
+    padding: 1px 0 1px 19px;
+    background: transparent url("../images/icon-feed.gif") no-repeat 0 50%;
 }
 
 #share a:link, #share a:active, #share a:visited {
-	color: #fff;
-	text-decoration: none;
+    background-color: #000;
+    color: #fff;
+    text-decoration: none;
 }
 
 #subscribe a:hover, #share a:hover {
-	color: #fff;
-	text-decoration: underline;
+    background-color: #000;
+    color: #fff;
+    text-decoration: underline;
 }
 
 #subscribe form {
-	clear: left;
-	margin-bottom: 10px;
-	color: #666;
+    clear: left;
+    margin-bottom: 10px;
+    background-color: #000;
+    color: #666;
 }
 
 #subscribe input {
@@ -149,11 +146,11 @@ body {
 }
 
 #topbar-share {
-	background: url("../images/topbar-lg.gif") no-repeat 0 50%;
+	background: transparent url("../images/topbar-lg.gif") no-repeat 0 50%;
 }
 
 #topbar-admin {
-	background: url("../images/wicketsmall.png") no-repeat 0 50%;
+	background: transparent url("../images/wicketsmall.png") no-repeat 0 50%;
 }
 
 #search {
@@ -166,8 +163,8 @@ body {
 	margin: 1px 5px 0 0;
 	padding: 2px 3px;
 	font-size: 1.1em;
-	color: #666;
 	background: #fff url("../images/search-input.gif") repeat-x 0 0;
+	color: #666;
 	border-width: 1px;
 }
 
@@ -250,17 +247,9 @@ body {
 	width: 100%;
 	text-align: center;
 	padding-top: 9px;
-	background: url("../images/nav-bg.png") no-repeat 50% 0;
+	background: transparent url("../images/nav-bg.png") no-repeat 50% 0;
 }
-/*
-#nav .navLoader {
-	width: 940px;
-	height: 40px;
-	background: #000;
-	margin: 0 auto;
-	text-align: left;
-}
-*/
+
 #nav ul {
 	width: 940px;
 	margin: 0 auto;
@@ -446,25 +435,27 @@ body {
 }
 
 #home-photos {
-	float: left;
-	width: 510px;
-	margin-left: 20px;
-	padding: 0;
-	border-top: 0;
-}
-
-#home-photos div {
-	float: left;
-	display: inline;
-	margin: 0 7px 7px 0;
+    width: 100%;
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0px;
+	border-top: 0px;
+	display: block;
 }
 
 #content #home-photos img {
-	display: block;
+	display: inline;
+	margin: 0px 3px;
 	border: 1px solid #666;
 }
 
-#content #home-photos img:hover {
+#content #home-photos h2 {
+    text-align: left;
+    margin-left: 20px;
+}
+
+#home-photos img:hover {
 	border: 1px solid #000;
 }
 
@@ -646,8 +637,8 @@ body {
 #content .avatar {
 	float: right;
 	display: block;
-	width: 48px;
-	height: 48px;
+	width: 36px;
+	height: 36px;
 	margin-left: 10px;
 	padding: 3px;
 	background: url("../images/post-avatar-bg.gif") no-repeat 0 0;
@@ -1566,6 +1557,11 @@ a.adspot_adurl {
 /* MISCELLANEOUS
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  */
 
+/* AdSense for Search */
+#cse-search-results {
+    margin: 15px 20px;
+}
+
 .clearer {
 	clear: both;
 	line-height: 1;
@@ -1687,7 +1683,7 @@ div.KonaBody {
 }
 
 .TweetAvatar, #TweetAvatar, #profile_image_url {
-    border: 0 0 0 0;
+    border: 0px;
     float: left;
     padding: 4px 15px 25px 0;
     width: 40px;

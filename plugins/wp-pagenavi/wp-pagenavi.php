@@ -43,7 +43,7 @@ function pagenavi_menu() {
 	
     if (function_exists('add_submenu_page')) {
 //        add_submenu_page('wp_plugins.php', 'PaveNavi Options', 'PageNavi Options', 8, 'wp-pagenavi/pagenavi-options.php', 'manage_options');
-        add_submenu_page('wp_plugins.php', __('PageNavi'), __('PageNavi'), 'manage_options', __FILE__, manageoptions);
+        add_submenu_page('wipi-plugins.php', __('PageNavi'), __('PageNavi'), 'manage_options', basename(__FILE__), manageoptions);
     }
 }
 
