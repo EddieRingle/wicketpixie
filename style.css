@@ -9,14 +9,13 @@ Version: 0.0.0-pre
 html {
 	text-align: center;
 	width: 100%;
-	background: #999 url(http://www.eddieringle.com/wp-content/themes/wicketpixie/images/backgrounds/solidwood-green.jpg) repeat-x fixed;
+	background: #999 url() repeat-x fixed;
 	color: #000;
 }
 body {
 	font-family: "Lucida Grande", Arial, sans-serif;
 	text-align: left;
-	width: 920px;
-	min-width: 850px;
+	width: 1050px;
 	margin: 0 auto;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -53,11 +52,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 #sideline {
 	float: right;
-	background-color: rgba(0, 0, 0, 0.4);
-	padding: 0 20px;
+	background-color: #000;
+	padding: 5px 20px;
 	margin-right: 25px;
 	color: #FFF;
+	font-size: 11px;
 	text-shadow: 2px 2px 2px #111;
+	width: 401px;
+	line-height: 1.3em;
+	min-height: 40px;
+	border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    box-shadow: 0 0 5px #000;
+    -moz-box-shadow: 0 0 5px #000;
+    -webkit-box-shadow: 0 0 5px #000;
 }
 #body {
 	clear: both;
@@ -67,10 +76,9 @@ h1, h2, h3, h4, h5, h6 {
 	box-shadow: 0 0 10px #000;
 	-moz-box-shadow: 0 0 10px 0 #000;
 	-webkit-box-shadow: 0 0 10px 0 #000;
-}
-#page {
-	color: #000;
-	background-color: #FFF;
+	border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
 }
 #navigation {
 	width: 100%;
@@ -78,10 +86,18 @@ h1, h2, h3, h4, h5, h6 {
 	overflow: visible;
 }
 #page {
+    color: #000;
+	background-color: #FFF;
 	padding: 10px 15px;
 	overflow: auto;
 	clear: both;
-	z-index: -999;
+	z-index: 0;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	-moz-border-radius: 10px;
+    -moz-border-radius-topleft: 0;
+    -webkit-border-radius: 10px;
+    -webkit-border-top-left-radius: 0;
 }
 #content {
 	background-color: #fff;
@@ -89,8 +105,7 @@ h1, h2, h3, h4, h5, h6 {
 	float: left;
 	margin: 0;
 	padding: 0;
-	width: 64%;
-	min-width: 550px;
+	width: 600px;
 }
 .post-title a {
 	color: #900;
@@ -106,15 +121,34 @@ h1, h2, h3, h4, h5, h6 {
 	color: #777;
 }
 .sidebar {
-	width: 25%;
-	padding: 0;
+	padding: 15px;
 	margin: 0;
+	width: 320px;
+	overflow: hidden;
 }
-.sidebar-1 {
+.widget ul {
+    margin-left: 2px;
+}
+#sidebar-1 {
 	float: left;
 }
-.sidebar-2 {
+#sidebar-2 {
 	float: right;
+}
+.sidebar1 {
+    width: 100%;
+}
+.sidebar2, .sidebar5 {
+    width: 160px;
+    float: left;
+}
+.sidebar4 {
+    width: 100%;
+    clear: both;
+}
+.sidebar3, .sidebar6 {
+    width: 160px;
+    float: right;
 }
 .left-border {
 	border-left: 1px solid #999;
@@ -128,6 +162,12 @@ h1, h2, h3, h4, h5, h6 {
 	box-shadow: 0 0 10px 0 #000;
 	-moz-box-shadow: 0 0 10px 0 #000;
 	-webkit-box-shadow: 0 0 10px 0 #000;
+	border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -webkit-border-bottom-left-radius: 10px;
 	position: relative;
 	padding: 15px 10px;
 	overflow: hidden;

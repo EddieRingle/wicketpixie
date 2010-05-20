@@ -19,6 +19,7 @@
 				endwhile; endif;
 				?>
 			</div>
+
 <?php get_sidebar('2'); ?>
 
 <?php get_footer(); ?>
