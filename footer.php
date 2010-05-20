@@ -25,7 +25,7 @@ if ($.support.leadingWhitespace) {
 }
 });
 </script>
-<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/superfish.js"></script>
+<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/superfish.packed.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
 $('ul.sf-menu').superfish();
