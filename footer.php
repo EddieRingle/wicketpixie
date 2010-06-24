@@ -16,6 +16,7 @@
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.curvycorners.packed.js"></script>
 <script type="text/javascript">
+/*
 $(document).ready(function() {
 if ($.support.leadingWhitespace) {
     $("#body").corner({ tl: { radius: 0 }, tr: { radius: 10 }, br: { radius: 0 }, bl: { radius: 0 } });
@@ -24,6 +25,7 @@ if ($.support.leadingWhitespace) {
     $("#sideline").corner();
 }
 });
+*/
 </script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/superfish.packed.js"></script>
 <script type="text/javascript">
