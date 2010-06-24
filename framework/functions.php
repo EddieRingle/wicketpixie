@@ -52,7 +52,8 @@ function wipi_get_template_directory()
 
 function wipi_init_frontend()
 {
-    // empty function for now
+    get_header();
+    get_footer();
 }
 
 ?>
