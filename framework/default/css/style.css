@@ -1,0 +1,194 @@
+/*
+Theme Name: WicketPixie
+Theme URI: http://chris.pirillo.com/wicketpixie
+Description: A free premium WordPress theme provided by Chris Pirillo.
+Author: Eddie Ringle
+Author URI: http://chris.pirillo.com/wicketpixie
+Version: 0.0.0-pre
+*/
+html {
+	text-align: center;
+	width: 100%;
+	background: #999 url() repeat-x fixed;
+	color: #000;
+}
+body {
+	font-family: "Lucida Grande", Arial, sans-serif;
+	text-align: left;
+	width: 960px;
+	margin: 0 auto;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Georgia, "Times New Roman", serif;
+	color: #900;
+	padding: 0;
+	margin: 0;
+}
+#wrapper {
+	margin: 0 5px;
+	padding: 15px 0;
+}
+#header-wrap {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+	margin-bottom: 15px;
+	float: left;
+}
+#header {
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+#logo {
+	float: left;
+	text-shadow: 2px 2px 2px #111;
+	font-size: 24px;
+}
+#logo a {
+	background-color: transparent;
+	color: #FFF;
+	text-decoration: none;
+	font-weight: normal;
+}
+#sideline {
+	float: right;
+	width: 430px;
+	max-width: 430px;
+	min-width: 430px;
+	margin-right: 20px;
+	padding: 0 15px;
+	background-color: #000;
+	color: #FFF;
+	font-size: 11px;
+	text-shadow: 2px 2px 2px #111;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	box-shadow: 0 0 5px #000;
+	-moz-box-shadow: 0 0 5px #000;
+	-webkit-box-shadow: 0 0 5px #000;
+}
+#body {
+	clear: both;
+	background-color: #000;
+	color: #FFF;
+	padding: 0px 10px;
+	box-shadow: 0 0 10px #000;
+	-moz-box-shadow: 0 0 10px 0 #000;
+	-webkit-box-shadow: 0 0 10px 0 #000;
+	border-top-right-radius: 10px;
+    -moz-border-radius-topright: 10px;
+    -webkit-border-top-right-radius: 10px;
+}
+#navigation {
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+}
+#page {
+    color: #000;
+	background-color: #FFF;
+	padding: 10px 15px;
+	overflow: auto;
+	clear: both;
+	z-index: 0;
+	border-radius: 10px;
+	border-top-left-radius: 0;
+	-moz-border-radius: 10px;
+    -moz-border-radius-topleft: 0;
+    -webkit-border-radius: 10px;
+    -webkit-border-top-left-radius: 0;
+}
+#content {
+	background-color: #fff;
+	color: #000;
+	float: left;
+	margin: 0;
+	padding: 0;
+	width: 600px;
+}
+.post-title a {
+	color: #900;
+}
+.post-title a:hover {
+	color: #000;
+}
+.post-content {
+	font-size: 14px;
+}
+.meta {
+	font-size: 12px;
+	color: #777;
+}
+.sidebar {
+	padding: 15px;
+	margin: 0;
+	width: 320px;
+	overflow: hidden;
+}
+.widget ul {
+    margin-left: 2px;
+}
+#sidebar-1 {
+	float: left;
+}
+#sidebar-2 {
+	float: right;
+}
+.sidebar1 {
+    width: 100%;
+}
+.sidebar2, .sidebar5 {
+    width: 160px;
+    float: left;
+}
+.sidebar4 {
+    width: 100%;
+    clear: both;
+}
+.sidebar3, .sidebar6 {
+    width: 160px;
+    float: right;
+}
+.left-border {
+	border-left: 1px solid #999;
+}
+.right-border {
+	border-right: 1px solid #999;
+}
+#footer-wrap {
+	background-color: #000;
+	color: #FFF;
+	box-shadow: 0 0 10px 0 #000;
+	-moz-box-shadow: 0 0 10px 0 #000;
+	-webkit-box-shadow: 0 0 10px 0 #000;
+	border-bottom-right-radius: 10px;
+    -moz-border-radius-bottomright: 10px;
+    -webkit-border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    -moz-border-radius-bottomleft: 10px;
+    -webkit-border-bottom-left-radius: 10px;
+	position: relative;
+	padding: 15px 10px;
+	overflow: hidden;
+	clear: both;
+}
+#footer {
+	color: #666;
+	background-color: #000;
+}
+#footer a {
+	color: #999;
+	background-color: #000;
+}
+#footer a:hover {
+	color: #CCC;
+	background-color: #000;
+}
+#footer .footer-left {
+	float: left;
+}
+#footer .footer-right {
+	float: right;
+}
