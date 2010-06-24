@@ -47,12 +47,17 @@ if ( function_exists('register_sidebar') ) {
 function wipi_get_template_directory()
 {
     // Just return the default directory for now
-    return get_bloginfo("template_directory") . "/framework/default";
+    return get_bloginfo('template_directory') . '/framework/default';
 }
 
 function wipi_init_frontend()
 {
     get_header();
+    if (is_home()) {
+        include_once wipi_get_template_directory() . '/index.php';
+    } elseif (is_single()) {
+        include_once wipi_get_template_directory() . '/single.php';
+    }
     get_footer();
 }
 
