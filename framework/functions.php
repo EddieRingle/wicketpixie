@@ -49,4 +49,10 @@ function wipi_get_template_directory()
     // Just return the default directory for now
     return get_bloginfo("template_directory") . "/framework/default";
 }
+
+function wipi_init_frontend()
+{
+    // empty function for now
+}
+
 ?>
