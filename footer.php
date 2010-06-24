@@ -15,18 +15,6 @@
 <?php wp_footer(); ?>
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.curvycorners.packed.js"></script>
-<script type="text/javascript">
-/*
-$(document).ready(function() {
-if ($.support.leadingWhitespace) {
-    $("#body").corner({ tl: { radius: 0 }, tr: { radius: 10 }, br: { radius: 0 }, bl: { radius: 0 } });
-    $("#footer-wrap").corner({ tl: { radius: 0 }, tr: { radius: 0 }, bl: { radius: 10 }, br: { radius: 10 } });
-    $("#page").corner({ tl: { radius: 0 }, tr: { radius: 10 }, br: { radius: 10 }, bl: { radius: 10 } });
-    $("#sideline").corner();
-}
-});
-*/
-</script>
 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/superfish.packed.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
