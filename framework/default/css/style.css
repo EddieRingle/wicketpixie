@@ -11,12 +11,15 @@ html {
 	width: 100%;
 	background: #999 url() repeat-x fixed;
 	color: #000;
+	height: 100%;
 }
 body {
 	font-family: "Lucida Grande", Arial, sans-serif;
 	text-align: left;
-	width: 960px;
+	width: 980px;
 	margin: 0 auto;
+	font-size: 66.5%;
+	height: 100%;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: Georgia, "Times New Roman", serif;
@@ -25,20 +28,16 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 #wrapper {
-	margin: 0 5px;
-	padding: 15px 0;
-}
-#header-wrap {
-	width: 100%;
-	padding: 0;
 	margin: 0;
-	margin-bottom: 15px;
-	float: left;
+	padding: 15px 0;
+	height: 100%;
 }
 #header {
 	width: 100%;
 	padding: 0;
 	margin: 0;
+	margin-bottom: 15px;
+	float: left;
 }
 #logo {
 	float: left;
@@ -53,11 +52,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 #sideline {
 	float: right;
-	width: 430px;
-	max-width: 430px;
-	min-width: 430px;
-	margin-right: 20px;
+	width: 500px;
 	padding: 0 15px;
+	margin-top: 10px;
 	background-color: #000;
 	color: #FFF;
 	font-size: 11px;
@@ -71,6 +68,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 #body {
 	clear: both;
+	margin-top: 15px;
 	background-color: #000;
 	color: #FFF;
 	padding: 0px 10px;
@@ -80,19 +78,20 @@ h1, h2, h3, h4, h5, h6 {
 	border-top-right-radius: 10px;
     -moz-border-radius-topright: 10px;
     -webkit-border-top-right-radius: 10px;
+    min-height: 100%;
 }
 #navigation {
 	width: 100%;
 	height: 100%;
 	overflow: visible;
+	font-size: 14px;
 }
 #page {
     color: #000;
 	background-color: #FFF;
-	padding: 10px 15px;
-	overflow: auto;
+	overflow: hidden;
 	clear: both;
-	z-index: 0;
+	z-index: 999;
 	border-top-left-radius: 0;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
@@ -105,14 +104,19 @@ h1, h2, h3, h4, h5, h6 {
 	-webkit-border-top-right-radius: 10px;
 	-webkit-border-bottom-right-radius: 10px;
 	-webkit-border-bottom-left-radius: 10px;
+	min-height: 100%;
+	position: relative;
 }
 #content {
 	background-color: #fff;
 	color: #000;
 	float: left;
 	margin: 0;
+	margin: 10px;
 	padding: 0;
-	width: 600px;
+	width: 580px;
+	height: 100%;
+	z-index: 900;
 }
 .post-title a {
 	color: #900;
@@ -127,23 +131,31 @@ h1, h2, h3, h4, h5, h6 {
 	font-size: 12px;
 	color: #777;
 }
-.sidebar {
-	padding: 15px;
-	margin: 0;
-	width: 320px;
-	overflow: hidden;
-}
 .widget ul {
     margin-left: 2px;
 }
-#sidebar-1 {
-	float: left;
-}
-#sidebar-2 {
+#sidebar {
+    position: absolute;
+    right: 0px;
+    height: 99%;
+	width: 340px;
 	float: right;
+	font-size: 12px;
+	border-left: 1px solid #E0E0E0;
+	background-color: #F5F5F5;
+	padding: 10px 10px 10px 9px;
+	z-index: 900;
+	border-top-right-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-topright: 10px;
 }
 .sidebar1 {
     width: 100%;
+    margin-bottom: 20px;
+    text-align: center;
 }
 .sidebar2, .sidebar5 {
     width: 160px;
@@ -157,6 +169,20 @@ h1, h2, h3, h4, h5, h6 {
     width: 160px;
     float: right;
 }
+.sidebar1, .sidebar2, .sidebar3, .sidebar4, .sidebar5, .sidebar6 {
+    overflow: hidden;
+}
+.sidebar4, .sidebar5, .sidebar6 {
+    padding-top: 5px;
+}
+#sidebar ul {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+#sidebar ul li {
+    line-height: 2;
+}
 .left-border {
 	border-left: 1px solid #999;
 }
@@ -164,11 +190,14 @@ h1, h2, h3, h4, h5, h6 {
 	border-right: 1px solid #999;
 }
 #footer-wrap {
-	background-color: #000;
-	color: #FFF;
-	box-shadow: 0 0 10px 0 #000;
-	-moz-box-shadow: 0 0 10px 0 #000;
-	-webkit-box-shadow: 0 0 10px 0 #000;
+	
+}
+#footer {
+    background-color: #000;
+	color: #666;
+	box-shadow: 0px 0px 10px 0px #000;
+	-moz-box-shadow: 0px 0px 10px 0px #000;
+	-webkit-box-shadow: 0px 0px 10px 0px #000;
 	border-bottom-right-radius: 10px;
     -moz-border-radius-bottomright: 10px;
     -webkit-border-bottom-right-radius: 10px;
@@ -179,10 +208,7 @@ h1, h2, h3, h4, h5, h6 {
 	padding: 15px 10px;
 	overflow: hidden;
 	clear: both;
-}
-#footer {
-	color: #666;
-	background-color: #000;
+	z-index: -999;
 }
 #footer a {
 	color: #999;

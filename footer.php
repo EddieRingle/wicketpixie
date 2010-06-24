@@ -1,7 +1,5 @@
 		</div>
 	</div>
-	</div>
-	<div id="footer-wrap">
 	<div id="footer">
 		<span class="footer-left">
 		Copyright &copy; 2010 idlesoft labs
@@ -9,7 +7,6 @@
 		<span class="footer-right">
 		Powered by <a href="http://chris.pirillo.com/wicketpixie">WicketPixie</a>.
 		</span>
-	</div>
 	</div>
 </div>
 <?php wp_footer(); ?>

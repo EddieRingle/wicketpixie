@@ -32,7 +32,7 @@
 .sf-menu li:hover ul,
 .sf-menu li.sfHover ul {
 	left:			0;
-	top:			2.5em; /* match top ul list item height */
+	top:			2.4em; /* match top ul list item height */
 	z-index:		99;
 }
 ul.sf-menu li:hover li ul,
@@ -120,6 +120,8 @@ li.sfHover > a > .sf-sub-indicator {
 .sf-shadow ul {
 	background:	url('../images/shadow.png') no-repeat bottom right;
 	padding: 0 8px 9px 0;
+	border-top-right-radius: 17px;
+	border-bottom-left-radius: 17px;
 	-moz-border-radius-bottomleft: 17px;
 	-moz-border-radius-topright: 17px;
 	-webkit-border-top-right-radius: 17px;

@@ -18,7 +18,6 @@
 <body>
 <?php flush(); ?>
 <div id="wrapper">
-	<div id="header-wrap">
 	<div id="header">
 		<div id="logo">
 		<h1><a href="/">WicketPixie</a></h1>
@@ -27,8 +26,6 @@
 		<p><?php bloginfo('description'); ?></p>
 		</div>
 	</div>
-	</div>
-	<div id="body-wrap">
 	<div id="body">
 		<div id="navigation">
 		<ul class="sf-menu">

@@ -41,7 +41,7 @@
 
 
                 <!-- sidebar6 -->
-                <div id="sidebar6">
+                <div class="sidebar6">
 	                <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar6') ) : ?><?php endif; ?>
                 </div>
                 <!-- /sidebar6 -->
