@@ -3,13 +3,13 @@
 <head>
 <title><?php wp_title('&laquo;', true, 'right'); bloginfo('name'); ?></title>
 <meta charset="utf-8" />
-<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/style.css" />
-<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/css/superfish.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo wipi_get_template_directory(); ?>/css/style.css" />
+<link rel="stylesheet" type="text/css" href="<?php echo wipi_get_template_directory(); ?>/css/superfish.css" />
 <!--[if lt IE 9]>
-	<link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/css/ie.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo wipi_get_template_directory(); ?>/css/ie.css" />
 <![endif]-->
 <!--[if IE 8]>
-  <link rel="stylesheet" type="text/css" href="<?php bloginfo('template_directory')?>/css/ie8_only.css" />
+  <link rel="stylesheet" type="text/css" href="<?php echo wipi_get_template_directory(); ?>/css/ie8_only.css" />
 <![endif]-->
 <?php
 	wp_head();
