@@ -1,4 +1,4 @@
-			<div id="sidebar-2" class="sidebar">
+			<div id="sidebar" class="sidebar">
 				<!-- sidebar_top -->
                 <div class="sidebar_top">
                     <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar_top') ) : ?><?php endif;?>
