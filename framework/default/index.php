@@ -15,3 +15,4 @@
 	                endwhile; endif;
 	                ?>
                 </div>
+                <?php include_once 'sidebar.php'; ?>
