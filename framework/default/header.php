@@ -13,7 +13,6 @@
 <![endif]-->
 <?php
 	wp_head();
-	comments_popup_script(400, 400);
 ?>
 </head>
 <body>
