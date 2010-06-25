@@ -34,7 +34,7 @@ h2 {
     font-size: 2em;
 }
 h3 {
-    font-size: 1.75em;
+    font-size: 1.3em;
 }
 #wrapper {
 	margin: 0;
@@ -148,7 +148,7 @@ h3 {
     height: 99%;
 	width: 340px;
 	float: right;
-	font-size: 12px;
+	font-size: 11px;
 	border-left: 1px solid #E0E0E0;
 	background-color: #F5F5F5;
 	padding: 10px 10px 10px 9px;
