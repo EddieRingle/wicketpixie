@@ -173,6 +173,7 @@ h3 {
 .sidebar4 {
     width: 100%;
     clear: both;
+    text-align: center;
 }
 .sidebar3, .sidebar6 {
     width: 160px;
