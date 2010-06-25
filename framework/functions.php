@@ -1,4 +1,12 @@
 <?php
+/**
+ * WicketPixie
+ * (c) 2006-2010 Eddie Ringle <eddie@eringle.net>
+ * Provided by Chris Pirillo <chris@pirillo.com>
+ *
+ * Licensed under the New BSD License.
+ */
+
 if ( function_exists('register_sidebar') ) {
     register_sidebar(array('name'=>'sidebar_top',
         'before_widget' => '<div id="%1$s" class="widget %2$s">',

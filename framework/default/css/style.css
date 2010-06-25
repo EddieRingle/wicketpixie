@@ -1,11 +1,10 @@
-/*
-Theme Name: WicketPixie
-Theme URI: http://chris.pirillo.com/wicketpixie
-Description: A free premium WordPress theme provided by Chris Pirillo.
-Author: Eddie Ringle
-Author URI: http://chris.pirillo.com/wicketpixie
-Version: 0.0.0-pre
-*/
+/**
+ * WicketPixie
+ * (c) 2006-2010 Eddie Ringle <eddie@eringle.net>
+ * Provided by Chris Pirillo <chris@pirillo.com>
+ *
+ * Licensed under the New BSD License.
+ */
 html {
 	text-align: center;
 	width: 100%;
