@@ -28,7 +28,7 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 h1 {
-    font-size: 2.25em;
+    font-size: 4.5em;
 }
 h2 {
     font-size: 2em;
@@ -60,7 +60,6 @@ h3 {
 }
 #sideline {
 	float: right;
-	width: 500px;
 	padding: 0 15px;
 	margin-top: 10px;
 	background-color: #000;
