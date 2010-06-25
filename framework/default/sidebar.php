@@ -1,4 +1,5 @@
 			<div id="sidebar" class="sidebar">
+			    <?php wipi_before_sidebar(); ?>
 				<!-- sidebar_top -->
                 <div class="sidebar_top">
                     <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar_top') ) : ?><?php endif;?>
@@ -45,4 +46,5 @@
 	                <?php if ( !function_exists('dynamic_sidebar') || !dynamic_sidebar('sidebar6') ) : ?><?php endif; ?>
                 </div>
                 <!-- /sidebar6 -->
+                <?php wipi_after_sidebar(); ?>
 			</div>

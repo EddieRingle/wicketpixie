@@ -1,4 +1,5 @@
                 <div id="content">
+                <?php wipi_before_content(); ?>
 	                <?php
 	                if (have_posts()) : while (have_posts()) : the_post();
 	                ?>
@@ -14,5 +15,6 @@
 	                <?php
 	                endwhile; endif;
 	                ?>
+	            <?php wipi_after_content(); ?>
                 </div>
                 <?php include_once 'sidebar.php'; ?>

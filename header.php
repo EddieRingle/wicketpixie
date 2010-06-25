@@ -17,7 +17,9 @@
 </head>
 <body>
 <?php flush(); ?>
+<?php wipi_before_wrapper(); ?>
 <div id="wrapper">
+    <?php wipi_before_header(); ?>
 	<div id="header">
 		<div id="logo">
 		<h1><a href="/">WicketPixie</a></h1>
@@ -26,6 +28,7 @@
 		<p><?php bloginfo('description'); ?></p>
 		</div>
 	</div>
+	<?php wipi_after_header(); ?>
 	<div id="body">
 		<div id="navigation">
 		<ul class="sf-menu">
@@ -40,3 +43,4 @@
 		</ul>
 		</div>
 		<div id="page">
+		<?php wipi_before_page(); ?>
