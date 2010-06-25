@@ -195,6 +195,7 @@ h3 {
     color: #666;
     font-weight: bold;
     border-bottom: 1px solid #DDD;
+    text-decoration: none;
 }
 #sidebar a:hover {
     color: #333;
