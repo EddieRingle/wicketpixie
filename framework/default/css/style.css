@@ -117,9 +117,9 @@ h3 {
 	color: #000;
 	float: left;
 	margin: 0;
-	margin: 10px 10px -9990px 10px;
-	padding: 0 0 10000px 0;
-	width: 580px;
+	margin-bottom: -9985px;
+	padding: 15px 15px 10000px 15px;
+	width: 560px;
 	height: 100%;
 	z-index: 900;
 }
@@ -141,14 +141,14 @@ h3 {
 }
 #sidebar {
     color: #666;
-    height: 99%;
+    height: 100%;
 	width: 340px;
 	float: right;
 	font-size: 11px;
 	border-left: 1px solid #E0E0E0;
 	background-color: #F5F5F5;
-	padding: 10px 10px 10000px 9px;
-	margin-bottom: -9990px;
+	padding: 15px 15px 10000px 14px;
+	margin-bottom: -9985px;
 	z-index: 900;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
