@@ -119,9 +119,13 @@ h3 {
 	margin: 0;
 	margin-bottom: -9985px;
 	padding: 15px 15px 10000px 15px;
+	font-size: 14px;
 	width: 560px;
 	height: 100%;
 	z-index: 900;
+}
+#content h2 {
+    font-size: 1.75em;
 }
 .post-title a {
 	color: #900;
