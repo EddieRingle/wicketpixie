@@ -207,6 +207,7 @@ h3 {
 }
 
 #sidebar h3 {
+    padding-bottom: 5px;
     border-bottom: 1px solid #DDD;
 }
 .left-border {
