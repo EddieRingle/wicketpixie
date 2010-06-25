@@ -191,6 +191,15 @@ h3 {
 #sidebar ul li {
     line-height: 2;
 }
+#sidebar a {
+    color: #666;
+    font-weight: bold;
+    border-bottom: 1px solid #DDD;
+}
+#sidebar a:hover {
+    color: #333;
+    border-bottom: 0;
+}
 .left-border {
 	border-left: 1px solid #999;
 }
