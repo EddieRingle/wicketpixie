@@ -68,6 +68,8 @@ function wipi_init_frontend()
         include_once wipi_get_template_path() . '/index.php';
     } elseif (is_single()) {
         include_once wipi_get_template_path() . '/single.php';
+    } elseif (is_404()) {
+        include_once wipi_get_template_path() . '/404.php';
     } else {
         include_once wipi_get_template_path() . '/index.php';
     }
