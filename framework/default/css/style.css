@@ -143,6 +143,7 @@ h3 {
     margin-left: 2px;
 }
 #sidebar {
+    color: #666;
     position: absolute;
     right: 0px;
     height: 99%;
