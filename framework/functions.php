@@ -75,7 +75,7 @@ function wipi_init_frontend()
 {
     get_header();
     if (is_home()) {
-        include_once wipi_get_template_path() . '/index.php';
+        include_once wipi_get_template_path() . '/home.php';
     } elseif (is_single()) {
         include_once wipi_get_template_path() . '/single.php';
     } elseif (is_404()) {
