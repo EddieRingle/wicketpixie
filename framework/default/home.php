@@ -9,6 +9,10 @@
 		                <div class="meta">
 			                <?php the_date(); ?> at <?php the_time(); ?> | <?php comments_popup_link(__('0 Comments'), __('1 Comment'), __('% Comments')); ?>
 		                </div>
+		                <div class="post-aside">
+	                        This is some example text!
+	                        <?php wipi_post_aside(); ?>
+	                    </div>
 		                <div class="post-content">
 			                <?php the_content(__('Read on...')); ?>
 		                </div>
@@ -16,10 +20,6 @@
 	                <?php
 	                endwhile; endif;
 	                ?>
-	                <div class="post-aside">
-	                This is some example text!
-	                <?php wipi_post_aside(); ?>
-	                </div>
 	            <?php wipi_after_content(); ?>
                 </div>
                 <?php include_once 'sidebar.php'; ?>
