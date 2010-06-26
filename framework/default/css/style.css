@@ -129,6 +129,9 @@ h3 {
 #content h2 {
     font-size: 1.6em;
 }
+.post {
+    float: left;
+}
 .post-aside {
     float: right;
     width: 120px;
