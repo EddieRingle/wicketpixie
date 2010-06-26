@@ -15,6 +15,10 @@
 				    <?php
 				    endwhile; endif;
 				    ?>
+				    <div class="post-aside">
+	                This is some example text!
+	                <?php wipi_post_aside(); ?>
+	                </div>
 				<?php wipi_after_content(); ?>
 			    </div>
                 <?php include_once 'sidebar.php'; ?>

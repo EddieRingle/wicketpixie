@@ -129,6 +129,10 @@ h3 {
 #content h2 {
     font-size: 1.6em;
 }
+.post-aside {
+    float: right;
+    width: 120px;
+}
 .post-title a {
 	color: #900;
 }

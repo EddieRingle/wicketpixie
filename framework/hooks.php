@@ -56,4 +56,9 @@ function wipi_after_wrapper()
 {
     do_action('wipi_after_wrapper');
 }
+
+function wipi_post_aside()
+{
+    do_action('wipi_post_aside');
+}
 ?>
