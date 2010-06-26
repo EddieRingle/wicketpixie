@@ -10,7 +10,6 @@
 			                <?php the_date(); ?> at <?php the_time(); ?> | <?php comments_popup_link(__('0 Comments'), __('1 Comment'), __('% Comments')); ?>
 		                </div>
 		                <div class="post-aside">
-	                        This is some example text!
 	                        <?php wipi_post_aside(); ?>
 	                    </div>
 		                <div class="post-content">
