@@ -89,5 +89,3 @@
 
 <?php } /* If registration required and not logged in */ ?>
 
-<?php } /* if you delete this the sky will fall on your head */ ?>
-
