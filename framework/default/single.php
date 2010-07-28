@@ -16,6 +16,7 @@
 					    </div>
 				    </div>
 				    <?php
+					comment_form();
 				    endwhile; endif;
 				    ?>
 				<?php wipi_after_content(); ?>
