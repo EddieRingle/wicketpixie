@@ -16,9 +16,11 @@
 					    </div>
 				    </div>
 				    <?php
+				    comments_template('framework/default/comments.php');
 					comment_form();
 				    endwhile; endif;
 				    ?>
 				<?php wipi_after_content(); ?>
 			    </div>
                 <?php include_once 'sidebar.php'; ?>
+
