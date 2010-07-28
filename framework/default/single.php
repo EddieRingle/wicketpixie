@@ -16,7 +16,7 @@
 					    </div>
 				    </div>
 				    <?php
-				    comments_template('framework/default/comments.php');
+				    comments_template('/framework/default/comments.php');
 				    endwhile; endif;
 				    ?>
 				<?php wipi_after_content(); ?>
