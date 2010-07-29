@@ -146,6 +146,124 @@ h3 {
 	font-size: 12px;
 	color: #777;
 }
+#comments {
+    margin: 0 20px;
+    clear: left;
+}
+#comments .comment {
+    clear: both;
+    float: left;
+    width: 100%;
+    margin-bottom: 1.4em;
+    border-bottom: 1px solid #eee;
+}
+#comments h2 {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+#comments h2, #comment-form h2 {
+    margin-top: 1.4em;
+    color: #333;
+    font-size: 2.0em;
+}
+#comments .comment .meta {
+    float: left;
+    width: 120px;
+    text-align: right;
+    overflow: hidden;
+    padding-top: 1px;
+}
+#comments .comment .content {
+    float: right;
+    width: 365px;
+}
+#content .comment img.avatar {
+    float: right;
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 0 0 10px 10px;
+    padding: 3px;
+    background-color: #ccc;
+    overflow: hidden;
+    border: 0;
+}
+#content .comment p {
+    margin-bottom: 1.2em;
+    font-size: 1.2em;
+    overflow: hidden;
+}
+#content .comment h3, #comment .comment h5 {
+    border-bottom: 0;
+}
+#content .comment h3 {
+    margin: -3px 0 5px;
+    font-size: 1.4em;
+    color: #666;
+}
+#content .comment h3 a:link, #content .comment h3 a:active, #content .comment h3 a:visited {
+    text-decoration: none;
+    border-bottom: 1px solid #ddd;
+}
+#content .comment h5 {
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    font-weight: normal;
+    line-height: 1.3em;
+}
+#content .comment h5 a:link, #content .comment h5 a:active, #content .comment h5 a:visited {
+    color: #666;
+    text-decoration: none;
+}
+#content .comment h5 a:hover {
+    color: #333;
+    text-decoration: underline;
+    border-bottom: 0;
+}
+#comment-form {
+    margin: 0 20px;
+}
+#comment-form p {
+    float: left;
+    width: 100%;
+    margin-bottom: 10px;
+}
+#comment-form label {
+    float: left;
+    width: 120px;
+    padding-top: 6px;
+    font-weight: normal;
+    color: #666;
+    text-align: right;
+}
+#comment-form input, #comment-form textarea {
+    float: right;
+    width: 355px;
+    padding: 5px;
+    font-size: 12px;
+    color: #666;
+    background-color: #f6f6f6;
+    border-top: 1px solid #bbb;
+    border-right: 1px solid #eee;
+    border-bottom: 1px solid #eee;
+    border-left: 1px solid #ccc;
+}
+#comment-form input:focus, #comment-form textarea:focus {
+    color: #333;
+    background-color: #fff;
+    border: 1px solid #666;
+}
+#comment-form #comment-message {
+    width: 355px;
+}
+#comment-form #comment-button {
+    float: none;
+    width: 83px;
+    margin-left: 130px;
+    padding: 0;
+    background-color: transparent;
+    border: 0;
+}
 .widget ul {
     margin-left: 2px;
 }
@@ -225,7 +343,7 @@ h3 {
 	border-right: 1px solid #999;
 }
 #footer-wrap {
-	
+
 }
 #footer {
     background-color: #000;
@@ -259,3 +377,4 @@ h3 {
 #footer .footer-right {
 	float: right;
 }
+
