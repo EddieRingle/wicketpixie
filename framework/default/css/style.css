@@ -253,11 +253,12 @@ h3 {
     background-color: #fff;
     border: 1px solid #666;
 }
-#commentform .form-submit input {
+#commentform .form-submit #submit {
     float: none;
-    width: 83px;
-    margin-left: 130px;
-    padding: 0;
+    width: auto;
+    margin-left: 153px;
+    padding: 5px 10px;
+    color: #fff;
     background-color: #000;
     border-radius: 15px;
     -moz-border-radius: 15px;
