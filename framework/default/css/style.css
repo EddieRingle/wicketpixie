@@ -253,10 +253,7 @@ h3 {
     background-color: #fff;
     border: 1px solid #666;
 }
-#comment-form #comment-message {
-    width: 355px;
-}
-#comment-form #comment-button {
+#commentform .form-submit input {
     float: none;
     width: 83px;
     margin-left: 130px;
