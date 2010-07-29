@@ -264,6 +264,9 @@ h3 {
     background-color: transparent;
     border: 0;
 }
+.form-allowed-tags {
+    display: none;
+}
 .widget ul {
     margin-left: 2px;
 }
