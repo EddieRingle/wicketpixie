@@ -53,7 +53,7 @@
 			<?php if ($comment->comment_approved == '0') { ?>
 			<p><em>Your comment is awaiting moderation.</em></p>
 			<?php } ?>
-			<?php comment_text() ?>
+			<?php comment_text(); ?>
 		</div>
 		<!-- /comment content -->
 
@@ -83,7 +83,34 @@
 
 	<!-- comment form -->
 	<div id="comment-form">
-        <?php comment_form(); ?>
+        <?php
+        $fields =  array(
+                    'author' => '<p class="comment-form-p comment-form-author">' .
+                                '<label for="author">' . __('Name') . ':' .
+                                ($req ? '<span class="required"> *</span>' : '') .
+                                '</label>' .
+                                '<input id="author" name="author" type="text" value="' .
+                                esc_attr($commenter['comment_author']) .
+                                '" size="30"' . $aria_req . ' /><br/></p>',
+                    'email'  => '<p class="comment-form-p comment-form-email"><label for="email">' .
+                                __('Email') . ':' .
+                                ($req ? '<span class="required"> *</span>' : '') .
+                                '</label>' .
+                                '<input id="email" name="email" type="text" value="' .
+                                esc_attr($commenter['comment_author_email']) .
+                                '" size="30"' . $aria_req . ' /><br/></p>',
+                    'url'    => '<p class="comment-form-p comment-form-url"><label for="url">' .
+                                __('Website') . ':</label>' .
+                                '<input id="url" name="url" type="text" value="' .
+                                esc_attr($commenter['comment_author_url']) .
+                                '" size="30" /><br/></p>',
+                );
+        comment_form(array(
+                           'fields' => apply_filters('comment_form_default_fields', $fields),
+                           'comment_field' => '<p class="comment-form-p comment-form-comment"><label for="comment">' . _x('Comment', 'noun') . ':</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea><br/></p>',
+                           'comment_notes_before' => '',
+                           'comment_notes_after' => '',
+                           'title_reply' => 'What Do You Think?')); ?>
 	</div>
 	<!-- /comment form -->
 
