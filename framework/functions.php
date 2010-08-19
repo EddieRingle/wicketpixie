@@ -73,6 +73,9 @@ function wipi_template_uri()
 
 function wipi_init_frontend()
 {
+    /* Hook Template's modules to WicketPixie's hooks */
+    @include_once wipi_get_template_path() . '/page_modules.php';
+
     get_header();
     if (is_home()) {
         include_once wipi_get_template_path() . '/home.php';
@@ -87,3 +90,4 @@ function wipi_init_frontend()
 }
 
 ?>
+
