@@ -1,4 +1,5 @@
 		<?php wipi_after_page(); ?>
+		<div class="clear"></div>
 		</div>
 	</div>
 	<div id="footer">
@@ -22,3 +23,4 @@ $('ul.sf-menu').superfish();
 </script>
 </body>
 </html>
+
