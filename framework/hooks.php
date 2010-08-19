@@ -27,6 +27,21 @@ function wipi_after_content()
     do_action('wipi_after_content');
 }
 
+function wipi_before_post()
+{
+    do_action('wipi_before_post');
+}
+
+function wipi_after_post()
+{
+    do_action('wipi_after_post');
+}
+
+function wipi_post_meta()
+{
+    do_action('wipi_post_meta');
+}
+
 function wipi_before_sidebar()
 {
     do_action('wipi_before_sidebar');
