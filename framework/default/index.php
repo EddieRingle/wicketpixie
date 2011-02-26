@@ -22,8 +22,8 @@
 			                <?php the_content(__('Read on...')); ?>
 		                </div>
     		            <?php wipi_after_post(); ?>
+    		            <?php wipi_post_meta(); ?>
 	                </div>
-	                <?php wipi_post_meta(); ?>
 	                <?php
 	                endwhile; endif;
 	                ?>

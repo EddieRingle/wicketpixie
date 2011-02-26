@@ -127,6 +127,9 @@ h6 {
 #content h2 {
     font-size: 1.45em;
 }
+#content .post {
+    margin-bottom: 20px;
+}
 .post-aside {
     float: right;
     width: 120px;
@@ -418,10 +421,12 @@ h6 {
 	margin: 10px;
 	padding-top: 4px;
 	text-align: center;
+	max-width: 100%;
+	overflow-x: scroll;
 }
 .wp-caption img {
 	border: 0 none;
-	margin: 0;
+	margin: 0px 4px;
 	padding: 0;
 }
 .wp-caption p.wp-caption-text {
