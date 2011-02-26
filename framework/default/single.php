@@ -14,7 +14,18 @@
 				    ?>
 				    <div class="post" id="post-<?php the_ID(); ?>">
 				        <?php wipi_before_post(); ?>
-					    <h2 class="post-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+					    <?php
+	                    if (get_the_title()) {
+	                    ?>
+		                <h2 class="post-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php the_title(); ?></a></h2>
+		                <?php
+		                } else {
+		                    $date = get_the_date();
+		                ?>
+		                <h2 class="post-title"><a href="<?php the_permalink(); ?>" rel="bookmark"><?php echo $date; ?> at <?php the_time(); ?></a></h2>
+		                <?php
+	                    }
+		                ?>
 					    <div class="meta">
 						    <?php the_date(); ?> at <?php the_time(); ?> | <?php comments_popup_link(__('0 Comments'), __('1 Comment'), __('% Comments')); ?>
 					    </div>
