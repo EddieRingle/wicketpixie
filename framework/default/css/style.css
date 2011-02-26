@@ -89,11 +89,14 @@ h6 {
 	overflow: visible;
 	font-size: 0.95em;
 }
+#navigation ul li {
+    position: relative;
+    z-index: 9999;
+}
 #page {
     color: #000;
 	background-color: #FFF;
 	clear: both;
-	z-index: 999;
 	border-top-left-radius: 0;
 	border-top-right-radius: 10px;
 	border-bottom-right-radius: 10px;
@@ -108,6 +111,8 @@ h6 {
 	-webkit-border-bottom-left-radius: 10px;
 	height: 100%;
 	min-height: 100%;
+	position: relative;
+	z-index: 999;
 }
 #content {
 	background-color: #fff;
@@ -118,7 +123,6 @@ h6 {
 	font-size: 0.95em;
 	width: 560px;
 	height: 100%;
-	z-index: 900;
 	border-bottom-left-radius: 10px;
 	-moz-border-radius-bottomleft: 10px;
 	-webkit-border-bottom-left-radius: 10px;
@@ -317,6 +321,7 @@ h6 {
     width: 100%;
     clear: both;
     margin: 20px 0;
+    text-align: center;
 }
 .sidebar3, .sidebar6 {
     width: 160px;
@@ -355,6 +360,7 @@ h6 {
     padding-bottom: 2px;
     border-bottom: 1px solid #DDD;
     margin-bottom: 10px;
+    text-align: left;
 }
 .left-border {
 	border-left: 1px solid #999;

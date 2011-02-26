@@ -23,6 +23,7 @@ function module_post_meta()
             <?php
             }
             ?>
+            </ul>
         </div>
         <div id="post-meta-categories">
             <h6>Categories</h6>
