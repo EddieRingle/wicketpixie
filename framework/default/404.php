@@ -1,3 +1,12 @@
+<?php
+/**
+ * WicketPixie
+ * (c) 2006-2011 Eddie Ringle <eddie@eringle.net>
+ * Provided by Chris Pirillo <chris@pirillo.com>
+ *
+ * Licensed under the New BSD License.
+ */
+?>
                 <div id="content">
 	                <h2>We Can't Find the Droid You're Looking For</h2>
 	                <p>The page may have been removed or renamed.

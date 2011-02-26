@@ -1,10 +1,19 @@
+<?php
+/**
+ * WicketPixie
+ * (c) 2006-2011 Eddie Ringle <eddie@eringle.net>
+ * Provided by Chris Pirillo <chris@pirillo.com>
+ *
+ * Licensed under the New BSD License.
+ */
+?>
 		<?php wipi_after_page(); ?>
 		<div class="clear"></div>
 		</div>
 	</div>
 	<div id="footer">
 		<span class="footer-left">
-		Copyright &copy; 2010 idlesoft labs
+		Copyright &copy; 2010 Eddie Ringle
 		</span>
 		<span class="footer-right">
 		Powered by <a href="http://chris.pirillo.com/wicketpixie">WicketPixie</a>.
