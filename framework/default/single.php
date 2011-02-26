@@ -37,8 +37,8 @@
 						    <?php wp_link_pages(); ?>
 					    </div>
 					    <?php wipi_after_post(); ?>
+					    <?php wipi_post_meta(); ?>
 				    </div>
-				    <?php wipi_post_meta(); ?>
 				    <?php
 				    comments_template('/framework/default/comments.php');
 				    endwhile; endif;
