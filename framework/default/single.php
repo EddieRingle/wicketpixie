@@ -23,6 +23,7 @@
 	                    </div>
 					    <div class="post-content">
 						    <?php the_content(__('Read on...')); ?>
+						    <?php wp_link_pages(); ?>
 					    </div>
 					    <?php wipi_after_post(); ?>
 				    </div>
