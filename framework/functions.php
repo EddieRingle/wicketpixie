@@ -54,6 +54,10 @@ if ( function_exists('register_sidebar') ) {
     ));
 }
 
+/* Enable WordPress's custom background feature (3.0+) */
+add_custom_background();
+
+/* Function defines */
 function wipi_get_template_uri()
 {
     // Just return the default directory for now
@@ -92,4 +96,3 @@ function wipi_init_frontend()
 }
 
 ?>
-

@@ -10,15 +10,14 @@ html {
 	width: 100%;
 	background: #999 url() repeat-x fixed;
 	color: #000;
-	height: 100%;
+	margin: 0;
+	padding: 0;
 }
 body {
 	font-family: "Lucida Grande", Arial, sans-serif;
 	text-align: left;
-	width: 980px;
-	margin: 0 auto;
 	font-size: 12pt;
-	height: 100%;
+	margin: 0;
 }
 h1, h2, h3, h4, h5, h6 {
 	font-family: Georgia, "Times New Roman", serif;
@@ -33,9 +32,9 @@ h6 {
     font-size: 1em;
 }
 #wrapper {
-	margin: 0;
 	padding: 15px 0;
-	height: 100%;
+	width: 980px;
+	margin: 0 auto;
 }
 #header {
 	width: 100%;
@@ -123,6 +122,7 @@ h6 {
 	border-bottom-left-radius: 10px;
 	-moz-border-radius-bottomleft: 10px;
 	-webkit-border-bottom-left-radius: 10px;
+	line-height: 1.4em;
 }
 #content h2 {
     font-size: 1.45em;
@@ -374,7 +374,6 @@ h6 {
 	padding: 15px;
 	overflow: hidden;
 	clear: both;
-	z-index: -999;
 	font-size: 0.7em;
 }
 #footer a {
