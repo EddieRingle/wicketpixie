@@ -306,7 +306,7 @@ h6 {
 }
 .sidebar1 {
     width: 100%;
-    margin-bottom: 20px;
+    margin: 20px 0;
     text-align: center;
 }
 .sidebar2, .sidebar5 {
@@ -316,7 +316,7 @@ h6 {
 .sidebar4 {
     width: 100%;
     clear: both;
-    text-align: center;
+    margin: 20px 0;
 }
 .sidebar3, .sidebar6 {
     width: 160px;
@@ -354,6 +354,7 @@ h6 {
 #sidebar h3 {
     padding-bottom: 2px;
     border-bottom: 1px solid #DDD;
+    margin-bottom: 10px;
 }
 .left-border {
 	border-left: 1px solid #999;
