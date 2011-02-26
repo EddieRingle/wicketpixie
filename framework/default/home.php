@@ -10,8 +10,9 @@
                 <div id="content">
                 <?php wipi_before_content(); ?>
 	                <?php
-	                query_posts('showposts=1');
-	                if (have_posts()) : while (have_posts()) : the_post();
+	                query_posts('posts_per_page=1&order=DSC');
+	                $counter = 0;
+	                if (have_posts()) : while(have_posts() && $counter++ == 0) : the_post();
 	                ?>
 	                <div class="post" id="post-<?php the_ID(); ?>">
 	                    <?php wipi_before_post(); ?>
