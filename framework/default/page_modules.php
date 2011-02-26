@@ -13,12 +13,32 @@ function module_post_meta()
     <div id="post-meta">
         <div id="post-meta-tags">
             <h6>Tags</h6>
-            <?php the_tags('<ul><li>','</li><li>','</li></ul>'); ?>
+            <ul>
+            <?php
+            if (get_the_tag_list()) {
+                the_tags('<li>','</li><li>','</li>');
+            } else {
+            ?>
+                <li>No tags here!</li>
+            <?php
+            }
+            ?>
         </div>
         <div id="post-meta-categories">
             <h6>Categories</h6>
-            <?php the_category(); ?>
+            <?php
+            if (get_the_category()) {
+                the_category();
+            } else {
+            ?>
+            <ul>
+                <li>No categories here!</li>
+            </ul>
+            <?php
+            }
+            ?>
         </div>
+        <div class="clear"></div>
     </div>
 <?php
 }

@@ -144,6 +144,25 @@ h6 {
 	font-size: 0.75em;
 	color: #777;
 }
+#post-meta {
+	background-color: #F5F5F5;
+	border: 1px solid #DDD;
+	padding: 15px;
+}
+#post-meta-tags {
+	float: left;
+	width: 50%;
+}
+#post-meta-tags ul {
+	padding-left: 20px;
+}
+#post-meta-categories {
+	float: left;
+	width: 50%;
+}
+#post-meta-categories ul {
+	padding-left: 20px;
+}
 #comments {
     clear: left;
 }
