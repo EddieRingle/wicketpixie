@@ -30,6 +30,6 @@ $(document).ready(function() {
 $('ul.sf-menu').superfish();
 });
 </script>
+<script type="text/javascript" src="<?php wipi_template_uri(); ?>/js/wp-global.js"></script>
 </body>
 </html>
-
