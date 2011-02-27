@@ -10,7 +10,7 @@
 jQuery(document).ready(function ($) {
     /* Top bar dropdowns */
     $('.dropdown').hide();
-    $('#inner-top-bar > ul > li > a').toggle(
+    $('#inner-top-bar .dropdown').parent().toggle(
         function() {
             $('#inner-top-bar > ul > li > .dropdown').slideDown();
             return false;
