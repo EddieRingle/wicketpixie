@@ -31,7 +31,7 @@
     <?php wipi_before_header(); ?>
 	<div id="header">
 		<div id="logo">
-		<h1><a href="<?php bloginfo('home'); ?>">WicketPixie</a></h1>
+		<h1><a href="<?php bloginfo('home'); ?>"><?php bloginfo('name'); ?></a></h1>
 		</div>
 		<div id="sideline">
 		<p><?php bloginfo('description'); ?></p>
