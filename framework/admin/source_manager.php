@@ -73,6 +73,7 @@ class SourceManager
                         $req['title'], $req['profile_url'], $req['feed_url'],
                         ($req['lifestream'] == 1) ? 1 : 0, ($req['updates'] == 1) ? 1 : 0,
                         'http://www.google.com/s2/favicons?domain=' . $favicon_domain);
+                $wpdb->query($sql);
             }
         }
     }
