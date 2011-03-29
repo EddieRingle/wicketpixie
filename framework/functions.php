@@ -109,15 +109,15 @@ function wipi_prep_admin_menu()
     add_submenu_page('wicketpixie', 'WicketPixie Source Manager', 'Source Manager', 'install_themes', 'wipi_source_manager', 'wipi_admin_render_source_manager');
 }
 
-function wipi_register_activation_hooks()
+function wipi_install_databases()
 {
-    register_activation_hook(TEMPLATEPATH . '/framework/admin/source_manager.php', array('SourceManager', 'install'));
+    SourceManager::install();
 }
 
 function wipi_init_backend()
 {
     add_action('admin_menu', 'wipi_prep_admin_menu');
 
-    wipi_register_activation_hooks();
+    add_action('switch_theme', 'wipi_install_databases');
 }
 ?>
