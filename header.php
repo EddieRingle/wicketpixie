@@ -31,7 +31,7 @@
     <?php wipi_before_header(); ?>
 	<div id="header">
 		<div id="logo">
-		<h1><a href="<?php bloginfo('home'); ?>"><?php bloginfo('name'); ?></a></h1>
+		<h1><a href="<?php bloginfo('url'); ?>"><?php bloginfo('name'); ?></a></h1>
 		</div>
 		<div id="sideline">
 		<p><?php bloginfo('description'); ?></p>
@@ -44,7 +44,7 @@
 			<?php
 			if (!is_home()) {
 			?>
-			<li><a href="<?php bloginfo('home'); ?>">Home</a></li>
+			<li><a href="<?php bloginfo('url'); ?>">Home</a></li>
 			<?php
 			}
 			wp_list_pages('depth=3&sort_column=menu_order&title_li=');
