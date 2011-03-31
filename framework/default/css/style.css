@@ -338,6 +338,8 @@ h6 {
 }
 #sidebar ul li {
     line-height: 2;
+    margin: 0;
+    margin-bottom: 5px;
 }
 #sidebar a {
     color: #666;
