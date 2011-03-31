@@ -63,7 +63,6 @@ h6 {
 	background-color: #000;
 	background-color: rgba(0, 0, 0, 0.65);
 	color: #FFF;
-	font-size: 11px;
 	text-shadow: 2px 2px 2px #111;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -91,7 +90,6 @@ h6 {
 #navigation {
 	width: 100%;
 	overflow: visible;
-	font-size: 0.95em;
 }
 #navigation ul li {
     position: relative;
@@ -124,16 +122,12 @@ h6 {
 	float: left;
 	margin: 0;
 	padding: 15px;
-	font-size: 0.95em;
 	width: 560px;
 	height: 100%;
 	border-bottom-left-radius: 10px;
 	-moz-border-radius-bottomleft: 10px;
 	-webkit-border-bottom-left-radius: 10px;
 	line-height: 1.4em;
-}
-#content h2 {
-    font-size: 1.45em;
 }
 #content .post {
     margin-bottom: 20px;
@@ -148,12 +142,12 @@ h6 {
 .post-title a:hover {
 	color: #000;
 }
-.post-content {
-	font-size: 0.95em;
-}
 .meta {
 	font-size: 0.75em;
 	color: #777;
+}
+#content img {
+    padding: 10px;
 }
 #post-meta {
 	background-color: #F5F5F5;
@@ -192,7 +186,6 @@ h6 {
 #comments h2, #comment-form h3 {
     margin-top: 1.4em;
     color: #333;
-    font-size: 1.2em;
 }
 #comments .comment .meta {
     float: left;
@@ -216,14 +209,12 @@ h6 {
 }
 #content .comment p {
     margin-bottom: 1.2em;
-    font-size: 0.75em;
 }
 #content .comment h3, #comment .comment h5 {
     border-bottom: 0;
 }
 #content .comment h3 {
     margin: -3px 0 5px;
-    font-size: 1.1em;
     color: #666;
 }
 #content .comment h3 a:link, #content .comment h3 a:active, #content .comment h3 a:visited {
@@ -232,7 +223,6 @@ h6 {
 }
 #content .comment h5 {
     margin-bottom: 10px;
-    font-size: 1em;
     font-weight: normal;
     line-height: 1.3em;
 }
@@ -264,7 +254,6 @@ h6 {
     float: right;
     width: 410px;
     padding: 5px;
-    font-size: 12px;
     color: #666;
     background-color: #f6f6f6;
     border-top: 1px solid #bbb;
