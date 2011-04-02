@@ -38,18 +38,20 @@
 		</div>
 	</div>
 	<?php wipi_after_header(); ?>
-	<div id="body">
-		<div id="navigation">
-		<ul class="sf-menu">
-			<?php
-			if (!is_home()) {
-			?>
-			<li><a href="<?php bloginfo('url'); ?>">Home</a></li>
-			<?php
-			}
-			wp_list_pages('depth=3&sort_column=menu_order&title_li=');
-			?>
-		</ul>
-		</div>
-		<div id="page">
-		<?php wipi_before_page(); ?>
+	<div id="bodywrapper">
+        <div id="navigation">
+	        <ul class="sf-menu">
+		        <?php
+		        if (!is_home()) {
+		        ?>
+		        <li><a href="<?php bloginfo('url'); ?>">Home</a></li>
+		        <?php
+		        }
+		        wp_list_pages('depth=3&sort_column=menu_order&title_li=');
+		        ?>
+	        </ul>
+	        <div class="clear"></div>
+	    </div>
+	    <div id="body">
+		    <div id="page">
+		    <?php wipi_before_page(); ?>

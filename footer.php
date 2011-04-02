@@ -19,6 +19,7 @@
 		Powered by <a href="http://chris.pirillo.com/wicketpixie">WicketPixie</a>.
 		</span>
 	</div>
+	</div>
 </div>
 <?php wipi_after_wrapper(); ?>
 <?php wp_footer(); ?>
