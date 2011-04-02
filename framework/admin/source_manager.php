@@ -180,6 +180,10 @@ function wipi_admin_render_source_manager()
             <h2>Source Manager</h2>
             <p>Manage all of your social stream sources here.</p>
             <h3>Source Listing</h3>
+            <?php
+            $sources = SourceManager::collect_sources();
+            if (!empty($sources)) {
+            ?>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wipi_source_manager" method="post">
                 <table class="form-table" style="margin-bottom:20px;width:670px;">
                     <tr>
@@ -192,48 +196,48 @@ function wipi_admin_render_source_manager()
                     </tr>
                 <?php
                 wp_nonce_field('wicketpixie');
-                $sources = SourceManager::collect_sources();
-                if (!empty($sources)) {
-                    foreach ($sources as $source) {
-                        ?>
-                            <tr>
-                                <td style="text-align: center;"><img src="<?php echo $source->favicon; ?>" alt="" /></td>
-                                <td style="text-align: center;"><a href="<?php echo $source->profile_url; ?>"><?php echo $source->title; ?></a></td>
-                                <td style="text-align: center;">
-                                    <?php if (!empty($source->feed_url)) { ?>
-                                        <a href="<?php echo $source->feed_url; ?>"><img src="<?php wipi_template_uri(); ?>/images/icon-feed.gif" alt="Feed" /></a>
-                                        <?php } ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php echo ($source->lifestream == 0) ? 'No' : 'Yes'; ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <?php echo ($source->updates == 0) ? 'No' : 'Yes'; ?>
-                                    </td>
-                                    <td style="text-align: center;">
-                                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wipi_source_manager" style="display: inline;">
-                                            <?php wp_nonce_field('wicketpixie'); ?>
-                                            <input type="submit" value="Edit" />
-                                            <input type="hidden" name="id" value="<?php echo $source->id; ?>" />
-                                            <input type="hidden" name="action" value="edit-form" />
-                                        </form>
-                                        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wipi_source_manager" style="display: inline;">
-                                            <?php wp_nonce_field('wicketpixie'); ?>
-                                            <input type="submit" value="Delete" />
-                                            <input type="hidden" name="id" value="<?php echo $source->id; ?>" />
-                                            <input type="hidden" name="action" value="delete" />
-                                        </form>
-                                    </td>
-                                </tr>
-                            <?php
-                    }
-                } else {
-                    ?>
-                    <td>No sources found! Why don't you add one?</td>
-                    <?php
+                foreach ($sources as $source) {
+                ?>
+                    <tr>
+                        <td style="text-align: center;"><img src="<?php echo $source->favicon; ?>" alt="" /></td>
+                        <td style="text-align: center;"><a href="<?php echo $source->profile_url; ?>"><?php echo $source->title; ?></a></td>
+                        <td style="text-align: center;">
+                            <?php if (!empty($source->feed_url)) { ?>
+                                <a href="<?php echo $source->feed_url; ?>"><img src="<?php wipi_template_uri(); ?>/images/icon-feed.gif" alt="Feed" /></a>
+                                <?php } ?>
+                            </td>
+                            <td style="text-align: center;">
+                                <?php echo ($source->lifestream == 0) ? 'No' : 'Yes'; ?>
+                            </td>
+                            <td style="text-align: center;">
+                                <?php echo ($source->updates == 0) ? 'No' : 'Yes'; ?>
+                            </td>
+                            <td style="text-align: center;">
+                                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wipi_source_manager" style="display: inline;">
+                                    <?php wp_nonce_field('wicketpixie'); ?>
+                                    <input type="submit" value="Edit" />
+                                    <input type="hidden" name="id" value="<?php echo $source->id; ?>" />
+                                    <input type="hidden" name="action" value="edit-form" />
+                                </form>
+                                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wipi_source_manager" style="display: inline;">
+                                    <?php wp_nonce_field('wicketpixie'); ?>
+                                    <input type="submit" value="Delete" />
+                                    <input type="hidden" name="id" value="<?php echo $source->id; ?>" />
+                                    <input type="hidden" name="action" value="delete" />
+                                </form>
+                            </td>
+                        </tr>
+            <?php
+                }
+            ?>
+                    </table>
+            <?php
+            } else {
+            ?>
+                <p>No sources found! Why don't you add one?</p>
+            <?php
             }
             ?>
-            </table>
         </form>
         <?php if (isset($_REQUEST['action']) && ($_REQUEST['action'] == 'edit-form' || ($_REQUEST['action'] == 'edit' && isset($error)))) {
             $source = SourceManager::fetch_source($_REQUEST['id']); ?>
