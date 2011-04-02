@@ -263,14 +263,14 @@ function wipi_admin_render_source_manager()
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>?page=wipi_source_manager" method="post">
                 <?php wp_nonce_field('wicketpixie'); ?>
                 <label for="source-name">Name:</label><br />
-                <input type="text" id="source-name" name="title" value="<?php echo ($_REQUEST['action'] == 'add' && isset($_POST['title'])) ? $_POST['title'] : ''; ?>" /><br />
+                <input type="text" id="source-name" name="title" value="<?php echo (isset($_REQUEST['action']) && $_REQUEST['action'] == 'add' && isset($_POST['title'])) ? $_POST['title'] : ''; ?>" /><br />
                 <label for="source-profile">Profile URL:</label><br />
-                <input type="text" id="source-profile" name="profile_url" value="<?php echo ($_REQUEST['action'] == 'add' && isset($_POST['profile_url'])) ? $_POST['profile_url'] : ''; ?>" /><br />
+                <input type="text" id="source-profile" name="profile_url" value="<?php echo (isset($_REQUEST['action']) && $_REQUEST['action'] == 'add' && isset($_POST['profile_url'])) ? $_POST['profile_url'] : ''; ?>" /><br />
                 <label for="source-feed">Feed URL:</label><br />
-                <input type="text" id="source-feed" name="feed_url" value="<?php echo ($_REQUEST['action'] == 'add' && isset($_POST['feed_url'])) ? $_POST['feed_url'] : ''; ?>" /><br />
-                <input type="checkbox" id="source-lifestream" name="lifestream" <?php echo ($_REQUEST['action'] == 'add' && isset($_POST['lifestream'])) ? 'checked' : ''; ?> />
+                <input type="text" id="source-feed" name="feed_url" value="<?php echo (isset($_REQUEST['action']) && $_REQUEST['action'] == 'add' && isset($_POST['feed_url'])) ? $_POST['feed_url'] : ''; ?>" /><br />
+                <input type="checkbox" id="source-lifestream" name="lifestream" <?php echo (isset($_REQUEST['action']) && $_REQUEST['action'] == 'add' && isset($_POST['lifestream'])) ? 'checked' : ''; ?> />
                 <label for="source-lifestream">Add to Lifestream</label><br />
-                <input type="checkbox" id="source-status" name="updates" <?php echo ($_REQUEST['action'] == 'add' && isset($_POST['updates'])) ? 'checked' : ''; ?> />
+                <input type="checkbox" id="source-status" name="updates" <?php echo (isset($_REQUEST['action']) && $_REQUEST['action'] == 'add' && isset($_POST['updates'])) ? 'checked' : ''; ?> />
                 <label for="source-status">Use in Status Box</label><br />
                 <input type="submit" value="Add Source" />
                 <input type="hidden" name="action" value="add" />
