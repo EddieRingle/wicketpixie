@@ -104,10 +104,10 @@ class SourceManager
             }
             preg_match('@^(?:http://)?([^/]+)@i', $req['profile_url'], $matches);
             $favicon_domain = $matches[1];
-            $sql = $wpdb->prepare("UPDATE $table SET title = '%s', profile_url = '%s', feed_url = '%s', lifestream = %d, updates = %d WHERE id = %d",
+            $sql = $wpdb->prepare("UPDATE $table SET title='%s', profile_url='%s', feed_url='%s', lifestream=%d, updates=%d, favicon='%s' WHERE id=%d",
                     $req['title'], $req['profile_url'], $req['feed_url'],
                     (isset($req['lifestream'])) ? 1 : 0, (isset($req['updates'])) ? 1 : 0,
-                    'http://www.google.com/s2/favicons?domain=' . $favicon_domain);
+                    'http://www.google.com/s2/favicons?domain=' . $favicon_domain, $req['id']);
             $wpdb->query($sql);
             return 0;
         } else {
