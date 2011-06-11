@@ -57,6 +57,14 @@ if ( function_exists('register_sidebar') ) {
 /* Enable WordPress's custom background feature (3.0+) */
 add_custom_background();
 
+/* If we're in the Admin area */
+if (is_blog_admin()) {
+    /* Require necessary admin files */
+    require_once 'admin/wicketpixie.php';
+    require_once 'admin/source_manager.php';
+    wipi_init_backend();
+}
+
 /* Function defines */
 function wipi_get_template_uri()
 {
@@ -95,4 +103,21 @@ function wipi_init_frontend()
     get_footer();
 }
 
+function wipi_prep_admin_menu()
+{
+    add_menu_page("WicketPixie", "WicketPixie", 'install_themes', 'wicketpixie', 'wipi_admin_render_wicketpixie', get_bloginfo('template_url') . '/images/wicketsmall.png');
+    add_submenu_page('wicketpixie', 'WicketPixie Source Manager', 'Source Manager', 'install_themes', 'wipi_source_manager', 'wipi_admin_render_source_manager');
+}
+
+function wipi_install_databases()
+{
+    SourceManager::install();
+}
+
+function wipi_init_backend()
+{
+    add_action('admin_menu', 'wipi_prep_admin_menu');
+
+    add_action('switch_theme', 'wipi_install_databases');
+}
 ?>
