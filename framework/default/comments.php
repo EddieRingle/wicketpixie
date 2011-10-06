@@ -84,6 +84,7 @@
 	<!-- comment form -->
 	<div id="comment-form">
         <?php
+        $aria_req = ( $req ? " aria-required='true'" : '' );
         $fields =  array(
                     'author' => '<p class="comment-form-p comment-form-author">' .
                                 '<label for="author">' . __('Name') . ':' .
