@@ -92,6 +92,7 @@ h6 {
 #navigation {
 	width: 100%;
 	clear: both;
+	min-height: 38px;
 	background-color: #000;
 	background-image: -webkit-linear-gradient(top, #393939, #000 28px);
 	background-image: -moz-linear-gradient(top, #393939, #000 28px);
