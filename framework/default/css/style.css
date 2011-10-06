@@ -230,16 +230,16 @@ h6 {
     text-decoration: none;
     border-bottom: 1px solid #ddd;
 }
-#content .comment h5 {
+#content .comment h4 {
     margin-bottom: 10px;
     font-weight: normal;
     line-height: 1.3em;
 }
-#content .comment h5 a:link, #content .comment h5 a:active, #content .comment h5 a:visited {
+#content .comment h4 a:link, #content .comment h4 a:active, #content .comment h4 a:visited {
     color: #666;
     text-decoration: none;
 }
-#content .comment h5 a:hover {
+#content .comment h4 a:hover {
     color: #333;
     text-decoration: underline;
     border-bottom: 0;
