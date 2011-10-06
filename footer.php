@@ -13,7 +13,7 @@
 	</div>
 	<div id="footer">
 		<span class="footer-left">
-		Copyright &copy; 2010 Eddie Ringle
+		Copyright &copy; 2011 Eddie Ringle
 		</span>
 		<span class="footer-right">
 		Powered by <a href="http://chris.pirillo.com/wicketpixie">WicketPixie</a>.
