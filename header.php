@@ -24,7 +24,7 @@
 	wp_head();
 ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 <?php flush(); ?>
 <?php wipi_before_wrapper(); ?>
 <div id="wrapper">
