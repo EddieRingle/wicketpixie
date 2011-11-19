@@ -87,6 +87,7 @@ h6 {
 	color: #FFF;
 	padding: 0px 10px;
 }
+
 #navigation {
 	width: 100%;
 	clear: both;
@@ -99,10 +100,7 @@ h6 {
     -moz-border-radius-topright: 10px;
     -webkit-border-top-right-radius: 10px;
 }
-#navigation ul li {
-    position: relative;
-    z-index: 9999;
-}
+
 #page {
     color: #000;
 	background-color: #FFF;
