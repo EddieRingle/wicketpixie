@@ -101,6 +101,10 @@ h6 {
     -webkit-border-top-right-radius: 10px;
 }
 
+#navigation ul {
+    z-index: 9999;
+}
+
 #page {
     color: #000;
 	background-color: #FFF;
