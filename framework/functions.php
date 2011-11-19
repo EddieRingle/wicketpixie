@@ -118,6 +118,6 @@ function wipi_init_backend()
 {
     add_action('admin_menu', 'wipi_prep_admin_menu');
 
-    add_action('switch_theme', 'wipi_install_databases');
+    add_action('after_switch_theme', 'wipi_install_databases');
 }
 ?>
