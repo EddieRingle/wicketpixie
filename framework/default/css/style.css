@@ -160,6 +160,17 @@ h6 {
 #content img {
     padding: 10px;
 }
+#content h3 a {
+    color: #900;
+    border-bottom: 0;
+}
+
+#content h3 {
+    padding-bottom: 2px;
+    border-bottom: 1px solid #DDD;
+    margin-bottom: 10px;
+    text-align: left;
+}
 #post-meta {
 	background-color: #F5F5F5;
 	border: 1px solid #DDD;
