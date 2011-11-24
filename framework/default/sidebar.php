@@ -6,7 +6,14 @@
  *
  * Licensed under the New BSD License.
  */
-?>
+
+if (is_active_sidebar(1)
+    || is_active_sidebar(2)
+    || is_active_sidebar(3)
+    || is_active_sidebar(4)
+    || is_active_sidebar(5)
+    || is_active_sidebar(6)
+    || is_active_sidebar(7)) { ?>
 			<div id="sidebar" class="sidebar">
 			    <?php wipi_before_sidebar(); ?>
 				        <!-- sidebar_top -->
@@ -46,3 +53,6 @@
                 <!-- /sidebar6 -->
                 <?php wipi_after_sidebar(); ?>
 			</div>
+<?php
+}
+?>
